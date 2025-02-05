@@ -1,0 +1,9 @@
+# Ignore artifacts:
+node_modules
+backend
+dist
+build
+coverage
+*.min.js
+*.bundle.js
+public

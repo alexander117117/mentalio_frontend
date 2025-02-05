@@ -1,0 +1,30 @@
+input[type='checkbox'] {
+  position: relative;
+  /* width: 24px;
+    height: 24px; */
+  appearance: none;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+input[type='checkbox']:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+input[type='checkbox']:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.clamp {
+  font-size: clamp(10px, 3vw, 17px);
+}

@@ -1,0 +1,9 @@
+.inputAuth {
+  width: 100%;
+  padding: 28px 20px;
+  border-radius: 20px;
+  background: #4c4c4c99;
+  border: 1px solid #8a8a8a80;
+  color: #ffffffe5;
+  outline: none;
+}

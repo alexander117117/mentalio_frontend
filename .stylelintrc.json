@@ -1,0 +1,14 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-recommended"],
+  "plugins": ["stylelint-order", "stylelint-scss"],
+  "rules": {
+    "block-no-empty": true,
+    "no-duplicate-selectors": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-no-important": true,
+    "number-leading-zero": "always",
+    "selector-pseudo-element-colon-notation": "double",
+    "scss/at-extend-no-missing-placeholder": true,
+    "scss/dollar-variable-pattern": "^([a-z][a-zA-Z0-9]+)$"
+  }
+}

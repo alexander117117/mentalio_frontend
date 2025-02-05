@@ -1,0 +1,68 @@
+.background {
+  min-height: 100vh;
+  background: #212121;
+  color: #fff;
+}
+
+/* .container{
+  width: 763px;
+  margin: 0 auto;
+  padding-top: 60px;
+  text-align: center;
+} */
+
+.group {
+  width: 490px;
+  margin: 0 auto;
+  margin-top: 147px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.subTitle {
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.subTitle a {
+  color: #00c724;
+  text-decoration: none;
+}
+
+.boundary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.boundary span {
+  flex: 1;
+  background: #ffffff2e;
+  height: 1px;
+}
+
+.formGroupInput {
+  margin-bottom: 20px;
+}
+
+.formGroupBtn {
+  margin-top: 20px;
+}
+
+.forgotPassword {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.forgotPassword a {
+  color: #00c724;
+  text-decoration: none;
+}

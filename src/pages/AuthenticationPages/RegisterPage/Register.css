@@ -1,0 +1,119 @@
+.containerRegister {
+  width: 1580px;
+  margin: 0 auto;
+  padding-top: 60px;
+  text-align: center;
+}
+
+.groupRegister {
+  width: 1580px;
+  margin: 0 auto;
+}
+
+/* Level 1 */
+.groupMail {
+  width: 490px;
+  margin: 241px auto 0 auto;
+  /* display: none; */
+}
+
+/* Level 2 */
+.groupPassword {
+  width: 490px;
+  margin: 0 auto;
+  margin-top: 296px;
+  display: none;
+}
+
+/* Level 3 */
+.groupAvatar {
+  width: 100%;
+  margin-top: 80px;
+  display: none;
+}
+
+.groupAvatarImg {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.avatar {
+  width: 500px;
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Level 4 */
+.groupFound {
+  margin-top: 60px;
+  display: none;
+}
+
+.groupAnswers {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  margin-bottom: 100px;
+}
+
+.answer {
+  width: 500px;
+  height: 150px;
+  background: #4c4c4c99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  border: 1px solid #8a8a8a80;
+  cursor: pointer;
+}
+
+/* level 5 */
+.groupTutorial {
+  margin-top: 80px;
+  display: none;
+}
+
+.groupVideo {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.video {
+  width: 500px;
+  height: 530px;
+  background: #4c4c4c99;
+}
+
+/* level 6 */
+.registerSuccess {
+  display: none;
+  font-size: 48px;
+  margin-top: 201px;
+  margin-bottom: 40px;
+}
+
+.btnAuthRegister {
+  display: block;
+  width: 490px;
+  padding: 23px 20px;
+  border-radius: 20px;
+  background: #24ac18e5;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px auto 0 auto;
+}

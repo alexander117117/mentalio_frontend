@@ -1,0 +1,11 @@
+.btnAuth {
+  display: block;
+  width: 100%;
+  padding: 23px 20px;
+  border-radius: 20px;
+  background: #24ac18e5;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
