@@ -30,7 +30,6 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Обработка состояния для loginUserThunk
     builder
       .addCase(loginUserThunk.pending, handlePending)
       .addCase(loginUserThunk.fulfilled, (state, action) => {
@@ -89,6 +88,6 @@ const authSlice = createSlice({
   },
 })
 
-// Экспортируем экшены и редюсер
+// Экспортируем экшены и редьюсер
 export const { logout, clearError } = authSlice.actions
 export default authSlice.reducer

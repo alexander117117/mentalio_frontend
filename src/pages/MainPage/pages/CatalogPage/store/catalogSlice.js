@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@/store/helpers/Handlers.js'
+import { handlePending, handleRejected } from '@/store/helpers/Handlers'
 import { getAllCategoriesThunk, paginationNextPageThunk, paginationThunk } from './catalogThunks.js'
 
 const initialState = {

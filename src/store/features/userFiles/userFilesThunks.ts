@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@/../axiosConfig'
+import axios from '@/../axios.config'
 
 /**
  * Получить список файлов пользователя

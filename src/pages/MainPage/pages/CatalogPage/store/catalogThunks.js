@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '../../../../../../axiosConfig.ts'
+import axios from '@/../axios.config.ts'
 
 /**
  * Асинхронный экшен для загрузки карточек для текущей страницы.
@@ -26,15 +26,62 @@ export const paginationThunk = createAsyncThunk('catalog/PaginationThunk', async
           title: 'Папка3',
           desc: 'dddds',
         },
-        // ... другие элементы
-      ],
+        {
+          id: 3,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 4,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 5,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 6,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 7,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 8,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 9,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        },
+        {
+          id: 10,
+          userName: 'Ivan3',
+          title: 'Папка3',
+          desc: 'dddds',
+        }
+        ],
       countTotalCarts: 12, // Общее количество элементов
     },
   }
   try {
-    const res = await axios.get('/catalog', {
-      params: { query, page, category, userName, limit },
-    })
+    // const res = await axios.get('/catalog', {
+    //   params: { query, page, category, userName, limit },
+    // })
     console.log(res.data)
     return res.data
   } catch (e) {
@@ -93,6 +140,7 @@ export const getAllCategoriesThunk = createAsyncThunk('catalog/getAllCategoriesT
   }
   try {
     // const res = await axios.get('/api/catalog/getAllCategory')
+    // console.log(res.data)
     return res.data
   } catch (e) {
     console.error(e)
