@@ -32,7 +32,7 @@ function Main() {
         )}
 
         {/* основное контент */}
-        <div className="w-full sm:w-auto sm:flex-1 mx-7 sm:ml-12 xl:ml-[60px] mt-10 sm:mt-[60px] pb-5">
+        <div className="w-full sm:w-auto sm:flex-1 mx-7 sm:ml-12 xl:ml-[60px] mt-5 sm:mt-[60px] pb-5">
           {/* Подстраницы */}
           <Outlet />
           {/* === */}

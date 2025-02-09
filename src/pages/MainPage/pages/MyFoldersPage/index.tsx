@@ -9,6 +9,7 @@ import { getUserFiles } from '@/store/features/userFiles/userFilesThunks'
 export const MyFoldersPage = () => {
   const dispatch = useDispatch()
   const { files } = useSelector((state: any) => state.userFiles)
+
   useEffect(() => {
     dispatch(getUserFiles())
   }, [])

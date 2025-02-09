@@ -22,7 +22,7 @@ const NonEmptyFolder = ({ files }) => {
 
         {/* готовые папки пользователя */}
         <div className="">
-          <div className="flex items-center justify-between mb-[15px]">
+          <div className="flex items-center justify-between mb-[15px] xs:w-auto w-[80vw]">
             <h3 className="text-base sm:text-[32px] font-bold">Мои папки</h3>
             <Link
               to="/my-folders"
@@ -32,7 +32,11 @@ const NonEmptyFolder = ({ files }) => {
             </Link>
           </div>
 
-          <div className="w-full sm:w-[630px] flex items-center gap-[10px]">
+          <div className="w-full sm:w-[730px] flex items-center gap-[20px]"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}>
             {files.map((file, index) => (
               <Folder key={file.id} title={file.title} date={file.dateCreated} />
             ))}

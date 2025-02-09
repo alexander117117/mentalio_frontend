@@ -47,6 +47,7 @@ const HomePage = () => {
     },
   ])
   const { files } = useSelector((state) => state.userFiles)
+
   useEffect(() => {
     dispatch(getUserFiles())
   }, [])

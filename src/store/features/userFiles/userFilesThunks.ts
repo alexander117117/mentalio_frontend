@@ -10,18 +10,18 @@ export const getUserFiles  = createAsyncThunk('userFiles/getUserFiles', async (_
   const res = {
     data: {
       items: [
-        {
-          id: 1,
-          title: 'Анатомия1',
-          dateCreated: '07.12.2024',
-          desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
-        },
-        {
-          id: 2,
-          title: 'Анатомия2',
-          dateCreated: '07.12.2022',
-          desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
-        },
+        // {
+        //   id: 1,
+        //   title: 'Анатомия1',
+        //   dateCreated: '07.12.2024',
+        //   desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
+        // },
+        // {
+        //   id: 2,
+        //   title: 'Анатомия2',
+        //   dateCreated: '07.12.2022',
+        //   desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
+        // },
       ],
     },
   }
@@ -29,7 +29,7 @@ export const getUserFiles  = createAsyncThunk('userFiles/getUserFiles', async (_
     // const res = await axios.get('/userFiles')
     return res.data.items
   } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при загрузке данных')
+    return rejectWithValue(error || 'Ошибка при загрузке данных')
   }
 })
 
