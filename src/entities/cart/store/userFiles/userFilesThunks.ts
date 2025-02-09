@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@/../axios.config'
+import axios from '@/../axios.config.ts'
 
 /**
  * Получить список файлов пользователя
@@ -10,18 +10,18 @@ export const getUserFiles  = createAsyncThunk('userFiles/getUserFiles', async (_
   const res = {
     data: {
       items: [
-        // {
-        //   id: 1,
-        //   title: 'Анатомия1',
-        //   dateCreated: '07.12.2024',
-        //   desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
-        // },
-        // {
-        //   id: 2,
-        //   title: 'Анатомия2',
-        //   dateCreated: '07.12.2022',
-        //   desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
-        // },
+        {
+          id: 1,
+          title: 'Анатомия1',
+          dateCreated: '07.12.2024',
+          desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
+        },
+        {
+          id: 2,
+          title: 'Анатомия2',
+          dateCreated: '07.12.2022',
+          desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
+        },
       ],
     },
   }
