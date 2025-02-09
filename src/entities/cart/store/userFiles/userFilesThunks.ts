@@ -1,196 +1,295 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@/../axios.config.ts'
+import axios from '@/../axios.config'
 
-/**
- * Получить список файлов пользователя
- * @returns {Promise<Object[]>} Список файлов пользователя
- */
+export interface CardItem {
+  id: number | string
+  question?: string
+  answer?: string
+}
 
-export const getUserFiles  = createAsyncThunk('userFiles/getUserFiles', async (_, { rejectWithValue }) => {
-  const res = {
-    data: {
-      items: [
-        {
-          id: 1,
-          title: 'Анатомия1',
-          dateCreated: '07.12.2024',
-          desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
-        },
-        {
-          id: 2,
-          title: 'Анатомия2',
-          dateCreated: '07.12.2022',
-          desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
-        },
-      ],
-    },
-  }
-  try {
-    // const res = await axios.get('/userFiles')
-    return res.data.items
-  } catch (error) {
-    return rejectWithValue(error || 'Ошибка при загрузке данных')
-  }
-})
+export interface TopicItem {
+  id: number | string
+  title?: string
+  desc?: string
+  cards?: CardItem[]
+}
 
-/**
- * Создать новый файл пользователя
- * @param {Object} fileData - Данные файла
- * @returns {Promise<Object>} Созданный файл
- */
-export const createUserFile = createAsyncThunk('userFiles/createUserFile', async (fileData, { rejectWithValue }) => {
-  try {
-    const res = await axios.post('/userFiles', fileData)
-    return res.data
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при создании файла')
-  }
-})
+export interface FileItem {
+  id: number | string
+  title: string
+  dateCreated: string
+  desc: string
+  topics?: TopicItem[]
+}
 
-/**
- * Удалить файл пользователя
- * @param {string} fileId - Идентификатор файла
- * @returns {Promise<string>} Удаленный идентификатор файла
- */
-export const deleteUserFile = createAsyncThunk('userFiles/deleteUserFile', async (fileId, { rejectWithValue }) => {
-  try {
-    await axios.delete(`/userFiles/${fileId}`)
-    return fileId
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при удалении файла')
-  }
-})
 
-/**
- * Обновить данные файла пользователя
- * @param {Object} payload - Данные для обновления
- * @param {string} payload.fileId - Идентификатор файла
- * @param {Object} payload.fileData - Обновленные данные файла
- * @returns {Promise<Object>} Обновленный файл
- */
-
-interface UserFile {
-  fileId?: string
-  fileData?: {
-    title?: string
-    desc?: string
-    isPublic?: boolean
-  }
-  topicId?: string
-  topicData?: {
-    title?: string
-    desc?: string
-  }
-  cardId?: string
-  cardData?: {
-    question?: string
-    answer?: string
+interface AxiosErrorData {
+  res?: {
+    data?: string
   }
 }
-export const updateUserFile = createAsyncThunk('userFiles/updateUserFile', async ({ fileId, fileData }: UserFile, { rejectWithValue }) => {
-  try {
-    const res = await axios.put(`/userFiles/${fileId}`, fileData)
-    return res.data
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при обновлении файла')
-  }
-})
 
 /**
- * Получить темы для указанного файла
- * @param {string} fileId - Идентификатор файла
- * @returns {Promise<Object[]>} Список тем
+ * Получить список файлов пользователя.
+ * Возвращает массив объектов FileItem.
  */
-export const getFileTopics = createAsyncThunk('userFiles/getFileTopics', async (fileId, { rejectWithValue }) => {
-  try {
-    const res = await axios.get(`/userFiles/${fileId}/topics`)
-    return res.data
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при получении тем файла')
-  }
-})
+export const getUserFiles = createAsyncThunk<
+  FileItem[], // Возвращаемый тип данных при успешном запросе
+  void,       // Тип аргумента (здесь не передаём данных)
+  { rejectValue: string } // Тип данных, возвращаемых при rejectWithValue
+>(
+  'userFiles/getUserFiles',
+  async (_, { rejectWithValue }) => {
+    const mockResponse = {
+      data: {
+        items: [
+          {
+            id: 1,
+            title: 'Анатомия1',
+            dateCreated: '07.12.2024',
+            desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
+          },
+          {
+            id: 2,
+            title: 'Анатомия2',
+            dateCreated: '07.12.2022',
+            desc: 'Учитесь темам , подобранным для подготовки к определенным ситуационным задачам',
+          },
+        ],
+      },
+    }
 
-/**
- * Добавить тему в файл
- * @param {Object} payload - Данные для добавления темы
- * @param {string} payload.fileId - Идентификатор файла
- * @param {Object} payload.topicData - Данные темы
- * @returns {Promise<Object>} Добавленная тема
- */
-export const addTopicToFile = createAsyncThunk('userFiles/addTopicToFile', async ({ fileId, topicData }: UserFile, { rejectWithValue }) => {
-  try {
-    const res = await axios.post(`/userFiles/${fileId}/topics`, topicData)
-    return res.data
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при добавлении темы')
-  }
-})
-
-/**
- * Удалить тему из файла
- * @param {Object} payload - Данные для удаления темы
- * @param {string} payload.fileId - Идентификатор файла
- * @param {string} payload.topicId - Идентификатор темы
- * @returns {Promise<string>} Удаленный идентификатор темы
- */
-export const deleteTopicFromFile = createAsyncThunk('userFiles/deleteTopicFromFile', async ({ fileId, topicId }: UserFile, { rejectWithValue }) => {
-  try {
-    await axios.delete(`/userFiles/${fileId}/topics/${topicId}`)
-    return topicId
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при удалении темы')
-  }
-})
-
-/**
- * Получить карточки для темы в файле
- * @param {Object} payload - Данные для получения карточек
- * @param {string} payload.fileId - Идентификатор файла
- * @param {string} payload.topicId - Идентификатор темы
- * @returns {Promise<Object[]>} Список карточек
- */
-export const getTopicCards = createAsyncThunk('userFiles/getTopicCards', async ({ fileId, topicId }: UserFile, { rejectWithValue }) => {
-  try {
-    const res = await axios.get(`/userFiles/${fileId}/topics/${topicId}/cards`)
-    return res.data
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при получении карточек темы')
-  }
-})
-
-/**
- * Добавить карточку в тему
- * @param {Object} payload - Данные для добавления карточки
- * @param {string} payload.fileId - Идентификатор файла
- * @param {string} payload.topicId - Идентификатор темы
- * @param {Object} payload.cardData - Данные карточки
- * @returns {Promise<Object>} Добавленная карточка
- */
-export const addCardToTopic = createAsyncThunk('userFiles/addCardToTopic', async ({ fileId, topicId, cardData }: UserFile, { rejectWithValue }) => {
-  try {
-    const res = await axios.post(`/userFiles/${fileId}/topics/${topicId}/cards`, cardData)
-    return res.data
-  } catch (error) {
-    return rejectWithValue(error.res?.data || 'Ошибка при добавлении карточки')
-  }
-})
-
-/**
- * Удалить карточку из темы
- * @param {Object} payload - Данные для удаления карточки
- * @param {string} payload.fileId - Идентификатор файла
- * @param {string} payload.topicId - Идентификатор темы
- * @param {string} payload.cardId - Идентификатор карточки
- * @returns {Promise<string>} Удаленный идентификатор карточки
- */
-export const deleteCardFromTopic = createAsyncThunk(
-  'userFiles/deleteCardFromTopic',
-  async ({ fileId, topicId, cardId }: UserFile, { rejectWithValue }) => {
     try {
-      await axios.delete(`/userFiles/${fileId}/topics/${topicId}/cards/${cardId}`)
+      // const res = await axios.get('/userFiles')
+      // return res.data.items
+      return mockResponse.data.items
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при загрузке данных',
+      )
+    }
+  },
+)
+
+/**
+ * Создать новый файл пользователя.
+ * @param fileData - Данные файла
+ * Возвращает созданный объект FileItem.
+ */
+export const createUserFile = createAsyncThunk<
+  FileItem,                   // Возвращаемый тип
+  Partial<FileItem>,          // Тип данных, которые мы передаём (fileData)
+  { rejectValue: string }     // Тип данных для rejectWithValue
+>(
+  'userFiles/createUserFile',
+  async (fileData, { rejectWithValue }) => {
+    try {
+      const res = await axios.post('/userFiles', fileData)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при создании файла',
+      )
+    }
+  },
+)
+
+/**
+ * Удалить файл пользователя.
+ * @param fileId - Идентификатор файла
+ * Возвращает удалённый идентификатор файла (string).
+ */
+export const deleteUserFile = createAsyncThunk<
+  string,         // Возвращаемый тип (удалённый fileId)
+  string,         // Тип аргумента (fileId)
+  { rejectValue: string }
+>(
+  'userFiles/deleteUserFile',
+  async (fileId, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/userFiles/${fileId}`)
+      return fileId
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при удалении файла',
+      )
+    }
+  },
+)
+
+/**
+ * Обновить данные файла пользователя.
+ * @param payload.fileId   - Идентификатор файла
+ * @param payload.fileData - Обновлённые данные файла
+ * Возвращает обновлённый FileItem.
+ */
+export const updateUserFile = createAsyncThunk<
+  FileItem,                                                  // Возвращаемый тип (обновлённый файл)
+  { fileId: string; fileData: Partial<FileItem> },           // Тип аргумента
+  { rejectValue: string }
+>(
+  'userFiles/updateUserFile',
+  async ({ fileId, fileData }, { rejectWithValue }) => {
+    try {
+      const res = await axios.put(`/userFiles/${fileId}`, fileData)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при обновлении файла',
+      )
+    }
+  },
+)
+
+/**
+ * Получить темы для указанного файла.
+ * @param fileId - Идентификатор файла
+ * Возвращает список тем (TopicItem[]).
+ */
+export const getFileTopics = createAsyncThunk<
+  TopicItem[],    // Возвращаемый тип - массив тем
+  string,         // Тип аргумента - fileId
+  { rejectValue: string }
+>(
+  'userFiles/getFileTopics',
+  async (fileId, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`/userFiles/${fileId}/topics`)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при получении тем файла',
+      )
+    }
+  },
+)
+
+/**
+ * Добавить тему в файл.
+ * @param payload.fileId   - Идентификатор файла
+ * @param payload.topicData - Данные темы
+ * Возвращает добавленную тему (TopicItem).
+ */
+export const addTopicToFile = createAsyncThunk<
+  TopicItem,
+  { fileId: string; topicData: Partial<TopicItem> },
+  { rejectValue: string }
+>(
+  'userFiles/addTopicToFile',
+  async ({ fileId, topicData }, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(`/userFiles/${fileId}/topics`, topicData)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при добавлении темы',
+      )
+    }
+  },
+)
+
+/**
+ * Удалить тему из файла.
+ * @param payload.fileId  - Идентификатор файла
+ * @param payload.topicId - Идентификатор темы
+ * Возвращает удалённый идентификатор темы (string).
+ */
+export const deleteTopicFromFile = createAsyncThunk<
+  string,
+  { fileId: string; topicId: string },
+  { rejectValue: string }
+>(
+  'userFiles/deleteTopicFromFile',
+  async ({ fileId, topicId }, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/userFiles/${fileId}/topics/${topicId}`)
+      return topicId
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data || 'Ошибка при удалении темы',
+      )
+    }
+  },
+)
+
+/**
+ * Получить карточки для темы в файле.
+ * @param payload.fileId  - Идентификатор файла
+ * @param payload.topicId - Идентификатор темы
+ * Возвращает список карточек (CardItem[]).
+ */
+export const getTopicCards = createAsyncThunk<
+  CardItem[],
+  { fileId: string; topicId: string },
+  { rejectValue: string }
+>(
+  'userFiles/getTopicCards',
+  async ({ fileId, topicId }, { rejectWithValue }) => {
+    try {
+      const res = await axios.get(`/userFiles/${fileId}/topics/${topicId}/cards`)
+      return res.data
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data ||
+        'Ошибка при получении карточек темы',
+      )
+    }
+  },
+)
+
+/**
+ * Добавить карточку в тему.
+ * @param payload.fileId  - Идентификатор файла
+ * @param payload.topicId - Идентификатор темы
+ * @param payload.cardData - Данные карточки
+ * Возвращает добавленную карточку (CardItem).
+ */
+export const addCardToTopic = createAsyncThunk<
+  CardItem,
+  { fileId: string; topicId: string; cardData: Partial<CardItem> },
+  { rejectValue: string }
+>(
+  'userFiles/addCardToTopic',
+  async ({ fileId, topicId, cardData }, { rejectWithValue }) => {
+    try {
+      const res = await axios.post(
+        `/userFiles/${fileId}/topics/${topicId}/cards`,
+        cardData,
+      )
+      return res.data
+    } catch (error) {
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data ||
+        'Ошибка при добавлении карточки',
+      )
+    }
+  },
+)
+
+/**
+ * Удалить карточку из темы.
+ * @param payload.fileId  - Идентификатор файла
+ * @param payload.topicId - Идентификатор темы
+ * @param payload.cardId  - Идентификатор карточки
+ * Возвращает удалённый идентификатор карточки (string).
+ */
+export const deleteCardFromTopic = createAsyncThunk<
+  string,
+  { fileId: string; topicId: string; cardId: string },
+  { rejectValue: string }
+>(
+  'userFiles/deleteCardFromTopic',
+  async ({ fileId, topicId, cardId }, { rejectWithValue }) => {
+    try {
+      await axios.delete(
+        `/userFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
+      )
       return cardId
     } catch (error) {
-      return rejectWithValue(error.res?.data || 'Ошибка при удалении карточки')
+      return rejectWithValue(
+        (error as AxiosErrorData)?.res?.data ||
+        'Ошибка при удалении карточки',
+      )
     }
   },
 )

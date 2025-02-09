@@ -4,9 +4,9 @@ import ButtonAuthCommon from '../UI/ButtonAuthCommon/ButtonAuthCommon.jsx'
 import { useSwitchRenderLevel } from './components/useSwitchRenderLevel.jsx'
 import { useAvatarSelection, useQuestions } from './hooks/useManageSelection.js'
 import { useFormik_Register, handleNext } from './hooks/useManageTransition.js'
-import { clearError } from '@/entities/user/store/auth/authSlice.js'
-import { fetchQuestions } from '@/app/store/features/analytics/analyticsThunks.js'
-import { toggleQuestionAnswer } from '@/app/store/features/analytics/analyticsSlice.js'
+import { clearError } from '@/entities/user/store/auth/authSlice.ts'
+import { fetchQuestions } from '@store/features/analytics/analyticsThunks.ts'
+import { toggleQuestionAnswer } from '@store/features/analytics/analyticsSlice.ts'
 import Index from '../UI/LogoCenter/index.jsx'
 
 function Register() {

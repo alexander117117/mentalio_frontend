@@ -3,7 +3,7 @@ import './PasswordReset.css'
 import GroupResetEmail from './components/GroupResetEmail/GroupResetEmail.jsx'
 import GroupResetOTP from './components/GroupResetOTP/GroupResetOTP.jsx'
 import GroupResetPassword from './components/GroupResetPassword/GroupResetPassword.jsx'
-import { clearError } from '@/entities/user/store/auth/authSlice.js'
+import { clearError } from '@/entities/user/store/auth/authSlice.ts'
 import { useDispatch } from 'react-redux'
 import Index from '../UI/LogoCenter/index.jsx'
 

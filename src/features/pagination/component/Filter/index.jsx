@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Search from './component/Search.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { paginationThunk } from '../../store/catalogThunks.js'
+import { paginationThunk } from '../../store/catalogThunks.ts'
 import { Category } from './component/Category/index.tsx'
 
 function Filter() {

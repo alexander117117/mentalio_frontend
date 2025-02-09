@@ -4,7 +4,7 @@ import ButtonAuthCommon from '../../../UI/ButtonAuthCommon/ButtonAuthCommon.jsx'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
 import { useNavigate } from 'react-router'
-import { resetPasswordThunk } from '@/entities/user/store/auth/authThunks.js'
+import { resetPasswordThunk } from '@/entities/user/store/auth/authThunks.ts'
 import { useDispatch } from 'react-redux'
 import { passwordResetSchema } from '../../../../../../validationSchemas.js'
 

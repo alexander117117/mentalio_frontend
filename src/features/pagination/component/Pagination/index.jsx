@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import Button from '@/shared/ui/buttons/ButtonMain/index.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { paginationNextPageThunk, paginationThunk } from '../../store/catalogThunks.js'
+import { paginationNextPageThunk, paginationThunk } from '../../store/catalogThunks.ts'
 
 function Index({}) {
   const dispatch = useDispatch()

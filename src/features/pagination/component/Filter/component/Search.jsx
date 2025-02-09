@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from '../../../../../shared/ui/logos/LogoCatalog/index.jsx'
 import InputText from '../../../../../shared/ui/inputs/InputTextCatalog/index.tsx'
-import { setQuery } from '../../../store/catalogSlice.js'
+import { setQuery } from '../../../store/catalogSlice.ts'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Search = () => {

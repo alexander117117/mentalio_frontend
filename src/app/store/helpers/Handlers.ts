@@ -1,3 +1,6 @@
+/**
+ * Универсальные обработчики для pending/rejected.
+ */
 export const handlePending = (state: any) => {
   state.loading = true
   state.error = null
@@ -5,5 +8,5 @@ export const handlePending = (state: any) => {
 
 export const handleRejected = (state: any, action: any) => {
   state.loading = false
-  state.error = action.payload
+  state.error = action.payload || 'Произошла ошибка'
 }

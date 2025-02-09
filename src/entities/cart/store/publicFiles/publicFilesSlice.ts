@@ -1,7 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '../../../../app/store/helpers/Handlers.js'
+import { handlePending, handleRejected } from '@/app/store/helpers/Handlers'
 
 import {
+  PublicFile,
+  PublicTopic,
+  PublicCard,
   getPublicFiles,
   getPublicFileDetails,
   addPublicFileToUserFiles,
@@ -10,17 +13,29 @@ import {
   getPublicTopicCards,
   getPublicCardDetails,
   updatePublicCard,
-} from './publicFilesThunks.js'
+} from './publicFilesThunks'
 
-// Начальное состояние
-const initialState = {
-  publicFiles: null, // Публичные файлы
-  publicFileTopics: null, // Темы публичных файлов
-  loading: false, // Индикатор загрузки
-  error: null, // Сообщение об ошибке
+interface PublicFilesState {
+  publicFiles: PublicFile[] | null
+  publicFileDetails?: PublicFile | null
+  publicFileTopics: PublicTopic[] | null
+  publicTopicDetails?: PublicTopic | null
+  userFiles: PublicFile[]
+  loading: boolean
+  error: string | null
 }
 
-// Slice для файлов
+const initialState: PublicFilesState = {
+  publicFiles: null,
+  publicFileDetails: null,
+  publicFileTopics: null,
+  publicTopicDetails: null,
+  userFiles: [],
+  loading: false,
+  error: null,
+}
+
+
 const publicFilesSlice = createSlice({
   name: 'publicFiles',
   initialState,
@@ -71,7 +86,10 @@ const publicFilesSlice = createSlice({
       .addCase(getPublicTopicCards.pending, handlePending)
       .addCase(getPublicTopicCards.fulfilled, (state, action) => {
         state.loading = false
-        const publicTopic = state.publicFileTopics?.find((topic) => topic.id === action.meta.arg.topicId)
+        const topicId = action.meta.arg.topicId
+        const publicTopic = state.publicFileTopics?.find(
+          (topic) => topic.id === topicId,
+        )
         if (publicTopic) {
           publicTopic.cards = action.payload
         }
@@ -82,9 +100,13 @@ const publicFilesSlice = createSlice({
       .addCase(getPublicCardDetails.pending, handlePending)
       .addCase(getPublicCardDetails.fulfilled, (state, action) => {
         state.loading = false
-        const publicTopic = state.publicFileTopics?.find((topic) => topic.id === action.meta.arg.topicId)
+        const topicId = action.meta.arg.topicId
+        const publicTopic = state.publicFileTopics?.find(
+          (topic) => topic.id === topicId,
+        )
         if (publicTopic && publicTopic.cards) {
-          const card = publicTopic.cards.find((card) => card.id === action.meta.arg.cardId)
+          const cardId = action.meta.arg.cardId
+          const card = publicTopic.cards.find((c) => c.id === cardId)
           if (card) {
             Object.assign(card, action.payload)
           }
@@ -96,9 +118,13 @@ const publicFilesSlice = createSlice({
       .addCase(updatePublicCard.pending, handlePending)
       .addCase(updatePublicCard.fulfilled, (state, action) => {
         state.loading = false
-        const publicTopic = state.publicFileTopics?.find((topic) => topic.id === action.meta.arg.topicId)
+        const topicId = action.meta.arg.topicId
+        const publicTopic = state.publicFileTopics?.find(
+          (topic) => topic.id === topicId,
+        )
         if (publicTopic && publicTopic.cards) {
-          const cardIndex = publicTopic.cards.findIndex((card) => card.id === action.meta.arg.cardId)
+          const cardId = action.meta.arg.cardId
+          const cardIndex = publicTopic.cards.findIndex((c) => c.id === cardId)
           if (cardIndex !== -1) {
             publicTopic.cards[cardIndex] = action.payload
           }
@@ -108,5 +134,5 @@ const publicFilesSlice = createSlice({
   },
 })
 
-// Экспорт действий и редьюсера
+// Экспортируем редьюсер
 export default publicFilesSlice.reducer

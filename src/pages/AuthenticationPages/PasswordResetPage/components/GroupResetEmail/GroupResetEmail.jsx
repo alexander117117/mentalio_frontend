@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
-import { requestReset } from '@/entities/user/store/auth/authThunks.js'
+import { requestReset } from '@/entities/user/store/auth/authThunks.ts'
 import InputAuthCommon from '../../../UI/InputAuthCommon/InputAuthCommon.jsx'
 import ButtonAuthCommon from '../../../UI/ButtonAuthCommon/ButtonAuthCommon.jsx'
 import PropTypes from 'prop-types'
