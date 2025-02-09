@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Sider from '../../UI/Sider/Sider.jsx'
+import Sider from '../../shared/ui/Sider/Sider.jsx'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Outlet } from 'react-router'
 import MiniNavbar from './components/MiniNavbar/MiniNavbar.jsx'

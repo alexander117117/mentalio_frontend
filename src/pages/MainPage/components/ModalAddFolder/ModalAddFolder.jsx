@@ -1,7 +1,7 @@
 import React from 'react'
 import ModalWrapper from '../ModalWrapper/ModalWrapper'
-import InputAddFolder from '../../UI/ButtonAddFolderPlus/components/InputAddFolder/InputAddFolder'
-import SelectAddFolder from '../../UI/ButtonAddFolderPlus/components/SelectAddFolder/SelectAddFolder'
+import InputAddFolder from '../../../../shared/ui/buttons/ButtonAddFolderPlus/components/InputAddFolder/InputAddFolder'
+import SelectAddFolder from '../../../../shared/ui/buttons/ButtonAddFolderPlus/components/SelectAddFolder/SelectAddFolder'
 
 const ModalAddFolder = ({ isModalOpen, setIsModalOpen, quantityTopicInput, setQuantityTopicInput }) => {
   return (

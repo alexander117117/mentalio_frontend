@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import ButtonAuthCommon from '../../../UI/ButtonAuthCommon/ButtonAuthCommon.jsx'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { verificationCode_resetPassword } from '@/store/features/auth/authThunks.js'
+import { verificationCode_resetPassword } from '@/entities/user/store/auth/authThunks.js'
 
 const GroupResetOTP = ({ setLevel, login, token_resetPassword }) => {
   const [otp, setOtp] = useState(['', '', '', '']) // Состояние для хранения значений полей

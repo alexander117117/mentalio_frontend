@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import EmptyFolder from '../../components/EmptyFolder/EmptyFolder'
 import NonEmptyFolder from '../../components/NonEmptyFolder/NonEmptyFolder'
 import { Link } from 'react-router'
-import ListCart from '../CatalogPage/component/ListCart'
+import ListCart from '../../../../features/pagination/component/ListCart'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserFiles } from '@/store/features/userFiles/userFilesThunks.js'
+import { getUserFiles } from '@/entities/cart/store/userFiles/userFilesThunks.js'
 
 const HomePage = () => {
   const dispatch = useDispatch()

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Filter from './component/Filter'
-import Pagination from './component/Pagination'
-import ListCart from './component/ListCart'
+import Filter from '../../../../features/pagination/component/Filter'
+import Pagination from '../../../../features/pagination/component/Pagination'
+import ListCart from '../../../../features/pagination/component/ListCart'
 
 const CatalogPage = () => {
   const { totalPage, carts } = useSelector((state) => state.catalog)

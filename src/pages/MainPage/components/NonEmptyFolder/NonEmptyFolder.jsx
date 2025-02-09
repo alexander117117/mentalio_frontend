@@ -2,7 +2,7 @@ import React from 'react'
 import { happy_folders, sad_folders } from '@/shared/images'
 import { Link } from 'react-router'
 import Folder from './UI/Folder/Folder'
-import ButtonAddFolderPlus from '../../UI/ButtonAddFolderPlus/ButtonAddFolderPlus'
+import ButtonAddFolderPlus from '../../../../shared/ui/buttons/ButtonAddFolderPlus/ButtonAddFolderPlus'
 
 const NonEmptyFolder = ({ files }) => {
   return (
