@@ -7,7 +7,7 @@ import ButtonAuthCommon from '../UI/ButtonAuthCommon/ButtonAuthCommon.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUserThunk } from '@/entities/user/store/auth/authThunks.ts'
 import { loginSchema } from '@/../validationSchemas.js'
-import LogoCenter from '../UI/LogoCenter/index.jsx'
+import { LogoCenter } from '../UI/LogoCenter/index.tsx'
 import TextError from '../UI/TextError/TextError.jsx'
 
 function Login() {

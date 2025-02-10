@@ -5,7 +5,7 @@ import GroupResetOTP from './components/GroupResetOTP/GroupResetOTP.jsx'
 import GroupResetPassword from './components/GroupResetPassword/GroupResetPassword.jsx'
 import { clearError } from '@/entities/user/store/auth/authSlice.ts'
 import { useDispatch } from 'react-redux'
-import Index from '../UI/LogoCenter/index.jsx'
+import { LogoCenter } from '../UI/LogoCenter/index.tsx'
 
 function PasswordReset() {
   const [level, setLevel] = useState(0)
@@ -35,7 +35,7 @@ function PasswordReset() {
       <section className="min-h-screen bg-bgDark text-[#fff]">
         <div className="flex justify-center items-center min-h-screen">
           <div className="w-[95%] md:w-[763px] mx-auto text-center">
-            <Index />
+            <LogoCenter />
             <div className="mt-[1.25rem] 2xl:mt-[238px]">
               <h1 className="text-[32px] md:text-[48px] font-[600] mb-[20px]">Сброс пароля</h1>
               {renderLevel}

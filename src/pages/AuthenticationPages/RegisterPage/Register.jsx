@@ -7,7 +7,7 @@ import { useFormik_Register, handleNext } from './hooks/useManageTransition.js'
 import { clearError } from '@/entities/user/store/auth/authSlice.ts'
 import { fetchQuestions } from '@store/features/analytics/analyticsThunks.ts'
 import { toggleQuestionAnswer } from '@store/features/analytics/analyticsSlice.ts'
-import Index from '../UI/LogoCenter/index.jsx'
+import { LogoCenter } from '../UI/LogoCenter/index.tsx'
 
 function Register() {
   const [level, setLevel] = useState(0)
@@ -74,7 +74,7 @@ function Register() {
         <form className="text-[#fff] w-[95%]" onSubmit={formik.handleSubmit}>
           <div className="w-full mx-auto text-center">
             {/* Логотип приложения */}
-            <Index />
+            <LogoCenter />
             {/* Контент изменяется в зависимости от текущего уровня регистрации */}
             <div className="w-full 2xl:w-[1580px] mx-auto">{renderLevel}</div>
           </div>

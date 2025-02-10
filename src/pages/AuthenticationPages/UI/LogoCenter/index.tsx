@@ -1,8 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import { logo } from '@images'
 
-const LogoCenter = () => {
+export function LogoCenter () {
   return <img src={logo} alt="Логотип" className="mx-auto" />
 }
 
-export default LogoCenter
