@@ -3,8 +3,8 @@ import { persistStore, persistReducer, PersistConfig } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
 import authReducer from '@/entities/user/store/auth/authSlice'
-import userFilesSlice from '@/entities/cart/store/userFiles/userFilesSlice'
-import publicFilesSlice from '@/entities/cart/store/publicFiles/publicFilesSlice'
+import userFilesSlice from '@/entities/folder/store/userFiles/userFilesSlice'
+import publicFilesSlice from '@/entities/folder/store/publicFiles/publicFilesSlice'
 import analyticsSlice from '@/app/store/features/analytics/analyticsSlice'
 import catalogSlice from '@/features/pagination/store/catalogSlice'
 

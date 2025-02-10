@@ -4,7 +4,7 @@ import { ListUserFiles } from './component/ListUserFiles'
 
 import ButtonAddFolderPlus from '@/shared/ui/buttons/ButtonAddFolderPlus/ButtonAddFolderPlus.jsx'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserFiles } from '@/entities/cart/store/userFiles/userFilesThunks'
+import { getUserFiles } from '@/entities/folder/store/userFiles/userFilesThunks'
 
 export const MyFoldersPage = () => {
   const dispatch = useDispatch()

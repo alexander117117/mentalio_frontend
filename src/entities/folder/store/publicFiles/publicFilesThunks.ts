@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@/../axios.config'
+import axios from '../../../../../axios.config'
 
 
 export interface PublicFile {

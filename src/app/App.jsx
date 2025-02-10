@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import AppRoutes from './routes/Routes.jsx'
-import { store, persistor } from '@store/store.ts'
+import { store, persistor } from '@store/configureStore.ts'
 import './styles/index.css'
 import './styles/normalaiz.css'
 
