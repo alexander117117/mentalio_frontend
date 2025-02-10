@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
-import InputAuthCommon from '../../UI/InputAuthCommon/InputAuthCommon.jsx'
-import GroupAvatar from './GroupAvatar/GroupAvatar.jsx'
-import GroupFound from './GroupFound/GroupFound.jsx'
-import GroupTutorial from './GroupTutorial/GroupTutorial.jsx'
+import InputAuthCommon from '../../UI/InputAuthCommon/index.tsx'
+import GroupAvatar from './GroupAvatar/index.tsx'
+import GroupFound from './GroupFound/index.js'
+import GroupTutorial from './GroupTutorial/index.js'
 import RegisterSuccess from './RegisterSuccess/RegisterSuccess.jsx'
 import CheckboxAuthCommon from '../../UI/CheckboxAuthCommon/CheckboxAuthCommon.jsx'
 
