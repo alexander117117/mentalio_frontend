@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '../../helpers/Handlers'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
 import { fetchQuestions, Question } from './analyticsThunks'
 
 interface AnalyticsState {

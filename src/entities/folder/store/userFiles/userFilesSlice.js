@@ -2,7 +2,7 @@
  * Слайз для управления пользовательскими файлами.
  */
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@store/helpers/Handlers.js'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers.js'
 import {
   getUserFiles,
   createUserFile,

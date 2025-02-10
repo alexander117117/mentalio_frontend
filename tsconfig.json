@@ -27,7 +27,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@images": ["src/shared/images"],
-      "@store": ["src/store"]
+      "@store": ["src/store"],
+      "@axios": ["src/shared/api/axiosConfig.ts"],
     }
   },
   "include": [

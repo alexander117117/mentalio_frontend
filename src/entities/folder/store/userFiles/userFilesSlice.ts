@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@/app/store/helpers/Handlers'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
 import {
   FileItem,
   getUserFiles,

@@ -24,6 +24,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
       '@images': path.resolve(__dirname, './src/shared/images'),
       '@store': path.resolve(__dirname, './src/app/store'),
+      '@axios': path.resolve(__dirname, './src/shared/api/axiosConfig.ts'),
     },
   },
 })

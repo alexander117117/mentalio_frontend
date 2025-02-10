@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@/../axios.config'
 import Cookies from 'js-cookie'
+import { apiStoreTrunks } from '@/shared/api/apiHelpers'
 
 interface Credentials {
   login: string
@@ -56,164 +56,144 @@ interface ResetPasswordPayload {
  * Авторизация пользователя (логин).
  */
 export const loginUserThunk = createAsyncThunk<
-    AuthResponse,              // Возвращаемые данные при успехе
-  Credentials,               // Аргументы, передаваемые в thunk (логин/пароль)
-  { rejectValue: string }    // Тип для rejectWithValue
->(
-  'auth/loginUserThunk',
-    async (credentials, { rejectWithValue }) => {
-      try {
-        const response = await axios.post<AuthResponse>(`/auth/login`, {
-          login: credentials.login,
-          password: credentials.password,
-        })
-        
-        if (response.data.status !== 'success') {
-          return rejectWithValue(response.data.error || 'Ошибка при входе')
-        }
-        
-        // Сохраняем токен в cookies на 7 дней
-        if (response.data.token) {
-          Cookies.set('token', response.data.token, { expires: 7 })
-        }
-        
-        return response.data
-      } catch (err: any) {
-        return rejectWithValue(
-          err.response?.data?.error || 'Что-то пошло не так',
-        )
-      }
-    },
-)
+  AuthResponse,
+  Credentials,
+  { rejectValue: string } // Тип для rejectWithValue
+>('auth/loginUserThunk', async (credentials, { rejectWithValue }) => {
+  try {
+    const res: any = await apiStoreTrunks({
+      method: 'POST',
+      url: `/auth/login`,
+      body: {
+        login: credentials.login,
+        password: credentials.password,
+      },
+      rejectWithValue,
+    })
+
+    if (res.data.status !== 'success') {
+      return rejectWithValue(res.data.error || 'Ошибка при входе')
+    }
+
+    // Сохраняем токен в cookies на 7 дней
+    if (res.data.token) {
+      Cookies.set('token', res.data.token, { expires: 7 })
+    }
+
+    return res.data
+  } catch (err: any) {
+    return rejectWithValue(err.response?.data?.error || 'Что-то пошло не так')
+  }
+})
 
 /**
  * Проверка логина на сервере.
  */
 export const checkLoginThunk = createAsyncThunk<
-    AuthResponse,         // Что возвращается при успешном запросе
-  string,               // Логин (аргумент)
-  { rejectValue: string }
->(
-  'auth/checkLogin',
-    async (login, { rejectWithValue }) => {
-      try {
-        const response = await axios.post<AuthResponse>(`/auth/check-login`, { login })
-        return response.data
-      } catch (err: any) {
-        return rejectWithValue(
-          err.response?.data?.error || 'Что-то пошло не так',
-        )
-      }
-    },
-)
+  AuthResponse,
+  string,
+  {
+    rejectValue: string
+  }
+>('auth/checkLogin', async (login, { rejectWithValue }) => {
+  const res: any = await apiStoreTrunks({
+    method: 'POST',
+    url: `/auth/check-login`,
+    body: { login },
+    rejectWithValue,
+  })
+  return res.data
+})
 
 /**
  * Регистрация нового пользователя.
  */
 export const registerUserThunk = createAsyncThunk<
-    AuthResponse,
+  AuthResponse,
   RegistrationData,
-  { rejectValue: string }
->(
-  'auth/registerUser',
-    async (userData, { rejectWithValue }) => {
-      try {
-        const response = await axios.post<AuthResponse>(`/auth/register`, {
-          login: userData.login,
-          password: userData.password,
-          avatar: userData.avatar,
-          questions: userData.questions,
-        })
-        
-        if (response.data.token) {
-          Cookies.set('token', response.data.token, { expires: 7 })
-        }
-        
-        return response.data
-      } catch (err: any) {
-        return rejectWithValue(
-          err.response?.data?.error || 'Что-то пошло не так',
-        )
-      }
+  {
+    rejectValue: string
+  }
+>('auth/registerUser', async (userData, { rejectWithValue }) => {
+  const res: any = await apiStoreTrunks({
+    method: 'POST',
+    url: `/auth/register`,
+    body: {
+      login: userData.login,
+      password: userData.password,
+      avatar: userData.avatar,
+      questions: userData.questions,
     },
-)
+    errorMessage: 'Что-то пошло не так',
+    rejectWithValue,
+  })
+
+  if (res.data.token) {
+    Cookies.set('token', res.data.token, { expires: 7 })
+  }
+
+  return res.data
+})
 
 /**
  * Запрос сброса пароля.
  */
 export const requestReset = createAsyncThunk<
-    AuthResponse,
+  AuthResponse,
   ResetPasswordRequest,
-  { rejectValue: string }
->(
-  'auth/requestReset',
-    async ({ login }, { rejectWithValue }) => {
-      try {
-        const response = await axios.post<AuthResponse>(
-          `/auth/password-reset/request`,
-            { login },
-        )
-        return response.data
-      } catch (err: any) {
-        return rejectWithValue(
-          err.response?.data?.error || 'Что-то пошло не так',
-        )
-      }
-    },
-)
+  {
+    rejectValue: string
+  }
+>('auth/requestReset', async ({ login }, { rejectWithValue }) => {
+  const res: any = await apiStoreTrunks({
+    method: 'POST',
+    url: `/auth/password-reset/request`,
+    body: { login },
+    rejectWithValue,
+  })
+  return res.data
+})
 
 /**
  * Проверка кода при сбросе пароля.
  */
 export const verificationCode_resetPassword = createAsyncThunk<
-    AuthResponse,
+  AuthResponse,
   VerificationPayload,
   { rejectValue: string }
->(
-  'auth/verificationCode_resetPassword',
-    async ({ otpCode, login, token_resetPassword }, { rejectWithValue }) => {
-      try {
-        const response = await axios.post<AuthResponse>(
-          `/auth/password-reset/verification`,
-            {
-              code: otpCode,
-              token_resetPassword,
-              login,
-            },
-        )
-        return response.data
-      } catch (err: any) {
-        return rejectWithValue(
-          err.response?.data?.error || 'Что-то пошло не так',
-        )
-      }
+>('auth/verificationCode_resetPassword', async ({ otpCode, login, token_resetPassword }, { rejectWithValue }) => {
+  const res: any = await apiStoreTrunks({
+    method: 'POST',
+    url: `/auth/password-reset/verification`,
+    body: {
+      code: otpCode,
+      token_resetPassword,
+      login,
     },
-)
+    rejectWithValue,
+  })
+  return res.data
+})
 
 /**
  * Выполнение сброса пароля.
  */
 export const resetPasswordThunk = createAsyncThunk<
-    AuthResponse,
+  AuthResponse,
   ResetPasswordPayload,
-  { rejectValue: string }
->(
-  'auth/resetPassword',
-    async ({ token_resetPassword, newPassword, login }, { rejectWithValue }) => {
-      try {
-        const response = await axios.post<AuthResponse>(
-          `/auth/password-reset/confirm`,
-            {
-              token_resetPassword,
-              newPassword,
-              login,
-            },
-        )
-        return response.data
-      } catch (err: any) {
-        return rejectWithValue(
-          err.response?.data?.error || 'Что-то пошло не так',
-        )
-      }
+  {
+    rejectValue: string
+  }
+>('auth/resetPassword', async ({ token_resetPassword, newPassword, login }, { rejectWithValue }) => {
+  const res: any = await apiStoreTrunks({
+    method: 'POST',
+    url: `/auth/password-reset/confirm`,
+    body: {
+      token_resetPassword,
+      newPassword,
+      login,
     },
-)
+    rejectWithValue,
+  })
+  return res.data
+})

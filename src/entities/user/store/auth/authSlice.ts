@@ -8,7 +8,7 @@ import {
   verificationCode_resetPassword,
   resetPasswordThunk,
 } from './authThunks'
-import { handlePending, handleRejected } from '@/app/store/helpers/Handlers'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
 
 
 interface AuthState {
