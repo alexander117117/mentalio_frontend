@@ -1,15 +1,15 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import LoginPage from '../../pages/AuthenticationPages/LoginPage/Login.jsx'
-import Register from '../../pages/AuthenticationPages/RegisterPage/Register.jsx'
-import PasswordReset from '../../pages/AuthenticationPages/PasswordResetPage/PasswordReset.jsx'
-import Main from '../../pages/MainPage/Main.jsx'
+import LoginPage from '../../pages/AuthenticationPages/LoginPage/index.tsx'
+import Register from '../../pages/AuthenticationPages/RegisterPage/index.tsx'
+import PasswordReset from '../../pages/AuthenticationPages/PasswordResetPage/index.tsx'
+import { Main } from '../../pages/MainPage/Main.tsx'
 import ProtectedRoute from './ProtectedRoute.jsx'
-import HomePage from '@/pages/MainPage/pages/HomePage/HomePage.jsx'
+import { HomePage } from '@/pages/MainPage/pages/HomePage'
 import { MyFoldersPage } from '@/pages/MainPage/pages/MyFoldersPage/index.tsx'
-import CatalogPage from '@/pages/MainPage/pages/CatalogPage/CatalogPage.jsx'
-import SearchByTagsPage from '@/pages/MainPage/pages/SearchByTagsPage/SearchByTagsPage.jsx'
-import SettingPage from '@/pages/MainPage/pages/SettingPage/SettingPage.jsx'
+import CatalogPage from '@/pages/MainPage/pages/CatalogPage/index.tsx'
+import SearchByTagsPage from '@/pages/MainPage/pages/SearchByTagsPage/index.tsx'
+import SettingPage from '@/pages/MainPage/pages/SettingPage/index.tsx'
 
 const AppRoutes = () => {
   return (

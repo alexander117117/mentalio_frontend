@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import { ListUserFiles } from './component/ListUserFiles'
 
-import ButtonAddFolderPlus from '@/shared/ui/buttons/ButtonAddFolderPlus/ButtonAddFolderPlus.jsx'
+import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus/index.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserFiles } from '@/entities/folder/store/userFiles/userFilesThunks'
 

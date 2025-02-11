@@ -18,6 +18,7 @@
     "resolveJsonModule": true,                // Разрешает импорт JSON
     "isolatedModules": true,                  // Подготовка к компиляции без исходников
     "noEmit": true,                           // Не генерировать итоговые .js
+    "allowImportingTsExtensions": true,       // позволяет импортировать файлы с расширениями .ts, .tsx напрямую
 
     /* Подключаем типы Vite (vite/client) */
     "types": ["vite/client"],

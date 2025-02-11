@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './CheckboxAuthCommon.css'
-import TextError from '../TextError/TextError.jsx'
+import TextError from '../TextError/index.tsx'
 
 const CheckboxAuthCommon = ({ name, checked, onChange, error, touched, label = '', children, className = '', ...props }) => {
   return (
