@@ -4,13 +4,18 @@ import { InputAddFolder } from '../buttons/ButtonAddFolderPlus/components/InputA
 import { SelectAddFolder } from '../buttons/ButtonAddFolderPlus/components/SelectAddFolder'
 
 interface ModalAddFolderProps {
-  isModalOpen: boolean;
-  setIsModalOpen: (isOpen: boolean) => void;
-  quantityTopicInput: number;
-  setQuantityTopicInput: (quantity: number | ((prev: number) => number)) => void;
+  isModalOpen: boolean
+  setIsModalOpen: (isOpen: boolean) => void
+  quantityTopicInput: number
+  setQuantityTopicInput: (quantity: number | ((prev: number) => number)) => void
 }
 
-export const ModalAddFolder = ({ isModalOpen, setIsModalOpen, quantityTopicInput, setQuantityTopicInput }: ModalAddFolderProps) => {
+export const ModalAddFolder = ({
+  isModalOpen,
+  setIsModalOpen,
+  quantityTopicInput,
+  setQuantityTopicInput,
+}: ModalAddFolderProps) => {
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <div className="w-50">
@@ -47,4 +52,3 @@ export const ModalAddFolder = ({ isModalOpen, setIsModalOpen, quantityTopicInput
     </ModalWrapper>
   )
 }
-

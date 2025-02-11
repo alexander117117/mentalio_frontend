@@ -8,8 +8,8 @@ interface ButtonAddFolderPlusProps {
 }
 
 export const ButtonAddFolderPlus = ({ isBig = false, myFolderPage = false }: ButtonAddFolderPlusProps) => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [quantityTopicInput, setQuantityTopicInput] = useState<number>(1); //количество инпутов для название темы
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [quantityTopicInput, setQuantityTopicInput] = useState<number>(1) //количество инпутов для название темы
   return (
     <>
       {/* Кнопки для открытия модального окна добавления папки */}

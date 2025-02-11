@@ -63,10 +63,30 @@ function Register() {
   const { avatars, handleAvatarSelect } = useMemo(() => useAvatarSelection(avatarsNew, setAvatarsNew), [avatarsNew])
 
   // Хук Formik для управления состоянием формы и валидацией.
-  const formik = useFormik_Register(level, setLevel, avatars, questions, dispatch, error, setIsError, setPassword, password, login, setlogin)
+  const formik = useFormik_Register(
+    level,
+    setLevel,
+    avatars,
+    questions,
+    dispatch,
+    error,
+    setIsError,
+    setPassword,
+    password,
+    login,
+    setlogin,
+  )
 
   // Динамическая отрисовка компонентов в зависимости от текущего уровня.
-  const renderLevel = useSwitchRenderLevel(level, formik, avatars, questions, handleAvatarSelect, handleQuestionAnswer, isError)
+  const renderLevel = useSwitchRenderLevel(
+    level,
+    formik,
+    avatars,
+    questions,
+    handleAvatarSelect,
+    handleQuestionAnswer,
+    isError,
+  )
 
   return (
     <main className="min-h-screen bg-bgDark">

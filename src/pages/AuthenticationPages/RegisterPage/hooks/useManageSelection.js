@@ -39,7 +39,9 @@ export function useQuestions(questions, setQuestions) {
    * @param {number} id - ID вопроса для переключения.
    */
   const handleQuestionAnswer = (id) => {
-    setQuestions((prev) => prev.map((question) => (question.id === id ? { ...question, answer: !question.answer } : question)))
+    setQuestions((prev) =>
+      prev.map((question) => (question.id === id ? { ...question, answer: !question.answer } : question)),
+    )
   }
 
   console.log(questions)

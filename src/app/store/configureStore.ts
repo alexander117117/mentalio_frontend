@@ -8,7 +8,6 @@ import publicFilesSlice from '@/entities/folder/store/publicFiles/publicFilesSli
 import analyticsSlice from '@/app/store/features/analytics/analyticsSlice'
 import catalogSlice from '@/features/pagination/store/catalogSlice'
 
-
 interface AuthPersistConfig extends PersistConfig<ReturnType<typeof authReducer>> {
   whitelist: string[]
 }

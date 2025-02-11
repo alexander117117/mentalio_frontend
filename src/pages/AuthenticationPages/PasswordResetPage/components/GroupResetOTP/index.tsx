@@ -74,7 +74,9 @@ const GroupResetOTP = ({ setLevel, login, token_resetPassword }: GroupResetOTPPr
         ))}
       </div>
       {(error || isError) && (
-        <div className="text-[12px] xs:text-[16px] text-[#FF0000] mb-[20px] text-center">{isError ? 'Заполните все поля' : error}</div>
+        <div className="text-[12px] xs:text-[16px] text-[#FF0000] mb-[20px] text-center">
+          {isError ? 'Заполните все поля' : error}
+        </div>
       )}
       <ButtonAuthCommon type="submit" isLoading={loading} disabled={disabled}>
         Продолжить

@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import InputAuthCommon from '../../UI/InputAuthCommon/index.tsx'
 import GroupAvatar from './GroupAvatar/index.tsx'
-import GroupFound from './GroupFound/index.js'
-import GroupTutorial from './GroupTutorial/index.js'
+import GroupFound from './GroupFound'
+import GroupTutorial from './GroupTutorial'
 import RegisterSuccess from './RegisterSuccess/RegisterSuccess.jsx'
 import CheckboxAuthCommon from '../../UI/CheckboxAuthCommon/CheckboxAuthCommon.jsx'
 
@@ -18,7 +18,15 @@ import CheckboxAuthCommon from '../../UI/CheckboxAuthCommon/CheckboxAuthCommon.j
  * @param isError
  * @returns {JSX.Element|null} - Компонент для текущего уровня.
  */
-export function useSwitchRenderLevel(level, formik, avatars, questions, handleAvatarSelect, handleQuestionAnswer, isError) {
+export function useSwitchRenderLevel(
+  level,
+  formik,
+  avatars,
+  questions,
+  handleAvatarSelect,
+  handleQuestionAnswer,
+  isError,
+) {
   return useMemo(() => {
     switch (level) {
       case 0:

@@ -19,4 +19,3 @@ export function ListCart({ carts }: ListCartProps) {
     </div>
   )
 }
-

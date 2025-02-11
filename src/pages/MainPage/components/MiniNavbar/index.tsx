@@ -25,7 +25,11 @@ export const MiniNavbar = () => {
         </Link>
         {/* Второй элемент, Мои папки */}
         <Link to="/my-folders" className="w-[30px] h-[30px] flex items-center justify-center">
-          <img src={location.pathname === '/my-folders' ? folder_icon_active : folder_icon} alt="Мои папки" className="" />
+          <img
+            src={location.pathname === '/my-folders' ? folder_icon_active : folder_icon}
+            alt="Мои папки"
+            className=""
+          />
         </Link>
         {/* Третий элемент, кнопка открытия модального окна (добавления папки) */}
         <button
@@ -41,7 +45,11 @@ export const MiniNavbar = () => {
         </Link>
         {/* Шестой элемент, Настройки */}
         <Link to="/settings" className="w-[30px] h-[30px] flex items-center justify-center">
-          <img src={location.pathname === '/settings' ? setting_icon_active : setting_icon} alt="Настройки" className="" />
+          <img
+            src={location.pathname === '/settings' ? setting_icon_active : setting_icon}
+            alt="Настройки"
+            className=""
+          />
         </Link>
       </nav>
       {/* Модальное окно добавления папки */}

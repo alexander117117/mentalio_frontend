@@ -35,7 +35,6 @@ const initialState: PublicFilesState = {
   error: null,
 }
 
-
 const publicFilesSlice = createSlice({
   name: 'publicFiles',
   initialState,
@@ -87,9 +86,7 @@ const publicFilesSlice = createSlice({
       .addCase(getPublicTopicCards.fulfilled, (state, action) => {
         state.loading = false
         const topicId = action.meta.arg.topicId
-        const publicTopic = state.publicFileTopics?.find(
-          (topic) => topic.id === topicId,
-        )
+        const publicTopic = state.publicFileTopics?.find((topic) => topic.id === topicId)
         if (publicTopic) {
           publicTopic.cards = action.payload
         }
@@ -101,9 +98,7 @@ const publicFilesSlice = createSlice({
       .addCase(getPublicCardDetails.fulfilled, (state, action) => {
         state.loading = false
         const topicId = action.meta.arg.topicId
-        const publicTopic = state.publicFileTopics?.find(
-          (topic) => topic.id === topicId,
-        )
+        const publicTopic = state.publicFileTopics?.find((topic) => topic.id === topicId)
         if (publicTopic && publicTopic.cards) {
           const cardId = action.meta.arg.cardId
           const card = publicTopic.cards.find((c) => c.id === cardId)
@@ -119,9 +114,7 @@ const publicFilesSlice = createSlice({
       .addCase(updatePublicCard.fulfilled, (state, action) => {
         state.loading = false
         const topicId = action.meta.arg.topicId
-        const publicTopic = state.publicFileTopics?.find(
-          (topic) => topic.id === topicId,
-        )
+        const publicTopic = state.publicFileTopics?.find((topic) => topic.id === topicId)
         if (publicTopic && publicTopic.cards) {
           const cardId = action.meta.arg.cardId
           const cardIndex = publicTopic.cards.findIndex((c) => c.id === cardId)

@@ -15,4 +15,3 @@ export const SiderMenuCategory = ({ category, image }: SiderMenuCategoryProps) =
     </>
   )
 }
-

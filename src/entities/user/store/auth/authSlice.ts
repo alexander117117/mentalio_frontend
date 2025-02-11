@@ -10,7 +10,6 @@ import {
 } from './authThunks'
 import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
 
-
 interface AuthState {
   user: any | null
   token: string | null

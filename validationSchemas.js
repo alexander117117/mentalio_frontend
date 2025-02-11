@@ -26,7 +26,11 @@ const validationSchemas = {
   // Схема валидации для email или номера телефона
   emailOrPhone: Yup.string()
     .required(ERROR_MESSAGES.REQUIRED)
-    .test('is-email-or-phone', 'Введите корректный email или номер телефона.', (value) => REGEX_EMAIL.test(value) || REGEX_PHONE.test(value)),
+    .test(
+      'is-email-or-phone',
+      'Введите корректный email или номер телефона.',
+      (value) => REGEX_EMAIL.test(value) || REGEX_PHONE.test(value),
+    ),
 
   // Схема валидации для пароля
   password: Yup.string().required(ERROR_MESSAGES.REQUIRED).matches(REGEX_PASSWORD, ERROR_MESSAGES.PASSWORD_WEAK),

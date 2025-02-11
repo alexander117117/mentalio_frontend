@@ -22,7 +22,9 @@ function PasswordReset() {
     setRenderLevel(() => {
       switch (level) {
         case 0:
-          return <GroupResetEmail setLevel={setLevel} setLogin={setLogin} setToken_resetPassword={setToken_resetPassword} />
+          return (
+            <GroupResetEmail setLevel={setLevel} setLogin={setLogin} setToken_resetPassword={setToken_resetPassword} />
+          )
         case 1:
           return <GroupResetOTP setLevel={setLevel} token_resetPassword={token_resetPassword} login={login} />
         case 2:

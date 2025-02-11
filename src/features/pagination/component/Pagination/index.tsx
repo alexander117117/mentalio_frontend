@@ -49,7 +49,9 @@ function Index() {
             dispatch(paginationThunk({ query, page: num, category, limit }))
             console.log('Pagination: ', { query, page: num, category, limit })
           }}
-          renderItem={(item) => <PaginationItem slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }} {...item} />}
+          renderItem={(item) => (
+            <PaginationItem slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }} {...item} />
+          )}
         />
       </Stack>
     </div>

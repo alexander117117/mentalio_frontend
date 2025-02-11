@@ -66,4 +66,3 @@ ModalWrapper.propTypes = {
   onClose: PropTypes.func.isRequired, // Функция закрытия
   children: PropTypes.node.isRequired, // Контент модального окна
 }
-

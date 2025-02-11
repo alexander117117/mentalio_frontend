@@ -35,4 +35,3 @@ export const Sider = ({ toggleSider }: SiderProps) => {
 Sider.propTypes = {
   toggleSider: PropTypes.func.isRequired,
 }
-

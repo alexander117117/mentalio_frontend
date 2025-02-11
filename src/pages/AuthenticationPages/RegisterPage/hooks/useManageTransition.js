@@ -34,7 +34,19 @@ export function handleNext(level, setLevel) {
  * @param setlogin
  * @returns {Object} - Экземпляр Formik.
  */
-export function useFormik_Register(level, setLevel, avatars, questions, dispatch, error, setIsError, setPassword, password, login, setlogin) {
+export function useFormik_Register(
+  level,
+  setLevel,
+  avatars,
+  questions,
+  dispatch,
+  error,
+  setIsError,
+  setPassword,
+  password,
+  login,
+  setlogin,
+) {
   // Настройка Formik с динамической схемой валидации на основе текущего уровня.
 
   return useFormik({

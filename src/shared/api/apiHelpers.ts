@@ -7,14 +7,20 @@ interface AxiosErrorData {
 }
 
 interface propsApiStoreTrunks {
-  method: "GET" | "POST" | "PUT" | "DELETE",
-  url: string,
-  rejectWithValue: any,
-  errorMessage?: string,
-  body?: any,
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE'
+  url: string
+  rejectWithValue: any
+  errorMessage?: string
+  body?: any
 }
 
-export async function apiStoreTrunks({ method, url, errorMessage = 'Что-то пошло не так(', rejectWithValue, body = {} }:propsApiStoreTrunks ) {
+export async function apiStoreTrunks({
+  method,
+  url,
+  errorMessage = 'Что-то пошло не так(',
+  rejectWithValue,
+  body = {},
+}: propsApiStoreTrunks) {
   try {
     let response
     switch (method) {
@@ -30,7 +36,6 @@ export async function apiStoreTrunks({ method, url, errorMessage = 'Что-то 
       case 'PUT':
         response = await axios.put(url, body)
         break
-
     }
     return response
   } catch (error) {

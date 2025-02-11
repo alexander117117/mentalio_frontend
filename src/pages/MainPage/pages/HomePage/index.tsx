@@ -8,10 +8,10 @@ import { getUserFiles } from '@/entities/folder/store/userFiles/userFilesThunks.
 
 export const HomePage = () => {
   interface Cart {
-    id: number;
-    userName: string;
-    title: string;
-    desc: string;
+    id: number
+    userName: string
+    title: string
+    desc: string
   }
   const dispatch = useDispatch()
   const [carts, setCarts] = useState<Cart[]>([
@@ -73,7 +73,10 @@ export const HomePage = () => {
 
         <div className="w-full sm:w-[95%] 2xl:w-[99%] flex justify-between items-center">
           <span className="text-xs sm:text-xl font-normal text-[#636363]">Подобрано для Вас</span>
-          <Link to={'/catalog'} className="inline-block py-0 xs:py-[12px] px-0 xs:px-[18px] xs:bg-[#36E326] rounded-[10px] text-xs sm:text-base">
+          <Link
+            to={'/catalog'}
+            className="inline-block py-0 xs:py-[12px] px-0 xs:px-[18px] xs:bg-[#36E326] rounded-[10px] text-xs sm:text-base"
+          >
             Смотреть все
           </Link>
         </div>
@@ -85,4 +88,3 @@ export const HomePage = () => {
     </>
   )
 }
-

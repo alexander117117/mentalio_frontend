@@ -18,7 +18,19 @@ interface InputAuthCommonProps {
   label?: string
 }
 
-const InputAuthCommon = ({ id, name, type = 'text', placeholder = '', value, onChange, onBlur, error, touched, label, ...props }: InputAuthCommonProps) => {
+const InputAuthCommon = ({
+  id,
+  name,
+  type = 'text',
+  placeholder = '',
+  value,
+  onChange,
+  onBlur,
+  error,
+  touched,
+  label,
+  ...props
+}: InputAuthCommonProps) => {
   const [showPassword, setShowPassword] = useState(false)
 
   const isPassword = type === 'password'

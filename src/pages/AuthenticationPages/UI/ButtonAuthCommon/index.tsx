@@ -9,7 +9,14 @@ interface ButtonAuthCommonProps {
   disabled?: boolean
   isLoading?: boolean
 }
-const ButtonAuthCommon = ({ type = 'button', onClick, children, disabled = false, isLoading = false, ...props }: ButtonAuthCommonProps) => {
+const ButtonAuthCommon = ({
+  type = 'button',
+  onClick,
+  children,
+  disabled = false,
+  isLoading = false,
+  ...props
+}: ButtonAuthCommonProps) => {
   return (
     <>
       <button

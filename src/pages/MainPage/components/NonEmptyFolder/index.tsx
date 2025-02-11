@@ -2,13 +2,13 @@ import React from 'react'
 import { happy_folders, sad_folders } from '@/shared/images'
 import { Link } from 'react-router'
 import { Folder } from './UI/Folder'
-import { ButtonAddFolderPlus } from '../../../../shared/ui/buttons/ButtonAddFolderPlus'
+import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 
 interface IFiles {
   id: number
   title: string
   dateCreated: string
-  // desc: string
+  desc?: string
 }
 
 interface NonEmptyFolderProps {
@@ -19,19 +19,15 @@ export const NonEmptyFolder = ({ files }: NonEmptyFolderProps) => {
   return (
     <>
       <section className="w-full sm:w-[99%] flex items-center justify-center lg:justify-between">
-        {/* добавить новую папку */}
         <div className="hidden lg:block">
           <h3 className="text-[32px] font-bold mb-[15px]">Добавить папку</h3>
 
           <div className="w-[210px] h-[102px] rounded-[15px] bg-[#D1FFBAE5] flex items-center justify-center relative">
             <img src={happy_folders} alt="" className="w-[130px] h-[80px] object-contain" />
-
-            {/* кнопка для добавления новую папку */}
             <ButtonAddFolderPlus />
           </div>
         </div>
 
-        {/* готовые папки пользователя */}
         <div className="">
           <div className="flex items-center justify-between mb-[15px] xs:w-auto w-[80vw]">
             <h3 className="text-base sm:text-[32px] font-bold">Мои папки</h3>
@@ -43,11 +39,13 @@ export const NonEmptyFolder = ({ files }: NonEmptyFolderProps) => {
             </Link>
           </div>
 
-          <div className="w-full sm:w-[730px] flex items-center gap-[20px]"
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}>
+          <div
+            className="w-full sm:w-[730px] flex items-center gap-[20px]"
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
             {files.map((file, index) => (
               <Folder key={file.id} title={file.title} date={file.dateCreated} />
             ))}
@@ -58,8 +56,6 @@ export const NonEmptyFolder = ({ files }: NonEmptyFolderProps) => {
             <div className="w-[127px] sm:w-[200px] h-[77px] xs:h-[110px] truncate">
               <img src={sad_folders} alt="" className="w-full h-full object-contain" />
             </div>
-
-            {/* кнопка для добавления новую папку */}
             <ButtonAddFolderPlus />
           </div>
         </div>

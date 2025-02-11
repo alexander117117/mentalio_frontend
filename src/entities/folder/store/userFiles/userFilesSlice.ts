@@ -14,13 +14,11 @@ import {
   deleteCardFromTopic,
 } from './userFilesThunks'
 
-
 interface UserFilesState {
   files: FileItem[] | null
   loading: boolean
   error: string | null
 }
-
 
 const initialState: UserFilesState = {
   files: null,

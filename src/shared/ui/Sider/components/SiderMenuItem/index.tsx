@@ -11,7 +11,14 @@ interface SiderMenuItemProps {
   imageActive?: string
   inDevelopment?: boolean
 }
-export const SiderMenuItem = ({ title, subtitle, link, image, imageActive, inDevelopment = false }: SiderMenuItemProps) => {
+export const SiderMenuItem = ({
+  title,
+  subtitle,
+  link,
+  image,
+  imageActive,
+  inDevelopment = false,
+}: SiderMenuItemProps) => {
   const location = useLocation() // получаем текущее url чтобы отображать активную ссылку
   return (
     <>
@@ -24,7 +31,11 @@ export const SiderMenuItem = ({ title, subtitle, link, image, imageActive, inDev
         }
       >
         <div className="flex items-center gap-[8px]">
-          <img src={link === location.pathname ? imageActive : image} alt={title} className="w-[24px] aspect-square object-cover" />
+          <img
+            src={link === location.pathname ? imageActive : image}
+            alt={title}
+            className="w-[24px] aspect-square object-cover"
+          />
           <p>{title}</p>
         </div>
         <div className="font-unbounded text-[12px] font-light text-siderGray">{subtitle}</div>

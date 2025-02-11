@@ -10,7 +10,14 @@ interface InputAddFolderProps {
   quantityTopicInput?: number
 }
 
-export const InputAddFolder = ({ type, name, placeholder = '', isTopic = false, setQuantityTopicInput, quantityTopicInput = 0 }: InputAddFolderProps) => {
+export const InputAddFolder = ({
+  type,
+  name,
+  placeholder = '',
+  isTopic = false,
+  setQuantityTopicInput,
+  quantityTopicInput = 0,
+}: InputAddFolderProps) => {
   return (
     <>
       <div className="relative">
@@ -36,4 +43,3 @@ export const InputAddFolder = ({ type, name, placeholder = '', isTopic = false, 
     </>
   )
 }
-

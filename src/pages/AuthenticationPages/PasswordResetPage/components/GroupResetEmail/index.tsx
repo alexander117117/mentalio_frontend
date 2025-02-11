@@ -46,7 +46,10 @@ const GroupResetEmail = ({ setLevel, setToken_resetPassword, setLogin }: GroupRe
   })
 
   return (
-    <form onSubmit={formik.handleSubmit} className="w-full xs:w-[490px] mx-auto flex flex-col gap-[14px] sm:gap-[20px] md:gap-[40px]">
+    <form
+      onSubmit={formik.handleSubmit}
+      className="w-full xs:w-[490px] mx-auto flex flex-col gap-[14px] sm:gap-[20px] md:gap-[40px]"
+    >
       <InputAuthCommon
         type="username"
         name="emailOrPhone"

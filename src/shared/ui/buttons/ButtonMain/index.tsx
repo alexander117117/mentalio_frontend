@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset';
+  type?: 'button' | 'submit' | 'reset'
   onClick?: () => void
   children?: React.ReactNode
   disabled?: boolean
@@ -10,7 +10,15 @@ interface ButtonProps {
   className?: string
 }
 
-function Button({ type = 'button', onClick, children, disabled = false, isLoading = false, className = '', ...props }: ButtonProps) {
+function Button({
+  type = 'button',
+  onClick,
+  children,
+  disabled = false,
+  isLoading = false,
+  className = '',
+  ...props
+}: ButtonProps) {
   return (
     <>
       <button
