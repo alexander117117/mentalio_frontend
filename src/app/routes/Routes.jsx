@@ -40,16 +40,8 @@ const AppRoutes = () => {
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="search-by-tags" element={<SearchByTagsPage />} />
           <Route path="settings" element={<SettingPage />} />
+          <Route path="folderTopic" element={<FolderTopicPage />} />
         </Route>
-
-        <Route
-          path="folderTopic"
-          element={
-            <ProtectedRoute>
-              <FolderTopicPage />
-            </ProtectedRoute>
-          }
-        ></Route>
 
         <Route path="*" element={<Error404Page />} />
       </Routes>
