@@ -10,7 +10,6 @@ function Filter() {
 
   useEffect(() => {
     dispatch(paginationThunk({ query, page: page, category, limit }))
-    console.log('Filter: ', { query, page: page, category, limit })
   }, [query, category])
   return (
     <>

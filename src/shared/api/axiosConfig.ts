@@ -27,11 +27,9 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const token = Cookies.get('token') // Получение токена из cookies
-    console.log('token', token)
     if (token) {
       config.headers.Authorization = `${token}` // Добавление токена в заголовок Authorization
     }
-    console.log('config', config)
     return config
   },
   (error) => {

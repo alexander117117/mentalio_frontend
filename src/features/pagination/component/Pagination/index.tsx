@@ -15,7 +15,6 @@ function Index() {
 
   const handleOnClickNextPage = () => {
     dispatch(paginationNextPageThunk({ query, page: page - 1, category, limit }))
-    console.log('Pagination: ', { query, page: page, category, limit })
   }
   return (
     <div
@@ -44,7 +43,6 @@ function Index() {
         <Pagination
           count={totalPage}
           onChange={(e, num) => {
-            // @ts-ignore
             dispatch(paginationThunk({ query, page: num, category, limit }))
             console.log('Pagination: ', { query, page: num, category, limit })
           }}

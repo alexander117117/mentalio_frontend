@@ -25,10 +25,10 @@ export async function apiStoreTrunks({
     let response
     switch (method) {
       case 'GET':
-        response = await axios.get(url)
+        response = await axios.get(url, body)
         break
       case 'DELETE':
-        response = await axios.delete(url)
+        response = await axios.delete(url, body)
         break
       case 'POST':
         response = await axios.post(url, body)
