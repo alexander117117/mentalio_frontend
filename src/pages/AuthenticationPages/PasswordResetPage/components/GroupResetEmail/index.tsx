@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux'
 import { requestReset } from '@/entities/user/store/auth/authThunks.ts'
 import InputAuthCommon from '../../../UI/InputAuthCommon/index.tsx'
 import ButtonAuthCommon from '../../../UI/ButtonAuthCommon/index.tsx'
-import PropTypes from 'prop-types'
 import { emailOrPhoneSchema } from '../../../../../../validationSchemas.js'
 
 interface GroupResetEmailProps {
@@ -38,7 +37,7 @@ const GroupResetEmail = ({ setLevel, setToken_resetPassword, setLogin }: GroupRe
           setDisabled(false)
         }
       } catch (error) {
-        setErrors({ emailOrPhone: error || 'Произошла ошибка. Попробуйте снова' })
+        setErrors({ emailOrPhone: (error as Error).message || 'Произошла ошибка. Попробуйте снова' })
       } finally {
         setSubmitting(false)
       }
@@ -77,9 +76,5 @@ const GroupResetEmail = ({ setLevel, setToken_resetPassword, setLogin }: GroupRe
     </form>
   )
 }
-GroupResetEmail.propTypes = {
-  setLevel: PropTypes.func.isRequired,
-  setToken_resetPassword: PropTypes.func.isRequired,
-  setLogin: PropTypes.func.isRequired,
-}
+
 export default GroupResetEmail

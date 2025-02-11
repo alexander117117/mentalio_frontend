@@ -18,7 +18,7 @@ interface FetchQuestionsResponse {
  *   (Можно заменить на другое, если не планируете передавать массив "initial".)
  * - Третий тип ({ rejectValue: string }) — чтобы типизировать значение при rejectWithValue.
  */
-export const fetchQuestions = createAsyncThunk<
+export const fetchQuestions: any = createAsyncThunk<
   Question[], // Возвращаемый тип
   Question[], // Аргумент (initial)
   { rejectValue: string }

@@ -55,7 +55,7 @@ interface ResetPasswordPayload {
 /**
  * Авторизация пользователя (логин).
  */
-export const loginUserThunk = createAsyncThunk<
+export const loginUserThunk: any = createAsyncThunk<
   AuthResponse,
   Credentials,
   { rejectValue: string } // Тип для rejectWithValue
@@ -89,7 +89,7 @@ export const loginUserThunk = createAsyncThunk<
 /**
  * Проверка логина на сервере.
  */
-export const checkLoginThunk = createAsyncThunk<
+export const checkLoginThunk: any = createAsyncThunk<
   AuthResponse,
   string,
   {
@@ -108,7 +108,7 @@ export const checkLoginThunk = createAsyncThunk<
 /**
  * Регистрация нового пользователя.
  */
-export const registerUserThunk = createAsyncThunk<
+export const registerUserThunk: any = createAsyncThunk<
   AuthResponse,
   RegistrationData,
   {
@@ -138,7 +138,7 @@ export const registerUserThunk = createAsyncThunk<
 /**
  * Запрос сброса пароля.
  */
-export const requestReset = createAsyncThunk<
+export const requestReset: any = createAsyncThunk<
   AuthResponse,
   ResetPasswordRequest,
   {
@@ -157,7 +157,7 @@ export const requestReset = createAsyncThunk<
 /**
  * Проверка кода при сбросе пароля.
  */
-export const verificationCode_resetPassword = createAsyncThunk<
+export const verificationCode_resetPassword: any = createAsyncThunk<
   AuthResponse,
   VerificationPayload,
   { rejectValue: string }
@@ -178,7 +178,7 @@ export const verificationCode_resetPassword = createAsyncThunk<
 /**
  * Выполнение сброса пароля.
  */
-export const resetPasswordThunk = createAsyncThunk<
+export const resetPasswordThunk: any = createAsyncThunk<
   AuthResponse,
   ResetPasswordPayload,
   {

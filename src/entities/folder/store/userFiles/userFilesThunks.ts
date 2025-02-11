@@ -32,7 +32,7 @@ interface AxiosErrorData {
  * Получить список файлов пользователя.
  * Возвращает массив объектов FileItem.
  */
-export const getUserFiles = createAsyncThunk<
+export const getUserFiles: any = createAsyncThunk<
   FileItem[], // Возвращаемый тип данных при успешном запросе
   void, // Тип аргумента (здесь не передаём данных)
   { rejectValue: string } // Тип данных, возвращаемых при rejectWithValue
@@ -70,7 +70,7 @@ export const getUserFiles = createAsyncThunk<
  * @param fileData - Данные файла
  * Возвращает созданный объект FileItem.
  */
-export const createUserFile = createAsyncThunk<
+export const createUserFile: any = createAsyncThunk<
   FileItem, // Возвращаемый тип
   Partial<FileItem>, // Тип данных, которые мы передаём (fileData)
   { rejectValue: string } // Тип данных для rejectWithValue
@@ -88,7 +88,7 @@ export const createUserFile = createAsyncThunk<
  * @param fileId - Идентификатор файла
  * Возвращает удалённый идентификатор файла (string).
  */
-export const deleteUserFile = createAsyncThunk<
+export const deleteUserFile: any = createAsyncThunk<
   string, // Возвращаемый тип (удалённый fileId)
   string, // Тип аргумента (fileId)
   { rejectValue: string }
@@ -107,7 +107,7 @@ export const deleteUserFile = createAsyncThunk<
  * @param payload.fileData - Обновлённые данные файла
  * Возвращает обновлённый FileItem.
  */
-export const updateUserFile = createAsyncThunk<
+export const updateUserFile: any = createAsyncThunk<
   FileItem, // Возвращаемый тип (обновлённый файл)
   { fileId: string; fileData: Partial<FileItem> }, // Тип аргумента
   { rejectValue: string }
@@ -125,7 +125,7 @@ export const updateUserFile = createAsyncThunk<
  * @param fileId - Идентификатор файла
  * Возвращает список тем (TopicItem[]).
  */
-export const getFileTopics = createAsyncThunk<
+export const getFileTopics: any = createAsyncThunk<
   TopicItem[], // Возвращаемый тип - массив тем
   string, // Тип аргумента - fileId
   { rejectValue: string }
@@ -144,7 +144,7 @@ export const getFileTopics = createAsyncThunk<
  * @param payload.topicData - Данные темы
  * Возвращает добавленную тему (TopicItem).
  */
-export const addTopicToFile = createAsyncThunk<
+export const addTopicToFile: any = createAsyncThunk<
   TopicItem,
   { fileId: string; topicData: Partial<TopicItem> },
   { rejectValue: string }
@@ -163,7 +163,7 @@ export const addTopicToFile = createAsyncThunk<
  * @param payload.topicId - Идентификатор темы
  * Возвращает удалённый идентификатор темы (string).
  */
-export const deleteTopicFromFile = createAsyncThunk<
+export const deleteTopicFromFile: any = createAsyncThunk<
   string,
   { fileId: string; topicId: string },
   { rejectValue: string }
@@ -182,17 +182,18 @@ export const deleteTopicFromFile = createAsyncThunk<
  * @param payload.topicId - Идентификатор темы
  * Возвращает список карточек (CardItem[]).
  */
-export const getTopicCards = createAsyncThunk<CardItem[], { fileId: string; topicId: string }, { rejectValue: string }>(
-  'userFiles/getTopicCards',
-  async ({ fileId, topicId }, { rejectWithValue }) => {
-    try {
-      const res = await axios.get(`/userFiles/${fileId}/topics/${topicId}/cards`)
-      return res.data
-    } catch (error) {
-      return rejectWithValue((error as AxiosErrorData)?.res?.data || 'Ошибка при получении карточек темы')
-    }
-  },
-)
+export const getTopicCards: any = createAsyncThunk<
+  CardItem[],
+  { fileId: string; topicId: string },
+  { rejectValue: string }
+>('userFiles/getTopicCards', async ({ fileId, topicId }, { rejectWithValue }) => {
+  try {
+    const res = await axios.get(`/userFiles/${fileId}/topics/${topicId}/cards`)
+    return res.data
+  } catch (error) {
+    return rejectWithValue((error as AxiosErrorData)?.res?.data || 'Ошибка при получении карточек темы')
+  }
+})
 
 /**
  * Добавить карточку в тему.
@@ -201,7 +202,7 @@ export const getTopicCards = createAsyncThunk<CardItem[], { fileId: string; topi
  * @param payload.cardData - Данные карточки
  * Возвращает добавленную карточку (CardItem).
  */
-export const addCardToTopic = createAsyncThunk<
+export const addCardToTopic: any = createAsyncThunk<
   CardItem,
   { fileId: string; topicId: string; cardData: Partial<CardItem> },
   { rejectValue: string }
@@ -221,7 +222,7 @@ export const addCardToTopic = createAsyncThunk<
  * @param payload.cardId  - Идентификатор карточки
  * Возвращает удалённый идентификатор карточки (string).
  */
-export const deleteCardFromTopic = createAsyncThunk<
+export const deleteCardFromTopic: any = createAsyncThunk<
   string,
   { fileId: string; topicId: string; cardId: string },
   { rejectValue: string }

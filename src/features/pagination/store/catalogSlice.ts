@@ -46,7 +46,7 @@ const catalogSlice = createSlice({
     /**
      * Устанавливает текущую категорию и сбрасывает страницу на первую.
      */
-    setCategory(state, action) {
+    setCategory(state, action): void {
       state.category = action.payload
       state.page = 1
     },

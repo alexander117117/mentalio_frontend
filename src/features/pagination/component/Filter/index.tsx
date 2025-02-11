@@ -9,7 +9,6 @@ function Filter() {
   const { page, query, category, limit } = useSelector((state: any) => state.catalog)
 
   useEffect(() => {
-    // @ts-ignore
     dispatch(paginationThunk({ query, page: page, category, limit }))
     console.log('Filter: ', { query, page: page, category, limit })
   }, [query, category])

@@ -1,10 +1,8 @@
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// @ts-ignore
 import { setCategory } from '../../../../store/catalogSlice'
 import { CategoryItem } from './component/CategoryItem'
-// @ts-ignore
 import { getAllCategoriesThunk } from '../../../../store/catalogThunks'
 
 export const Category: React.FC = () => {
@@ -13,7 +11,6 @@ export const Category: React.FC = () => {
   const [selectedCatalog, setSelectedCatalog]: any = useState(null)
 
   useEffect(() => {
-    // @ts-ignore
     dispatch(getAllCategoriesThunk())
   }, [])
 
@@ -21,11 +18,9 @@ export const Category: React.FC = () => {
   const handleCategorySelect = (value: string) => {
     if (selectedCatalog === value) {
       setSelectedCatalog(null)
-      // @ts-ignore
       dispatch(setCategory(null))
     } else {
       setSelectedCatalog(value)
-      // @ts-ignore
       dispatch(setCategory(value))
     }
   }

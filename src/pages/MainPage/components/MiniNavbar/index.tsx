@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
-import home_icon from './assets/assets/home_icon.png'
-import folder_icon from './assets/assets/folder_icon.png'
-import catalog_icon from './assets/assets/catalog_icon.png'
-import setting_icon from './assets/assets/setting_icon.png'
-import home_icon_active from './assets/assets/home_icon_active.png'
-import folder_icon_active from './assets/assets/folder_icon_active.png'
-import catalog_icon_active from './assets/assets/catalog_icon_active.png'
-import setting_icon_active from './assets/assets/setting_icon_active.png'
+import {
+  home_icon_active,
+  catalog_icon_active,
+  folder_icon_active,
+  home_icon,
+  folder_icon,
+  catalog_icon,
+  setting_icon_active,
+  setting_icon,
+  search_icon,
+  search_icon_active,
+} from './assets'
 import { FaPlus } from 'react-icons/fa'
-import { ModalAddFolder } from '../../../../shared/ui/ModalAddFolder'
+import { CreateFolder } from 'src/widgets/folders/createFolder'
 import { useLocation } from 'react-router-dom'
 
 export const MiniNavbar = () => {
@@ -53,7 +57,7 @@ export const MiniNavbar = () => {
         </Link>
       </nav>
       {/* Модальное окно добавления папки */}
-      <ModalAddFolder
+      <CreateFolder
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         quantityTopicInput={quantityTopicInput}

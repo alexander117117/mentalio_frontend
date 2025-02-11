@@ -14,7 +14,6 @@ function Index() {
   const { page, query, category, totalPage, limit, loading } = useSelector((state: any) => state.catalog)
 
   const handleOnClickNextPage = () => {
-    // @ts-ignore
     dispatch(paginationNextPageThunk({ query, page: page - 1, category, limit }))
     console.log('Pagination: ', { query, page: page, category, limit })
   }

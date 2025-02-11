@@ -9,7 +9,7 @@ import { LogoCenter } from '../UI/LogoCenter/index.tsx'
 
 function PasswordReset() {
   const [level, setLevel] = useState(0)
-  const [renderLevel, setRenderLevel] = useState()
+  const [renderLevel, setRenderLevel]: any = useState()
   const dispatch = useDispatch()
   const [login, setLogin] = useState('')
   const [token_resetPassword, setToken_resetPassword] = useState('')

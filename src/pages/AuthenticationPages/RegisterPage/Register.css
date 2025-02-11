@@ -13,15 +13,13 @@
 /* Level 1 */
 .groupMail {
   width: 490px;
-  margin: 241px auto 0 auto;
-  /* display: none; */
+  margin: 241px auto 0;
 }
 
 /* Level 2 */
 .groupPassword {
   width: 490px;
-  margin: 0 auto;
-  margin-top: 296px;
+  margin: 296px auto 0;
   display: none;
 }
 
@@ -115,5 +113,5 @@
   font-size: 24px;
   color: #fff;
   cursor: pointer;
-  margin: 20px auto 0 auto;
+  margin: 20px auto 0;
 }

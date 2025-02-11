@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@axios'
 
 /**
  * Интерфейс карточки (адаптируйте под реальную структуру).
@@ -53,7 +52,7 @@ interface AllCategoriesResponse {
 /**
  * Асинхронный экшен для загрузки карточек для текущей страницы.
  */
-export const paginationThunk = createAsyncThunk<
+export const paginationThunk: any = createAsyncThunk<
   PaginatedResponse, // возвращаемый тип (успешный результат)
   PaginationParams, // аргумент (параметры пагинации)
   { rejectValue: string } // rejectWithValue тип
@@ -90,7 +89,7 @@ export const paginationThunk = createAsyncThunk<
 /**
  * Асинхронный экшен для загрузки карточек для следующей страницы.
  */
-export const paginationNextPageThunk = createAsyncThunk<
+export const paginationNextPageThunk: any = createAsyncThunk<
   PaginatedResponse, // возвращаемый тип
   PaginationNextPageParams, // аргумент
   { rejectValue: string }
@@ -124,7 +123,7 @@ export const paginationNextPageThunk = createAsyncThunk<
 /**
  * Асинхронный экшен для загрузки списка всех категорий.
  */
-export const getAllCategoriesThunk = createAsyncThunk<
+export const getAllCategoriesThunk: any = createAsyncThunk<
   AllCategoriesResponse, // возвращаемый тип
   void, // аргументы не передаем
   { rejectValue: string }

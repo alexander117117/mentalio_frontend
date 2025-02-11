@@ -1,21 +1,21 @@
 import React from 'react'
-import { ModalWrapper } from '../ModalWrapper'
-import { InputAddFolder } from '../buttons/ButtonAddFolderPlus/components/InputAddFolder'
-import { SelectAddFolder } from '../buttons/ButtonAddFolderPlus/components/SelectAddFolder'
+import { ModalWrapper } from '@/shared/ui/ModalWrapper'
+import { InputAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/InputAddFolder'
+import { SelectAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/SelectAddFolder'
 
-interface ModalAddFolderProps {
+interface CreateFolder {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
   quantityTopicInput: number
   setQuantityTopicInput: (quantity: number | ((prev: number) => number)) => void
 }
 
-export const ModalAddFolder = ({
+export const CreateFolder = ({
   isModalOpen,
   setIsModalOpen,
   quantityTopicInput,
   setQuantityTopicInput,
-}: ModalAddFolderProps) => {
+}: CreateFolder) => {
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <div className="w-50">

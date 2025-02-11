@@ -3,6 +3,18 @@ import PropTypes from 'prop-types'
 import './CheckboxAuthCommon.css'
 import TextError from '../TextError/index.tsx'
 
+interface Index {
+  name: string
+  checked: boolean
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  error: string | undefined
+  touched: boolean | undefined
+  label?: string
+  children?: React.ReactNode
+  className?: string
+  props?: any
+}
+
 const CheckboxAuthCommon = ({
   name,
   checked,
@@ -13,7 +25,7 @@ const CheckboxAuthCommon = ({
   children,
   className = '',
   ...props
-}) => {
+}: Index) => {
   return (
     <div className={`mt-2 sm:mt-4 ${className}`}>
       <label className="flex items-center space-x-3 cursor-pointer">

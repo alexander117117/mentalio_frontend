@@ -1,69 +1,82 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import type { TypedUseSelectorHook } from 'react-redux'
 import ButtonAuthCommon from '../UI/ButtonAuthCommon/index.tsx'
-import { useSwitchRenderLevel } from './components/useSwitchRenderLevel.jsx'
-import { useAvatarSelection, useQuestions } from './hooks/useManageSelection.js'
-import { useFormik_Register, handleNext } from './hooks/useManageTransition.js'
-import { clearError } from '@/entities/user/store/auth/authSlice.ts'
-import { fetchQuestions } from '@store/features/analytics/analyticsThunks.ts'
-import { toggleQuestionAnswer } from '@store/features/analytics/analyticsSlice.ts'
+import { useSwitchRenderLevel } from './components/useSwitchRenderLevel.tsx'
+import { useAvatarSelection } from './hooks/useManageSelection'
+import { useFormik_Register, handleNext } from './hooks/useManageTransition'
+import { clearError } from '@/entities/user/store/auth/authSlice'
+import { fetchQuestions } from '@/app/store/features/analytics/analyticsThunks'
+import { toggleQuestionAnswer } from '@/app/store/features/analytics/analyticsSlice'
 import { LogoCenter } from '../UI/LogoCenter/index.tsx'
+
+interface AuthState {
+  isLoading: boolean
+  error: string | null
+}
+
+interface AnalyticsQuestion {
+  id: number
+  question: string
+  answer: boolean
+}
+
+interface AnalyticsState {
+  questions: AnalyticsQuestion[]
+  loadingAnalytics: boolean
+  errorAnalytics: string | null
+}
+
+interface RootState {
+  auth: AuthState
+  analytics: AnalyticsState
+}
+
+interface AvatarItem {
+  id: number
+  avatar: string
+  chosen: boolean
+}
 
 function Register() {
   const [level, setLevel] = useState<number>(0)
   const dispatch = useDispatch()
   const [password, setPassword] = useState<string>('')
   const [login, setlogin] = useState<string>('')
-  const { isLoading, error } = useSelector((state: any) => state.auth)
-  const { questions, loadingAnalytics, errorAnalytics } = useSelector((state: any) => state.analytics)
-
-  const [isError, setIsError] = useState(false)
+  const { isLoading, error } = useSelector<RootState, AuthState>((state) => state.auth)
+  const { questions, loadingAnalytics, errorAnalytics } = useSelector<RootState, AnalyticsState>(
+    (state) => state.analytics,
+  )
+  const [isError, setIsError] = useState<boolean>(false)
 
   useEffect(() => {
     dispatch(clearError())
-  }, [level])
+  }, [level, dispatch])
 
   useEffect(() => {
     dispatch(
       fetchQuestions([
-        {
-          id: 1,
-          question: 'вопрос1',
-          answer: false,
-        },
-        {
-          id: 2,
-          question: 'вопрос2',
-          answer: false,
-        },
-        {
-          id: 3,
-          question: 'вопрос3',
-          answer: false,
-        },
-        {
-          id: 4,
-          question: 'вопрос4',
-          answer: false,
-        },
+        { id: 1, question: 'вопрос1', answer: false },
+        { id: 2, question: 'вопрос2', answer: false },
+        { id: 3, question: 'вопрос3', answer: false },
+        { id: 4, question: 'вопрос4', answer: false },
       ]),
     )
   }, [dispatch])
-  // Хук для управления взаимодействием с вопросами на уровне 3.
+
   const handleQuestionAnswer = (id: number) => {
     dispatch(toggleQuestionAnswer(id))
   }
 
-  // Хук для управления выбором аватара на уровне 2.
-  const [avatarsNew, setAvatarsNew] = useState([
+  const [avatarsNew, setAvatarsNew] = useState<AvatarItem[]>([
     { id: 1, avatar: 'аватар1', chosen: false },
     { id: 2, avatar: 'аватар2', chosen: false },
     { id: 3, avatar: 'аватар3', chosen: false },
   ])
+
   const { avatars, handleAvatarSelect } = useMemo(() => useAvatarSelection(avatarsNew, setAvatarsNew), [avatarsNew])
 
-  // Хук Formik для управления состоянием формы и валидацией.
-  const formik = useFormik_Register(
+  const formik = useFormik_Register({
     level,
     setLevel,
     avatars,
@@ -75,10 +88,9 @@ function Register() {
     password,
     login,
     setlogin,
-  )
+  })
 
-  // Динамическая отрисовка компонентов в зависимости от текущего уровня.
-  const renderLevel = useSwitchRenderLevel(
+  const renderLevel = useSwitchRenderLevel({
     level,
     formik,
     avatars,
@@ -86,21 +98,18 @@ function Register() {
     handleAvatarSelect,
     handleQuestionAnswer,
     isError,
-  )
+  })
 
   return (
     <main className="min-h-screen bg-bgDark">
-      <div className={`flex justify-center items-center min-h-screen`}>
+      <div className="flex justify-center items-center min-h-screen">
         <form className="text-[#fff] w-[95%]" onSubmit={formik.handleSubmit}>
           <div className="w-full mx-auto text-center">
-            {/* Логотип приложения */}
             <LogoCenter />
-            {/* Контент изменяется в зависимости от текущего уровня регистрации */}
             <div className="w-full 2xl:w-[1580px] mx-auto">{renderLevel}</div>
           </div>
           {level !== 5 && (
             <div className="w-[95%] xs:w-[490px] mx-auto mt-[0.875rem] sm:mt-[1.25rem]">
-              {/* // Общая кнопка для навигации между уровнями. */}
               <ButtonAuthCommon type="submit" disabled={isLoading} onClick={() => handleNext(level, setLevel)}>
                 Продолжить
               </ButtonAuthCommon>

@@ -1,6 +1,6 @@
 import React from 'react'
-import { sad_folders } from '@/shared/images'
-import { ButtonAddFolderPlus } from '../../../../shared/ui/buttons/ButtonAddFolderPlus'
+import { sad_folders } from '@images'
+import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 
 export const EmptyFolder = () => {
   return (
@@ -14,8 +14,6 @@ export const EmptyFolder = () => {
             <div className="w-[127px] xs:w-[200px] lg:w-[250px] 2xl:w-[300px] h-[77px] xs:h-[110px] lg:h-[160px] 2xl:h-[190px] truncate">
               <img src={sad_folders} alt="" className="w-full h-full object-contain" />
             </div>
-
-            {/* кнопка для добавления новую папку */}
             <ButtonAddFolderPlus isBig={true} />
           </div>
         </div>

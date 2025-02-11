@@ -3,22 +3,32 @@ import InputAuthCommon from '../../UI/InputAuthCommon/index.tsx'
 import GroupAvatar from './GroupAvatar/index.tsx'
 import GroupFound from './GroupFound'
 import GroupTutorial from './GroupTutorial'
-import RegisterSuccess from './RegisterSuccess/RegisterSuccess.jsx'
-import CheckboxAuthCommon from '../../UI/CheckboxAuthCommon/CheckboxAuthCommon.jsx'
+import RegisterSuccess from './RegisterSuccess'
+import CheckboxAuthCommon from '../../UI/CheckboxAuthCommon'
 
-/**
- * Динамическая отрисовка UI в зависимости от уровня регистрации.
- *
- * @param {number} level - Текущий шаг регистрации.
- * @param {object} formik - Экземпляр Formik для управления состоянием формы.
- * @param {Array} avatars - Список аватаров для выбора на уровне 2.
- * @param {Array} questions - Список вопросов для взаимодействия на уровне 3.
- * @param {Function} handleAvatarSelect - Функция для управления выбором аватара.
- * @param {Function} handleQuestionAnswer - Функция для управления взаимодействием с вопросами.
- * @param isError
- * @returns {JSX.Element|null} - Компонент для текущего уровня.
- */
-export function useSwitchRenderLevel(
+interface AvatarItem {
+  id: number
+  avatar: string
+  chosen: boolean
+}
+
+interface QuestionItem {
+  id: number
+  question: string
+  answer: boolean
+}
+
+interface UseSwitchRenderLevelProps {
+  level: number
+  formik: any
+  avatars: AvatarItem[]
+  questions: QuestionItem[]
+  handleAvatarSelect: (id: number) => void
+  handleQuestionAnswer: (id: number) => void
+  isError: boolean
+}
+
+export function useSwitchRenderLevel({
   level,
   formik,
   avatars,
@@ -26,7 +36,7 @@ export function useSwitchRenderLevel(
   handleAvatarSelect,
   handleQuestionAnswer,
   isError,
-) {
+}: UseSwitchRenderLevelProps) {
   return useMemo(() => {
     switch (level) {
       case 0:
@@ -35,7 +45,6 @@ export function useSwitchRenderLevel(
           <div className="w-[95%] xs:w-[490px] mx-auto mt-[1.25rem] sm:mt-[1.875rem]">
             <h1 className="text-[32px] sm:text-[48px] font-[600] mb-[20px]">Регистрация</h1>
             {level === 0 ? (
-              // Поле ввода email или номера телефона.
               <div>
                 <InputAuthCommon
                   type="text"
@@ -47,8 +56,6 @@ export function useSwitchRenderLevel(
                   error={formik.touched.emailOrPhone && formik.errors.emailOrPhone}
                   touched={formik.touched.emailOrPhone}
                 />
-
-                {/* Чекбокс для принятия условий пользовательского соглашения */}
                 <CheckboxAuthCommon
                   name="agreeToTerms"
                   checked={formik.values.agreeToTerms}
@@ -60,7 +67,6 @@ export function useSwitchRenderLevel(
                 </CheckboxAuthCommon>
               </div>
             ) : (
-              // Поле ввода пароля.
               <InputAuthCommon
                 type="password"
                 name="password"

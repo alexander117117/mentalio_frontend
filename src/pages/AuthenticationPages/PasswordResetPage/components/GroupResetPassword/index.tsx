@@ -35,7 +35,7 @@ const GroupResetPassword = ({ token_resetPassword, login }: GroupResetPasswordPr
           navigate('/auth/login')
         }
       } catch (error) {
-        setErrors({ confirmPassword: error || 'Произошла ошибка. Попробуйте снова' })
+        setErrors({ confirmPassword: (error as Error).message || 'Произошла ошибка. Попробуйте снова' })
       } finally {
         setSubmitting(false)
       }
@@ -55,11 +55,6 @@ const GroupResetPassword = ({ token_resetPassword, login }: GroupResetPasswordPr
           error={formik.touched.password && formik.errors.password}
           touched={formik.touched.password}
         />
-        {/* {formik.touched.password && formik.errors.password && (
-					<div className="text-red-500 text-sm mt-1">
-						{formik.errors.password}
-					</div>
-				)} */}
       </div>
       <div className="mb-[20px] xs:mb-[40px]">
         <InputAuthCommon
@@ -72,11 +67,6 @@ const GroupResetPassword = ({ token_resetPassword, login }: GroupResetPasswordPr
           error={formik.touched.confirmPassword && formik.errors.confirmPassword}
           touched={formik.touched.confirmPassword}
         />
-        {/* {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-					<div className="text-red-500 text-sm mt-1">
-						{formik.errors.confirmPassword}
-					</div>
-				)} */}
       </div>
       <ButtonAuthCommon type="submit">Сохранить</ButtonAuthCommon>
     </form>

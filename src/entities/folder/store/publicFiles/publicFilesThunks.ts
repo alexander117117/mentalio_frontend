@@ -27,7 +27,7 @@ interface AxiosErrorData {
  * Получить список публичных файлов
  * @returns {Promise<PublicFile[]>} Список публичных файлов
  */
-export const getPublicFiles = createAsyncThunk<
+export const getPublicFiles: any = createAsyncThunk<
   PublicFile[], // Возвращаемый тип при успехе
   void, // Аргумент не передаётся
   { rejectValue: string } // Тип для rejectWithValue
@@ -45,7 +45,7 @@ export const getPublicFiles = createAsyncThunk<
  * @param fileId - Идентификатор публичного файла
  * @returns {Promise<PublicFile>} Данные публичного файла
  */
-export const getPublicFileDetails = createAsyncThunk<
+export const getPublicFileDetails: any = createAsyncThunk<
   PublicFile, // Возвращаемый тип
   string, // Аргумент: fileId
   { rejectValue: string }
@@ -63,7 +63,7 @@ export const getPublicFileDetails = createAsyncThunk<
  * @param fileId - Идентификатор публичного файла
  * @returns {Promise<PublicFile>} Добавленный файл
  */
-export const addPublicFileToUserFiles = createAsyncThunk<PublicFile, string, { rejectValue: string }>(
+export const addPublicFileToUserFiles: any = createAsyncThunk<PublicFile, string, { rejectValue: string }>(
   'userFiles/addPublicFileToUserFiles',
   async (fileId, { rejectWithValue }) => {
     try {
@@ -82,7 +82,7 @@ export const addPublicFileToUserFiles = createAsyncThunk<PublicFile, string, { r
  * @param fileId - Идентификатор публичного файла
  * @returns {Promise<PublicTopic[]>} Список тем
  */
-export const getPublicFileTopics = createAsyncThunk<PublicTopic[], string, { rejectValue: string }>(
+export const getPublicFileTopics: any = createAsyncThunk<PublicTopic[], string, { rejectValue: string }>(
   'userFiles/getPublicFileTopics',
   async (fileId, { rejectWithValue }) => {
     try {
@@ -100,7 +100,7 @@ export const getPublicFileTopics = createAsyncThunk<PublicTopic[], string, { rej
  * @param payload.topicId - Идентификатор темы
  * @returns {Promise<PublicTopic>} Данные темы
  */
-export const getPublicTopicDetails = createAsyncThunk<
+export const getPublicTopicDetails: any = createAsyncThunk<
   PublicTopic,
   { fileId: string; topicId: string },
   { rejectValue: string }
@@ -121,7 +121,7 @@ export const getPublicTopicDetails = createAsyncThunk<
  * @param payload.topicId - Идентификатор темы
  * @returns {Promise<PublicCard[]>} Список карточек
  */
-export const getPublicTopicCards = createAsyncThunk<
+export const getPublicTopicCards: any = createAsyncThunk<
   PublicCard[],
   { fileId: string; topicId: string },
   { rejectValue: string }
@@ -143,7 +143,7 @@ export const getPublicTopicCards = createAsyncThunk<
  * @param payload.cardId - Идентификатор карточки
  * @returns {Promise<PublicCard>} Данные карточки
  */
-export const getPublicCardDetails = createAsyncThunk<
+export const getPublicCardDetails: any = createAsyncThunk<
   PublicCard,
   { fileId: string; topicId: string; cardId: string },
   { rejectValue: string }
@@ -166,7 +166,7 @@ export const getPublicCardDetails = createAsyncThunk<
  * @param payload.cardData - Обновленные данные карточки
  * @returns {Promise<PublicCard>} Обновленная карточка
  */
-export const updatePublicCard = createAsyncThunk<
+export const updatePublicCard: any = createAsyncThunk<
   PublicCard,
   { fileId: string; topicId: string; cardId: string; cardData: Partial<PublicCard> },
   { rejectValue: string }

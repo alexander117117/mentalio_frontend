@@ -1,9 +1,7 @@
 /* customize select arrow */
 .selectCategory {
   appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background-image: url(assets/dropdown_arrow.png);
+  background-image: url('assets/dropdown_arrow.png');
   background-repeat: no-repeat;
   background-position: right calc(0.625rem + 10px) center;
   background-size: 30px;
@@ -13,7 +11,7 @@
   background: #001e02;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .selectCategory {
     background-size: 20px;
     background-position: right calc(0rem + 10px) center;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
-import { ModalAddFolder } from '../../ModalAddFolder'
+import { CreateFolder } from '@/widgets/folders/createFolder'
 
 interface ButtonAddFolderPlusProps {
   isBig?: boolean
@@ -37,7 +37,7 @@ export const ButtonAddFolderPlus = ({ isBig = false, myFolderPage = false }: But
       )}
 
       {/* модальное окно */}
-      <ModalAddFolder
+      <CreateFolder
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
         quantityTopicInput={quantityTopicInput}

@@ -1,40 +1,47 @@
-// Хук для управления переходами и отправкой формы.
-import { passwordSchema, emailOrPhoneSchema } from '@/../validationSchemas.js'
-import { useFormik } from 'formik'
+import { passwordSchema, emailOrPhoneSchema } from '@/../validationSchemas.ts'
+import { useFormik, FormikHelpers, FormikProps } from 'formik'
 import { useMemo } from 'react'
+import { checkLoginThunk, registerUserThunk } from '@/entities/user/store/auth/authThunks'
+import { AvatarItem, QuestionItem } from './useManageSelection'
 
-import { checkLoginThunk, registerUserThunk } from '@/entities/user/store/auth/authThunks.ts'
+type RegistrationLevel = number
 
 /**
  * Переход на следующий уровень регистрации.
- *
- * @param {number} level - Текущий уровень.
- * @param {Function} setLevel - Функция для обновления уровня.
+ * @param level - Текущий уровень.
+ * @param setLevel - Функция для обновления уровня.
  */
-export function handleNext(level, setLevel) {
+export function handleNext(level: RegistrationLevel, setLevel: (value: RegistrationLevel) => void) {
   // Увеличивает уровень до максимума 5.
   if (level >= 5) {
     setLevel(level + 1)
   }
 }
 
+interface FormValues {
+  emailOrPhone: string
+  password: string
+  agreeToTerms: boolean
+}
+
+interface UseFormikRegisterParams {
+  level: RegistrationLevel
+  setLevel: (level: RegistrationLevel) => void
+  avatars: AvatarItem[]
+  questions: QuestionItem[]
+  dispatch: any
+  error: string | null
+  setIsError: (value: boolean) => void
+  setPassword: (value: string) => void
+  password: string
+  login: string
+  setlogin: (value: string) => void
+}
+
 /**
  * Кастомный хук Formik для управления состоянием формы регистрации и переходами.
- *
- * @param {number} level - Текущий уровень регистрации.
- * @param {Function} setLevel - Функция для обновления уровня.
- * @param {Array} avatars - Список аватаров.
- * @param {Array} questions - Список вопросов.
- * @param {Function} dispatch - Функция dispatch из Redux.
- * @param error
- * @param setIsError
- * @param setPassword
- * @param password
- * @param login
- * @param setlogin
- * @returns {Object} - Экземпляр Formik.
  */
-export function useFormik_Register(
+export function useFormik_Register({
   level,
   setLevel,
   avatars,
@@ -46,10 +53,10 @@ export function useFormik_Register(
   password,
   login,
   setlogin,
-) {
+}: UseFormikRegisterParams) {
   // Настройка Formik с динамической схемой валидации на основе текущего уровня.
 
-  return useFormik({
+  return useFormik<FormValues>({
     initialValues: {
       emailOrPhone: '',
       password: '',
@@ -60,17 +67,22 @@ export function useFormik_Register(
       if (level === 1) return passwordSchema // Проверка пароля.
       return null // Нет проверки для других уровней.
     }, [level]),
-    onSubmit: async (values, { setSubmitting, setErrors }) => {
-      // Обработка отправки и переход на следующий уровень на основе логики.
+    onSubmit: async (values, formikHelpers: FormikHelpers<FormValues>) => {
+      const { setSubmitting, setErrors } = formikHelpers
+
       if (level === 0) {
         // Проверка email на сервере
         if (values.agreeToTerms) {
-          const data = await dispatch(checkLoginThunk(values.emailOrPhone)).unwrap()
-          if (data.status === 'success') {
-            setlogin(values.emailOrPhone)
-            setLevel(1) // Переход на ввод пароля
-          } else {
-            setErrors({ emailOrPhone: 'Login занят' })
+          try {
+            const data = await dispatch(checkLoginThunk(values.emailOrPhone)).unwrap()
+            if (data.status === 'success') {
+              setlogin(values.emailOrPhone)
+              setLevel(1) // Переход на ввод пароля
+            } else {
+              setErrors({ emailOrPhone: 'Login занят' })
+            }
+          } catch (error) {
+            setErrors({ emailOrPhone: 'Произошла ошибка при проверке логина' })
           }
         } else {
           setErrors({ agreeToTerms: 'Необходимо согласиться с условиями' })
@@ -95,8 +107,7 @@ export function useFormik_Register(
           setLevel(4) // Переход к завершению регистрации
         }
       } else if (level === 4) {
-        // Завершение регистрации
-        // отправка данных на сервер
+        // Завершение регистрации: отправка данных на сервер
         try {
           const data = await dispatch(
             registerUserThunk({
@@ -106,6 +117,7 @@ export function useFormik_Register(
               questions,
             }),
           ).unwrap()
+
           if (data.token) {
             setLevel(5) // Успешная регистрация
           } else {
@@ -113,14 +125,16 @@ export function useFormik_Register(
           }
         } catch (error) {
           console.log('error', error)
+          setErrors({ password: 'Произошла ошибка. Попробуйте снова' })
         }
       }
+      setSubmitting(false)
     },
   })
 }
 
 // Фильтрация выбранного аватара
-function filterAvatar(avatars) {
+function filterAvatar(avatars: AvatarItem[]): string {
   let result = ''
   avatars.forEach((item) => {
     if (item.chosen) {

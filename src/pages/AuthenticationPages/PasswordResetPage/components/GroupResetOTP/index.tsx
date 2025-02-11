@@ -11,7 +11,7 @@ interface GroupResetOTPProps {
 }
 const GroupResetOTP = ({ setLevel, login, token_resetPassword }: GroupResetOTPProps) => {
   const [otp, setOtp] = useState(['', '', '', '']) // Состояние для хранения значений полей
-  const inputRefs = useRef([]) // Рефы для управления фокусом на полях
+  const inputRefs: any = useRef([]) // Рефы для управления фокусом на полях
   const [disabled, setDisabled] = useState(false)
   const dispatch = useDispatch()
   const { loading, error } = useSelector((state: any) => state.auth)
