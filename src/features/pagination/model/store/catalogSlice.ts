@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
-import { paginationThunk, paginationNextPageThunk, getAllCategoriesThunk } from './catalogThunks'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers.ts'
+import { paginationThunk, paginationNextPageThunk, getAllCategoriesThunk } from './catalogThunks.ts'
 
 /**
  * Интерфейс для одной карточки (должен совпадать с CardItem из thunks).

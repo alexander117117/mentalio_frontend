@@ -1,14 +1,14 @@
 /**
- * axiosConfig.ts
+ * axios.ts
  *
  * Этот файл содержит конфигурацию Axios для взаимодействия с API.
  * Включает базовый экземпляр Axios, перехватчики для добавления токена и обработки ошибок.
  */
-import axios from 'axios'
+import axios from 'axios';
 import Cookies from 'js-cookie'
 
 // Создание базового экземпляра Axios с настройками
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: 'https://mentalio.pythonanywhere.com', // Базовый URL для всех запросов
   timeout: 10000, // Тайм-аут запросов (10 секунд)
   headers: {
@@ -58,13 +58,12 @@ axiosInstance.interceptors.response.use(
     if (error.response) {
       // Обработка ошибок, пришедших от сервера
       const { status } = error.response
-      // if (status === 401) {
-      //   // Действия при ошибке 401 (неавторизованный доступ)
-      //   Cookies.remove('token') // Удаление токена из cookies
-      //   if (window.location.pathname !== '/auth/login') {
-      //     window.location.href = '/auth/login' // Редирект на страницу авторизации
-      //   }
-      // }
+      if (status === 401) {
+        Cookies.remove('token') // Удаление токена из cookies
+        if (window.location.pathname !== '/auth/login') {
+          window.location.href = '/auth/login' // Редирект на страницу авторизации
+        }
+      }
       console.log('Ошибка сервера:', error.response.data)
       console.log('Статус:', status)
     } else if (error.request) {
@@ -80,4 +79,4 @@ axiosInstance.interceptors.response.use(
   },
 )
 
-export default axiosInstance
+
