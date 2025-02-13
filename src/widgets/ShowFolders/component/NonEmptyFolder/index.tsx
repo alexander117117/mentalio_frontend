@@ -36,7 +36,7 @@ export const NonEmptyFolder = ({ files }: FoldersProps) => {
               justifyContent: 'center',
             }}
           >
-            {files?.map((file, index) => <Folder key={file.id} title={file.title} date={file.dateCreated} />)}
+            {files?.map((file) => <Folder key={file.id} title={file.title} date={file.dateCreated} />)}
           </div>
 
           {/* появляется на телефоне */}

@@ -1,4 +1,4 @@
-import { sider4, sider5, sider6, sider7, sider8, sider9, sider10, sider11, sider12, sider1 } from '@/shared/images'
+import { sider4, sider5, sider6, sider7, sider8, sider9, sider10, sider11, sider12 } from '@/shared/images'
 
 interface MenuItem {
   title: string

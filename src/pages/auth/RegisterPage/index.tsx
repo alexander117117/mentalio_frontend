@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import type { TypedUseSelectorHook } from 'react-redux'
 import ButtonAuthCommon from '../UI/ButtonAuthCommon'
 import { useSwitchRenderLevel } from './components/useSwitchRenderLevel.tsx'
 import { useAvatarSelection } from './hooks/useManageSelection.ts'
@@ -44,7 +43,7 @@ export function Register() {
   const [password, setPassword] = useState<string>('')
   const [login, setlogin] = useState<string>('')
   const { isLoading, error } = useSelector<RootState, AuthState>((state) => state.auth)
-  const { questions, loadingAnalytics, errorAnalytics } = useSelector<RootState, AnalyticsState>(
+  const { questions } = useSelector<RootState, AnalyticsState>(
     (state) => state.analytics,
   )
   const [isError, setIsError] = useState<boolean>(false)

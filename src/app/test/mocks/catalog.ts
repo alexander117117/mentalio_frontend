@@ -16,7 +16,7 @@ const totalCards = 12
 const mockCategories = ['Медицина', 'Химия', 'Другое', 'Точные науки', 'Математика', 'Информатика']
 
 export const catalogHandlers = [
-  http.get(`${URL}/catalog`, ({ request }) => {
+  http.get(`${URL}/catalog`, () => {
     return HttpResponse.json({
       items: mockCards,
       countTotalCarts: totalCards,

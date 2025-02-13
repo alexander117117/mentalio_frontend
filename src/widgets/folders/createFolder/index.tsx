@@ -35,7 +35,7 @@ export const CreateFolder = ({
                 type={'text'}
                 name={`folderTopic${index + 1}`}
                 placeholder={'Введите название темы'}
-                isTopic={index === quantityTopicInput - 1 ? true : false}
+                isTopic={index === quantityTopicInput - 1}
                 setQuantityTopicInput={() => setQuantityTopicInput((prev) => prev + 1)} // update количество инпутов
                 quantityTopicInput={quantityTopicInput}
               />

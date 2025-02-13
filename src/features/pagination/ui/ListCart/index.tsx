@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { FolderDirectory } from '../../../../widgets/folders/FolderDirectory'
+import { FolderDirectory } from '@/widgets/folders/FolderDirectory'
 
 ListCart.propTypes = {
   carts: PropTypes.array,

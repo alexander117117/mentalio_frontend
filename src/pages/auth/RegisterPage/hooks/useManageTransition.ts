@@ -1,5 +1,5 @@
 import { passwordSchema, emailOrPhoneSchema } from '../../../../../validationSchemas.ts'
-import { useFormik, FormikHelpers, FormikProps } from 'formik'
+import { useFormik, FormikHelpers } from 'formik'
 import { useMemo } from 'react'
 import { checkLoginThunk, registerUserThunk } from '@/entities/user/model/store/auth/authThunks.ts'
 import { AvatarItem, QuestionItem } from './useManageSelection.ts'
@@ -47,7 +47,6 @@ export function useFormik_Register({
   avatars,
   questions,
   dispatch,
-  error,
   setIsError,
   setPassword,
   password,

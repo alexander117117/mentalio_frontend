@@ -13,7 +13,7 @@ interface IListUserFiles {
 export function ListUserFiles({ files }: IListUserFiles) {
   return (
     <>
-      {files.map((file, index) => (
+      {files.map((file) => (
         <UserFolder key={file.id} title={file.title} date={file.dateCreated} desc={file.desc} />
       ))}
     </>
