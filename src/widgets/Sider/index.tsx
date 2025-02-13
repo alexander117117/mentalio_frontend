@@ -1,5 +1,5 @@
 import { GiHamburgerMenu } from 'react-icons/gi'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { SiderApp } from './components/SiderApp'
 
 export function Sider() {
