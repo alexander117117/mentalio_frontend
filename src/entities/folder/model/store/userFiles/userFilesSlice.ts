@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers.ts'
+import { FileItem } from '../../../lib/types.ts'
 import {
-  FileItem,
   getUserFiles,
   createUserFile,
   deleteUserFile,
@@ -12,7 +12,7 @@ import {
   getTopicCards,
   addCardToTopic,
   deleteCardFromTopic,
-} from './userFilesThunks'
+} from './userFilesThunks.ts'
 
 interface UserFilesState {
   files: FileItem[] | null

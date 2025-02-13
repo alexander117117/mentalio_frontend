@@ -1,10 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
+import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers.ts'
+import { PublicFile, PublicTopic } from '../../../lib/types.ts'
 
 import {
-  PublicFile,
-  PublicTopic,
-  PublicCard,
   getPublicFiles,
   getPublicFileDetails,
   addPublicFileToUserFiles,
@@ -13,9 +11,9 @@ import {
   getPublicTopicCards,
   getPublicCardDetails,
   updatePublicCard,
-} from './publicFilesThunks'
+} from './publicFilesThunks.ts'
 
-interface PublicFilesState {
+export interface PublicFilesState {
   publicFiles: PublicFile[] | null
   publicFileDetails?: PublicFile | null
   publicFileTopics: PublicTopic[] | null

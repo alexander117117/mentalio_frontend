@@ -1,18 +1,15 @@
 /**
- * axios.ts
- *
  * Этот файл содержит конфигурацию Axios для взаимодействия с API.
  * Включает базовый экземпляр Axios, перехватчики для добавления токена и обработки ошибок.
  */
-import axios from 'axios';
+import axios from 'axios'
 import Cookies from 'js-cookie'
 
-// Создание базового экземпляра Axios с настройками
 export const axiosInstance = axios.create({
-  baseURL: 'https://mentalio.pythonanywhere.com', // Базовый URL для всех запросов
-  timeout: 10000, // Тайм-аут запросов (10 секунд)
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: 10000, // Тайм-аут запросов
   headers: {
-    'Content-Type': 'application/json', // Устанавливаем тип содержимого для всех запросов
+    'Content-Type': 'application/json',
   },
 })
 
@@ -26,14 +23,13 @@ export const axiosInstance = axios.create({
  */
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = Cookies.get('token') // Получение токена из cookies
+    const token = Cookies.get('token')
     if (token) {
-      config.headers.Authorization = `${token}` // Добавление токена в заголовок Authorization
+      config.headers.Authorization = `${token}`
     }
     return config
   },
   (error) => {
-    // Обработка ошибок при создании запроса
     return Promise.reject(error)
   },
 )
@@ -51,32 +47,23 @@ axiosInstance.interceptors.request.use(
  */
 axiosInstance.interceptors.response.use(
   (response) => {
-    return response // Возвращаем только данные ответа
+    return response
   },
   (error) => {
-    console.log('error', error)
+    console.log('Error server:', error)
     if (error.response) {
-      // Обработка ошибок, пришедших от сервера
       const { status } = error.response
       if (status === 401) {
-        Cookies.remove('token') // Удаление токена из cookies
+        Cookies.remove('token')
         if (window.location.pathname !== '/auth/login') {
-          window.location.href = '/auth/login' // Редирект на страницу авторизации
+          window.location.href = '/auth/login'
         }
       }
-      console.log('Ошибка сервера:', error.response.data)
-      console.log('Статус:', status)
     } else if (error.request) {
-      // Ошибка запроса (нет ответа от сервера)
       console.error('Нет ответа от сервера: ', error.request)
     } else {
-      // Ошибка в конфигурации запроса
       console.error('Ошибка конфигурации запроса: ', error.message)
     }
-
-    // Возврат сообщения об ошибке
     return error.response
   },
 )
-
-

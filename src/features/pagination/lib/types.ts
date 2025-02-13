@@ -1,4 +1,3 @@
-
 export interface CardItem {
   id: number
   userName: string

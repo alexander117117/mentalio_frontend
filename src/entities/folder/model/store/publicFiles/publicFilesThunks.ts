@@ -1,27 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@axios'
-
-export interface PublicFile {
-  id: string
-  [key: string]: any
-}
-
-export interface PublicTopic {
-  id: string
-  cards?: PublicCard[]
-  [key: string]: any
-}
-
-export interface PublicCard {
-  id: string
-  [key: string]: any
-}
-
-interface AxiosErrorData {
-  response?: {
-    data?: string
-  }
-}
+import { PublicFile, PublicTopic, PublicCard } from '../../../lib/types.ts'
+import { executeApiRequestTrunks } from '@/shared/api/apiHelpers.ts'
 
 /**
  * Получить список публичных файлов
@@ -32,12 +11,13 @@ export const getPublicFiles: any = createAsyncThunk<
   void, // Аргумент не передаётся
   { rejectValue: string } // Тип для rejectWithValue
 >('userFiles/getPublicFiles', async (_, { rejectWithValue }) => {
-  try {
-    const response = await axios.get('/publicFiles')
-    return response.data
-  } catch (error) {
-    return rejectWithValue((error as AxiosErrorData)?.response?.data || 'Ошибка при получении публичных файлов')
-  }
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: '/publicFiles',
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении публичных файлов',
+  })
+  return response.data
 })
 
 /**
@@ -50,12 +30,13 @@ export const getPublicFileDetails: any = createAsyncThunk<
   string, // Аргумент: fileId
   { rejectValue: string }
 >('userFiles/getPublicFileDetails', async (fileId, { rejectWithValue }) => {
-  try {
-    const response = await axios.get(`/publicFiles/${fileId}`)
-    return response.data
-  } catch (error) {
-    return rejectWithValue((error as AxiosErrorData)?.response?.data || 'Ошибка при получении данных публичного файла')
-  }
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: `/publicFiles/${fileId}`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении данных публичного файла',
+  })
+  return response.data
 })
 
 /**
@@ -63,36 +44,42 @@ export const getPublicFileDetails: any = createAsyncThunk<
  * @param fileId - Идентификатор публичного файла
  * @returns {Promise<PublicFile>} Добавленный файл
  */
-export const addPublicFileToUserFiles: any = createAsyncThunk<PublicFile, string, { rejectValue: string }>(
-  'userFiles/addPublicFileToUserFiles',
-  async (fileId, { rejectWithValue }) => {
-    try {
-      const response = await axios.post(`/publicFiles/${fileId}/addToUserFiles`)
-      return response.data
-    } catch (error) {
-      return rejectWithValue(
-        (error as AxiosErrorData)?.response?.data || 'Ошибка при добавлении публичного файла в пользовательские файлы',
-      )
-    }
-  },
-)
+export const addPublicFileToUserFiles: any = createAsyncThunk<
+  PublicFile,
+  string,
+  {
+    rejectValue: string
+  }
+>('userFiles/addPublicFileToUserFiles', async (fileId, { rejectWithValue }) => {
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: `/publicFiles/${fileId}/addToUserFiles`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при добавлении публичного файла в пользовательские файлы',
+  })
+  return response.data
+})
 
 /**
  * Получить темы публичного файла
  * @param fileId - Идентификатор публичного файла
  * @returns {Promise<PublicTopic[]>} Список тем
  */
-export const getPublicFileTopics: any = createAsyncThunk<PublicTopic[], string, { rejectValue: string }>(
-  'userFiles/getPublicFileTopics',
-  async (fileId, { rejectWithValue }) => {
-    try {
-      const response = await axios.get(`/publicFiles/${fileId}/topics`)
-      return response.data
-    } catch (error) {
-      return rejectWithValue((error as AxiosErrorData)?.response?.data || 'Ошибка при получении тем публичного файла')
-    }
-  },
-)
+export const getPublicFileTopics: any = createAsyncThunk<
+  PublicTopic[],
+  string,
+  {
+    rejectValue: string
+  }
+>('userFiles/getPublicFileTopics', async (fileId, { rejectWithValue }) => {
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: `/publicFiles/${fileId}/topics`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении тем публичного файла',
+  })
+  return response.data
+})
 
 /**
  * Получить данные темы публичного файла
@@ -105,14 +92,13 @@ export const getPublicTopicDetails: any = createAsyncThunk<
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getPublicTopicDetails', async ({ fileId, topicId }, { rejectWithValue }) => {
-  try {
-    const response = await axios.get(`/publicFiles/${fileId}/topics/${topicId}`)
-    return response.data
-  } catch (error) {
-    return rejectWithValue(
-      (error as AxiosErrorData)?.response?.data || 'Ошибка при получении данных темы публичного файла',
-    )
-  }
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: `/publicFiles/${fileId}/topics/${topicId}`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении данных темы публичного файла',
+  })
+  return response.data
 })
 
 /**
@@ -126,14 +112,13 @@ export const getPublicTopicCards: any = createAsyncThunk<
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getPublicTopicCards', async ({ fileId, topicId }, { rejectWithValue }) => {
-  try {
-    const response = await axios.get(`/publicFiles/${fileId}/topics/${topicId}/cards`)
-    return response.data
-  } catch (error) {
-    return rejectWithValue(
-      (error as AxiosErrorData)?.response?.data || 'Ошибка при получении карточек темы публичного файла',
-    )
-  }
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: `/publicFiles/${fileId}/topics/${topicId}/cards`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении карточек темы публичного файла',
+  })
+  return response.data
 })
 
 /**
@@ -148,14 +133,13 @@ export const getPublicCardDetails: any = createAsyncThunk<
   { fileId: string; topicId: string; cardId: string },
   { rejectValue: string }
 >('userFiles/getPublicCardDetails', async ({ fileId, topicId, cardId }, { rejectWithValue }) => {
-  try {
-    const response = await axios.get(`/publicFiles/${fileId}/topics/${topicId}/cards/${cardId}`)
-    return response.data
-  } catch (error) {
-    return rejectWithValue(
-      (error as AxiosErrorData)?.response?.data || 'Ошибка при получении данных карточки публичного файла',
-    )
-  }
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: `/publicFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении данных карточки публичного файла',
+  })
+  return response.data
 })
 
 /**
@@ -168,15 +152,20 @@ export const getPublicCardDetails: any = createAsyncThunk<
  */
 export const updatePublicCard: any = createAsyncThunk<
   PublicCard,
-  { fileId: string; topicId: string; cardId: string; cardData: Partial<PublicCard> },
+  {
+    fileId: string
+    topicId: string
+    cardId: string
+    cardData: Partial<PublicCard>
+  },
   { rejectValue: string }
 >('userFiles/updatePublicCard', async ({ fileId, topicId, cardId, cardData }, { rejectWithValue }) => {
-  try {
-    const response = await axios.put(`/publicFiles/${fileId}/topics/${topicId}/cards/${cardId}`, cardData)
-    return response.data
-  } catch (error) {
-    return rejectWithValue(
-      (error as AxiosErrorData)?.response?.data || 'Ошибка при обновлении карточки публичного файла',
-    )
-  }
+  const response = await executeApiRequestTrunks({
+    method: 'PUT',
+    url: `/publicFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
+    body: cardData,
+    rejectWithValue,
+    errorMessage: 'Ошибка при обновлении карточки публичного файла',
+  })
+  return response.data
 })

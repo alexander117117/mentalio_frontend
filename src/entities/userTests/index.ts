@@ -1,3 +1,3 @@
-import type { Test, Question, Answer } from './model/types'
+import type { Test, Question, Answer } from './lib/types.ts'
 
 export type { Test, Question, Answer }

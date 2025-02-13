@@ -2,11 +2,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer, PersistConfig } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import authReducer from '@/entities/user/store/auth/authSlice'
-import userFilesSlice from '@/entities/folder/store/userFiles/userFilesSlice'
-import publicFilesSlice from '@/entities/folder/store/publicFiles/publicFilesSlice'
+import authReducer from '@/entities/user/model/store/auth/authSlice'
+import userFilesSlice from '@/entities/folder/model/store/userFiles/userFilesSlice'
+import publicFilesSlice from '@/entities/folder/model/store/publicFiles/publicFilesSlice'
 import analyticsSlice from '@/app/store/features/analytics/analyticsSlice'
-import catalogSlice from '@/features/pagination/store/catalogSlice'
+import catalogSlice from '@/features/pagination/model/store/catalogSlice'
 
 interface AuthPersistConfig extends PersistConfig<ReturnType<typeof authReducer>> {
   whitelist: string[]
@@ -30,8 +30,11 @@ export const store = configureStore({
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      serializableCheck: false, // отключаем проверку сериализуемых значений
+      serializableCheck: false,
     }),
 })
 
 export const persistor = persistStore(store)
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

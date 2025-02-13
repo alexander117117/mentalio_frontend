@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers'
-import { fetchQuestions, Question } from './analyticsThunks'
+import { fetchQuestions } from './analyticsThunks'
+import { Question } from '../../lib/types'
 
 interface AnalyticsState {
   questions: Question[]
@@ -26,7 +27,12 @@ const analyticsSlice = createSlice({
     toggleQuestionAnswer(state, action: PayloadAction<number>) {
       const id = action.payload
       state.questions = state.questions.map((question) =>
-        question.id === id ? { ...question, answer: !question.answer } : question,
+        question.id === id
+          ? {
+              ...question,
+              answer: !question.answer,
+            }
+          : question,
       )
     },
   },

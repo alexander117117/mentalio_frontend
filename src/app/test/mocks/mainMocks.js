@@ -1,7 +1,7 @@
 import { http, HttpResponse } from 'msw'
-import axios from '@axios'
+import { axiosInstance } from '@/shared/api/axiosInstance.js'
 
-const URL = axios.defaults.baseURL
+const URL = axiosInstance.defaults.baseURL
 
 export const mainMocks = [
   http.get(`${URL}/userFiles`, () => {

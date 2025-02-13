@@ -1,15 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import axios from '@axios'
-
-export interface Question {
-  id: number
-  question: string
-  answer: boolean
-}
-
-interface FetchQuestionsResponse {
-  questions?: Question[]
-}
+import { executeApiRequestTrunks } from '@/shared/api/apiHelpers'
+import { Question } from '../../lib/types'
 
 /**
  * Thunk для получения списка вопросов.
@@ -23,11 +14,14 @@ export const fetchQuestions: any = createAsyncThunk<
   Question[], // Аргумент (initial)
   { rejectValue: string }
 >('analytics/fetchQuestions', async (initial, { rejectWithValue }) => {
+  const response = await executeApiRequestTrunks({
+    method: 'GET',
+    url: '/auth/register/analytics/questions',
+    rejectWithValue,
+  })
   try {
-    const response = await axios.get<FetchQuestionsResponse>('/auth/register/analytics/questions')
-
     if (response.status === 200) {
-      return response.data.questions || initial
+      return response?.data.questions || initial
     } else {
       return rejectWithValue(`Ошибка: ${response.status}`) as never
     }

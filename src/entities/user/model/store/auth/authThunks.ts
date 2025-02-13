@@ -1,11 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
-import { apiStoreTrunks } from '@/shared/api/apiHelpers'
-
-interface Credentials {
-  login: string
-  password: string
-}
+import { executeApiRequestTrunks } from '@/shared/api/apiHelpers.ts'
+import { Credentials } from '../../../lib/types'
 
 /**
  * Интерфейс для ответа от сервера при логине/регистрации.
@@ -61,7 +57,7 @@ export const loginUserThunk: any = createAsyncThunk<
   { rejectValue: string } // Тип для rejectWithValue
 >('auth/loginUserThunk', async (credentials, { rejectWithValue }) => {
   try {
-    const res: any = await apiStoreTrunks({
+    const res: any = await executeApiRequestTrunks({
       method: 'POST',
       url: `/auth/login`,
       body: {
@@ -96,7 +92,7 @@ export const checkLoginThunk: any = createAsyncThunk<
     rejectValue: string
   }
 >('auth/checkLogin', async (login, { rejectWithValue }) => {
-  const res: any = await apiStoreTrunks({
+  const res: any = await executeApiRequestTrunks({
     method: 'POST',
     url: `/auth/check-login`,
     body: { login },
@@ -115,7 +111,7 @@ export const registerUserThunk: any = createAsyncThunk<
     rejectValue: string
   }
 >('auth/registerUser', async (userData, { rejectWithValue }) => {
-  const res: any = await apiStoreTrunks({
+  const res: any = await executeApiRequestTrunks({
     method: 'POST',
     url: `/auth/register`,
     body: {
@@ -145,7 +141,7 @@ export const requestReset: any = createAsyncThunk<
     rejectValue: string
   }
 >('auth/requestReset', async ({ login }, { rejectWithValue }) => {
-  const res: any = await apiStoreTrunks({
+  const res: any = await executeApiRequestTrunks({
     method: 'POST',
     url: `/auth/password-reset/request`,
     body: { login },
@@ -162,7 +158,7 @@ export const verificationCode_resetPassword: any = createAsyncThunk<
   VerificationPayload,
   { rejectValue: string }
 >('auth/verificationCode_resetPassword', async ({ otpCode, login, token_resetPassword }, { rejectWithValue }) => {
-  const res: any = await apiStoreTrunks({
+  const res: any = await executeApiRequestTrunks({
     method: 'POST',
     url: `/auth/password-reset/verification`,
     body: {
@@ -185,7 +181,7 @@ export const resetPasswordThunk: any = createAsyncThunk<
     rejectValue: string
   }
 >('auth/resetPassword', async ({ token_resetPassword, newPassword, login }, { rejectWithValue }) => {
-  const res: any = await apiStoreTrunks({
+  const res: any = await executeApiRequestTrunks({
     method: 'POST',
     url: `/auth/password-reset/confirm`,
     body: {
