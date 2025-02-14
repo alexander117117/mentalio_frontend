@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { executeApiRequestTrunks } from '@/shared/api/apiHelpers.ts'
+import { executeApiRTK } from '@/shared/api/apiHelpers.ts'
 import {
   PaginatedResponse,
   PaginationNextPageParams,
@@ -14,7 +14,7 @@ interface AsyncThunkConfig {
 export const paginationThunk = createAsyncThunk<PaginatedResponse, PaginationParams, AsyncThunkConfig>(
   'catalog/PaginationThunk',
   async ({ query, page, category, userName = '', limit = 10 }: PaginationParams, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<PaginatedResponse, PaginationParams>({
+    const response = await executeApiRTK<PaginatedResponse, PaginationParams>({
       method: 'GET',
       url: '/catalog',
       body: { query, page, category, userName, limit },
@@ -28,7 +28,7 @@ export const paginationThunk = createAsyncThunk<PaginatedResponse, PaginationPar
 export const paginationNextPageThunk = createAsyncThunk<PaginatedResponse, PaginationNextPageParams, AsyncThunkConfig>(
   'catalog/paginationNextPageThunk',
   async ({ query, page, category, limit = 10 }: PaginationNextPageParams, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<PaginatedResponse, PaginationNextPageParams>({
+    const response = await executeApiRTK<PaginatedResponse, PaginationNextPageParams>({
       method: 'GET',
       url: '/catalog',
       body: { query, page, category, limit },
@@ -42,7 +42,7 @@ export const paginationNextPageThunk = createAsyncThunk<PaginatedResponse, Pagin
 export const getAllCategoriesThunk = createAsyncThunk<AllCategoriesResponse, void, AsyncThunkConfig>(
   'catalog/getAllCategoriesThunk',
   async (_: void, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<AllCategoriesResponse, void>({
+    const response = await executeApiRTK<AllCategoriesResponse, void>({
       method: 'GET',
       url: 'catalog/getAllCategory',
       rejectWithValue,

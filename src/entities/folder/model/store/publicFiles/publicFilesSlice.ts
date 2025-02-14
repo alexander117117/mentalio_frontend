@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers.ts'
+import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
 import { PublicFile, PublicTopic } from '../../../lib/types.ts'
 
 import {

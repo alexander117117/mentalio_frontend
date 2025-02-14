@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { executeApiRequestTrunks } from '@/shared/api/apiHelpers'
+import { executeApiRTK } from '@/shared/api/apiHelpers'
 import { FileItem, TopicItem, CardItem } from '../../../lib/types'
 
 /**
@@ -9,7 +9,7 @@ import { FileItem, TopicItem, CardItem } from '../../../lib/types'
 export const getUserFiles = createAsyncThunk<FileItem[], void, { rejectValue: string }>(
   'userFiles/getUserFiles',
   async (_, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<{ items: FileItem[] }, void>({
+    const response = await executeApiRTK<{ items: FileItem[] }, void>({
       method: 'GET',
       url: '/userFiles',
       rejectWithValue,
@@ -27,7 +27,7 @@ export const getUserFiles = createAsyncThunk<FileItem[], void, { rejectValue: st
 export const createUserFile = createAsyncThunk<FileItem, Partial<FileItem>, { rejectValue: string }>(
   'userFiles/createUserFile',
   async (fileData, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<FileItem, Partial<FileItem>>({
+    const response = await executeApiRTK<FileItem, Partial<FileItem>>({
       method: 'POST',
       url: '/userFiles',
       body: fileData,
@@ -46,7 +46,7 @@ export const createUserFile = createAsyncThunk<FileItem, Partial<FileItem>, { re
 export const deleteUserFile = createAsyncThunk<string, string, { rejectValue: string }>(
   'userFiles/deleteUserFile',
   async (fileId, { rejectWithValue }) => {
-    await executeApiRequestTrunks<unknown, void>({
+    await executeApiRTK<unknown, void>({
       method: 'DELETE',
       url: `/userFiles/${fileId}`,
       rejectWithValue,
@@ -67,7 +67,7 @@ export const updateUserFile = createAsyncThunk<
   { fileId: string; fileData: Partial<FileItem> },
   { rejectValue: string }
 >('userFiles/updateUserFile', async ({ fileId, fileData }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks<FileItem, Partial<FileItem>>({
+  const response = await executeApiRTK<FileItem, Partial<FileItem>>({
     method: 'PUT',
     url: `/userFiles/${fileId}`,
     body: fileData,
@@ -85,7 +85,7 @@ export const updateUserFile = createAsyncThunk<
 export const getFileTopics = createAsyncThunk<TopicItem[], string, { rejectValue: string }>(
   'userFiles/getFileTopics',
   async (fileId, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<TopicItem[], void>({
+    const response = await executeApiRTK<TopicItem[], void>({
       method: 'GET',
       url: `/userFiles/${fileId}/topics`,
       rejectWithValue,
@@ -106,7 +106,7 @@ export const addTopicToFile = createAsyncThunk<
   { fileId: string; topicData: Partial<TopicItem> },
   { rejectValue: string }
 >('userFiles/addTopicToFile', async ({ fileId, topicData }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks<TopicItem, Partial<TopicItem>>({
+  const response = await executeApiRTK<TopicItem, Partial<TopicItem>>({
     method: 'POST',
     url: `/userFiles/${fileId}/topics`,
     body: topicData,
@@ -127,7 +127,7 @@ export const deleteTopicFromFile = createAsyncThunk<
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/deleteTopicFromFile', async ({ fileId, topicId }, { rejectWithValue }) => {
-  await executeApiRequestTrunks<unknown, void>({
+  await executeApiRTK<unknown, void>({
     method: 'DELETE',
     url: `/userFiles/${fileId}/topics/${topicId}`,
     rejectWithValue,
@@ -145,7 +145,7 @@ export const deleteTopicFromFile = createAsyncThunk<
 export const getTopicCards = createAsyncThunk<CardItem[], { fileId: string; topicId: string }, { rejectValue: string }>(
   'userFiles/getTopicCards',
   async ({ fileId, topicId }, { rejectWithValue }) => {
-    const response = await executeApiRequestTrunks<CardItem[], void>({
+    const response = await executeApiRTK<CardItem[], void>({
       method: 'GET',
       url: `/userFiles/${fileId}/topics/${topicId}/cards`,
       rejectWithValue,
@@ -167,7 +167,7 @@ export const addCardToTopic = createAsyncThunk<
   { fileId: string; topicId: string; cardData: Partial<CardItem> },
   { rejectValue: string }
 >('userFiles/addCardToTopic', async ({ fileId, topicId, cardData }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks<CardItem, Partial<CardItem>>({
+  const response = await executeApiRTK<CardItem, Partial<CardItem>>({
     method: 'POST',
     url: `/userFiles/${fileId}/topics/${topicId}/cards`,
     body: cardData,
@@ -189,7 +189,7 @@ export const deleteCardFromTopic = createAsyncThunk<
   { fileId: string; topicId: string; cardId: string },
   { rejectValue: string }
 >('userFiles/deleteCardFromTopic', async ({ fileId, topicId, cardId }, { rejectWithValue }) => {
-  await executeApiRequestTrunks<unknown, void>({
+  await executeApiRTK<unknown, void>({
     method: 'DELETE',
     url: `/userFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
     rejectWithValue,

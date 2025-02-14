@@ -1,4 +1,4 @@
-import { BaseApiProps } from '@/shared/lib/typeAPI.ts'
+import { BaseApiProps } from '@/shared/types/typeAPI.ts'
 import { AxiosResponse } from 'axios'
 import { axiosInstance } from '@/shared/api/axiosInstance.ts'
 

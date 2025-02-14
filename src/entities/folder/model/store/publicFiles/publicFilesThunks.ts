@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { PublicFile, PublicTopic, PublicCard } from '../../../lib/types.ts'
-import { executeApiRequestTrunks } from '@/shared/api/apiHelpers.ts'
+import { executeApiRTK } from '@/shared/api/apiHelpers.ts'
 
 /**
  * Получить список публичных файлов
@@ -11,7 +11,7 @@ export const getPublicFiles: any = createAsyncThunk<
   void, // Аргумент не передаётся
   { rejectValue: string } // Тип для rejectWithValue
 >('userFiles/getPublicFiles', async (_, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: '/publicFiles',
     rejectWithValue,
@@ -30,7 +30,7 @@ export const getPublicFileDetails: any = createAsyncThunk<
   string, // Аргумент: fileId
   { rejectValue: string }
 >('userFiles/getPublicFileDetails', async (fileId, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: `/publicFiles/${fileId}`,
     rejectWithValue,
@@ -51,7 +51,7 @@ export const addPublicFileToUserFiles: any = createAsyncThunk<
     rejectValue: string
   }
 >('userFiles/addPublicFileToUserFiles', async (fileId, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: `/publicFiles/${fileId}/addToUserFiles`,
     rejectWithValue,
@@ -72,7 +72,7 @@ export const getPublicFileTopics: any = createAsyncThunk<
     rejectValue: string
   }
 >('userFiles/getPublicFileTopics', async (fileId, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: `/publicFiles/${fileId}/topics`,
     rejectWithValue,
@@ -92,7 +92,7 @@ export const getPublicTopicDetails: any = createAsyncThunk<
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getPublicTopicDetails', async ({ fileId, topicId }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: `/publicFiles/${fileId}/topics/${topicId}`,
     rejectWithValue,
@@ -112,7 +112,7 @@ export const getPublicTopicCards: any = createAsyncThunk<
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getPublicTopicCards', async ({ fileId, topicId }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: `/publicFiles/${fileId}/topics/${topicId}/cards`,
     rejectWithValue,
@@ -133,7 +133,7 @@ export const getPublicCardDetails: any = createAsyncThunk<
   { fileId: string; topicId: string; cardId: string },
   { rejectValue: string }
 >('userFiles/getPublicCardDetails', async ({ fileId, topicId, cardId }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: `/publicFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
     rejectWithValue,
@@ -160,7 +160,7 @@ export const updatePublicCard: any = createAsyncThunk<
   },
   { rejectValue: string }
 >('userFiles/updatePublicCard', async ({ fileId, topicId, cardId, cardData }, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'PUT',
     url: `/publicFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
     body: cardData,

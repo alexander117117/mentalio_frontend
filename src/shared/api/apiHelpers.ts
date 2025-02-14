@@ -1,5 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios'
-import { BaseApiProps, BaseApiTrunksProps } from '@/shared/lib/typeAPI'
+import { BaseApiProps, BaseApiTrunksProps } from '@/shared/types/typeAPI.ts'
 import { makeRequest } from './helpers/makeRequest'
 
 /**
@@ -12,7 +12,7 @@ import { makeRequest } from './helpers/makeRequest'
 /**
  * Выполняет HTTP-запрос с обработчиком отклонения.
  */
-export async function executeApiRequestTrunks<TResponse = any, TRequest = any>(
+export async function executeApiRTK<TResponse = any, TRequest = any>(
   props: BaseApiTrunksProps<TRequest>,
 ): Promise<AxiosResponse<TResponse>> {
   try {

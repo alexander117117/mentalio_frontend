@@ -8,7 +8,7 @@ import {
   verificationCode_resetPassword,
   resetPasswordThunk,
 } from './authThunks.ts'
-import { handlePending, handleRejected } from '@/shared/helpers/StoreHandlers.ts'
+import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
 
 interface AuthState {
   user: any | null

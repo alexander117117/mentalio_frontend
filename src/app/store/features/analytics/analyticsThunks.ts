@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { executeApiRequestTrunks } from '@/shared/api/apiHelpers'
+import { executeApiRTK } from '@/shared/api/apiHelpers'
 import { Question } from '../../lib/types'
 
 /**
@@ -14,7 +14,7 @@ export const fetchQuestions: any = createAsyncThunk<
   Question[], // Аргумент (initial)
   { rejectValue: string }
 >('analytics/fetchQuestions', async (initial, { rejectWithValue }) => {
-  const response = await executeApiRequestTrunks({
+  const response = await executeApiRTK({
     method: 'GET',
     url: '/auth/register/analytics/questions',
     rejectWithValue,
