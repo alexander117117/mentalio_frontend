@@ -9,12 +9,7 @@ interface CreateFolder {
   setQuantityTopicInput: (quantity: number | ((prev: number) => number)) => void
 }
 
-export function CreateFolder({
-  isModalOpen,
-  setIsModalOpen,
-  quantityTopicInput,
-  setQuantityTopicInput,
-}: CreateFolder) {
+export function CreateFolder({ isModalOpen, setIsModalOpen, quantityTopicInput, setQuantityTopicInput }: CreateFolder) {
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <div className="w-50">

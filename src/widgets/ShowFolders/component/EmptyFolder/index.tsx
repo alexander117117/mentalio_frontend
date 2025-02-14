@@ -1,5 +1,5 @@
 import React from 'react'
-import { sad_folders } from '@/shared/images'
+import { sad_folders } from 'src/shared/assets/images'
 import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 
 export const EmptyFolder = () => {

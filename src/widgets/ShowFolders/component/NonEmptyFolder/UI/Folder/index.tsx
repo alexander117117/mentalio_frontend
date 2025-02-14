@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { happy_folders } from '@/shared/images'
+import { happy_folders } from 'src/shared/assets/images'
 
 interface FolderProps {
   title: string

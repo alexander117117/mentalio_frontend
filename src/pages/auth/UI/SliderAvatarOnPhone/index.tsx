@@ -1,5 +1,5 @@
 import React from 'react'
-import { test } from '@/shared/images'
+import { test } from 'src/shared/assets/images'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'

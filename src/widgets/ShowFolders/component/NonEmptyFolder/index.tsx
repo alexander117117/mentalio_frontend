@@ -1,5 +1,5 @@
 import React from 'react'
-import { happy_folders, sad_folders } from '@/shared/images'
+import { happy_folders, sad_folders } from 'src/shared/assets/images'
 import { Link } from 'react-router'
 import { Folder } from './UI/Folder'
 import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'

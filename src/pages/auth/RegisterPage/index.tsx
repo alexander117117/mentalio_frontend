@@ -43,9 +43,7 @@ export function Register() {
   const [password, setPassword] = useState<string>('')
   const [login, setlogin] = useState<string>('')
   const { isLoading, error } = useSelector<RootState, AuthState>((state) => state.auth)
-  const { questions } = useSelector<RootState, AnalyticsState>(
-    (state) => state.analytics,
-  )
+  const { questions } = useSelector<RootState, AnalyticsState>((state) => state.analytics)
   const [isError, setIsError] = useState<boolean>(false)
 
   useEffect(() => {

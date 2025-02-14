@@ -1,5 +1,5 @@
 import React from 'react'
-import { test } from '@/shared/images'
+import { test } from 'src/shared/assets/images'
 import PropTypes from 'prop-types'
 import SliderAvatarOnPhone from '../../../UI/SliderAvatarOnPhone'
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { sider1, sider2, sider3 } from '@/shared/images'
+import { sider1, sider2, sider3 } from 'src/shared/assets/images'
 
 import { SiderMenuItem } from '../SiderMenuItem/index.tsx'
 import { SiderMenuCategory } from '../SiderMenuCategory/index.tsx'

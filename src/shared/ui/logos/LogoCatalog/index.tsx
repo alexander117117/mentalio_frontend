@@ -1,5 +1,5 @@
 import React from 'react'
-import { logo } from '@/shared/images'
+import { logo } from 'src/shared/assets/images'
 
 const Logo = () => {
   return <img src={logo} alt="Логотип Mentalio" className="w-full h-full object-cover" />
