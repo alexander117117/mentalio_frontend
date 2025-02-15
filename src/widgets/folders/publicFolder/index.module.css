@@ -1,0 +1,21 @@
+.InfoPublicFolder_title{
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  text-align: center;
+}
+
+.InfoPublicFolder_group{
+  width: 30.625rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .InfoPublicFolder_title{
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+
+  .InfoPublicFolder_group{
+    width: 100%;
+  }
+}
