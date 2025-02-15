@@ -2,14 +2,12 @@ import { ModalWrapper } from '@/shared/ui/ModalWrapper'
 import style from "./index.module.css"
 import { InfoFolder } from '../infoFolder'
 import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
-import classNames from 'classnames'
-
+import { groupClass } from '@/shared/lib/classNames'
 interface InfoUserFolderProps {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
 }
 export function InfoPublicFolder({ isModalOpen, setIsModalOpen }: InfoUserFolderProps) {
-  const groupClass = classNames(style.InfoPublicFolder_group, 'flex', 'flex-col', 'gap-7');
   return (
     <ModalWrapper 
       isOpen={isModalOpen} 

@@ -1,0 +1,11 @@
+.InfoFolder_group{
+  width: 30.625rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .InfoFolder_group{
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+}
