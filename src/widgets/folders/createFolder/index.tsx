@@ -30,6 +30,7 @@ export function CreateFolder({ isModalOpen, setIsModalOpen, quantityTopicInput, 
                 quantityTopicInput={quantityTopicInput}
               />
             ))}
+          <InputAddFolder type={'text'} name={'folderDescription'} placeholder={'Введите описание'} />
           <button
             type="submit"
             className="bg-[#BDFF9D] py-[12px] sm:py-[23px] rounded-[30px] text-sm sm:text-xl font-bold text-black mt-[10px] sm:mt-[30px]"
