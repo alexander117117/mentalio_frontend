@@ -43,16 +43,17 @@ import PropTypes from 'prop-types'
 interface ModalWrapperProps {
   isOpen: boolean
   onClose: () => void
+  isDark?: boolean
   children: React.ReactNode
 }
 
-export const ModalWrapper = ({ isOpen, onClose, children }: ModalWrapperProps) => {
+export const ModalWrapper = ({ isOpen, onClose, isDark = false, children }: ModalWrapperProps) => {
   if (!isOpen) return null
 
   return (
     <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50`} onClick={onClose}>
       <div
-        className="relative bg-white rounded-lg shadow-lg p-3 sm:p-6 w-[75%] sm:w-auto md:max-w-[75%] md:max-h-[75vh] xs:max-w-[90%] xs:max-h-[90%] overflow-y-auto"
+        className={`relative ${isDark ? 'bg-[#111]' : 'bg-white'} rounded-lg shadow-lg p-3 sm:p-6 w-[75%] sm:w-auto md:max-w-[75%] md:max-h-[75vh] xs:max-w-[90%] xs:max-h-[90%] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()} // Предотвращает закрытие при клике на контент
       >
         {children}

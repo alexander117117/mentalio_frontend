@@ -1,7 +1,7 @@
+import * as React from 'react'
 import { ModalWrapper } from '@/shared/ui/ModalWrapper'
 import { InputAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/InputAddFolder'
 import { SelectAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/SelectAddFolder'
-
 interface CreateFolder {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
