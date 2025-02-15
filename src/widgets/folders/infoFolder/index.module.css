@@ -7,7 +7,7 @@
   justify-content: space-between;
 }
 
-.info_folder img{
+.info_folder svg{
   position: absolute;
   top: -12px;
   right: -12px;

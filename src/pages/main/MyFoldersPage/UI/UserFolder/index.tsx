@@ -27,7 +27,6 @@ export const UserFolder: React.FC<UserFolder> = ({ title, date, desc }) => {
           </div>
         </div>
 
-        {/* when hover */}
         <div className="sm:bg-directoryFolder absolute top-0 left-0 right-0 bottom-0 pt-5 2xl:pt-[117px] px-5 2xl:px-[36px] transition duration-200 linear opacity-0 hover:opacity-100">
           <h3 className="hidden sm:block text-[24px] lg:text-[34px] text-white font-medium font-unbounded leading-[42px]">
             {title}
@@ -42,7 +41,6 @@ export const UserFolder: React.FC<UserFolder> = ({ title, date, desc }) => {
             Открыть
           </button>
 
-          {/* On mobile */}
           <button
             onClick={() => setIsModalOpen(true)}
             className="flex sm:hidden items-center justify-center absolute top-0 left-0 right-0 bottom-0 text-[#fff] bg-[#000000b3]"

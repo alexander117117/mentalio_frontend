@@ -15,7 +15,7 @@ import test from './assets/test.jpg'
 import logo from './assets/logo.svg'
 import happy_folders from './assets/happy_folders.png'
 import sad_folders from './assets/sad_folders.png'
-import close_icon from "./assets/close_icon.png"
+import close_icon from "./assets/close_icon.svg"
 
 export {
   sider1,
