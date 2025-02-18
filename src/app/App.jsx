@@ -16,7 +16,7 @@ async function enableMocking() {
    * Если IS_MOCKING = true, то мок-запросы включены.
    * Если IS_MOCKING = false, то мок-запросы выключены.
    */
-  const IS_MOCKING = false
+  const IS_MOCKING = true
 
   if (IS_MOCKING) {
     const { worker } = await import('./test/mocks/browser.js')
