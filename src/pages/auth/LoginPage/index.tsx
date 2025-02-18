@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useFormik } from 'formik'
 import './Login.css'
 import InputAuthCommon from '../UI/InputAuthCommon/index.tsx'
@@ -9,13 +9,13 @@ import { loginUserThunk } from '@/entities/user/model/store/auth/authThunks.ts'
 import { loginSchema } from '@/../validationSchemas.js'
 import { LogoCenter } from '../UI/LogoCenter/index.tsx'
 import TextError from '../UI/TextError/index.tsx'
+import { AppDispatch } from '@/app/store/configureStore.ts'
 
 export function Login() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
   const navigate = useNavigate()
   const { loading, error, isAuthenticated, user } = useSelector((state: any) => state.auth)
 
-  // Настройка Formik
   const formik = useFormik({
     initialValues: {
       login: '',
@@ -24,18 +24,14 @@ export function Login() {
     validationSchema: loginSchema,
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
-        // Отправка запроса на сервер через Redux
-        // @ts-ignore
         const resultAction = await dispatch(loginUserThunk(values)).unwrap()
 
-        // Если запрос успешный, перенаправляем пользователя
         if (resultAction?.user?.role === 'user') {
           navigate('/')
         } else if (resultAction?.user?.role === 'admin') {
           navigate('/admin')
         }
       } catch (error: any) {
-        // Обработка ошибок
         if (error.response && error.response.data) {
           setErrors(error.response.data)
         }
@@ -45,7 +41,6 @@ export function Login() {
     },
   })
 
-  // Если пользователь аутентифицирован, перенаправляем его на главную страницу
   useEffect(() => {
     if (isAuthenticated) {
       if (user?.role === 'user') {
@@ -61,7 +56,6 @@ export function Login() {
       <main className="min-h-screen bg-bgDark text-[#fff]">
         <div className="flex justify-center items-center min-h-screen">
           <div className="w-[95%] sm:w-[763px] mx-auto text-center">
-            {/* Логотип */}
             <LogoCenter />
             <div className="w-[95%] sm:w-[490px] mx-auto mt-[1.25rem] 2xl:mt-[12.5rem]">
               <h1 className="text-[32px] sm:text-[48px] font-[600] mb-[20px]">Войти</h1>

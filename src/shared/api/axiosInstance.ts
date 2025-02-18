@@ -6,7 +6,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL || 'http://locolhost:8000',
   timeout: 10000, // Тайм-аут запросов
   headers: {
     'Content-Type': 'application/json',

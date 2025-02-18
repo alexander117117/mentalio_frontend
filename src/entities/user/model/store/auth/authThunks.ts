@@ -56,30 +56,20 @@ export const loginUserThunk: any = createAsyncThunk<
   Credentials,
   { rejectValue: string } // Тип для rejectWithValue
 >('auth/loginUserThunk', async (credentials, { rejectWithValue }) => {
-  try {
-    const res: any = await executeApiRTK({
-      method: 'POST',
-      url: `/auth/login`,
-      body: {
-        login: credentials.login,
-        password: credentials.password,
-      },
-      rejectWithValue,
-    })
-
-    if (res.data.status !== 'success') {
-      return rejectWithValue(res.data.error || 'Ошибка при входе')
-    }
-
-    // Сохраняем токен в cookies на 7 дней
-    if (res.data.token) {
-      Cookies.set('token', res.data.token, { expires: 7 })
-    }
-
-    return res.data
-  } catch (err: any) {
-    return rejectWithValue(err.response?.data?.error || 'Что-то пошло не так')
+  const response: any = await executeApiRTK({
+    method: 'POST',
+    url: `/auth/login`,
+    body: credentials,
+    rejectWithValue,
+  })
+  // Сохраняем токен в cookies на 7 дней
+  if (response.data.token) {
+    Cookies.set('token', response.data.token, { expires: 7 })
   }
+  if (response.data.status !== 'success') {
+    return rejectWithValue(response.data.error || 'Ошибка при входе')
+  }
+  return response.data
 })
 
 /**

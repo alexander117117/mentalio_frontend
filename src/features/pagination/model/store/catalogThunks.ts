@@ -24,6 +24,24 @@ export const paginationThunk = createAsyncThunk<PaginatedResponse, PaginationPar
     return response.data
   },
 )
+export const getCartsFolderMentalio = createAsyncThunk<PaginatedResponse, void, AsyncThunkConfig>(
+  'catalog/getCartsFolderMentalio',
+  async (_: void , { rejectWithValue }) => {
+    const response = await executeApiRTK<PaginatedResponse, PaginationParams>({
+      method: 'GET',
+      url: '/catalog',
+      body: {
+        query: '',
+        page: 1,
+        category: '',
+        userName: 'Mentalio',
+        limit: 6,
+      },
+      rejectWithValue,
+    })
+    return response.data
+  },
+)
 
 export const paginationNextPageThunk = createAsyncThunk<PaginatedResponse, PaginationNextPageParams, AsyncThunkConfig>(
   'catalog/paginationNextPageThunk',
@@ -44,7 +62,7 @@ export const getAllCategoriesThunk = createAsyncThunk<AllCategoriesResponse, voi
   async (_: void, { rejectWithValue }) => {
     const response = await executeApiRTK<AllCategoriesResponse, void>({
       method: 'GET',
-      url: 'catalog/getAllCategory',
+      url: '/catalog/categories',
       rejectWithValue,
       errorMessage: 'Ошибка при загрузке списка категорий',
     })

@@ -15,13 +15,13 @@ import {
 } from './userFilesThunks.ts'
 
 interface UserFilesState {
-  files: FileItem[] | null
+  filesUser: FileItem[]
   loading: boolean
   error: string | null
 }
 
 const initialState: UserFilesState = {
-  files: null,
+  filesUser: [],
   loading: false,
   error: null,
 }
@@ -36,7 +36,7 @@ export const userFilesSlice = createSlice({
       .addCase(getUserFiles.pending, handlePending)
       .addCase(getUserFiles.fulfilled, (state, action) => {
         state.loading = false
-        state.files = action.payload
+        state.filesUser = action.payload
       })
       .addCase(getUserFiles.rejected, handleRejected)
 
@@ -44,10 +44,10 @@ export const userFilesSlice = createSlice({
       .addCase(createUserFile.pending, handlePending)
       .addCase(createUserFile.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          state.files.push(action.payload)
+        if (state.filesUser) {
+          state.filesUser.push(action.payload)
         } else {
-          state.files = [action.payload]
+          state.filesUser = [action.payload]
         }
       })
       .addCase(createUserFile.rejected, handleRejected)
@@ -56,8 +56,8 @@ export const userFilesSlice = createSlice({
       .addCase(deleteUserFile.pending, handlePending)
       .addCase(deleteUserFile.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          state.files = state.files.filter((item) => item.id !== action.payload)
+        if (state.filesUser) {
+          state.filesUser = state.filesUser.filter((item) => item.id !== action.payload)
         }
       })
       .addCase(deleteUserFile.rejected, handleRejected)
@@ -66,10 +66,10 @@ export const userFilesSlice = createSlice({
       .addCase(updateUserFile.pending, handlePending)
       .addCase(updateUserFile.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const index = state.files.findIndex((item) => item.id === action.payload.id)
+        if (state.filesUser) {
+          const index = state.filesUser.findIndex((item) => item.id === action.payload.id)
           if (index !== -1) {
-            state.files[index] = action.payload
+            state.filesUser[index] = action.payload
           }
         }
       })
@@ -79,8 +79,8 @@ export const userFilesSlice = createSlice({
       .addCase(getFileTopics.pending, handlePending)
       .addCase(getFileTopics.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const file = state.files.find((item) => item.id === action.meta.arg)
+        if (state.filesUser) {
+          const file = state.filesUser.find((item) => item.id === action.meta.arg)
           if (file) {
             file.topics = action.payload
           }
@@ -92,8 +92,8 @@ export const userFilesSlice = createSlice({
       .addCase(addTopicToFile.pending, handlePending)
       .addCase(addTopicToFile.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const file = state.files.find((item) => item.id === action.meta.arg.fileId)
+        if (state.filesUser) {
+          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
           if (file) {
             file.topics = [...(file.topics || []), action.payload]
           }
@@ -105,8 +105,8 @@ export const userFilesSlice = createSlice({
       .addCase(deleteTopicFromFile.pending, handlePending)
       .addCase(deleteTopicFromFile.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const file = state.files.find((item) => item.id === action.meta.arg.fileId)
+        if (state.filesUser) {
+          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
           if (file && file.topics) {
             file.topics = file.topics.filter((topic) => topic.id !== action.payload)
           }
@@ -118,8 +118,8 @@ export const userFilesSlice = createSlice({
       .addCase(getTopicCards.pending, handlePending)
       .addCase(getTopicCards.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const file = state.files.find((item) => item.id === action.meta.arg.fileId)
+        if (state.filesUser) {
+          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
           const topic = file?.topics?.find((t) => t.id === action.meta.arg.topicId)
           if (topic) {
             topic.cards = action.payload
@@ -132,8 +132,8 @@ export const userFilesSlice = createSlice({
       .addCase(addCardToTopic.pending, handlePending)
       .addCase(addCardToTopic.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const file = state.files.find((item) => item.id === action.meta.arg.fileId)
+        if (state.filesUser) {
+          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
           const topic = file?.topics?.find((t) => t.id === action.meta.arg.topicId)
           if (topic) {
             topic.cards = [...(topic.cards || []), action.payload]
@@ -146,8 +146,8 @@ export const userFilesSlice = createSlice({
       .addCase(deleteCardFromTopic.pending, handlePending)
       .addCase(deleteCardFromTopic.fulfilled, (state, action) => {
         state.loading = false
-        if (state.files) {
-          const file = state.files.find((item) => item.id === action.meta.arg.fileId)
+        if (state.filesUser) {
+          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
           const topic = file?.topics?.find((t) => t.id === action.meta.arg.topicId)
           if (topic && topic.cards) {
             topic.cards = topic.cards.filter((card) => card.id !== action.payload)
