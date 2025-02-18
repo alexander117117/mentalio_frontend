@@ -1,8 +1,19 @@
+import { useEffect } from 'react'
 import { Sider } from '@/widgets/Sider'
 import { Outlet } from 'react-router'
 import { MiniNavbar } from 'src/widgets/MiniNavbar'
+import { useDispatch } from 'react-redux'
+import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
+import { AppDispatch } from '@/app/store/configureStore.ts'
 
 export function LayoutMain() {
+const dispatch = useDispatch<AppDispatch>()
+
+ useEffect(() => {
+  dispatch(getUserFiles())
+ }, [dispatch]);
+
+
   return (
     <main>
       <div className={`flex items-start pr-0 sm:pr-[30px] pb-24 md:pb-0 relative`}>

@@ -1,27 +1,14 @@
 import { useState, useEffect } from 'react'
 import { executeApiRequest } from '@/shared/api/apiHelpers.ts'
+import { getCartsFolderMentalio } from '@/features/pagination/model/store/catalogThunks.ts'
+import { useDispatch } from 'react-redux'
+import type { AppDispatch } from '@/app/store/configureStore.ts'
+import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
 
 export function useGetCarts() {
-  const [data, setData] = useState([])
+  const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await executeApiRequest({
-        method: 'GET',
-        url: '/catalog',
-        body: {
-          query: '',
-          page: 1,
-          category: '',
-          userName: 'Mentalio',
-          limit: 6,
-        },
-      })
-      setData(response.data.items)
-    }
-
-    fetchData().then((r) => r)
-  }, [])
-
-  return data
+    dispatch(getCartsFolderMentalio())
+  }, [dispatch])
 }

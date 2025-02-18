@@ -1,22 +1,16 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { ShowFolders } from '@/widgets/ShowFolders'
 import { ListCart } from '@/features/pagination/ui/ListCart'
-import { useDispatch, useSelector } from 'react-redux'
-import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
-import { arrCarts } from './model/const'
-import { Cart } from './lib/types'
-import { AppDispatch } from '@/app/store/configureStore.ts'
+import { useSelector } from 'react-redux'
+import { useGetCarts } from './hooks/useGetCarts'
+
 
 export const HomePage = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const [carts, setCarts] = useState<Cart[]>(arrCarts)
   const { files } = useSelector((state: any) => state.userFiles)
+  const { cartsHome } = useSelector((state: any) => state.catalog)
 
-  useEffect(() => {
-    dispatch(getUserFiles())
-  }, [])
-  // useCarts(useGetCarts())
+
+  useGetCarts()
 
   return (
     <>
@@ -36,7 +30,7 @@ export const HomePage = () => {
         </div>
 
         <div className="flex items-center justify-between 2xl:justify-normal flex-wrap mt-[15px] sm:mt-[40px] 2xl:gap-x-[90px] gap-y-2 sm:gap-y-[40px] pr-3 sm:pr-0">
-          <ListCart carts={carts} />
+          <ListCart carts={cartsHome} />
         </div>
       </div>
     </>

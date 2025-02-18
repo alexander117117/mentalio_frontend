@@ -1,25 +1,6 @@
-export interface CartsWordsItem {}
+import { CartFolderItem, CartCategoriesItem } from '@/entities/folder/lib/types'
 
-export interface TopicsItem {
-  date_created: string
-  description: string
-  id: number
-  name: string
-  percent_study: number
-  cards: CartsWordsItem[]
-}
-export interface CartFolderItem {
-  id: number
-  name: string
-  category_name: string
-  date_created: string
-  description: string
-  topics: TopicsItem[]
-}
-export interface CartCategoriesItem {
-  id: number
-  name: string
-}
+
 export interface PaginatedResponse {
   code: number
   next: number
@@ -47,5 +28,7 @@ export interface PaginationNextPageParams {
 }
 
 export interface AllCategoriesResponse {
-  allCategories: CartCategoriesItem[]
+  results: {
+    allCategories: CartCategoriesItem[]
+  }
 }

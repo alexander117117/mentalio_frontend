@@ -1,36 +1,26 @@
-export interface PublicFile {
-  id: string
-  [key: string]: any
-}
-
-export interface PublicTopic {
-  id: string
-  cards?: PublicCard[]
-  [key: string]: any
-}
-
-export interface PublicCard {
-  id: string
-  [key: string]: any
-}
-
-export interface CardItem {
+export interface CartsWordsItem {
   id: number | string
-  question?: string
-  answer?: string
+  word: string
+  translate: string
 }
 
-export interface TopicItem {
+export interface TopicsItem {
+  date_created: string 
+  description: string
   id: number | string
-  title?: string
-  desc?: string
-  cards?: CardItem[]
+  name: string
+  percent_study: number
+  cards: CartsWordsItem[]
 }
-
-export interface FileItem {
+export interface CartFolderItem {
   id: number | string
-  title: string
-  dateCreated: string
-  desc: string
-  topics?: TopicItem[]
+  name: string
+  category_name: string
+  date_created: string
+  description: string
+  topics: TopicsItem[]
+}
+export interface CartCategoriesItem {
+  id: number | string
+  name: string
 }
