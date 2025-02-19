@@ -52,7 +52,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "babel-jest": "^29.7.0",
-    "eslint": "^9.20.0",
+    "eslint": "^9.20.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.16",
@@ -65,7 +65,7 @@
     "stylelint-order": "^6.0.4",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.24.0",
+    "typescript-eslint": "^8.24.1",
     "vite": "^6.0.3",
     "vite-plugin-svgr": "^4.3.0"
   },

@@ -1,14 +1,36 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+import tsEslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
 
-
-/** @type {import('eslint').Linter.Config[]} */
+/** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
-  {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
-  {languageOptions: { globals: globals.browser }},
+  // Рекомендуемые конфигурации сначала:
   pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...tsEslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+
+  // А затем ваши кастомные настройки, которые переопределят предыдущие:
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: globals.browser,
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
 ];
