@@ -81,6 +81,8 @@ export function useFormik_Register({
               setErrors({ emailOrPhone: 'Login занят' })
             }
           } catch (error) {
+            console.error('Error login: ', error)
+
             setErrors({ emailOrPhone: 'Произошла ошибка при проверке логина' })
           }
         } else {

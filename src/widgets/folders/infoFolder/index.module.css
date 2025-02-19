@@ -1,4 +1,4 @@
-.info_folder{
+.info_folder {
   width: 100%;
   padding: 1rem;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23333' stroke-width='3' stroke-dasharray='12' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
@@ -7,13 +7,13 @@
   justify-content: space-between;
 }
 
-.info_folder svg{
+.info_folder svg {
   position: absolute;
   top: -12px;
   right: -12px;
   cursor: pointer;
 }
-.info_folder__word p{
+.info_folder__word p {
   width: 150px;
   overflow: hidden;
   display: -webkit-box;
@@ -24,11 +24,11 @@
 .info_folder span {
   flex: 1;
   font-size: 0.75rem;
-  color: #5F5D5D;
+  color: #5f5d5d;
 }
 
-.info_folder_result{
+.info_folder_result {
   display: inline;
   font-size: 0.75rem;
-  color: #24AC18;
+  color: #24ac18;
 }

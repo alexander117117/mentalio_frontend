@@ -36,8 +36,8 @@ export const userFilesSlice = createSlice({
       .addCase(getUserFiles.pending, handlePending)
       .addCase(getUserFiles.fulfilled, (state, action) => {
         state.loading = false
-        console.log("action.payload getUserFiles", action.payload);
-        
+        console.log('action.payload getUserFiles', action.payload)
+
         state.filesUser = action.payload
       })
       .addCase(getUserFiles.rejected, handleRejected)

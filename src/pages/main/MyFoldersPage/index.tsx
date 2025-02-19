@@ -6,7 +6,6 @@ import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
 import { AppDispatch } from '@/app/store/configureStore.ts'
-import { UserFolder } from './UI/UserFolder'
 
 export const MyFoldersPage = () => {
   const dispatch = useDispatch<AppDispatch>()

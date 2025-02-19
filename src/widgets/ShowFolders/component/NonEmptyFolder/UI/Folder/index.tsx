@@ -1,6 +1,5 @@
 import { InfoUserFolder } from '@/widgets/folders/userFolder'
 import React, { useState } from 'react'
-import { Link } from 'react-router'
 import { happy_folders } from 'src/shared/assets/images'
 
 interface FolderProps {
@@ -22,10 +21,7 @@ export const Folder = ({ title, date }: FolderProps) => {
         </div>
       </button>
 
-      <InfoUserFolder 
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
+      <InfoUserFolder isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   )
 }

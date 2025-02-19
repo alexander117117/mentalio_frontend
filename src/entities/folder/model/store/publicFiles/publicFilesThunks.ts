@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { PublicFile, PublicTopic, PublicCard } from '../../../lib/types.ts'
+import { TopicsItem, CartFolderItem, CartsWordsItem } from '../../../lib/types.ts'
 import { executeApiRTK } from '@/shared/api/apiHelpers.ts'
 
 /**
  * Получить список публичных файлов
- * @returns {Promise<PublicFile[]>} Список публичных файлов
+ * @returns {Promise<CartFolderItem[]>} Список публичных файлов
  */
 export const getPublicFiles: any = createAsyncThunk<
-  PublicFile[], // Возвращаемый тип при успехе
+  CartFolderItem[], // Возвращаемый тип при успехе
   void, // Аргумент не передаётся
   { rejectValue: string } // Тип для rejectWithValue
 >('userFiles/getPublicFiles', async (_, { rejectWithValue }) => {
@@ -23,10 +23,10 @@ export const getPublicFiles: any = createAsyncThunk<
 /**
  * Получить данные публичного файла
  * @param fileId - Идентификатор публичного файла
- * @returns {Promise<PublicFile>} Данные публичного файла
+ * @returns {Promise<CartFolderItem>} Данные публичного файла
  */
 export const getPublicFileDetails: any = createAsyncThunk<
-  PublicFile, // Возвращаемый тип
+  CartFolderItem, // Возвращаемый тип
   string, // Аргумент: fileId
   { rejectValue: string }
 >('userFiles/getPublicFileDetails', async (fileId, { rejectWithValue }) => {
@@ -42,10 +42,10 @@ export const getPublicFileDetails: any = createAsyncThunk<
 /**
  * Добавить публичный файл в пользовательские файлы
  * @param fileId - Идентификатор публичного файла
- * @returns {Promise<PublicFile>} Добавленный файл
+ * @returns {Promise<CartFolderItem>} Добавленный файл
  */
 export const addPublicFileToUserFiles: any = createAsyncThunk<
-  PublicFile,
+  CartFolderItem,
   string,
   {
     rejectValue: string
@@ -63,10 +63,10 @@ export const addPublicFileToUserFiles: any = createAsyncThunk<
 /**
  * Получить темы публичного файла
  * @param fileId - Идентификатор публичного файла
- * @returns {Promise<PublicTopic[]>} Список тем
+ * @returns {Promise<TopicsItem[]>} Список тем
  */
 export const getPublicFileTopics: any = createAsyncThunk<
-  PublicTopic[],
+  TopicsItem[],
   string,
   {
     rejectValue: string
@@ -85,10 +85,10 @@ export const getPublicFileTopics: any = createAsyncThunk<
  * Получить данные темы публичного файла
  * @param payload.fileId - Идентификатор публичного файла
  * @param payload.topicId - Идентификатор темы
- * @returns {Promise<PublicTopic>} Данные темы
+ * @returns {Promise<TopicsItem>} Данные темы
  */
 export const getPublicTopicDetails: any = createAsyncThunk<
-  PublicTopic,
+  TopicsItem,
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getPublicTopicDetails', async ({ fileId, topicId }, { rejectWithValue }) => {
@@ -105,10 +105,10 @@ export const getPublicTopicDetails: any = createAsyncThunk<
  * Получить карточки темы публичного файла
  * @param payload.fileId - Идентификатор публичного файла
  * @param payload.topicId - Идентификатор темы
- * @returns {Promise<PublicCard[]>} Список карточек
+ * @returns {Promise<CartsWordsItem[]>} Список карточек
  */
 export const getPublicTopicCards: any = createAsyncThunk<
-  PublicCard[],
+  CartsWordsItem[],
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getPublicTopicCards', async ({ fileId, topicId }, { rejectWithValue }) => {
@@ -126,10 +126,10 @@ export const getPublicTopicCards: any = createAsyncThunk<
  * @param payload.fileId - Идентификатор публичного файла
  * @param payload.topicId - Идентификатор темы
  * @param payload.cardId - Идентификатор карточки
- * @returns {Promise<PublicCard>} Данные карточки
+ * @returns {Promise<CartsWordsItem>} Данные карточки
  */
 export const getPublicCardDetails: any = createAsyncThunk<
-  PublicCard,
+  CartsWordsItem,
   { fileId: string; topicId: string; cardId: string },
   { rejectValue: string }
 >('userFiles/getPublicCardDetails', async ({ fileId, topicId, cardId }, { rejectWithValue }) => {
@@ -148,15 +148,15 @@ export const getPublicCardDetails: any = createAsyncThunk<
  * @param payload.topicId - Идентификатор темы
  * @param payload.cardId - Идентификатор карточки
  * @param payload.cardData - Обновленные данные карточки
- * @returns {Promise<PublicCard>} Обновленная карточка
+ * @returns {Promise<CartsWordsItem>} Обновленная карточка
  */
 export const updatePublicCard: any = createAsyncThunk<
-  PublicCard,
+  CartsWordsItem,
   {
     fileId: string
     topicId: string
     cardId: string
-    cardData: Partial<PublicCard>
+    cardData: Partial<CartsWordsItem>
   },
   { rejectValue: string }
 >('userFiles/updatePublicCard', async ({ fileId, topicId, cardId, cardData }, { rejectWithValue }) => {

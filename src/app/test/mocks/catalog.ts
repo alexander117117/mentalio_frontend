@@ -3,7 +3,6 @@ import { axiosInstance } from '@/shared/api/axiosInstance'
 
 const URL = axiosInstance.defaults.baseURL
 
-
 const mockCards = [
   { id: 1, name: 'Ivan', category_name: 'Папка', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },
   { id: 2, name: 'Ivan3', category_name: 'Папка3', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },

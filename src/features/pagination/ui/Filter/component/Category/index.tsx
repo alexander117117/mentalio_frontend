@@ -4,10 +4,10 @@ import { setCategory } from '@/features/pagination/model/store/catalogSlice'
 import { CategoryItem } from './component/CategoryItem'
 import { getAllCategoriesThunk } from '@/features/pagination/model/store/catalogThunks'
 import type { AppDispatch, RootState } from '@/app/store/configureStore'
-import { CartCategoriesItem } from '@/features/pagination/lib/types.ts'
+import { CartCategoriesItem } from '@/entities/folder/lib/types'
 
 export const Category = () => {
-  const { category, allCategories, error } = useSelector((state: RootState) => state.catalog)
+  const { category, allCategories } = useSelector((state: RootState) => state.catalog)
   const dispatch = useDispatch<AppDispatch>()
   const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null)
   const [listCategors, setListCategors] = useState<CartCategoriesItem[]>()
@@ -36,7 +36,7 @@ export const Category = () => {
       <h1 className="text-xl sm:text-[28px] font-bold">Категории</h1>
       <div className="w-full sm:w-[560px] grid grid-cols-3 gap-[10px] mt-[12px] sm:mt-5">
         {listCategors ? (
-          listCategors.map((item, index: number) => (
+          listCategors.map((item) => (
             <CategoryItem
               key={item.id}
               title={item.name}

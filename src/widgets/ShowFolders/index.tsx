@@ -3,5 +3,5 @@ import { EmptyFolder } from './component/EmptyFolder'
 import { FoldersProps } from '@/widgets/ShowFolders/lib/types.ts'
 
 export function ShowFolders({ files }: FoldersProps) {
-  return <>{!!files?.length ? <NonEmptyFolder files={files} /> : <EmptyFolder />}</>
+  return <>{files?.length ? <NonEmptyFolder files={files} /> : <EmptyFolder />}</>
 }

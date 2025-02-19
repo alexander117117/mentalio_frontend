@@ -1,5 +1,5 @@
-import { FileItem } from '@/entities/folder/lib/types.ts'
+import { CartFolderItem } from '@/entities/folder/lib/types'
 
 export interface FoldersProps {
-  files: FileItem[] | null
+  files: CartFolderItem[] | null
 }

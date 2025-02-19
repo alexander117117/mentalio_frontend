@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { executeApiRTK } from '@/shared/api/apiHelpers'
-import { CartFolderItem, TopicsItem, CartsWordsItem  } from '@/entities/folder/lib/types'
+import { CartFolderItem, TopicsItem, CartsWordsItem } from '@/entities/folder/lib/types'
 
 /**
  * Получить список файлов пользователя.
@@ -63,7 +63,7 @@ export const deleteUserFile = createAsyncThunk<string, string, { rejectValue: st
  * @returns {Promise<CartFolderItem>} Обновленный файл.
  */
 export const updateUserFile = createAsyncThunk<
-CartFolderItem,
+  CartFolderItem,
   { fileId: string; fileData: Partial<CartFolderItem> },
   { rejectValue: string }
 >('userFiles/updateUserFile', async ({ fileId, fileData }, { rejectWithValue }) => {
@@ -142,18 +142,19 @@ export const deleteTopicFromFile = createAsyncThunk<
  * @param payload.topicId - Идентификатор темы.
  * @returns {Promise<CartsWordsItem[]>} Список карточек темы.
  */
-export const getTopicCards = createAsyncThunk<CartsWordsItem[], { fileId: string; topicId: string }, { rejectValue: string }>(
-  'userFiles/getTopicCards',
-  async ({ fileId, topicId }, { rejectWithValue }) => {
-    const response = await executeApiRTK<CartsWordsItem[], void>({
-      method: 'GET',
-      url: `/userFiles/${fileId}/topics/${topicId}/cards`,
-      rejectWithValue,
-      errorMessage: 'Ошибка при получении карточек темы',
-    })
-    return response.data
-  },
-)
+export const getTopicCards = createAsyncThunk<
+  CartsWordsItem[],
+  { fileId: string; topicId: string },
+  { rejectValue: string }
+>('userFiles/getTopicCards', async ({ fileId, topicId }, { rejectWithValue }) => {
+  const response = await executeApiRTK<CartsWordsItem[], void>({
+    method: 'GET',
+    url: `/userFiles/${fileId}/topics/${topicId}/cards`,
+    rejectWithValue,
+    errorMessage: 'Ошибка при получении карточек темы',
+  })
+  return response.data
+})
 
 /**
  * Добавить карточку в тему.

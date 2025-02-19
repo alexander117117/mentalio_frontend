@@ -7,12 +7,11 @@ import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesT
 import { AppDispatch } from '@/app/store/configureStore.ts'
 
 export function LayoutMain() {
-const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>()
 
- useEffect(() => {
-  dispatch(getUserFiles())
- }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(getUserFiles())
+  }, [dispatch])
 
   return (
     <main>

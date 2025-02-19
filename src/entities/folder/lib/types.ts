@@ -5,7 +5,7 @@ export interface CartsWordsItem {
 }
 
 export interface TopicsItem {
-  date_created: string 
+  date_created: string
   description: string
   id: number | string
   name: string

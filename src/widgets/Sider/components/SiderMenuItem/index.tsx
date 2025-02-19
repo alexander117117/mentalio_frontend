@@ -1,4 +1,3 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { useLocation } from 'react-router-dom'
@@ -8,17 +7,9 @@ interface SiderMenuItemProps {
   subtitle: string
   link: string
   image: string
-  imageActive?: string
   inDevelopment?: boolean
 }
-export const SiderMenuItem = ({
-  title,
-  subtitle,
-  link,
-  image,
-  imageActive,
-  inDevelopment = false,
-}: SiderMenuItemProps) => {
+export const SiderMenuItem = ({ title, subtitle, link, image, inDevelopment = false }: SiderMenuItemProps) => {
   const location = useLocation() // получаем текущее url чтобы отображать активную ссылку
   return (
     <>

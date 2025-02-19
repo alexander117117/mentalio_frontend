@@ -1,6 +1,5 @@
 import happy_folder from './assets/happy_folders.png'
 
-import { Link } from 'react-router'
 import * as React from 'react'
 import { InfoUserFolder } from '@/widgets/folders/userFolder'
 
@@ -50,10 +49,7 @@ export const UserFolder: React.FC<UserFolder> = ({ title, date, desc }) => {
         </div>
       </div>
 
-      <InfoUserFolder 
-        isModalOpen={isModalOpen}
-        setIsModalOpen={setIsModalOpen}
-      />
+      <InfoUserFolder isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </>
   )
 }

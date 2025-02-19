@@ -1,6 +1,5 @@
 import { CartFolderItem, CartCategoriesItem } from '@/entities/folder/lib/types'
 
-
 export interface PaginatedResponse {
   code: number
   next: number

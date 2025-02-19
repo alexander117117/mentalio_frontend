@@ -4,11 +4,9 @@ import { ListCart } from '@/features/pagination/ui/ListCart'
 import { useSelector } from 'react-redux'
 import { useGetCarts } from './hooks/useGetCarts'
 
-
 export const HomePage = () => {
   const { files } = useSelector((state: any) => state.userFiles)
   const { cartsHome } = useSelector((state: any) => state.catalog)
-
 
   useGetCarts()
 

@@ -5,7 +5,7 @@ export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 export interface BaseApiProps<TRequest = any> {
   method: HttpMethod
   url: string
-  body?: TRequest | {}
+  body?: TRequest | object
   config?: AxiosRequestConfig
   errorMessage?: string
 }

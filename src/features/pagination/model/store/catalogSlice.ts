@@ -6,14 +6,14 @@ import {
   getAllCategoriesThunk,
   getCartsFolderMentalio,
 } from './catalogThunks.ts'
-import { CartFolderItem, CartCategoriesItem } from '@/features/pagination/lib/types.ts'
+import { CartCategoriesItem, CartFolderItem } from '@/entities/folder/lib/types.ts'
 
 /**
  * Интерфейс состояния catalog-слайса.
  */
 interface CatalogState {
-  carts: CartFolderItem[],
-  cartsHome: CartFolderItem[],
+  carts: CartFolderItem[]
+  cartsHome: CartFolderItem[]
   allCategories: CartCategoriesItem[]
   query: string
   category: string
