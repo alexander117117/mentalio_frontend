@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "lint": "prettier --write . && eslint .",
+    "lint": "prettier --write . && eslint \"src/**/*.{js,jsx,ts,tsx,css}\"",
+    "lint:css": "stylelint \"src/**/*.css\"",
     "test": "jest",
     "preview": "vite preview --host",
     "type-check": "tsc --noEmit"
