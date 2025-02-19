@@ -1,42 +1,35 @@
 import { ModalWrapper } from '@/shared/ui/ModalWrapper'
+import { DescriptionFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/DescriptionFolder'
 import { InputAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/InputAddFolder'
 import { SelectAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/SelectAddFolder'
+import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
 interface CreateFolder {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
-  quantityTopicInput: number
-  setQuantityTopicInput: (quantity: number | ((prev: number) => number)) => void
 }
 
-export function CreateFolder({ isModalOpen, setIsModalOpen, quantityTopicInput, setQuantityTopicInput }: CreateFolder) {
+export function CreateFolder({ isModalOpen, setIsModalOpen }: CreateFolder) {
   return (
-    <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <div className="w-50">
-        <h2 className="text-2xl sm:text-4xl font-normal mb-6 sm:mb-10 text-center">Создание папки</h2>
+    <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
+      <div className="pb-12 md:pb-16 relative">
+        <h2 className="text-white text-2xl sm:text-4xl font-normal mb-6 sm:mb-10 text-center">Создание папки</h2>
 
-        <form className="w-full sm:w-[490px] flex flex-col gap-[10px] p-3 sm:p-5 bg-directoryFolder rounded-[15px] text-white">
+        <form className="w-full sm:w-[490px] flex flex-col gap-[10px] p-3 sm:p-5 rounded-[15px] text-white">
           <InputAddFolder type={'text'} name={'folderName'} placeholder={'Введите название папки...'} />
           <SelectAddFolder />
-          {quantityTopicInput <= 4 &&
-            [...Array(quantityTopicInput)].map((_, index) => (
-              <InputAddFolder
-                key={index}
-                type={'text'}
-                name={`folderTopic${index + 1}`}
-                placeholder={'Введите название темы'}
-                isTopic={index === quantityTopicInput - 1}
-                setQuantityTopicInput={() => setQuantityTopicInput((prev) => prev + 1)} // update количество инпутов
-                quantityTopicInput={quantityTopicInput}
-              />
-            ))}
-          <InputAddFolder type={'text'} name={'folderDescription'} placeholder={'Введите описание'} />
-          <button
-            type="submit"
-            className="bg-[#BDFF9D] py-[12px] sm:py-[23px] rounded-[30px] text-sm sm:text-xl font-bold text-black mt-[10px] sm:mt-[30px]"
-          >
-            Создать папку
-          </button>
+          <InputAddFolder type={'text'} name={'topicTitle'} placeholder={'Введите название темы...'} />
+          <DescriptionFolder
+            name={'topicDescription'}
+            placeholder={'Введите описание папки... \nНапример: это папка для изучения испанского языка для уровня a1'}
+          />
         </form>
+
+        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly">
+          <ButtonControlFolder customPadding="px-5 md:px-11">Добавить тему</ButtonControlFolder>
+          <ButtonControlFolder color={'text-primary'} customPadding="px-5 md:px-11">
+            Создать папку
+          </ButtonControlFolder>
+        </div>
       </div>
     </ModalWrapper>
   )
