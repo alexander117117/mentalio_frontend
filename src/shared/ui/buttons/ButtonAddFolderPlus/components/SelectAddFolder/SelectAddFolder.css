@@ -1,10 +1,10 @@
 /* customize select arrow */
 .selectCategory {
   appearance: none;
-  background-image: url('assets/dropdown_arrow.png');
+  background-image: url('assets/dropdown_arrow.svg');
   background-repeat: no-repeat;
   background-position: right calc(0.625rem + 10px) center;
-  background-size: 30px;
+  background-size: 10px;
 }
 
 .selectCategory option {
@@ -15,5 +15,6 @@
   .selectCategory {
     background-size: 20px;
     background-position: right calc(0rem + 10px) center;
+    background-size: 5px;
   }
 }
