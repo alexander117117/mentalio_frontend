@@ -4,13 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
     "lint": "prettier --write . && eslint \"src/**/*.{js,jsx,ts,tsx,css}\"",
     "lint:css": "stylelint \"src/**/*.css\"",
-    "test": "jest",
-    "preview": "vite preview --host",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
