@@ -1,28 +1,37 @@
 import { ModalWrapper } from '@/shared/ui/ModalWrapper'
 import style from './index.module.css'
-import { InfoFolder } from '../infoFolder'
 import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
+import { InfoUserFolder } from '@/widgets/folders/InfoUserFolder'
 import { groupClass } from '@/shared/lib/classNames'
+import { CardFolderItem } from '@/entities/folder/lib/types'
+import { handeleAddTopic, handeleDelleteFolder } from './lib/handele'
+
 interface InfoUserFolderProps {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
+  dataFolder: CardFolderItem
 }
-export function InfoUserFolder({ isModalOpen, setIsModalOpen }: InfoUserFolderProps) {
+export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUserFolderProps) {
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
       <div className="text-white pb-16 relative">
         <h2 className={style.InfoUserFolder_title}>Испанский</h2>
 
         <div className={groupClass}>
-          <InfoFolder title={'Поход в ресторанddd'} date={'21.07.25'} />
-          <InfoFolder title={'Поход в ресторанddd'} date={'21.07.25'} />
-          <InfoFolder title={'Поход в ресторанddd'} date={'21.07.25'} />
-          <InfoFolder title={'Поход в ресторанddd'} date={'21.07.25'} />
+          {dataFolder?.topics && dataFolder.topics.length > 0 ? (
+            dataFolder.topics.map((topic) => (
+              <InfoUserFolder key={topic.id} dataTopic={topic} idFolder={dataFolder.id} />
+            ))
+          ) : (
+            <h1>Нет данных</h1>
+          )}
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly">
-          <ButtonControlFolder>Добавить тему</ButtonControlFolder>
-          <ButtonControlFolder color={'text-[#FF4040]'}>Удалить папку</ButtonControlFolder>
+          <ButtonControlFolder onClick={() => handeleAddTopic(dataFolder.id)}>Добавить тему</ButtonControlFolder>
+          <ButtonControlFolder onClick={() => handeleDelleteFolder(dataFolder.id)} color={'text-[#FF4040]'}>
+            Удалить папку
+          </ButtonControlFolder>
         </div>
       </div>
     </ModalWrapper>

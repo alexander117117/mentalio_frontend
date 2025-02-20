@@ -3,17 +3,14 @@ import { TopicInfo } from './components/TopicInfo'
 import { flexColumnStartClass } from '@/shared/lib/classNames'
 import { folderClass } from './lib'
 import { TopicsItem } from '@/entities/folder/lib/types'
-import { useState } from 'react'
-import { ListWordPublic } from '@/features/ListWordPublic'
 
-interface InfoFolderProps {
+interface InfoUserFolderProps {
   dataTopic: TopicsItem
+  idFolder: string | number
 }
-export function InfoFolder({ dataTopic }: InfoFolderProps) {
-  const [isShowWord, setIsShowWord] = useState<boolean>(false)
-
-  const handleClickShowWord = () => {
-    setIsShowWord(!isShowWord)
+export function InfoUserFolder({ dataTopic, idFolder }: InfoUserFolderProps) {
+  const handleOpenFolderPage = (idFolder: string | number, idTopic: string | number) => {
+    console.log('OpenFolderPage: ', { idFolder, idTopic })
   }
   return (
     <>
@@ -22,9 +19,10 @@ export function InfoFolder({ dataTopic }: InfoFolderProps) {
           <TopicInfo dataTopic={dataTopic} />
         </div>
 
-        <ButtonControlFolder onClick={handleClickShowWord}>Посмотреть</ButtonControlFolder>
+        <ButtonControlFolder onClick={() => handleOpenFolderPage(idFolder, dataTopic.id)}>
+          Посмотреть
+        </ButtonControlFolder>
       </div>
-      {isShowWord && <ListWordPublic cards={dataTopic.cards} />}
     </>
   )
 }

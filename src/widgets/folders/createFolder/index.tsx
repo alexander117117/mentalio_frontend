@@ -6,6 +6,8 @@ import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
 interface CreateFolder {
   isModalOpen: boolean
   setIsModalOpen: (isOpen: boolean) => void
+  quantityTopicInput: number
+  setQuantityTopicInput: (quantity: number) => void
 }
 
 export function CreateFolder({ isModalOpen, setIsModalOpen }: CreateFolder) {
