@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaPlus } from 'react-icons/fa'
-import { CreateFolder } from '@/widgets/folders/createFolder'
+import { CreateFolder } from '@/widgets/folders/CreateFolder'
 
 interface ButtonAddFolderPlusProps {
   isBig?: boolean

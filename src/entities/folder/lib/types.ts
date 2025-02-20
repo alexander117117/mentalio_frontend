@@ -1,26 +1,33 @@
-export interface CartsWordsItem {
+export interface CardsWordsItem {
   id: number | string
   word: string
   translate: string
 }
 
 export interface TopicsItem {
-  date_created: string
-  description: string
   id: number | string
   name: string
-  percent_study: number
-  cards: CartsWordsItem[]
+  description: string
+  dateCreated: string
+  percentStudy?: number
+  cards: CardsWordsItem[]
 }
-export interface CartFolderItem {
+
+export interface CardFolderItem {
   id: number | string
+  userName?: string
   name: string
-  category_name: string
-  date_created: string
   description: string
+  dateCreated?: string
+  category: string
   topics: TopicsItem[]
 }
-export interface CartCategoriesItem {
+
+export type CardFolderItemWithUserName = Omit<CardFolderItem, 'userName'> & {
+  userName: string
+}
+
+export interface CardCategoriesItem {
   id: number | string
   name: string
 }

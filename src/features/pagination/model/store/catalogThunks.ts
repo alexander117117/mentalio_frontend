@@ -24,8 +24,8 @@ export const paginationThunk = createAsyncThunk<PaginatedResponse, PaginationPar
     return response.data
   },
 )
-export const getCartsFolderMentalio = createAsyncThunk<PaginatedResponse, void, AsyncThunkConfig>(
-  'catalog/getCartsFolderMentalio',
+export const getCardsFolderMentalio = createAsyncThunk<PaginatedResponse, void, AsyncThunkConfig>(
+  'catalog/getCardsFolderMentalio',
   async (_: void, { rejectWithValue }) => {
     const response = await executeApiRTK<PaginatedResponse, PaginationParams>({
       method: 'GET',

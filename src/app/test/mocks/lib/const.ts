@@ -1,58 +1,134 @@
-export const mockCards = [
-  { id: 1, name: 'Ivan', category_name: 'Папка', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },
-  { id: 2, name: 'Ivan3', category_name: 'Папка3', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },
-  { id: 3, name: 'Ivan3', category_name: 'Папка3', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },
-  { id: 4, name: 'Ivan3', category_name: 'Папка3', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },
-  { id: 5, name: 'Ivan3', category_name: 'Папка3', description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd' },
+import { CardCategoriesItem, CardFolderItem } from '@/entities/folder/lib/types'
+
+export const mockCards: CardFolderItem[] = [
+  {
+    id: 1,
+    userName: 'Ivan',
+    name: 'Папка',
+    description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
+    category: 'Медецина',
+    topics: [
+      {
+        id: 1,
+        name: 'Тема 1',
+        description: 'Описание темы 1',
+        dateCreated: '2023-07-20',
+        percentStudy: 10,
+        cards: [
+          {
+            id: 1,
+            word: 'Word 1',
+            translate: 'Перевод 1',
+          },
+          {
+            id: 2,
+            word: 'Word 2',
+            translate: 'Перевод 2',
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: 'Тема 2',
+        description: 'Описание темы 2',
+        dateCreated: '2023-07-20',
+        percentStudy: 10,
+        cards: [],
+      },
+    ],
+  },
+  {
+    id: 2,
+    userName: 'Ivan3',
+    name: 'Папка3',
+    description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
+    category: 'Медецина',
+    topics: [],
+  },
+  {
+    id: 3,
+    userName: 'Ivan3',
+    name: 'Папка3',
+    description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
+    category: 'Медецина',
+    topics: [],
+  },
+  {
+    id: 4,
+    userName: 'Ivan3',
+    name: 'Папка3',
+    description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
+    category: 'Медецина',
+    topics: [],
+  },
+  {
+    id: 5,
+    userName: 'Ivan3',
+    name: 'Папка3',
+    description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
+    category: 'Медецина',
+    topics: [],
+  },
 ]
 
 export const totalCards = 12
 
-export const mockCategories = [
-  { id: 1, name: 'Папка' },
+export const mockCategories: CardCategoriesItem[] = [
+  { id: 1, name: 'Медецина' },
   { id: 2, name: 'Папка2' },
   { id: 3, name: 'Папка3' },
   { id: 4, name: 'Папка4' },
   { id: 5, name: 'Папка5' },
 ]
 
-export const mockUserFolders = [
+export const mockUserFolders: CardFolderItem[] = [
   {
     id: 1,
-    name: 'File 1',
-    description: 'Description for File 1',
-    dateCreated: '2024-12-07',
-    category: 'General',
+    name: 'Item 1',
+    description: 'Оисание 1',
+    dateCreated: '2023-07-20',
+    category: 'categories 1',
     topics: [
       {
         id: 1,
         name: 'Topic 1',
         description: 'Description for Topic 1',
-        dateCreated: '2024-12-07',
+        dateCreated: '2023-07-20',
+        percentStudy: 10,
+        cards: [],
+      },
+      {
+        id: 2,
+        name: 'Topic 2',
+        dateCreated: '2023-07-20',
+        description: 'Description for Topic 1',
         percentStudy: 100,
-        cards: [
-          {
-            id: 1,
-            question: { text: '1', language: 'Исп' },
-            answer: { text: '2', language: 'Рус', transcription: '' },
-            chosen: true,
-          },
-        ],
+        cards: [],
+      },
+      {
+        id: 3,
+        name: 'Topic 3',
+        dateCreated: '2023-07-20',
+        description: 'Description for Topic 1',
+        percentStudy: 70,
+        cards: [],
       },
     ],
   },
 ]
 
-export const mockCreateFolder = {
-  id: Math.floor(Math.random() * 1000),
-  name: 'New File',
-  description: '',
-  dateCreated: new Date().toISOString().split('T')[0],
-  category: 'Category 1',
-  topics: [],
+export const mockCreateFolder = ({ name, description, category, topics }: CardFolderItem) => {
+  return {
+    id: Math.floor(Math.random() * 1000),
+    name: name,
+    description: description,
+    dateCreated: new Date().toISOString().split('T')[0],
+    category: category,
+    topics: [...topics],
+  }
 }
 
-export const mockUserFolder = {
+export const mockUserFolder: CardFolderItem = {
   id: 1,
   name: 'File 1',
   description: 'Description for File 1',
@@ -70,18 +146,12 @@ export const mockUserFolder = {
   ],
 }
 
-interface mockPutUserFolderParams {
-  idFolder: number | string | undefined
-  NameFolder: string | undefined
-  desc: string | undefined
-  category: string | undefined
-}
-export const mockPutUserFolder = ({ idFolder, NameFolder, desc, category }: mockPutUserFolderParams) => {
+type mockPutUserFolderParams = Pick<CardFolderItem, 'name' | 'description' | 'category' | 'id'>
+export const mockPutUserFolder = ({ id, name, description, category }: mockPutUserFolderParams) => {
   return {
-    id: idFolder,
-    name: NameFolder,
-    description: desc,
-    dateCreated: new Date().toISOString().split('T')[0],
+    id: id,
+    name: name,
+    description: description,
     category: category,
   }
 }

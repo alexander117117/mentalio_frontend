@@ -4,17 +4,17 @@ import {
   paginationThunk,
   paginationNextPageThunk,
   getAllCategoriesThunk,
-  getCartsFolderMentalio,
+  getCardsFolderMentalio,
 } from './catalogThunks.ts'
-import { CartCategoriesItem, CartFolderItem } from '@/entities/folder/lib/types.ts'
+import { CardCategoriesItem, CardFolderItem } from '@/entities/folder/lib/types.ts'
 
 /**
  * Интерфейс состояния catalog-слайса.
  */
 interface CatalogState {
-  carts: CartFolderItem[]
-  cartsHome: CartFolderItem[]
-  allCategories: CartCategoriesItem[]
+  cards: CardFolderItem[]
+  cardsHome: CardFolderItem[]
+  allCategories: CardCategoriesItem[]
   query: string
   category: string
   page: number
@@ -25,8 +25,8 @@ interface CatalogState {
 }
 
 const initialState: CatalogState = {
-  carts: [],
-  cartsHome: [],
+  cards: [],
+  cardsHome: [],
   allCategories: [],
   query: '',
   category: '',
@@ -68,10 +68,9 @@ const catalogSlice = createSlice({
       .addCase(paginationThunk.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          console.log('action.payload', action.payload)
-          state.carts = [...action.payload.results.items]
-          if (action.payload.results.countTotalCarts !== undefined) {
-            state.totalPage = Math.ceil(action.payload.results.countTotalCarts / state.limit)
+          state.cards = [...action.payload.results.items]
+          if (action.payload.results.countTotalCards !== undefined) {
+            state.totalPage = Math.ceil(action.payload.results.countTotalCards / state.limit)
           }
         }
       })
@@ -79,15 +78,14 @@ const catalogSlice = createSlice({
 
     // Получение карточек только Mentalio
     builder
-      .addCase(getCartsFolderMentalio.pending, handlePending)
-      .addCase(getCartsFolderMentalio.fulfilled, (state, action) => {
+      .addCase(getCardsFolderMentalio.pending, handlePending)
+      .addCase(getCardsFolderMentalio.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          console.log('action.payload cartsHome', action.payload)
-          state.cartsHome = [...action.payload.results.items]
+          state.cardsHome = [...action.payload.results.items]
         }
       })
-      .addCase(getCartsFolderMentalio.rejected, handleRejected)
+      .addCase(getCardsFolderMentalio.rejected, handleRejected)
 
     // Загрузка всех категорий
     builder
@@ -95,7 +93,6 @@ const catalogSlice = createSlice({
       .addCase(getAllCategoriesThunk.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          console.log('action.payload allCategories:', action.payload.results.allCategories)
           state.allCategories = action.payload.results.allCategories
         }
       })
@@ -107,7 +104,7 @@ const catalogSlice = createSlice({
       .addCase(paginationNextPageThunk.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          state.carts = [...state.carts, ...action.payload.results.items]
+          state.cards = [...state.cards, ...action.payload.results.items]
           state.totalPage = state.totalPage > 0 ? state.totalPage - 1 : 0
           state.page += 1
         }

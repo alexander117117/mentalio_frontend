@@ -1,4 +1,4 @@
-export const arrCarts = [
+export const arrCards = [
   {
     id: 1,
     userName: 'Mentalio',

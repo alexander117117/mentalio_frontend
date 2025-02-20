@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
-import { CartFolderItem, TopicsItem } from '../../../lib/types.ts'
+import { CardFolderItem, TopicsItem } from '../../../lib/types.ts'
 
 import {
   getPublicFiles,
@@ -14,11 +14,11 @@ import {
 } from './publicFilesThunks.ts'
 
 export interface PublicFilesState {
-  publicFiles: CartFolderItem[] | null
-  publicFileDetails?: CartFolderItem | null
+  publicFiles: CardFolderItem[] | null
+  publicFileDetails?: CardFolderItem | null
   publicFileTopics: TopicsItem[] | null
   publicTopicDetails?: TopicsItem | null
-  userFiles: CartFolderItem[]
+  userFiles: CardFolderItem[]
   loading: boolean
   error: string | null
 }

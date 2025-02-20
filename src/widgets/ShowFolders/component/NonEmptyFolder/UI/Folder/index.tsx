@@ -1,12 +1,11 @@
-import { InfoUserFolder } from '@/widgets/folders/userFolder'
-import React, { useState } from 'react'
+import { UserFolder } from '@/widgets/folders/UserFolder'
+import { useState } from 'react'
 import { happy_folders } from 'src/shared/assets/images'
 
 interface FolderProps {
-  title: string
-  date: string
+  dataFolder: any
 }
-export const Folder = ({ title, date }: FolderProps) => {
+export const Folder = ({ dataFolder }: FolderProps) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   return (
     <>
@@ -16,12 +15,12 @@ export const Folder = ({ title, date }: FolderProps) => {
       >
         <img src={happy_folders} alt="" className="w-[85px] sm:w-[130px] h-[50px] sm:h-[80px] object-contain" />
         <div className="">
-          <h4 className="text-xs sm:text-xl font-medium font-unbounded">{title}</h4>
-          <div className="text-[6px] sm:text-[14px] font-medium text-[#939393]">От {date}</div>
+          <h4 className="text-xs sm:text-xl font-medium font-unbounded">{dataFolder.name}</h4>
+          <div className="text-[6px] sm:text-[14px] font-medium text-[#939393]">От {dataFolder.dateCreated}</div>
         </div>
       </button>
 
-      <InfoUserFolder isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <UserFolder isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} dataFolder={dataFolder} />
     </>
   )
 }

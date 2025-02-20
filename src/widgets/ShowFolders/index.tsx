@@ -1,7 +1,9 @@
 import { NonEmptyFolder } from './component/NonEmptyFolder'
 import { EmptyFolder } from './component/EmptyFolder'
-import { FoldersProps } from '@/widgets/ShowFolders/lib/types.ts'
+import { useSelector } from 'react-redux'
 
-export function ShowFolders({ files }: FoldersProps) {
+export function ShowFolders() {
+  const { files } = useSelector((state: any) => state.userFiles)
+
   return <>{files?.length ? <NonEmptyFolder files={files} /> : <EmptyFolder />}</>
 }

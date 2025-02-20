@@ -4,13 +4,13 @@ import { setCategory } from '@/features/pagination/model/store/catalogSlice'
 import { CategoryItem } from './component/CategoryItem'
 import { getAllCategoriesThunk } from '@/features/pagination/model/store/catalogThunks'
 import type { AppDispatch, RootState } from '@/app/store/configureStore'
-import { CartCategoriesItem } from '@/entities/folder/lib/types'
+import { CardCategoriesItem } from '@/entities/folder/lib/types'
 
 export const Category = () => {
   const { category, allCategories } = useSelector((state: RootState) => state.catalog)
   const dispatch = useDispatch<AppDispatch>()
   const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null)
-  const [listCategors, setListCategors] = useState<CartCategoriesItem[]>()
+  const [listCategors, setListCategors] = useState<CardCategoriesItem[]>()
   useEffect(() => {
     dispatch(getAllCategoriesThunk())
   }, [dispatch])

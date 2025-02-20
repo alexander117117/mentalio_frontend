@@ -1,12 +1,12 @@
-import { CartFolderItem, CartCategoriesItem } from '@/entities/folder/lib/types'
+import { CardFolderItem, CardCategoriesItem } from '@/entities/folder/lib/types'
 
 export interface PaginatedResponse {
   code: number
   next: number
   previous: number
   results: {
-    items: CartFolderItem[]
-    countTotalCarts?: number
+    items: CardFolderItem[]
+    countTotalCards?: number
     status: string
   }
 }
@@ -28,6 +28,6 @@ export interface PaginationNextPageParams {
 
 export interface AllCategoriesResponse {
   results: {
-    allCategories: CartCategoriesItem[]
+    allCategories: CardCategoriesItem[]
   }
 }

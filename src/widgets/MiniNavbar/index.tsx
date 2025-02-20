@@ -11,7 +11,7 @@ import {
   setting_icon,
 } from './assets'
 import { FaPlus } from 'react-icons/fa'
-import { CreateFolder } from '@/widgets/folders/createFolder'
+import { CreateFolder } from '@/widgets/folders/CreateFolder'
 import { useLocation } from 'react-router-dom'
 
 export const MiniNavbar = () => {

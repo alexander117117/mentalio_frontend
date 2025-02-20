@@ -1,4 +1,3 @@
-import React from 'react'
 import { happy_folders, sad_folders } from 'src/shared/assets/images'
 import { Link } from 'react-router'
 import { Folder } from './UI/Folder'
@@ -36,7 +35,7 @@ export const NonEmptyFolder = ({ files }: FoldersProps) => {
               justifyContent: 'center',
             }}
           >
-            {files?.map((file) => <Folder key={file.id} title={file.category_name} date={file.date_created} />)}
+            {files?.map((file) => <Folder key={file.id} dataFolder={file} />)}
           </div>
 
           {/* появляется на телефоне */}

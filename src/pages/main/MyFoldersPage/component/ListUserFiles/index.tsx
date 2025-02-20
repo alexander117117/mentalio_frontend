@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { UserFolder } from '../../UI/UserFolder'
+import { Folder } from '../../UI/Folder'
 
 interface IListUserFiles {
   files: {
@@ -14,7 +14,7 @@ export function ListUserFiles({ files }: IListUserFiles) {
   return (
     <>
       {files.map((file) => (
-        <UserFolder key={file.id} title={file.title} date={file.dateCreated} desc={file.desc} />
+        <Folder key={file.id} title={file.title} date={file.dateCreated} desc={file.desc} dataFolder={files} />
       ))}
     </>
   )

@@ -1,18 +1,17 @@
 import { Link } from 'react-router'
 import { ShowFolders } from '@/widgets/ShowFolders'
-import { ListCart } from '@/features/pagination/ui/ListCart'
+import { ListCard } from '@/features/pagination/ui/ListCard'
 import { useSelector } from 'react-redux'
-import { useGetCarts } from './hooks/useGetCarts'
+import { useGetCards } from './hooks/useGetCards'
 
 export const HomePage = () => {
-  const { files } = useSelector((state: any) => state.userFiles)
-  const { cartsHome } = useSelector((state: any) => state.catalog)
+  const { cardsHome } = useSelector((state: any) => state.catalog)
 
-  useGetCarts()
+  useGetCards()
 
   return (
     <>
-      <ShowFolders files={files} />
+      <ShowFolders />
 
       <div className="w-full sm:w-[98%] 2xl:w-[1440px] mt-[50px] md:mt-[90px]">
         <h1 className="text-2xl lg:text-[56px] 2xl:text-[64px] font-bold">Каталог папок</h1>
@@ -28,7 +27,7 @@ export const HomePage = () => {
         </div>
 
         <div className="flex items-center justify-between 2xl:justify-normal flex-wrap mt-[15px] sm:mt-[40px] 2xl:gap-x-[90px] gap-y-2 sm:gap-y-[40px] pr-3 sm:pr-0">
-          <ListCart carts={cartsHome} />
+          <ListCard cards={cardsHome} />
         </div>
       </div>
     </>

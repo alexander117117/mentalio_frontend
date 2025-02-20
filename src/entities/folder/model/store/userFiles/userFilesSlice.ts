@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
-import { CartFolderItem } from '@/entities/folder/lib/types'
+import { CardFolderItem } from '@/entities/folder/lib/types'
 import {
   getUserFiles,
   createUserFile,
@@ -15,7 +15,7 @@ import {
 } from './userFilesThunks.ts'
 
 interface UserFilesState {
-  filesUser: CartFolderItem[]
+  filesUser: CardFolderItem[]
   loading: boolean
   error: string | null
 }
@@ -36,8 +36,6 @@ export const userFilesSlice = createSlice({
       .addCase(getUserFiles.pending, handlePending)
       .addCase(getUserFiles.fulfilled, (state, action) => {
         state.loading = false
-        console.log('action.payload getUserFiles', action.payload)
-
         state.filesUser = action.payload
       })
       .addCase(getUserFiles.rejected, handleRejected)

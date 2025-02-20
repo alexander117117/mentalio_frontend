@@ -1,15 +1,15 @@
 import { useSelector } from 'react-redux'
 import { Filter } from '@/features/pagination/ui/Filter'
 import Pagination from '@/features/pagination/ui/Pagination'
-import { ListCart } from '@/features/pagination/ui/ListCart'
+import { ListCard } from '@/features/pagination/ui/ListCard'
 
 export const CatalogPage = () => {
-  const { totalPage, carts } = useSelector((state: any) => state.catalog)
+  const { totalPage, cards } = useSelector((state: any) => state.catalog)
 
   return (
     <>
       <Filter />
-      <ListCart carts={carts} />
+      <ListCard cards={cards} />
       {totalPage > 1 && <Pagination />}
     </>
   )

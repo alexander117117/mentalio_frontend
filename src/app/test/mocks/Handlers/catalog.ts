@@ -9,7 +9,7 @@ export const catalogHandlers = [
     return HttpResponse.json({
       results: {
         items: mockCards,
-        countTotalCarts: totalCards,
+        countTotalCards: totalCards,
       },
     })
   }),

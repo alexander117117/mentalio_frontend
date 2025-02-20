@@ -1,15 +1,16 @@
 import happy_folder from './assets/happy_folders.png'
 
 import * as React from 'react'
-import { InfoUserFolder } from '@/widgets/folders/userFolder'
+import { UserFolder } from '@/widgets/folders/UserFolder'
 
 interface UserFolder {
   title: string
   date: string
   desc: string
+  dataFolder: any
 }
 
-export const UserFolder: React.FC<UserFolder> = ({ title, date, desc }) => {
+export const Folder: React.FC<UserFolder> = ({ title, date, desc, dataFolder }) => {
   const [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
   return (
     <>
@@ -49,7 +50,7 @@ export const UserFolder: React.FC<UserFolder> = ({ title, date, desc }) => {
         </div>
       </div>
 
-      <InfoUserFolder isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <UserFolder isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} dataFolder={dataFolder} />
     </>
   )
 }

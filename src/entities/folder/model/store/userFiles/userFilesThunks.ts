@@ -1,15 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { executeApiRTK } from '@/shared/api/apiHelpers'
-import { CartFolderItem, TopicsItem, CartsWordsItem } from '@/entities/folder/lib/types'
+import { CardFolderItem, TopicsItem, CardsWordsItem } from '@/entities/folder/lib/types'
 
 /**
  * Получить список файлов пользователя.
- * @returns {Promise<CartFolderItem[]>} Список файлов пользователя.
+ * @returns {Promise<CardFolderItem[]>} Список файлов пользователя.
  */
-export const getUserFiles = createAsyncThunk<CartFolderItem[], void, { rejectValue: string }>(
+export const getUserFiles = createAsyncThunk<CardFolderItem[], void, { rejectValue: string }>(
   'userFiles/getUserFiles',
   async (_, { rejectWithValue }) => {
-    const response = await executeApiRTK<{ userFiles: CartFolderItem[] }, void>({
+    const response = await executeApiRTK<{ userFiles: CardFolderItem[] }, void>({
       method: 'GET',
       url: '/userFiles',
       rejectWithValue,
@@ -22,12 +22,12 @@ export const getUserFiles = createAsyncThunk<CartFolderItem[], void, { rejectVal
 /**
  * Создать новый файл пользователя.
  * @param fileData - Данные файла.
- * @returns {Promise<CartFolderItem>} Созданный файл.
+ * @returns {Promise<CardFolderItem>} Созданный файл.
  */
-export const createUserFile = createAsyncThunk<CartFolderItem, Partial<CartFolderItem>, { rejectValue: string }>(
+export const createUserFile = createAsyncThunk<CardFolderItem, Partial<CardFolderItem>, { rejectValue: string }>(
   'userFiles/createUserFile',
   async (fileData, { rejectWithValue }) => {
-    const response = await executeApiRTK<CartFolderItem, Partial<CartFolderItem>>({
+    const response = await executeApiRTK<CardFolderItem, Partial<CardFolderItem>>({
       method: 'POST',
       url: '/userFiles',
       body: fileData,
@@ -60,14 +60,14 @@ export const deleteUserFile = createAsyncThunk<string, string, { rejectValue: st
  * Обновить данные файла пользователя.
  * @param payload.fileId - Идентификатор файла.
  * @param payload.fileData - Обновленные данные файла.
- * @returns {Promise<CartFolderItem>} Обновленный файл.
+ * @returns {Promise<CardFolderItem>} Обновленный файл.
  */
 export const updateUserFile = createAsyncThunk<
-  CartFolderItem,
-  { fileId: string; fileData: Partial<CartFolderItem> },
+  CardFolderItem,
+  { fileId: string; fileData: Partial<CardFolderItem> },
   { rejectValue: string }
 >('userFiles/updateUserFile', async ({ fileId, fileData }, { rejectWithValue }) => {
-  const response = await executeApiRTK<CartFolderItem, Partial<CartFolderItem>>({
+  const response = await executeApiRTK<CardFolderItem, Partial<CardFolderItem>>({
     method: 'PUT',
     url: `/userFiles/${fileId}`,
     body: fileData,
@@ -140,14 +140,14 @@ export const deleteTopicFromFile = createAsyncThunk<
  * Получить карточки для темы в файле.
  * @param payload.fileId - Идентификатор файла.
  * @param payload.topicId - Идентификатор темы.
- * @returns {Promise<CartsWordsItem[]>} Список карточек темы.
+ * @returns {Promise<CardsWordsItem[]>} Список карточек темы.
  */
 export const getTopicCards = createAsyncThunk<
-  CartsWordsItem[],
+  CardsWordsItem[],
   { fileId: string; topicId: string },
   { rejectValue: string }
 >('userFiles/getTopicCards', async ({ fileId, topicId }, { rejectWithValue }) => {
-  const response = await executeApiRTK<CartsWordsItem[], void>({
+  const response = await executeApiRTK<CardsWordsItem[], void>({
     method: 'GET',
     url: `/userFiles/${fileId}/topics/${topicId}/cards`,
     rejectWithValue,
@@ -161,14 +161,14 @@ export const getTopicCards = createAsyncThunk<
  * @param payload.fileId - Идентификатор файла.
  * @param payload.topicId - Идентификатор темы.
  * @param payload.cardData - Данные карточки.
- * @returns {Promise<CartsWordsItem>} Добавленная карточка.
+ * @returns {Promise<CardsWordsItem>} Добавленная карточка.
  */
 export const addCardToTopic = createAsyncThunk<
-  CartsWordsItem,
-  { fileId: string; topicId: string; cardData: Partial<CartsWordsItem> },
+  CardsWordsItem,
+  { fileId: string; topicId: string; cardData: Partial<CardsWordsItem> },
   { rejectValue: string }
 >('userFiles/addCardToTopic', async ({ fileId, topicId, cardData }, { rejectWithValue }) => {
-  const response = await executeApiRTK<CartsWordsItem, Partial<CartsWordsItem>>({
+  const response = await executeApiRTK<CardsWordsItem, Partial<CardsWordsItem>>({
     method: 'POST',
     url: `/userFiles/${fileId}/topics/${topicId}/cards`,
     body: cardData,
