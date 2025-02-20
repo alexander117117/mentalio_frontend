@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -19,7 +18,7 @@ async function enableMocking() {
   const IS_MOCKING = true
 
   if (IS_MOCKING) {
-    const { worker } = await import('./test/mocks/browser.js')
+    const { worker } = await import('./test/mocks/browser.ts')
     return worker.start()
   }
 }

@@ -13,12 +13,13 @@
   right: -12px;
   cursor: pointer;
 }
+
 .info_folder__word p {
   width: 150px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 
 .info_folder span {

@@ -11,7 +11,7 @@ export function LayoutMain() {
 
   useEffect(() => {
     dispatch(getUserFiles())
-  }, [dispatch])
+  }, [])
 
   return (
     <main>

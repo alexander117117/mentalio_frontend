@@ -1,16 +1,15 @@
 import { http, HttpResponse } from 'msw'
 import { axiosInstance } from '@/shared/api/axiosInstance.js'
 
-const URL = axiosInstance.defaults.baseURL
+const URL: string | undefined = axiosInstance.defaults.baseURL
 
-export const handlers = [
+export const authHandlers = [
   http.post(`${URL}/auth/check-login`, () => {
-    let resError = false
+    const resError: boolean = false
     if (resError) {
-      let error = { error: 'Login занят.' }
+      const error = { error: 'Login занят.' }
       return new HttpResponse(JSON.stringify(error), { status: 400 })
     } else {
-      // ...and respond to them using this JSON response.
       return HttpResponse.json({
         status: 'success',
         message: 'login свободен',
@@ -65,9 +64,9 @@ export const handlers = [
     }
   }),
   http.post(`${URL}/auth/register`, () => {
-    let resError = false
+    const resError: boolean = false
     if (resError) {
-      let error = { error: 'Пользователь не найден.' }
+      const error = { error: 'Пользователь не найден.' }
       return new HttpResponse(JSON.stringify(error), { status: 400 })
     } else {
       return HttpResponse.json({
@@ -78,9 +77,9 @@ export const handlers = [
     }
   }),
   http.post(`${URL}/auth/login`, () => {
-    let resError = false
+    const resError: boolean = false
     if (resError) {
-      let error = { error: 'Пользователь не найден.' }
+      const error = { error: 'Пользователь не найден.' }
       return new HttpResponse(JSON.stringify(error), { status: 400 })
     } else {
       return HttpResponse.json({
@@ -100,9 +99,9 @@ export const handlers = [
     }
   }),
   http.post(`${URL}/auth/password-reset/request`, () => {
-    let resError = false
+    const resError: boolean = false
     if (resError) {
-      let error = { error: 'Login не найден.' }
+      const error = { error: 'Login не найден.' }
       return new HttpResponse(JSON.stringify(error), { status: 400 })
     } else {
       return HttpResponse.json({
@@ -113,9 +112,9 @@ export const handlers = [
     }
   }),
   http.post(`${URL}/auth/password-reset/verification`, () => {
-    let resError = false
+    const resError: boolean = false
     if (resError) {
-      let error = { error: 'Код не верный.' }
+      const error = { error: 'Код не верный.' }
       return new HttpResponse(JSON.stringify(error), { status: 400 })
     } else {
       return HttpResponse.json({
@@ -125,9 +124,9 @@ export const handlers = [
     }
   }),
   http.post(`${URL}/auth/password-reset/confirm`, () => {
-    let resError = false
+    const resError: boolean = false
     if (resError) {
-      let error = { error: 'Не удалось изменить пароль.' }
+      const error = { error: 'Не удалось изменить пароль.' }
       return new HttpResponse(JSON.stringify(error), { status: 400 })
     } else {
       return HttpResponse.json({

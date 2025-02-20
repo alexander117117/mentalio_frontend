@@ -9,13 +9,13 @@ import { CartFolderItem, TopicsItem, CartsWordsItem } from '@/entities/folder/li
 export const getUserFiles = createAsyncThunk<CartFolderItem[], void, { rejectValue: string }>(
   'userFiles/getUserFiles',
   async (_, { rejectWithValue }) => {
-    const response = await executeApiRTK<{ items: CartFolderItem[] }, void>({
+    const response = await executeApiRTK<{ userFiles: CartFolderItem[] }, void>({
       method: 'GET',
       url: '/userFiles',
       rejectWithValue,
       errorMessage: 'Ошибка при загрузке данных',
     })
-    return response.data.items
+    return response.data.userFiles
   },
 )
 
