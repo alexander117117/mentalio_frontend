@@ -15,7 +15,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
       <div className="text-white pb-16 relative">
-        <h2 className={style.InfoUserFolder_title}>Испанский</h2>
+        <h2 className={style.InfoUserFolder_title}>{dataFolder.name}</h2>
 
         <div className={groupClass}>
           {dataFolder?.topics && dataFolder.topics.length > 0 ? (

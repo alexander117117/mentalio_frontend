@@ -14,7 +14,7 @@ export function TopicInfo({ dataTopic }: TopicInfoProps) {
         <p>{dataTopic.name}</p>
         <span>От {dataTopic.dateCreated}</span>
       </div>
-      <p className={resultClass}>Завершено на 0% / 100%</p>
+      <p className={resultClass}>Завершено на {dataTopic.percentStudy}% / 100%</p>
     </>
   )
 }

@@ -1,20 +1,16 @@
 import * as React from 'react'
 import { Folder } from '../../UI/Folder'
+import { CardFolderItem } from '@/entities/folder/lib/types'
 
 interface IListUserFiles {
-  files: {
-    id: number
-    title: string
-    dateCreated: string
-    desc: string
-  }[]
+  files: CardFolderItem[]
 }
 
 export function ListUserFiles({ files }: IListUserFiles) {
   return (
     <>
       {files.map((file) => (
-        <Folder key={file.id} title={file.title} date={file.dateCreated} desc={file.desc} dataFolder={files} />
+        <Folder key={file.id} dataFolder={file} />
       ))}
     </>
   )
