@@ -1,5 +1,5 @@
 import happy_folder from './assets/happy_folders.png'
-import { UserFolder } from '@/widgets/folders/UserFolder'
+import { UserFolder } from '@/features/UserFolder'
 import { CardFolderItem } from '@/entities/folder/lib/types'
 import { useState } from 'react'
 

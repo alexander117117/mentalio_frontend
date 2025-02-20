@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InfoPublicFolder } from '../PublicFolder'
+import { InfoPublicFolder } from '../../features/PublicFolder'
 import { DirectoryContent } from './components/DirectoryContent'
 import { ButtonDirectory } from '@/shared/ui/buttons/buttonDirectory'
 import { CardFolderItemWithUserName } from '@/entities/folder/lib/types'

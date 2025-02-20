@@ -1,4 +1,4 @@
-import { UserFolder } from '@/widgets/folders/UserFolder'
+import { UserFolder } from '@/features/UserFolder'
 import { useState } from 'react'
 import { happy_folders } from 'src/shared/assets/images'
 

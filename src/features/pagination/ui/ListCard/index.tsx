@@ -1,5 +1,5 @@
 import React from 'react'
-import { FolderDirectory } from '@/widgets/folders/FolderDirectory'
+import { FolderDirectory } from '@/widgets/FolderDirectory'
 import { CardFolderItemWithUserName } from '@/entities/folder/lib/types'
 
 interface ListCardProps {

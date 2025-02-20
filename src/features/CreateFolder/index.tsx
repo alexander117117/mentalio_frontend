@@ -11,6 +11,9 @@ interface CreateFolder {
 }
 
 export function CreateFolder({ isModalOpen, setIsModalOpen }: CreateFolder) {
+  const handeleAddTopic = () => {
+
+  }
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
       <div className="pb-12 md:pb-16 relative">
@@ -27,7 +30,7 @@ export function CreateFolder({ isModalOpen, setIsModalOpen }: CreateFolder) {
         </form>
 
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly">
-          <ButtonControlFolder customPadding="px-5 md:px-11">Добавить тему</ButtonControlFolder>
+          <ButtonControlFolder customPadding="px-5 md:px-11" onClick={() => handeleAddTopic()}>Добавить тему</ButtonControlFolder>
           <ButtonControlFolder color={'text-primary'} customPadding="px-5 md:px-11">
             Создать папку
           </ButtonControlFolder>

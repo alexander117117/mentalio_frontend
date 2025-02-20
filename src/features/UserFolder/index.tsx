@@ -1,7 +1,7 @@
 import { ModalWrapper } from '@/shared/ui/ModalWrapper'
 import style from './index.module.css'
 import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
-import { InfoUserFolder } from '@/widgets/folders/InfoUserFolder'
+import { InfoUserFolder } from '@/features/InfoUserFolder'
 import { groupClass } from '@/shared/lib/classNames'
 import { CardFolderItem } from '@/entities/folder/lib/types'
 import { handeleAddTopic, handeleDelleteFolder } from './lib/handele'
