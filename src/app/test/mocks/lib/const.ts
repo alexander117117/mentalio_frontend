@@ -115,19 +115,51 @@ export const mockUserFolders: CardFolderItem[] = [
       },
     ],
   },
+  {
+    id: 2,
+    name: 'Item 2',
+    description: 'Оисание 2',
+    dateCreated: '2023-07-20',
+    category: 'categories 2',
+    topics: [
+      {
+        id: 1,
+        name: 'Topic 1',
+        description: 'Description for Topic 1',
+        dateCreated: '2023-07-20',
+        percentStudy: 10,
+        cards: [],
+      },
+      {
+        id: 2,
+        name: 'Topic 2',
+        description: 'Description for Topic 1',
+        dateCreated: '2023-07-20',
+        percentStudy: 100,
+        cards: [],
+      },
+      {
+        id: 3,
+        name: 'Topic 3',
+        description: 'Description for Topic 1',
+        dateCreated: '2023-07-20',
+        percentStudy: 70,
+        cards: [],
+      },
+    ],
+  },
 ]
 
 export const mockCreateFolder = ({ name, description, category, topics }: CardFolderItem) => {
   return {
     id: Math.floor(Math.random() * 1000),
-    name: name,
-    description: description,
+    name,
+    description,
     dateCreated: new Date().toISOString().split('T')[0],
-    category: category,
+    category,
     topics: [...topics],
   }
 }
-
 export const mockUserFolder: CardFolderItem = {
   id: 1,
   name: 'File 1',
