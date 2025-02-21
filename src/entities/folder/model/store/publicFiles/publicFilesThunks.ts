@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { TopicsItem, CardFolderItem, CardsWordsItem } from '../../../lib/types.ts'
+import { TopicsItem, CardFolderItem, CardsWordsItem } from '../../../lib/types'
 import { executeApiRTK } from '@/shared/api/apiHelpers.ts'
 
 /**

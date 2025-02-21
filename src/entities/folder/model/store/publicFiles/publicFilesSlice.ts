@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
-import { CardFolderItem, TopicsItem } from '../../../lib/types.ts'
+import { CardFolderItem, TopicsItem } from '../../../lib/types'
 
 import {
   getPublicFiles,

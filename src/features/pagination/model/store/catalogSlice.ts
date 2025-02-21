@@ -6,7 +6,7 @@ import {
   getAllCategoriesThunk,
   getCardsFolderMentalio,
 } from './catalogThunks.ts'
-import { CardCategoriesItem, CardFolderItem } from '@/entities/folder/lib/types.ts'
+import { CardCategoriesItem, CardFolderItem } from '@/entities/folder/lib/types'
 
 /**
  * Интерфейс состояния catalog-слайса.

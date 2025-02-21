@@ -5,7 +5,6 @@ import { folderClass } from './lib'
 import { TopicsItem } from '@/entities/folder/lib/types'
 import { ReactComponent as CloseIcon } from '@/shared/assets/images/assets/close_icon.svg?react'
 
-
 interface InfoUserFolderProps {
   dataTopic: TopicsItem
   idFolder: string | number
