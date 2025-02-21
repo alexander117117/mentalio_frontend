@@ -1,6 +1,17 @@
 import { CreateFolder } from '@/entities/folder/lib/types/form'
-import { SubmitHandler } from 'react-hook-form'
 
-export const handleOnSubmit: SubmitHandler<CreateFolder> = async (data) => {
-  console.log('onSubmit: ', data)
+interface handleOnSubmitProps {
+  data: CreateFolder
+  setErrorServer: (error: string) => void
+  reset: () => void
+}
+export const handleOnSubmit = ({ data, setErrorServer, reset }: handleOnSubmitProps) => {
+  const respons = true
+  if (respons) {
+    console.log('onSubmit: ', data)
+    setErrorServer('')
+    reset()
+  } else {
+    setErrorServer('Произошла ошибка, попробуйте позже')
+  }
 }

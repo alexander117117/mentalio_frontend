@@ -4,18 +4,16 @@ import { SelectItem } from './components/SelectItem/SelectItem'
 import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import { TextError } from '@/shared/ui/TextError/index.tsx'
 
+const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки']
+
 interface SelectAddFolderProps {
   register: UseFormRegisterReturn
   setValue: UseFormSetValue<any>
   watchCategory: string
   error?: string
 }
-
 export const SelectAddFolder = ({ register, setValue, watchCategory, error }: SelectAddFolderProps) => {
   const [isOpen, setIsOpen] = useState(false)
-
-  const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки']
-
   const toggleAccordion = () => {
     setIsOpen(!isOpen)
   }
