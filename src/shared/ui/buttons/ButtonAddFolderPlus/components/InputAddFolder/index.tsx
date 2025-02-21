@@ -1,22 +1,27 @@
-import React from 'react'
+import { TextError } from '@/shared/ui/TextError'
+import { UseFormRegisterReturn } from 'react-hook-form'
 import { FaPlus } from 'react-icons/fa'
 
 interface InputAddFolderProps {
   type: string
   name: string
   placeholder?: string
+  error?: string
   isTopic?: boolean
   setQuantityTopicInput?: () => void
   quantityTopicInput?: number
+  register?: UseFormRegisterReturn
 }
 
 export const InputAddFolder = ({
   type,
   name,
   placeholder = '',
+  error,
   isTopic = false,
   setQuantityTopicInput,
   quantityTopicInput = 0,
+  register,
 }: InputAddFolderProps) => {
   return (
     <>
@@ -26,6 +31,7 @@ export const InputAddFolder = ({
           className="w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[12px] sm:py-[24px] text-xs sm:text-base"
           name={name}
           placeholder={placeholder}
+          {...register}
         />
         {
           // кнопка для добавления инпутов "названия темы". Максимум 4 темы
@@ -40,6 +46,7 @@ export const InputAddFolder = ({
           ) : null
         }
       </div>
+      <TextError errorMessage={error} />
     </>
   )
 }

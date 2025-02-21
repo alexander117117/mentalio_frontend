@@ -8,6 +8,7 @@ export interface BaseApiProps<TRequest = any> {
   body?: TRequest | object
   config?: AxiosRequestConfig
   errorMessage?: string
+  setErrorServer?: () => void
 }
 
 type RejectWithValueFn = any
