@@ -14,7 +14,7 @@ interface InfoUserFolderProps {
 export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUserFolderProps) {
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
-      <div className="text-white pb-16 relative">
+      <div className="text-white pb-28 md:pb-16 relative">
         <h2 className={style.InfoUserFolder_title}>{dataFolder.name}</h2>
 
         <div className={groupClass}>
@@ -23,7 +23,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
               <InfoUserFolder key={topic.id} dataTopic={topic} idFolder={dataFolder.id} />
             ))
           ) : (
-            <h1>Нет данных</h1>
+            <h1 className="w-full md:w-96 text-center">Нет данных</h1>
           )}
         </div>
 

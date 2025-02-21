@@ -16,11 +16,12 @@
 }
 
 .info_folder__word p {
-  width: 150px;
+  width: 9.375rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  font-size: 1rem;
 }
 
 .info_folder span {
@@ -33,4 +34,16 @@
   display: inline;
   font-size: 0.75rem;
   color: #24ac18;
+}
+
+@media (max-width: 768px){
+  .info_folder{
+    gap: 0;
+  }
+  .info_folder__word p {
+    width: auto;
+  }
+  .info_folder span {
+    font-size: 0.625rem;
+  }
 }

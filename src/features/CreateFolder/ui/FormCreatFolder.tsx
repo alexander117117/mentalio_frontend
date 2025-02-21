@@ -14,7 +14,7 @@ export function FormCreatFolder() {
   return (
     <form
       onSubmit={handleSubmit((data) => handleOnSubmit({ data, setErrorServer, reset }))}
-      className="w-full sm:w-[490px] flex flex-col gap-[10px] p-3 sm:p-5 rounded-[15px] text-white"
+      className="w-full md:w-[473px] flex flex-col gap-[10px] p-0 sm:p-5 rounded-[15px] text-white"
     >
       <InputAddFolder
         register={register('name', validateFolderName)}
@@ -45,10 +45,10 @@ export function FormCreatFolder() {
         register={register('description')}
         error={errors.description?.message}
         name="topicDescription"
-        placeholder="Описание папки...\nНапример: для изучения испанского языка (уровень A1)"
+        placeholder="Описание папки... &#10;Например: для изучения испанского языка (уровень A1)"
       />
       {errorServer && <p className="text-red-500 text-center">{errorServer}</p>}
-      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly">
+      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly gap-3 md:gap-0 flex-col md:flex-row px-0 sm:px-5 md:px-0">
         {fields.length > 1 && (
           <ButtonControlFolder
             type="button"

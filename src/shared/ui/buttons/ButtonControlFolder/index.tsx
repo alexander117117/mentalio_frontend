@@ -4,20 +4,22 @@ interface ButtonControlFolderProps {
   type?: 'button' | 'submit' | 'reset'
   color?: string
   customPadding?: string
+  isSmall?: boolean
   children: React.ReactNode
   onClick?: () => void
 }
 export function ButtonControlFolder({
   type = 'button',
   color = 'text-white',
-  customPadding = 'px-8',
+  customPadding = 'px-4',
+  isSmall = false,
   children,
   onClick,
 }: ButtonControlFolderProps) {
   return (
     <button
       type={type}
-      className={`border border-[#272727] rounded-[10px] ${customPadding} h-[30px] md:h-[46px] ${color} text-[0.5rem] xxs:text-[0.625rem] sm:text-base`}
+      className={`${isSmall ? 'w-auto h-9' : 'w-full md:w-auto h-[4.375rem] md:h-10'} border border-[#272727] rounded-[10px] ${customPadding} ${color} text-xs md:text-base whitespace-nowrap`}
       onClick={onClick}
     >
       {children}

@@ -14,7 +14,6 @@ export const MyFoldersPage = () => {
   useEffect(() => {
     dispatch(getUserFiles())
   }, [])
-
   return (
     <>
       <main className="w-full sm:w-auto">
@@ -24,7 +23,6 @@ export const MyFoldersPage = () => {
         <p className="block sm:hidden text-[12px] font-medium text-[#6B6868] whitespace-pre-line leading-[14px] mt-[10px]">
           Здесь ты можешь посмотреть свои папки, а также добавить новую из каталога или создать лично
         </p>
-
         {/* Папки пользователя */}
         {files?.length > 0 ? (
           <>

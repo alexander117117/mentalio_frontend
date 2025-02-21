@@ -11,7 +11,7 @@ export function DescriptionFolder({ name, placeholder, error, register }: Descri
   return (
     <>
       <textarea
-        className="w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[12px] sm:pt-[24px] sm:pb-[36px] text-[10px] sm:text-base resize-none"
+        className="w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[12px] sm:pt-[24px] sm:pb-[36px] text-base resize-none"
         name={name}
         placeholder={placeholder}
         rows={3}

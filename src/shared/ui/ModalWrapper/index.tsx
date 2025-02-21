@@ -53,7 +53,7 @@ export const ModalWrapper = ({ isOpen, onClose, isDark = false, children }: Moda
   return (
     <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50`} onClick={onClose}>
       <div
-        className={`relative ${isDark ? 'bg-[#111]' : 'bg-white'} rounded-lg shadow-lg p-3 sm:p-6 w-[75%] sm:w-auto md:max-w-[75%] md:max-h-[75vh] xs:max-w-[90%] xs:max-h-[90%] overflow-y-auto`}
+        className={`relative ${isDark ? 'bg-[#111]' : 'bg-white'} rounded-2xl sm:rounded-lg shadow-lg p-[10px] pt-6 sm:pt-10 sm:p-6 w-[90%] md:w-auto md:max-w-[90%] md:max-h-[70vh] xs:max-w-[90%] xs:max-h-[70%] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()} // Предотвращает закрытие при клике на контент
       >
         {children}
