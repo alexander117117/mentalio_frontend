@@ -22,7 +22,7 @@ export function InfoFolder({ dataTopic }: InfoFolderProps) {
           <TopicInfo dataTopic={dataTopic} />
         </div>
 
-        <ButtonControlFolder onClick={handleClickShowWord}>Посмотреть</ButtonControlFolder>
+        <ButtonControlFolder onClick={handleClickShowWord}>{isShowWord ? 'Скрыть слова' : 'Посмотреть'}</ButtonControlFolder>
       </div>
       {isShowWord && <ListWordPublic cards={dataTopic.cards} />}
     </>
