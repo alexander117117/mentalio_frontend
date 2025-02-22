@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 /**
  * ModalWrapper - Компонент-обёртка для модального окна.
@@ -54,16 +53,10 @@ export const ModalWrapper = ({ isOpen, onClose, isDark = false, children }: Moda
     <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50`} onClick={onClose}>
       <div
         className={`relative ${isDark ? 'bg-[#111]' : 'bg-white'} rounded-lg shadow-lg p-3 sm:p-6 w-[75%] sm:w-auto md:max-w-[75%] md:max-h-[75vh] xs:max-w-[90%] xs:max-h-[90%] overflow-y-auto`}
-        onClick={(e) => e.stopPropagation()} // Предотвращает закрытие при клике на контент
+        onClick={(e) => e.stopPropagation()}
       >
         {children}
       </div>
     </div>
   )
-}
-
-ModalWrapper.propTypes = {
-  isOpen: PropTypes.bool.isRequired, // Управление видимостью
-  onClose: PropTypes.func.isRequired, // Функция закрытия
-  children: PropTypes.node.isRequired, // Контент модального окна
 }
