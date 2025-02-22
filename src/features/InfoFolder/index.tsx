@@ -1,6 +1,6 @@
 import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
 import { flexColumnStartClass } from '@/shared/lib/classNames'
-import { folderClass } from '@/shared/lib/classNames' 
+import { folderClass } from '@/shared/lib/classNames'
 import { TopicsItem } from '@/entities/folder/lib/types'
 import { useState } from 'react'
 import { ListWordPublic } from '@/features/ListWordPublic'
@@ -22,7 +22,9 @@ export function InfoFolder({ dataTopic }: InfoFolderProps) {
           <TopicInfo dataTopic={dataTopic} />
         </div>
 
-        <ButtonControlFolder isSmall={true} onClick={handleClickShowWord}>{isShowWord ? 'Закрыть' : 'Посмотреть'}</ButtonControlFolder>
+        <ButtonControlFolder isSmall={true} onClick={handleClickShowWord}>
+          {isShowWord ? 'Закрыть' : 'Посмотреть'}
+        </ButtonControlFolder>
       </div>
       {isShowWord && <ListWordPublic cards={dataTopic.cards} />}
     </>

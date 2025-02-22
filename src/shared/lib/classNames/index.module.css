@@ -47,8 +47,8 @@
   }
 }
 
-@media (max-width: 768px){
-  .info_folder{
+@media (max-width: 768px) {
+  .info_folder {
     gap: 0;
   }
   .info_folder__word p {

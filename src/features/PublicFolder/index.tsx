@@ -27,11 +27,7 @@ export function InfoPublicFolder({ isModalOpen, setIsModalOpen, dataFolder }: In
         </div>
 
         <div className={style.buttonContainerClass}>
-          <ButtonControlFolder
-            onClick={handelAddFolder}
-          >
-            Добавить папку
-          </ButtonControlFolder>
+          <ButtonControlFolder onClick={handelAddFolder}>Добавить папку</ButtonControlFolder>
         </div>
       </div>
     </ModalWrapper>

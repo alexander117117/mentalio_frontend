@@ -1,5 +1,5 @@
 import { TopicsItem } from '@/entities/folder/lib/types'
-import { containerClass } from '@/shared/lib/classNames' 
+import { containerClass } from '@/shared/lib/classNames'
 import { resultClass } from '@/shared/lib/classNames'
 
 interface TopicInfoProps {
