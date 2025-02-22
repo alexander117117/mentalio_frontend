@@ -11,7 +11,7 @@ export function useCreateFolderForm() {
     formState: { errors },
     reset,
   } = useForm<CreateFolder>({
-    mode: 'onChange',
+    mode: 'onSubmit',
     defaultValues: {
       name: '',
       description: '',
