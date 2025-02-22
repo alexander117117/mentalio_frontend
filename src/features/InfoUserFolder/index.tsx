@@ -4,14 +4,17 @@ import { folderClass } from '@/shared/lib/classNames'
 import { TopicsItem } from '@/entities/folder/lib/types'
 import { ReactComponent as CloseIcon } from '@/shared/assets/images/assets/close_icon.svg?react'
 import { TopicInfo } from '@/shared/ui/TopicInfo'
+import { useNavigate } from 'react-router-dom';
 
 interface InfoUserFolderProps {
   dataTopic: TopicsItem
   idFolder: string | number
 }
 export function InfoUserFolder({ dataTopic, idFolder }: InfoUserFolderProps) {
+  const navigate = useNavigate();
   const handleOpenFolderPage = (idFolder: string | number, idTopic: string | number) => {
     console.log('OpenFolderPage: ', { idFolder, idTopic })
+    navigate(`/folderTopic/${idFolder}/${idTopic}`)
   }
   const handleDeleteTopic = (idTopic: string | number) => {
     console.log('DeleteTopic id: ', { idTopic })

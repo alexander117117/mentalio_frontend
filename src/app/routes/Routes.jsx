@@ -30,7 +30,7 @@ const AppRoutes = () => {
           <Route path="my-folders" element={<MyFoldersPage />} />
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="settings" element={<SettingPage />} />
-          <Route path="folderTopic" element={<FolderTopicPage />} />
+          <Route path="folderTopic/:idFolder/:idTopic" element={<FolderTopicPage />} />
         </Route>
 
         <Route path="*" element={<Error404Page />} />
