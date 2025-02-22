@@ -11,6 +11,7 @@ interface InputAddFolderProps {
   setQuantityTopicInput?: () => void
   quantityTopicInput?: number
   register?: UseFormRegisterReturn
+  children?: React.ReactNode
 }
 
 export const InputAddFolder = ({
@@ -22,6 +23,7 @@ export const InputAddFolder = ({
   setQuantityTopicInput,
   quantityTopicInput = 0,
   register,
+  children,
 }: InputAddFolderProps) => {
   return (
     <>
@@ -33,18 +35,16 @@ export const InputAddFolder = ({
           placeholder={placeholder}
           {...register}
         />
-        {
-          // кнопка для добавления инпутов "названия темы". Максимум 4 темы
-          isTopic && quantityTopicInput < 4 ? (
-            <button
-              type="button"
-              className="w-[20px] sm:w-[30px] aspect-square rounded-full bg-[#BDFF9D] absolute right-[10px] sm:right-5 top-1/2 -translate-y-1/2 flex items-center justify-center"
-              onClick={setQuantityTopicInput}
-            >
-              <FaPlus className="text-[10px] sm:text-base text-black" />
-            </button>
-          ) : null
-        }
+        {isTopic && quantityTopicInput < 4 ? (
+          <button
+            type="button"
+            className="w-[20px] sm:w-[30px] aspect-square rounded-full bg-[#BDFF9D] absolute right-[10px] sm:right-5 top-1/2 -translate-y-1/2 flex items-center justify-center"
+            onClick={setQuantityTopicInput}
+          >
+            <FaPlus className="text-[10px] sm:text-base text-black" />
+          </button>
+        ) : null}
+        {children}
       </div>
       <TextError errorMessage={error} />
     </>

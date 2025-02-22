@@ -9,7 +9,7 @@ export function ListWordPublic({ cards }: ListWordPublicProps) {
       {cards.length > 0 ? (
         cards.map((card) => (
           <li 
-            className="flex items-center justify-between p-[10px] bg-[#353030] rounded-[10px] text-base"
+            className="flex items-center justify-between p-[10px] bg-[#353030] rounded-[10px] text-xs md:text-base"
             key={card.id}
           >
             <span>{card.word}</span>

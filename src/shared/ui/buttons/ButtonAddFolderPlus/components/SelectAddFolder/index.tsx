@@ -4,7 +4,7 @@ import { SelectItem } from './components/SelectItem/SelectItem'
 import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import { TextError } from '@/shared/ui/TextError/index.tsx'
 
-const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки']
+const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки', 'Другое']
 
 interface SelectAddFolderProps {
   register: UseFormRegisterReturn

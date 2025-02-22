@@ -14,7 +14,7 @@ interface InfoUserFolderProps {
 export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUserFolderProps) {
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
-      <div className="text-white pb-28 md:pb-16 relative">
+      <div className="text-white pb-44 md:pb-16 relative">
         <h2 className={style.InfoUserFolder_title}>{dataFolder.name}</h2>
 
         <div className={groupClass}>
@@ -27,7 +27,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
           )}
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly">
+        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly md:flex-row flex-col gap-4 md:gap-0">
           <ButtonControlFolder onClick={() => handeleAddTopic(dataFolder.id)}>Добавить тему</ButtonControlFolder>
           <ButtonControlFolder onClick={() => handeleDelleteFolder(dataFolder.id)} color={'text-[#FF4040]'}>
             Удалить папку

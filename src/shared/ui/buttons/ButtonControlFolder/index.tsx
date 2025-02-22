@@ -7,6 +7,7 @@ interface ButtonControlFolderProps {
   isSmall?: boolean
   children: React.ReactNode
   onClick?: () => void
+  disabled?: boolean
 }
 export function ButtonControlFolder({
   type = 'button',
@@ -15,12 +16,14 @@ export function ButtonControlFolder({
   isSmall = false,
   children,
   onClick,
+  disabled = false,
 }: ButtonControlFolderProps) {
   return (
     <button
       type={type}
       className={`${isSmall ? 'w-auto h-9' : 'w-full md:w-auto h-[4.375rem] md:h-10'} border border-[#272727] rounded-[10px] ${customPadding} ${color} text-xs md:text-base whitespace-nowrap`}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>
