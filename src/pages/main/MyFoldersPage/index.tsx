@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useEffect } from 'react'
 import { ListUserFiles } from './component/ListUserFiles'
 
@@ -9,7 +8,7 @@ import { AppDispatch } from '@/app/store/configureStore.ts'
 
 export const MyFoldersPage = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const { files } = useSelector((state: any) => state.userFiles)
+  const { filesUser } = useSelector((state: any) => state.userFiles)
 
   useEffect(() => {
     dispatch(getUserFiles())
@@ -23,11 +22,10 @@ export const MyFoldersPage = () => {
         <p className="block sm:hidden text-[12px] font-medium text-[#6B6868] whitespace-pre-line leading-[14px] mt-[10px]">
           Здесь ты можешь посмотреть свои папки, а также добавить новую из каталога или создать лично
         </p>
-        {/* Папки пользователя */}
-        {files?.length > 0 ? (
+        {filesUser?.length > 0 ? (
           <>
             <div className="grid grid-cols-2 gap-[10px] sm:gap-5 mt-[40px] mb-5 sm:mb-[35px]">
-              <ListUserFiles files={files} />
+              <ListUserFiles files={filesUser} />
             </div>
             <ButtonAddFolderPlus myFolderPage={true} />
           </>
