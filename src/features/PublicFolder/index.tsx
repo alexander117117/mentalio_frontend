@@ -15,14 +15,14 @@ export function InfoPublicFolder({ isModalOpen, setIsModalOpen, dataFolder }: In
   }
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
-      <div className="text-white pb-16 relative">
+      <div className="text-white pb-28 md:pb-16 relative">
         <h2 className={style.InfoPublicFolder_title}>{dataFolder.name}</h2>
 
         <div className={groupClass}>
           {dataFolder.topics.length > 0 ? (
             dataFolder.topics.map((topic) => <InfoFolder key={topic.id} dataTopic={topic} />)
           ) : (
-            <h1>Тем нет</h1>
+            <h1 className="w-full md:w-56 text-center">Тем нет</h1>
           )}
         </div>
 

@@ -24,6 +24,7 @@ export default {
         directoryFolder: '#001E02',
         userFolder: '#BDFF9DE5',
         colorHover: '#0F460A',
+        popup: '#171717',
       },
     },
   },

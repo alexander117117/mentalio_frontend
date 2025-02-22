@@ -1,9 +1,9 @@
 import { ButtonControlFolder } from '@/shared/ui/buttons/ButtonControlFolder'
-import { TopicInfo } from './components/TopicInfo'
 import { flexColumnStartClass } from '@/shared/lib/classNames'
-import { folderClass } from './lib'
+import { folderClass } from '@/shared/lib/classNames'
 import { TopicsItem } from '@/entities/folder/lib/types'
 import { ReactComponent as CloseIcon } from '@/shared/assets/images/assets/close_icon.svg?react'
+import { TopicInfo } from '@/shared/ui/TopicInfo'
 
 interface InfoUserFolderProps {
   dataTopic: TopicsItem
@@ -24,7 +24,7 @@ export function InfoUserFolder({ dataTopic, idFolder }: InfoUserFolderProps) {
         </div>
 
         <CloseIcon title="delete topic" onClick={() => handleDeleteTopic(dataTopic.id)} />
-        <ButtonControlFolder onClick={() => handleOpenFolderPage(idFolder, dataTopic.id)}>
+        <ButtonControlFolder isSmall={true} onClick={() => handleOpenFolderPage(idFolder, dataTopic.id)}>
           Посмотреть
         </ButtonControlFolder>
       </div>

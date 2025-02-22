@@ -22,7 +22,7 @@ export function FormCreateFolder() {
         remove={remove}
         fields={fields}
       />
-      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly">
+      <div className="absolute bottom-0 left-0 right-0 flex md:flex-row flex-col gap-4 md:gap-0 items-center justify-evenly px-3 sm:px-5 xl:px-0">
         <FormPanel fields={fields} append={append} />
       </div>
     </form>

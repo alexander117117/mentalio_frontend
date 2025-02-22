@@ -4,7 +4,7 @@ import { SelectItem } from './components/SelectItem/SelectItem'
 import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import { TextError } from '@/shared/ui/TextError/index.tsx'
 
-const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки']
+const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки', 'Другое']
 
 interface SelectAddFolderProps {
   register: UseFormRegisterReturn
@@ -39,7 +39,7 @@ export const SelectAddFolder = ({ register, setValue, watchCategory, error }: Se
       <div
         onClick={toggleAccordion}
         className={cn(
-          'w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[12px] sm:py-[24px] text-xs sm:text-base cursor-pointer selectCategory',
+          'w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[24px] text-base cursor-pointer selectCategory',
           {
             'text-[#6f7379]': chosenTopic === 'Выберите категорию',
             'text-[#f5f1f1] font-semibold': chosenTopic !== 'Выберите категорию',
