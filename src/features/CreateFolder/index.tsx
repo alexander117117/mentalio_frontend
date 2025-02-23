@@ -12,7 +12,7 @@ export function CreateFolder({ isModalOpen, setIsModalOpen }: CreateFolderProps)
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
       <div className="pb-44 sm:pb-36 md:pb-16 relative">
         <h2 className="text-white text-2xl sm:text-4xl font-normal mb-6 sm:mb-10 text-center">Создание папки</h2>
-        <FormCreateFolder />
+        <FormCreateFolder setIsModalOpen={setIsModalOpen} />
       </div>
     </ModalWrapper>
   )
