@@ -1,0 +1,10 @@
+.input_translation_search{
+  width: 15.25rem;
+  /* background-color: var(--popup); */
+  background-color: #171717;
+  border-radius: 0.625rem;
+  padding: 0.625rem;
+  outline: none;
+  font-size: 1.25rem;
+  border: 1px solid #272727;
+}

@@ -4,6 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bgDark: '#212121',
+  --regButton: '#24AC18E5',
+  --siderGray: '#868585',
+  --primary: '#24AC18',
+  --directoryFolder: '#001E02',
+  --userFolder: '#BDFF9DE5',
+  --colorHover: '#0F460A',
+  --popup: '#171717',
+  --translate: '#111111'
+}
+
 body {
   overflow-x: hidden;
 }
