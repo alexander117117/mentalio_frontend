@@ -1,13 +1,12 @@
-.translation_group{
+.translation_group {
   padding: 0.625rem;
-  /* background-color: var(--bg-popup); */
   background-color: #171717;
   width: 24.688rem;
   border-radius: 0.625rem;
 }
 
 @media (max-width: 576px) {
-  .translation_group{
+  .translation_group {
     width: 100%;
   }
 }

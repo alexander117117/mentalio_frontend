@@ -1,4 +1,4 @@
-.button_add_word_translate{
+.button_add_word_translate {
   height: 36px;
   padding: 0.625rem 1.6875rem;
   background-color: #171717;
@@ -8,8 +8,8 @@
   line-height: 1rem;
 }
 
-@media (max-width: 576px){
-  .button_add_word_translate{
+@media (max-width: 576px) {
+  .button_add_word_translate {
     font-size: 0.75rem;
     padding: 0.625rem 1.125rem;
   }

@@ -1,38 +1,27 @@
-import { useEffect, useRef, useState } from "react";
-import style from "./index.module.css"
+import { useEffect, useRef, useState } from 'react'
+import style from './index.module.css'
 export function LanguageSelector() {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const languageRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const languageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent): void {
       if (languageRef.current && !languageRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside)
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
-  const testData = [
-    "Русский",
-    "Английский",
-    "Испанский",
-    "Французский",
-    "Португальский",
-    "Немецкий",
-    "Арабский",
-  ];
+  const testData = ['Русский', 'Английский', 'Испанский', 'Французский', 'Португальский', 'Немецкий', 'Арабский']
 
   return (
     <div className={style.languageSelector}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={style.languageSelector__button}
-      >
+      <button onClick={() => setIsOpen(!isOpen)} className={style.languageSelector__button}>
         Рус
       </button>
 
@@ -40,10 +29,7 @@ export function LanguageSelector() {
         <div className={style.languageSelector__popup} ref={languageRef}>
           <div className={style.languageSelector__popupGrid}>
             {testData.map((item, index) => (
-              <div
-                key={index}
-                className={style.languageSelector__item}
-              >
+              <div key={index} className={style.languageSelector__item}>
                 {item}
               </div>
             ))}
@@ -51,5 +37,5 @@ export function LanguageSelector() {
         </div>
       )}
     </div>
-  );
+  )
 }

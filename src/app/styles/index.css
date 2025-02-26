@@ -5,15 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --bgDark: '#212121',
-  --regButton: '#24AC18E5',
-  --siderGray: '#868585',
-  --primary: '#24AC18',
-  --directoryFolder: '#001E02',
-  --userFolder: '#BDFF9DE5',
-  --colorHover: '#0F460A',
-  --popup: '#171717',
-  --translate: '#111111'
+  --bg-dark: '#212121';
+  --reg-button: '#24AC18E5';
+  --sider-gray: '#868585';
+  --primary: '#24AC18';
+  --directory-folder: '#001E02';
+  --user-folder: '#BDFF9DE5';
+  --color-hover: '#0F460A';
+  --popup: '#171717';
+  --translate: '#111111';
 }
 
 body {

@@ -1,4 +1,4 @@
-import { ButtonNavigationTab } from "@/shared/ui/buttons/ButtonNavigationTab";
+import { ButtonNavigationTab } from '@/shared/ui/buttons/ButtonNavigationTab'
 
 export function NavigationTabs() {
   return (

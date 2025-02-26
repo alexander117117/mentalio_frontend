@@ -34,7 +34,7 @@
 .languageSelector__item {
   padding: 0.225rem 0.3125rem;
   font-size: 0.75rem;
-  background: #111111;
+  background: #111;
   border-radius: 0.4375rem;
   cursor: pointer;
   overflow: hidden;
@@ -47,17 +47,17 @@
 }
 
 @media (max-width: 768px) {
-  .languageSelector__button{
+  .languageSelector__button {
     padding: 0.1875rem 0.875rem;
     font-size: 0.75rem;
   }
-  .languageSelector__popupGrid{
+  .languageSelector__popupGrid {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
-@media (max-width: 576px){
-  .languageSelector__popup{
+@media (max-width: 576px) {
+  .languageSelector__popup {
     padding: 15px 10px;
   }
 }

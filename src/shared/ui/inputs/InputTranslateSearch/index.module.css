@@ -1,6 +1,5 @@
-.input_translation_search{
+.input_translation_search {
   width: 15.25rem;
-  /* background-color: var(--popup); */
   background-color: #171717;
   border-radius: 0.625rem;
   padding: 0.625rem;
@@ -9,7 +8,7 @@
   border: 1px solid #272727;
 }
 
-.input_translation_search_small{
+.input_translation_search_small {
   width: 6.25rem;
   background-color: var(--popup);
   border-radius: 0.3125rem;
@@ -21,12 +20,12 @@
 }
 
 @media (max-width: 768px) {
-  .input_translation_search{
+  .input_translation_search {
     width: 70%;
     font-size: 1rem;
   }
 
-  .input_translation_search_small{
+  .input_translation_search_small {
     width: 60%;
     height: 2.1875rem;
   }

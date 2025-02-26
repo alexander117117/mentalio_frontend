@@ -1,4 +1,4 @@
-.label_translation{
+.label_translation {
   display: block;
   margin-bottom: 0.5rem;
   color: #cfcfcf;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 768px) {
-  .label_translation{
+  .label_translation {
     font-size: 12px;
     margin-bottom: 1rem;
   }

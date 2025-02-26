@@ -1,4 +1,4 @@
-import { GoPaperclip } from "react-icons/go";
+import { GoPaperclip } from 'react-icons/go'
 
 export function ButtonAddFile() {
   return (

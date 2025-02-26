@@ -42,5 +42,5 @@ export {
   cross_icon,
   edit_icon,
   favorite_word_icon,
-  favorite_word_mark_icon
+  favorite_word_mark_icon,
 }

@@ -3,9 +3,11 @@ import { handleOnSubmit } from '../../lib/handeles'
 import { useState } from 'react'
 import { FormFields } from '../FormFields'
 import { FormPanel } from '../FormPanel'
-interface FormCreateFolderProps {setIsModalOpen: (isOpen: boolean) => void}
+interface FormCreateFolderProps {
+  setIsModalOpen: (isOpen: boolean) => void
+}
 
-export function FormCreateFolder({setIsModalOpen}: FormCreateFolderProps) {
+export function FormCreateFolder({ setIsModalOpen }: FormCreateFolderProps) {
   const [errorServerMessages, setErrorServerMessages] = useState('')
   const { reset, handleSubmit, append, register, errors, setValue, watch, remove, fields } = useCreateFolderForm()
 
