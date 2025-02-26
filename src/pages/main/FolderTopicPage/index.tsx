@@ -7,11 +7,11 @@ import { WordList } from '@/widgets/WordList';
 export function FolderTopicPage() {
   const { idFolder, idTopic } = useParams();
   return (
-    <div>
-      <h1 className="text-center font-unbounded text-5xl font-bold mb-5">Термины B2</h1>
+    <div className="w-full">
+      <h1 className="text-center font-unbounded text-xl sm:text-5xl font-bold mb-5">Термины B2 {idTopic}{idFolder}</h1>
       
       <TranslationSearch />
-      <br />
+      
       <Translation />
 
       <NavigationTabs />

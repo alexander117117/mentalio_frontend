@@ -5,3 +5,9 @@
   width: 24.688rem;
   border-radius: 0.625rem;
 }
+
+@media (max-width: 576px) {
+  .translation_group{
+    width: 100%;
+  }
+}

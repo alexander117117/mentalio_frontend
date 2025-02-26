@@ -1,13 +1,14 @@
 import style from "./index.module.css"
-interface InputTranslateSeachProps {
+interface InputTranslateSearchProps {
   type: string;
-  placeholder: string
+  placeholder: string;
+  isSmall?: boolean;
 }
-export function InputTranslateSeach({ type, placeholder }: InputTranslateSeachProps){
+export function InputTranslateSearch({ type, placeholder, isSmall=false }: InputTranslateSearchProps){
   return (
     <input 
       type={type}
-      className={style.input_translation_search}
+      className={isSmall ? style.input_translation_search_small : style.input_translation_search}
       placeholder={placeholder}
     />
   )

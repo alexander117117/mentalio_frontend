@@ -19,6 +19,7 @@ import close_icon from './assets/close_icon.svg'
 import cross_icon from './assets/cross_icon.svg'
 import edit_icon from './assets/edit_icon.svg'
 import favorite_word_icon from './assets/favorite_word_icon.svg'
+import favorite_word_mark_icon from './assets/favorite_word_mark_icon.svg'
 export {
   sider1,
   sider2,
@@ -40,5 +41,6 @@ export {
   close_icon,
   cross_icon,
   edit_icon,
-  favorite_word_icon
+  favorite_word_icon,
+  favorite_word_mark_icon
 }

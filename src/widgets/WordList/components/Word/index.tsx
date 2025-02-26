@@ -1,18 +1,19 @@
 import style from "../../index.module.css"
 import { WordAction } from "../WordAction"
 interface WordProps{
-  original: string,
-  translate: string
+  original: string;
+  translate: string;
+  favorite?: boolean
 }
-export function Word({ original, translate }: WordProps){
+export function Word({ original, translate, favorite }: WordProps){
   return (
     <div className={style.word_card}>
       <div className="flex flex-col gap-2">
         <span>{original}</span>
-        <span>{translate}</span>
+        <span className="opacity-60">{translate}</span>
       </div>
 
-      <WordAction />
+      <WordAction favorite={favorite}/>
     </div>
   )
 }

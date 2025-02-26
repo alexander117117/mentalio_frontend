@@ -8,3 +8,26 @@
   font-size: 1.25rem;
   border: 1px solid #272727;
 }
+
+.input_translation_search_small{
+  width: 6.25rem;
+  background-color: var(--popup);
+  border-radius: 0.3125rem;
+  padding: 0.1875rem 0.5rem;
+  outline: none;
+  font-size: 0.75rem;
+  border: 1px solid #272727;
+  height: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .input_translation_search{
+    width: 70%;
+    font-size: 1rem;
+  }
+
+  .input_translation_search_small{
+    width: 60%;
+    height: 2.1875rem;
+  }
+}

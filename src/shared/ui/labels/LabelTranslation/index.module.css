@@ -4,3 +4,10 @@
   color: #cfcfcf;
   font-size: 1.25rem;
 }
+
+@media (max-width: 768px) {
+  .label_translation{
+    font-size: 12px;
+    margin-bottom: 1rem;
+  }
+}
