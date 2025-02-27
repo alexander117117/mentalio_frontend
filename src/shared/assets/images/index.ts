@@ -16,7 +16,10 @@ import logo from './assets/logo.svg'
 import happy_folders from './assets/happy_folders.png'
 import sad_folders from './assets/sad_folders.png'
 import close_icon from './assets/close_icon.svg'
-
+import cross_icon from './assets/cross_icon.svg'
+import edit_icon from './assets/edit_icon.svg'
+import favorite_word_icon from './assets/favorite_word_icon.svg'
+import favorite_word_mark_icon from './assets/favorite_word_mark_icon.svg'
 export {
   sider1,
   sider2,
@@ -36,4 +39,8 @@ export {
   happy_folders,
   sad_folders,
   close_icon,
+  cross_icon,
+  edit_icon,
+  favorite_word_icon,
+  favorite_word_mark_icon,
 }
