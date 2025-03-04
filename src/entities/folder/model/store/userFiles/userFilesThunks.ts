@@ -44,8 +44,6 @@ export const createUserFile = createAsyncThunk<FolderItem, Partial<CreateUserFil
       rejectWithValue,
       errorMessage: 'Ошибка при создании файла',
     })
-    console.log('response createUserFile', response)
-
     return response.data
   },
 )
@@ -229,8 +227,6 @@ export const addPublicFile = createAsyncThunk<FolderItem, { idFolder: Id }, { re
       rejectWithValue,
       errorMessage: 'Ошибка при добавлении файла',
     })
-    console.log(response.data)
-
     return response.data
   },
 )
