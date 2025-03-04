@@ -7,7 +7,7 @@ import { FolderItem } from '@/entities/folder/lib/types'
 import { handeleAddTopic, handeleDelleteFolder } from './lib/handele'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/store/configureStore'
-import { useNavigate } from 'react-router-dom'
+import { useTopicNavigation } from '@/shared/lib/helpers'
 
 interface InfoUserFolderProps {
   isModalOpen: boolean
@@ -16,7 +16,7 @@ interface InfoUserFolderProps {
 }
 export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUserFolderProps) {
   const dispatch = useDispatch<AppDispatch>()
-  const navigate = useNavigate()
+  const goToTopic = useTopicNavigation()
 
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
@@ -34,7 +34,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly md:flex-row flex-col gap-4 md:gap-0">
-          <ButtonControlFolder onClick={() => handeleAddTopic({ idFolder: dataFolder.id, navigate, dispatch })}>
+          <ButtonControlFolder onClick={() => handeleAddTopic({ idFolder: dataFolder.id, goToTopic, dispatch })}>
             Добавить тему
           </ButtonControlFolder>
           <ButtonControlFolder

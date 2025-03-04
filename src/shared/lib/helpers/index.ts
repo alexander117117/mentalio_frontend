@@ -1,6 +1,7 @@
 import { Id } from '@/shared/types/types'
 
 export { handlePending, handleRejected } from './StoreHandlers'
+export { useTopicNavigation } from './useTopicNavigation'
 
 /**
  * Удаляет карточку из массива по переданному идентификатору

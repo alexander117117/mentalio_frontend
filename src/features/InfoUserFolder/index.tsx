@@ -4,17 +4,17 @@ import { folderClass } from '@/shared/lib/classNames'
 import { FolderItem, TopicsItem } from '@/entities/folder/lib/types'
 import { ReactComponent as CloseIcon } from '@/shared/assets/images/assets/close_icon.svg?react'
 import { TopicInfo } from '@/shared/ui/TopicInfo'
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/store/configureStore'
 import { handleDeleteTopic, handleOpenFolderPage } from './lib/handles'
+import { useTopicNavigation } from '@/shared/lib/helpers'
 
 interface InfoUserFolderProps {
   dataTopic: TopicsItem
   dataFolder: FolderItem
 }
 export function InfoUserFolder({ dataTopic, dataFolder }: InfoUserFolderProps) {
-  const navigate = useNavigate()
+  const goToTopic = useTopicNavigation()
   const dispatch = useDispatch<AppDispatch>()
 
   return (
@@ -30,7 +30,7 @@ export function InfoUserFolder({ dataTopic, dataFolder }: InfoUserFolderProps) {
         />
         <ButtonControlFolder
           isSmall={true}
-          onClick={() => handleOpenFolderPage({ idFolder: dataFolder.id, idTopic: dataTopic.id, navigate, dataTopic })}
+          onClick={() => handleOpenFolderPage({ idFolder: dataFolder.id, goToTopic, dataTopic })}
         >
           Посмотреть
         </ButtonControlFolder>
