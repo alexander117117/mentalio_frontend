@@ -1,7 +1,7 @@
-import { CardsWordsItem } from '@/entities/folder/lib/types'
+import { WordsItem } from '@/entities/folder/lib/types'
 
 interface ListWordPublicProps {
-  cards: CardsWordsItem[]
+  cards: WordsItem[]
 }
 export function ListWordPublic({ cards }: ListWordPublicProps) {
   return (
@@ -12,8 +12,8 @@ export function ListWordPublic({ cards }: ListWordPublicProps) {
             className="flex items-center justify-between p-[10px] bg-[#353030] rounded-[10px] text-xs md:text-base"
             key={card.id}
           >
-            <span>{card.word}</span>
-            <span className="opacity-50">{card.translate}</span>
+            <span>{card.sourceWord}</span>
+            <span className="opacity-50">{card.translatedWord}</span>
           </li>
         ))
       ) : (

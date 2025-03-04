@@ -1,4 +1,7 @@
+import { Id } from '@/shared/types/types'
+
 export { handlePending, handleRejected } from './StoreHandlers'
+export { useTopicNavigation } from './useTopicNavigation'
 
 /**
  * Удаляет карточку из массива по переданному идентификатору
@@ -6,6 +9,6 @@ export { handlePending, handleRejected } from './StoreHandlers'
  * @param id - идентификатор удаляемой карточки
  * @returns новый массив без удаленного элемента
  */
-export function removeCard<T extends { id: string | number }>(items: T[], id: string | number): T[] {
+export function removeCard<T extends { id: Id }>(items: T[], id: Id): T[] {
   return items.filter((item) => item.id !== id)
 }

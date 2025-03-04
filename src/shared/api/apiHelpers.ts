@@ -17,9 +17,9 @@ export async function executeApiRTK<TResponse = any, TRequest = any>(
 ): Promise<AxiosResponse<TResponse>> {
   try {
     return await makeRequest<TResponse, TRequest>(props)
-  } catch (error: unknown) {
+  } catch (error) {
     const axiosError = error as AxiosError
-    return props.rejectWithValue(axiosError?.response?.data || props.errorMessage)
+    throw props.rejectWithValue(axiosError?.response?.data || props.errorMessage || 'Ошибка')
   }
 }
 
@@ -31,8 +31,8 @@ export async function executeApiRequest<TResponse = any, TRequest = any>(
 ): Promise<AxiosResponse<TResponse>> {
   try {
     return await makeRequest<TResponse, TRequest>(props)
-  } catch (error: unknown) {
+  } catch (error) {
     const axiosError = error as AxiosError
-    throw new Error(String(axiosError.response?.data || props.errorMessage))
+    throw new Error(String(axiosError.response?.data || props.errorMessage || 'Ошибка'))
   }
 }

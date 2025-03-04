@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import Button from '@/shared/ui/buttons/ButtonMain'
 import { useDispatch, useSelector } from 'react-redux'
-import { paginationNextPageThunk, paginationThunk } from '@/features/pagination/model/store/catalogThunks.ts'
+import { paginationNextPageThunk, paginationThunk } from '@/entities/folder/model/store/catalog/catalogThunks'
 import { AppDispatch } from '@/app/store/configureStore.ts'
 
 function Index() {
@@ -15,7 +15,7 @@ function Index() {
   const { page, query, category, totalPage, limit, loading } = useSelector((state: any) => state.catalog)
 
   const handleOnClickNextPage = () => {
-    dispatch(paginationNextPageThunk({ query, page: page - 1, category, limit }))
+    dispatch(paginationNextPageThunk({ query, page: page, category, limit }))
   }
   return (
     <div

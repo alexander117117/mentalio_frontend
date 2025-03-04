@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategory } from '@/features/pagination/model/store/catalogSlice'
+import { setCategory } from '@/entities/folder/model/store/catalog/catalogSlice'
 import { CategoryItem } from './component/CategoryItem'
-import { getAllCategoriesThunk } from '@/features/pagination/model/store/catalogThunks'
+import { getAllCategoriesThunk } from '@/entities/folder/model/store/catalog/catalogThunks'
 import type { AppDispatch, RootState } from '@/app/store/configureStore'
-import { CardCategoriesItem } from '@/entities/folder/lib/types'
+import { CategoriesItem } from '@/entities/folder/lib/types'
 
 export const Category = () => {
   const { category, allCategories } = useSelector((state: RootState) => state.catalog)
   const dispatch = useDispatch<AppDispatch>()
   const [selectedCatalog, setSelectedCatalog] = useState<string | null>(null)
-  const [listCategors, setListCategors] = useState<CardCategoriesItem[]>()
+  const [listCategors, setListCategors] = useState<CategoriesItem[]>()
   useEffect(() => {
     dispatch(getAllCategoriesThunk())
   }, [dispatch])
@@ -39,9 +39,9 @@ export const Category = () => {
           listCategors.map((item) => (
             <CategoryItem
               key={item.id}
-              title={item.name}
-              isActive={category === item.name}
-              onClick={() => handleCategorySelect(item.name)}
+              title={item.categoryName}
+              isActive={category === item.categoryName}
+              onClick={() => handleCategorySelect(item.categoryName)}
             />
           ))
         ) : (

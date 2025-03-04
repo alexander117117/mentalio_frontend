@@ -17,7 +17,7 @@ export function FormPanel({ fields, append }: FormPanelProps) {
         customPadding="px-5 md:px-11"
         color={!isMaxTopics ? '' : 'backdrop-opacity-20 text-gray-500'}
         disabled={isMaxTopics}
-        onClick={() => append({ id: fields.length, name: '' })}
+        onClick={() => append({ id: fields.length, topicName: '' })}
       >
         Добавить тему
       </ButtonControlFolder>

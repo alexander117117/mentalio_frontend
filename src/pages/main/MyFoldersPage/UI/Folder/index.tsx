@@ -1,10 +1,10 @@
 import happy_folder from './assets/happy_folders.png'
 import { UserFolder } from '@/features/UserFolder'
-import { CardFolderItem } from '@/entities/folder/lib/types'
+import { FolderItem } from '@/entities/folder/lib/types'
 import { useState } from 'react'
 
 interface UserFolder {
-  dataFolder: CardFolderItem
+  dataFolder: FolderItem
 }
 
 export const Folder = ({ dataFolder }: UserFolder) => {
@@ -18,7 +18,7 @@ export const Folder = ({ dataFolder }: UserFolder) => {
           </div>
           <div className="flex flex-col gap-0 sm:gap-[10px] text-center sm:text-left">
             <h3 className="text-sm sm:text-[20px] lg:text-[34px] font-medium font-unbounded leading-[15px] sm:leading-[25px] lg:leading-[42px]">
-              {dataFolder.name}
+              {dataFolder.folderName}
             </h3>
             <span className="text-[8px] sm:text-sm lg:text-lg font-medium">От {dataFolder.dateCreated}</span>
           </div>
@@ -26,7 +26,7 @@ export const Folder = ({ dataFolder }: UserFolder) => {
 
         <div className="sm:bg-directoryFolder absolute top-0 left-0 right-0 bottom-0 pt-5 2xl:pt-[117px] px-5 2xl:px-[36px] transition duration-200 linear opacity-0 hover:opacity-100">
           <h3 className="hidden sm:block text-[24px] lg:text-[34px] text-white font-medium font-unbounded leading-[42px]">
-            {dataFolder.name}
+            {dataFolder.folderName}
           </h3>
           <p className="hidden sm:block w-[80%] text-[11px] lg:text-lg font-medium text-[#848484] text-wrap mt-4 2xl:mt-0">
             {dataFolder.description}

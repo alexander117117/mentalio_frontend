@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from 'js-cookie'
 import { executeApiRTK } from '@/shared/api/apiHelpers.ts'
-import { Credentials } from '../../../lib/types'
+import { Credentials, User } from '../../../lib/types'
+import { API_ENDPOINTS } from '@/shared/api/constEndpoints'
 
 /**
  * Интерфейс для ответа от сервера при логине/регистрации.
@@ -48,26 +49,31 @@ interface ResetPasswordPayload {
   login: string
 }
 
+interface UserRegistrationResponse {
+  status: string
+  token: string
+  user: User
+}
+
 /**
  * Авторизация пользователя (логин).
  */
-export const loginUserThunk: any = createAsyncThunk<
-  AuthResponse,
+export const loginUserThunk = createAsyncThunk<
+  UserRegistrationResponse,
   Credentials,
   { rejectValue: string } // Тип для rejectWithValue
 >('auth/loginUserThunk', async (credentials, { rejectWithValue }) => {
-  const response: any = await executeApiRTK({
+  const response = await executeApiRTK<UserRegistrationResponse>({
     method: 'POST',
-    url: `/auth/login`,
+    url: API_ENDPOINTS.auth.login,
     body: credentials,
     rejectWithValue,
   })
+  console.log('loginUserThunk', response)
+
   // Сохраняем токен в cookies на 7 дней
   if (response.data.token) {
     Cookies.set('token', response.data.token, { expires: 7 })
-  }
-  if (response.data.status !== 'success') {
-    return rejectWithValue(response.data.error || 'Ошибка при входе')
   }
   return response.data
 })
@@ -84,7 +90,7 @@ export const checkLoginThunk: any = createAsyncThunk<
 >('auth/checkLogin', async (login, { rejectWithValue }) => {
   const res: any = await executeApiRTK({
     method: 'POST',
-    url: `/auth/check-login`,
+    url: API_ENDPOINTS.auth.checkLogin,
     body: { login },
     rejectWithValue,
   })
@@ -103,7 +109,7 @@ export const registerUserThunk: any = createAsyncThunk<
 >('auth/registerUser', async (userData, { rejectWithValue }) => {
   const res: any = await executeApiRTK({
     method: 'POST',
-    url: `/auth/register`,
+    url: API_ENDPOINTS.auth.register,
     body: {
       login: userData.login,
       password: userData.password,
@@ -133,7 +139,7 @@ export const requestReset: any = createAsyncThunk<
 >('auth/requestReset', async ({ login }, { rejectWithValue }) => {
   const res: any = await executeApiRTK({
     method: 'POST',
-    url: `/auth/password-reset/request`,
+    url: API_ENDPOINTS.auth.passwordResetRequest,
     body: { login },
     rejectWithValue,
   })
@@ -150,7 +156,7 @@ export const verificationCode_resetPassword: any = createAsyncThunk<
 >('auth/verificationCode_resetPassword', async ({ otpCode, login, token_resetPassword }, { rejectWithValue }) => {
   const res: any = await executeApiRTK({
     method: 'POST',
-    url: `/auth/password-reset/verification`,
+    url: API_ENDPOINTS.auth.passwordResetVerification,
     body: {
       code: otpCode,
       token_resetPassword,
@@ -173,7 +179,7 @@ export const resetPasswordThunk: any = createAsyncThunk<
 >('auth/resetPassword', async ({ token_resetPassword, newPassword, login }, { rejectWithValue }) => {
   const res: any = await executeApiRTK({
     method: 'POST',
-    url: `/auth/password-reset/confirm`,
+    url: API_ENDPOINTS.auth.passwordResetConfirm,
     body: {
       token_resetPassword,
       newPassword,

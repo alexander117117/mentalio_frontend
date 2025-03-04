@@ -1,35 +1,35 @@
-import { CardCategoriesItem, CardFolderItem } from '@/entities/folder/lib/types'
+import { CategoriesItem, FolderItem } from '@/entities/folder/lib/types'
 
-export const mockCards: CardFolderItem[] = [
+export const mockCards: FolderItem[] = [
   {
     id: 1,
     userName: 'Ivan',
-    name: 'Папка',
+    folderName: 'Папка',
     description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
-    category: 'Медецина',
+    categoryName: 'Медецина',
     topics: [
       {
         id: 1,
-        name: 'Тема 1',
+        topicName: 'Тема 1',
         description: 'Описание темы 1',
         dateCreated: '2023-07-20',
         percentStudy: 10,
         cards: [
           {
             id: 1,
-            word: 'Word 1',
-            translate: 'Перевод 1',
+            sourceWord: 'Word 1',
+            translatedWord: 'Перевод 1',
           },
           {
             id: 2,
-            word: 'Word 2',
-            translate: 'Перевод 2',
+            sourceWord: 'Word 2',
+            translatedWord: 'Перевод 2',
           },
         ],
       },
       {
         id: 2,
-        name: 'Тема 2',
+        topicName: 'Тема 2',
         description: 'Описание темы 2',
         dateCreated: '2023-07-20',
         percentStudy: 10,
@@ -40,58 +40,58 @@ export const mockCards: CardFolderItem[] = [
   {
     id: 2,
     userName: 'Ivan3',
-    name: 'Папка3',
+    folderName: 'Папка3',
     description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
-    category: 'Медецина',
+    categoryName: 'Медецина',
     topics: [],
   },
   {
     id: 3,
     userName: 'Ivan3',
-    name: 'Папка3',
+    folderName: 'Папка3',
     description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
-    category: 'Медецина',
+    categoryName: 'Медецина',
     topics: [],
   },
   {
     id: 4,
     userName: 'Ivan3',
-    name: 'Папка3',
+    folderName: 'Папка3',
     description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
-    category: 'Медецина',
+    categoryName: 'Медецина',
     topics: [],
   },
   {
     id: 5,
     userName: 'Ivan3',
-    name: 'Папка3',
+    folderName: 'Папка3',
     description: 'ddddsddddsddddsDDDDASS2424432rfdsfhx fsdfg sfdsf sd',
-    category: 'Медецина',
+    categoryName: 'Медецина',
     topics: [],
   },
 ]
 
 export const totalCards = 12
 
-export const mockCategories: CardCategoriesItem[] = [
-  { id: 1, name: 'Медецина' },
-  { id: 2, name: 'Папка2' },
-  { id: 3, name: 'Папка3' },
-  { id: 4, name: 'Папка4' },
-  { id: 5, name: 'Папка5' },
+export const mockCategories: CategoriesItem[] = [
+  { id: 1, categoryName: 'Медецина' },
+  { id: 2, categoryName: 'Папка2' },
+  { id: 3, categoryName: 'Папка3' },
+  { id: 4, categoryName: 'Папка4' },
+  { id: 5, categoryName: 'Папка5' },
 ]
 
-export const mockUserFolders: CardFolderItem[] = [
+export const mockUserFolders: FolderItem[] = [
   {
     id: 1,
-    name: 'Item 1',
+    folderName: 'Item 1',
     description: 'Оисание 1',
     dateCreated: '2023-07-20',
-    category: 'categories 1',
+    categoryName: 'categories 1',
     topics: [
       {
         id: 1,
-        name: 'Topic 1',
+        topicName: 'Topic 1',
         description: 'Description for Topic 1',
         dateCreated: '2023-07-20',
         percentStudy: 10,
@@ -99,17 +99,17 @@ export const mockUserFolders: CardFolderItem[] = [
       },
       {
         id: 2,
-        name: 'Topic 2',
-        dateCreated: '2023-07-20',
+        topicName: 'Topic 2',
         description: 'Description for Topic 1',
+        dateCreated: '2023-07-20',
         percentStudy: 100,
         cards: [],
       },
       {
         id: 3,
-        name: 'Topic 3',
-        dateCreated: '2023-07-20',
+        topicName: 'Topic 3',
         description: 'Description for Topic 1',
+        dateCreated: '2023-07-20',
         percentStudy: 70,
         cards: [],
       },
@@ -117,14 +117,14 @@ export const mockUserFolders: CardFolderItem[] = [
   },
   {
     id: 2,
-    name: 'Item 2',
+    folderName: 'Item 2',
     description: 'Оисание 2',
     dateCreated: '2023-07-20',
-    category: 'categories 2',
+    categoryName: 'categories 2',
     topics: [
       {
         id: 1,
-        name: 'Topic 1',
+        topicName: 'Topic 1',
         description: 'Description for Topic 1',
         dateCreated: '2023-07-20',
         percentStudy: 10,
@@ -132,7 +132,7 @@ export const mockUserFolders: CardFolderItem[] = [
       },
       {
         id: 2,
-        name: 'Topic 2',
+        topicName: 'Topic 2',
         description: 'Description for Topic 1',
         dateCreated: '2023-07-20',
         percentStudy: 100,
@@ -140,7 +140,7 @@ export const mockUserFolders: CardFolderItem[] = [
       },
       {
         id: 3,
-        name: 'Topic 3',
+        topicName: 'Topic 3',
         description: 'Description for Topic 1',
         dateCreated: '2023-07-20',
         percentStudy: 70,
@@ -150,26 +150,26 @@ export const mockUserFolders: CardFolderItem[] = [
   },
 ]
 
-export const mockCreateFolder = ({ name, description, category, topics }: CardFolderItem) => {
+export const mockCreateFolder = ({ folderName, description, categoryName, topics }: FolderItem) => {
   return {
     id: Math.floor(Math.random() * 1000),
-    name,
+    folderName,
     description,
     dateCreated: new Date().toISOString().split('T')[0],
-    category,
+    categoryName,
     topics: [...topics],
   }
 }
-export const mockUserFolder: CardFolderItem = {
+export const mockUserFolder: FolderItem = {
   id: 1,
-  name: 'File 1',
+  folderName: 'File 1',
   description: 'Description for File 1',
   dateCreated: '2024-12-07',
-  category: 'General',
+  categoryName: 'General',
   topics: [
     {
       id: 1,
-      name: 'Topic 1',
+      topicName: 'Topic 1',
       description: 'Description for Topic 1',
       dateCreated: '2024-12-07',
       percentStudy: 100,
@@ -178,12 +178,12 @@ export const mockUserFolder: CardFolderItem = {
   ],
 }
 
-type mockPutUserFolderParams = Pick<CardFolderItem, 'name' | 'description' | 'category' | 'id'>
-export const mockPutUserFolder = ({ id, name, description, category }: mockPutUserFolderParams) => {
+type mockPutUserFolderParams = Pick<FolderItem, 'folderName' | 'description' | 'categoryName' | 'id'>
+export const mockPutUserFolder = ({ id, folderName, description, categoryName }: mockPutUserFolderParams) => {
   return {
     id: id,
-    name: name,
+    name: folderName,
     description: description,
-    category: category,
+    category: categoryName,
   }
 }
