@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
-import { CardFolderItem } from '@/entities/folder/lib/types'
+import { FolderItem } from '@/entities/folder/lib/types'
 import {
   getUserFiles,
   createUserFile,
@@ -12,10 +12,11 @@ import {
   getTopicCards,
   addCardToTopic,
   deleteCardFromTopic,
+  addPublicFile,
 } from './userFilesThunks.ts'
 
 interface UserFilesState {
-  filesUser: CardFolderItem[]
+  filesUser: FolderItem[]
   loading: boolean
   error: string | null
 }
@@ -29,7 +30,12 @@ const initialState: UserFilesState = {
 export const userFilesSlice = createSlice({
   name: 'userFiles',
   initialState,
-  reducers: {},
+  reducers: {
+    clearError(state) {
+      state.error = null
+      state.loading = false
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Получение пользовательских файлов
@@ -44,11 +50,7 @@ export const userFilesSlice = createSlice({
       .addCase(createUserFile.pending, handlePending)
       .addCase(createUserFile.fulfilled, (state, action) => {
         state.loading = false
-        if (state.filesUser) {
-          state.filesUser.push(action.payload)
-        } else {
-          state.filesUser = [action.payload]
-        }
+        state.filesUser = [...state.filesUser, action.payload]
       })
       .addCase(createUserFile.rejected, handleRejected)
 
@@ -93,9 +95,9 @@ export const userFilesSlice = createSlice({
       .addCase(addTopicToFile.fulfilled, (state, action) => {
         state.loading = false
         if (state.filesUser) {
-          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
+          const file = state.filesUser.find((item) => item.id === action.payload.idFolder)
           if (file) {
-            file.topics = [...(file.topics || []), action.payload]
+            file.topics = [...file.topics, action.payload.topic]
           }
         }
       })
@@ -106,9 +108,9 @@ export const userFilesSlice = createSlice({
       .addCase(deleteTopicFromFile.fulfilled, (state, action) => {
         state.loading = false
         if (state.filesUser) {
-          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
+          const file = state.filesUser.find((item) => item.id === action.meta.arg.idFolder)
           if (file && file.topics) {
-            file.topics = file.topics.filter((topic) => topic.id !== action.payload)
+            file.topics = file.topics.filter((topic) => topic.id !== action.payload.idTopic)
           }
         }
       })
@@ -155,7 +157,17 @@ export const userFilesSlice = createSlice({
         }
       })
       .addCase(deleteCardFromTopic.rejected, handleRejected)
+
+      // Добавить публичную папку к пользователю
+      .addCase(addPublicFile.pending, handlePending)
+      .addCase(addPublicFile.fulfilled, (state, action) => {
+        state.loading = false
+        if (state.filesUser) {
+          state.filesUser = [...state.filesUser, action.payload]
+        }
+      })
+      .addCase(addPublicFile.rejected, handleRejected)
   },
 })
-
+export const { clearError } = userFilesSlice.actions
 export default userFilesSlice.reducer
