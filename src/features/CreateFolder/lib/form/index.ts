@@ -13,13 +13,13 @@ export function useCreateFolderForm() {
   } = useForm<CreateFolder>({
     mode: 'onSubmit',
     defaultValues: {
-      name: '',
+      folderName: '',
       description: '',
-      category: '',
+      categoryName: '',
       topics: [
         {
           id: 1,
-          name: '',
+          topicName: '',
         },
       ],
     },

@@ -1,5 +1,5 @@
-import { CardFolderItem } from '@/entities/folder/lib/types'
+import { FolderItem } from '@/entities/folder/lib/types'
 
 export interface FoldersProps {
-  files: CardFolderItem[] | null
+  files: FolderItem[] | null
 }
