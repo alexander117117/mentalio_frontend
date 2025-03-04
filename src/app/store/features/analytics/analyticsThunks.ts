@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { executeApiRTK } from '@/shared/api/apiHelpers'
 import { Question } from '../../lib/types'
+import { API_ENDPOINTS } from '@/shared/api/constEndpoints'
 
 /**
  * Thunk для получения списка вопросов.
@@ -14,18 +15,22 @@ export const fetchQuestions: any = createAsyncThunk<
   Question[], // Аргумент (initial)
   { rejectValue: string }
 >('analytics/fetchQuestions', async (initial, { rejectWithValue }) => {
-  const response = await executeApiRTK({
-    method: 'GET',
-    url: '/auth/register/analytics/questions',
-    rejectWithValue,
-  })
   try {
+    const response = await executeApiRTK({
+      method: 'GET',
+      url: API_ENDPOINTS.analytics.questions,
+      rejectWithValue,
+    })
+
     if (response.status === 200) {
       return response?.data.questions || initial
     } else {
-      return rejectWithValue(`Ошибка: ${response.status}`) as never
+      return initial
+      // return rejectWithValue(`Ошибка: ${response.status}`) as never
     }
-  } catch (error: any) {
-    return rejectWithValue(error.message || 'Неизвестная ошибка') as never
+  } catch (error) {
+    console.error('Ошибка при выполнении запроса:', error)
+    return initial
+    // return rejectWithValue(error.message || 'Неизвестная ошибка') as never
   }
 })
