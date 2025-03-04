@@ -3,8 +3,8 @@ import cn from 'classnames'
 import { SelectItem } from './components/SelectItem/SelectItem'
 import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import { TextError } from '@/shared/ui/TextError/index.tsx'
-
-const menuItems = ['Медицина', 'Иностранные языки', 'Точные науки', 'Профессиональные науки', 'Другое']
+import { RootState } from '@/app/store/configureStore'
+import { useSelector } from 'react-redux'
 
 interface SelectAddFolderProps {
   register: UseFormRegisterReturn
@@ -13,6 +13,7 @@ interface SelectAddFolderProps {
   error?: string
 }
 export const SelectAddFolder = ({ register, setValue, watchCategory, error }: SelectAddFolderProps) => {
+  const { allCategories } = useSelector((state: RootState) => state.catalog)
   const [isOpen, setIsOpen] = useState(false)
   const toggleAccordion = () => {
     setIsOpen(!isOpen)
@@ -21,7 +22,7 @@ export const SelectAddFolder = ({ register, setValue, watchCategory, error }: Se
   const chosenTopic = watchCategory || 'Выберите категорию'
 
   const handleChoose = (category: string) => {
-    setValue('category', category)
+    setValue('categoryName', category)
     setIsOpen(false)
   }
 
@@ -29,8 +30,8 @@ export const SelectAddFolder = ({ register, setValue, watchCategory, error }: Se
     <div className="accordion">
       {/*
         1) Скрытый input, чтобы RHF знал о поле "category" и применял валидацию.
-           2) Важно не забыть {...register}, чтобы React Hook Form "видел" поле.
-           3) Значение этого input будет синхронизировано автоматически,
+        2) Важно не забыть {...register}, чтобы React Hook Form "видел" поле.
+        3) Значение этого input будет синхронизировано автоматически,
               ведь мы вызываем setValue('category', ...).
       */}
       <input type="text" hidden readOnly {...register} />
@@ -51,8 +52,13 @@ export const SelectAddFolder = ({ register, setValue, watchCategory, error }: Se
 
       {isOpen && (
         <div className="accordion-content h-[20vh] md:h-[30vh] w-full bg-[#171717] outline-none rounded-[10px] py-[10px] px-[15px] mt-[10px] overflow-y-scroll">
-          {menuItems.map((item, index) => (
-            <SelectItem key={index} item={item} isSelected={item === watchCategory} onSelect={handleChoose} />
+          {allCategories.map((item, index) => (
+            <SelectItem
+              key={index}
+              item={item.categoryName}
+              isSelected={item.categoryName === watchCategory}
+              onSelect={handleChoose}
+            />
           ))}
         </div>
       )}

@@ -3,13 +3,14 @@ import { Sider } from '@/widgets/Sider'
 import { Outlet } from 'react-router'
 import { MiniNavbar } from 'src/widgets/MiniNavbar'
 import { useDispatch } from 'react-redux'
-import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
 import { AppDispatch } from '@/app/store/configureStore.ts'
+import { getAllCategoriesThunk, getUserFiles } from '@/entities/folder/model/store'
 
 export function LayoutMain() {
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
+    dispatch(getAllCategoriesThunk())
     dispatch(getUserFiles())
   }, [])
 

@@ -4,11 +4,11 @@ import { ListUserFiles } from './component/ListUserFiles'
 import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
-import { AppDispatch } from '@/app/store/configureStore.ts'
+import { AppDispatch, RootState } from '@/app/store/configureStore.ts'
 
 export const MyFoldersPage = () => {
   const dispatch = useDispatch<AppDispatch>()
-  const { filesUser } = useSelector((state: any) => state.userFiles)
+  const { filesUser } = useSelector((state: RootState) => state.userFiles)
 
   useEffect(() => {
     dispatch(getUserFiles())

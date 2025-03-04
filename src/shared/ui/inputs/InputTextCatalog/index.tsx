@@ -8,7 +8,14 @@ interface InputText {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-function InputText({ className = '', type = 'text', placeholder = '', value, onChange, ...props }: InputText) {
+export default function InputText({
+  className = '',
+  type = 'text',
+  placeholder = '',
+  value,
+  onChange,
+  ...props
+}: InputText) {
   return (
     <>
       <input
@@ -25,5 +32,3 @@ function InputText({ className = '', type = 'text', placeholder = '', value, onC
     </>
   )
 }
-
-export default InputText

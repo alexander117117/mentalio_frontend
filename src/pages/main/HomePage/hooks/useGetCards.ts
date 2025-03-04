@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { getCardsFolderMentalio } from '@/features/pagination/model/store/catalogThunks.ts'
+import { getCardsFolderMentalio } from '@/entities/folder/model/store/catalog/catalogThunks'
 import { useDispatch } from 'react-redux'
 import type { AppDispatch } from '@/app/store/configureStore.ts'
 
