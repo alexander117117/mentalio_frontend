@@ -25,7 +25,8 @@ export default {
         userFolder: '#BDFF9DE5',
         colorHover: '#0F460A',
         popup: '#171717',
-        translate: '#111111'
+        translate: '#111111',
+        card_learning: '#F2FAF1'
       },
     },
   },

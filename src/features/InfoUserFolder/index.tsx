@@ -25,7 +25,6 @@ export function InfoUserFolder({ dataTopic, idFolder }: InfoUserFolderProps) {
         <div className={flexColumnStartClass}>
           <TopicInfo dataTopic={dataTopic} />
         </div>
-
         <CloseIcon title="delete topic" onClick={() => handleDeleteTopic(dataTopic.id)} />
         <ButtonControlFolder isSmall={true} onClick={() => handleOpenFolderPage(idFolder, dataTopic.id)}>
           Посмотреть
