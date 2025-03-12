@@ -3,7 +3,7 @@ import ProtectedRoute from './ProtectedRoute.jsx'
 import { Login, Register, PasswordReset } from '@/processe/Auth'
 import { LayoutMain, HomePage, SettingPage, MyFoldersPage, CatalogPage, FolderTopicPage, LearningPage } from '@/processe/Main'
 import { Error404Page } from '@/pages/Error404Page'
-
+import { SummaryPage } from '@/pages/SummaryPage'
 const AppRoutes = () => {
   return (
     <Router>
@@ -34,7 +34,7 @@ const AppRoutes = () => {
           <Route path="learning" element={<LearningPage />} />
         </Route>
         
-        
+        <Route path="summary" element={<SummaryPage />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </Router>
