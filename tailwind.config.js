@@ -21,6 +21,7 @@ export default {
         regButton: '#24AC18E5',
         siderGray: '#868585',
         primary: '#24AC18',
+        primaryOpacity: '#24AC18CC',
         directoryFolder: '#001E02',
         userFolder: '#BDFF9DE5',
         colorHover: '#0F460A',

@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute.jsx'
 import { Login, Register, PasswordReset } from '@/processe/Auth'
-import { LayoutMain, HomePage, SettingPage, MyFoldersPage, CatalogPage, FolderTopicPage, LearningPage, TestResultPage } from '@/processe/Main'
+import { LayoutMain, HomePage, SettingPage, MyFoldersPage, CatalogPage, FolderTopicPage, LearningPage, TestResultPage, TestPage } from '@/processe/Main'
 import { Error404Page } from '@/pages/Error404Page'
 import { SummaryPage } from '@/pages/SummaryPage'
 const AppRoutes = () => {
@@ -33,6 +33,7 @@ const AppRoutes = () => {
           <Route path="folderTopic/:idFolder/:idTopic" element={<FolderTopicPage />} />
           <Route path="learning" element={<LearningPage />} />
           <Route path="test-result" element={<TestResultPage />} />
+          <Route path="test" element={<TestPage />} />
         </Route>
         
         <Route path="summary" element={<SummaryPage />} />
