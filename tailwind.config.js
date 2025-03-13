@@ -26,7 +26,9 @@ export default {
         colorHover: '#0F460A',
         popup: '#171717',
         translate: '#111111',
-        card_learning: '#F2FAF1'
+        card_learning: '#F2FAF1',
+        wrongAnswer: '#FFC0C080',
+        rightAnswer: '#D9EDD3',
       },
     },
   },
