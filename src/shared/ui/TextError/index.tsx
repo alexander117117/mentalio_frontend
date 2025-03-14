@@ -1,5 +1,5 @@
 interface TextErrorProps {
-  errorMessage: string | undefined
+  errorMessage: string | null | undefined
 }
 export function TextError({ errorMessage }: TextErrorProps) {
   return (

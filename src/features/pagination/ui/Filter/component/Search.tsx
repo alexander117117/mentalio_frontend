@@ -1,6 +1,6 @@
 import Logo from '@/shared/ui/logos/LogoCatalog'
 import InputText from '@/shared/ui/inputs/InputTextCatalog'
-import { setQuery } from '@/features/pagination/model/store/catalogSlice'
+import { setQuery } from '@/entities/folder/model/store/catalog/catalogSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 export const Search = () => {

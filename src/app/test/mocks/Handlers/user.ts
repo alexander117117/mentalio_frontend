@@ -49,9 +49,9 @@ export const userHandlers = [
       return HttpResponse.json({
         file: mockPutUserFolder({
           id: 2,
-          name: 'string',
+          folderName: 'string',
           description: 'string',
-          category: 'string',
+          categoryName: 'string',
         }),
       })
     }

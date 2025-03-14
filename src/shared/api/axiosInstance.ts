@@ -4,9 +4,10 @@
  */
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { API_ENDPOINTS } from './constEndpoints'
 
 export const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://locolhost:8000',
+  baseURL: API_ENDPOINTS.common.baseUrl, // Базовый URL для всех запросов
   timeout: 10000, // Тайм-аут запросов
   headers: {
     'Content-Type': 'application/json',
@@ -25,7 +26,7 @@ axiosInstance.interceptors.request.use(
   (config) => {
     const token = Cookies.get('token')
     if (token) {
-      config.headers.Authorization = `${token}`
+      config.headers.Authorization = `Bearer ${token}`
     }
     return config
   },
@@ -56,7 +57,7 @@ axiosInstance.interceptors.response.use(
       if (status === 401) {
         Cookies.remove('token')
         if (window.location.pathname !== '/auth/login') {
-          window.location.href = '/auth/login'
+          // window.location.href = '/auth/login'
         }
       }
     } else if (error.request) {
@@ -64,6 +65,6 @@ axiosInstance.interceptors.response.use(
     } else {
       console.error('Ошибка конфигурации запроса: ', error.message)
     }
-    return error.response
+    throw error.response
   },
 )

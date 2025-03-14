@@ -6,15 +6,15 @@ import {
   getAllCategoriesThunk,
   getCardsFolderMentalio,
 } from './catalogThunks.ts'
-import { CardCategoriesItem, CardFolderItem } from '@/entities/folder/lib/types'
+import { CategoriesItem, FolderItem } from '@/entities/folder/lib/types'
 
 /**
  * Интерфейс состояния catalog-слайса.
  */
 interface CatalogState {
-  cards: CardFolderItem[]
-  cardsHome: CardFolderItem[]
-  allCategories: CardCategoriesItem[]
+  cards: FolderItem[]
+  cardsHome: FolderItem[]
+  allCategories: CategoriesItem[]
   query: string
   category: string
   page: number
@@ -68,9 +68,9 @@ const catalogSlice = createSlice({
       .addCase(paginationThunk.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          state.cards = [...action.payload.results.items]
-          if (action.payload.results.countTotalCards !== undefined) {
-            state.totalPage = Math.ceil(action.payload.results.countTotalCards / state.limit)
+          state.cards = [...action.payload.items]
+          if (action.payload.countTotalCards !== undefined) {
+            state.totalPage = Math.ceil(action.payload.countTotalCards / state.limit)
           }
         }
       })
@@ -82,7 +82,7 @@ const catalogSlice = createSlice({
       .addCase(getCardsFolderMentalio.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          state.cardsHome = [...action.payload.results.items]
+          state.cardsHome = [...action.payload.items]
         }
       })
       .addCase(getCardsFolderMentalio.rejected, handleRejected)
@@ -93,7 +93,7 @@ const catalogSlice = createSlice({
       .addCase(getAllCategoriesThunk.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          state.allCategories = action.payload.results.allCategories
+          state.allCategories = action.payload.allCategories
         }
       })
       .addCase(getAllCategoriesThunk.rejected, handleRejected)
@@ -104,7 +104,7 @@ const catalogSlice = createSlice({
       .addCase(paginationNextPageThunk.fulfilled, (state, action) => {
         state.loading = false
         if (action.payload) {
-          state.cards = [...state.cards, ...action.payload.results.items]
+          state.cards = [...state.cards, ...action.payload.items]
           state.totalPage = state.totalPage > 0 ? state.totalPage - 1 : 0
           state.page += 1
         }

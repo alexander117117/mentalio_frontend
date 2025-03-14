@@ -76,7 +76,7 @@ export const authHandlers = [
       })
     }
   }),
-  http.post(`${URL}/auth/login`, () => {
+  http.post(`${URL}/v1/auth/login`, () => {
     const resError: boolean = false
     if (resError) {
       const error = { error: 'Пользователь не найден.' }

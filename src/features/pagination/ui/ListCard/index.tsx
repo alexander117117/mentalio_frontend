@@ -1,16 +1,16 @@
 import React from 'react'
 import { FolderDirectory } from '@/widgets/FolderDirectory'
-import { CardFolderItemWithUserName } from '@/entities/folder/lib/types'
+import { FolderItemWithUserName } from '@/entities/folder/lib/types'
 
 interface ListCardProps {
-  cards: CardFolderItemWithUserName[]
+  cards: FolderItemWithUserName[]
 }
 
 /**
  * Выводит список элементов с каталогами папок.
  *
  * @param {ListCardProps} props - The props for the ListCard component.
- * @param {CardFolderItemWithUserName[]} props.cards - An array of card folder items with user names.
+ * @param {FolderItemWithUserName[]} props.cards - An array of card folder items with user names.
  * @returns {JSX.Element} - The rendered list of card items.
  */
 export function ListCard({ cards }: ListCardProps) {

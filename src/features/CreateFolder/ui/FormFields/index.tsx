@@ -12,6 +12,7 @@ interface FormFieldsProps {
   fields: CreateTopicForm[]
   register: UseFormRegister<CreateFolder>
   errors: FieldErrors<CreateFolder>
+  errorStore: string | null
   setValue: UseFormSetValue<CreateFolder>
   watch: UseFormWatch<CreateFolder>
   remove: UseFieldArrayRemove
@@ -20,6 +21,7 @@ export function FormFields({
   errorServerMessages,
   register,
   errors,
+  errorStore,
   setValue,
   watch,
   remove,
@@ -28,27 +30,27 @@ export function FormFields({
   return (
     <>
       <InputAddFolder
-        register={register('name', validateFolderName)}
-        error={errors.name?.message}
+        register={register('folderName', validateFolderName)}
+        error={errors.folderName?.message}
         type={'text'}
         name={'folderName'}
         placeholder={'Введите название папки...'}
       />
 
       <SelectAddFolder
-        register={register('category', validateCategory)}
+        register={register('categoryName', validateCategory)}
         setValue={setValue}
-        watchCategory={watch('category')}
-        error={errors.category?.message}
+        watchCategory={watch('categoryName')}
+        error={errors.categoryName?.message}
       />
 
       {fields.map((field, index) => (
         <InputAddFolder
           key={field.id}
-          register={register(`topics.${index}.name`, validateTopicName)}
-          error={errors.topics?.[index]?.name?.message}
+          register={register(`topics.${index}.topicName`, validateTopicName)}
+          error={errors.topics?.[index]?.topicName?.message}
           type="text"
-          name={`topics[${index}].name`}
+          name={`topics[${index}].topicName`}
           placeholder="Введите название темы..."
         >
           {fields.length > 1 && <ButtonDelete idObject={index} handeleOnClick={() => remove(index)} />}
@@ -61,8 +63,7 @@ export function FormFields({
         name="topicDescription"
         placeholder={`Описание папки...\nНапример: для изучения испанского языка (уровень A1)`}
       />
-
-      <TextError errorMessage={errorServerMessages} />
+      {errorServerMessages ? <TextError errorMessage={errorServerMessages} /> : <TextError errorMessage={errorStore} />}
     </>
   )
 }

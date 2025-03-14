@@ -1,11 +1,7 @@
-export interface CreateTopicForm {
-  id: number
-  name: string
-}
+import { TopicsItem, FolderItem } from '.'
 
-export interface CreateFolder {
-  name: string
-  category: string
+export type CreateTopicForm = Pick<TopicsItem, 'id' | 'topicName'>
+
+export interface CreateFolder extends Pick<FolderItem, 'folderName' | 'categoryName' | 'description'> {
   topics: CreateTopicForm[]
-  description: string
 }

@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Folder } from '../../UI/Folder'
-import { CardFolderItem } from '@/entities/folder/lib/types'
+import { FolderItem } from '@/entities/folder/lib/types'
 
 interface IListUserFiles {
-  files: CardFolderItem[]
+  files: FolderItem[]
 }
 
 export function ListUserFiles({ files }: IListUserFiles) {
