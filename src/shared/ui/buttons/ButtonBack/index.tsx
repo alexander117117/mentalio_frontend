@@ -5,7 +5,7 @@ import { Link } from "react-router";
 export function ButtonBack() {
   return (
     <Link to="/" className={buttonBack}>
-      <GoArrowLeft className="text-5xl sm:text-[35px]"/>
+      <GoArrowLeft size={40}/>
     </Link>
   )
 }

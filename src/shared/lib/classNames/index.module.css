@@ -126,3 +126,9 @@
     top: 20px;
   }
 }
+
+@media (max-width: 576px) {
+  .buttonBack {
+    left: 0px;
+  }
+}

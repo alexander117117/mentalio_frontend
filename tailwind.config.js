@@ -30,6 +30,8 @@ export default {
         card_learning: '#F2FAF1',
         wrongAnswer: '#FFC0C080',
         rightAnswer: '#D9EDD3',
+        bgYellow: '#E59C26',
+        bgRed: '#CD2F2F'
       },
     },
   },

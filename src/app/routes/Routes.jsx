@@ -5,6 +5,7 @@ import { LayoutMain, HomePage, SettingPage, MyFoldersPage, CatalogPage, FolderTo
 import { Error404Page } from '@/pages/Error404Page'
 import { SummaryPage } from '@/pages/SummaryPage'
 import { CardModePage } from '@/pages/CardModePage'
+import { TestPercentPage } from '@/pages/TestPercentPage'
 const AppRoutes = () => {
   return (
     <Router>
@@ -39,6 +40,7 @@ const AppRoutes = () => {
         
         <Route path="summary" element={<SummaryPage />} />
         <Route path="card-mode" element={<CardModePage />} />
+        <Route path="test-percent" element={<TestPercentPage />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </Router>
