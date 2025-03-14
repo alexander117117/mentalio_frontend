@@ -1,6 +1,6 @@
-import { useRef } from "react"
+import { useRef } from 'react'
 
-interface ButtonLearningProps{
+interface ButtonLearningProps {
   children: React.ReactNode
 }
 
@@ -13,7 +13,7 @@ export function ButtonLearning({ children }: ButtonLearningProps) {
     }
   }
   return (
-    <button 
+    <button
       ref={buttonRef}
       onClick={test}
       className="w-auto py-[1.125rem] sm:py-[0.8125rem] px-[0.625rem] bg-[#DEF3DD] rounded-[20px] hover:bg-[#c3dbc1] overflow-hidden text-ellipsis whitespace-nowrap"

@@ -1,4 +1,4 @@
-import { ButtonLearning } from "@/shared/ui/buttons/ButtonLearning";
+import { ButtonLearning } from '@/shared/ui/buttons/ButtonLearning'
 
 interface OptionButtonsProps {
   data: string[]
@@ -10,5 +10,5 @@ export function OptionButtons({ data }: OptionButtonsProps) {
         <ButtonLearning key={index}>{item}</ButtonLearning>
       ))}
     </div>
-  );
+  )
 }

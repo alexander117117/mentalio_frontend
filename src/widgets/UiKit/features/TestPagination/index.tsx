@@ -16,16 +16,16 @@ export function TestPagination() {
             hideNextButton
             hidePrevButton
             renderItem={(item) => (
-              <PaginationItem 
-              sx={{
-                width: 40, // Kích thước hình vuông
-                height: 40, // Kích thước hình vuông
-                borderRadius: '10px', // Border-radius
-                '&.Mui-selected': {
-                  backgroundColor: '#DEF3DD', // Background khi active
-                },
-              }}
-                {...item} 
+              <PaginationItem
+                sx={{
+                  width: 40, // Kích thước hình vuông
+                  height: 40, // Kích thước hình vuông
+                  borderRadius: '10px', // Border-radius
+                  '&.Mui-selected': {
+                    backgroundColor: '#DEF3DD', // Background khi active
+                  },
+                }}
+                {...item}
               />
             )}
           />

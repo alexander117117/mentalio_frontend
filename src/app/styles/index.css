@@ -51,7 +51,8 @@ body {
   display: none;
 }
 
-.custom-prev, .custom-next{
+.custom-prev,
+.custom-next {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,7 +64,8 @@ body {
 }
 
 @media (max-width: 991.98px) {
-  .custom-prev, .custom-next{
+  .custom-prev,
+  .custom-next {
     width: 30px;
     height: 30px;
   }

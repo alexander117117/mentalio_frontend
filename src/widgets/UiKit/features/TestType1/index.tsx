@@ -1,8 +1,13 @@
-import { OptionButtons } from "@/features/OptionButtons";
-import styles from "@/shared/lib/classNames/index.module.css"
+import { OptionButtons } from '@/features/OptionButtons'
+import styles from '@/shared/lib/classNames/index.module.css'
 
 export function TestType1() {
-  const testData = ["Articulacióndddddddddddddddd","Articulacióndddddddddddddddd","Articulacióndddddddddddddddd","Articulacióndddddddddddddddd"]
+  const testData = [
+    'Articulacióndddddddddddddddd',
+    'Articulacióndddddddddddddddd',
+    'Articulacióndddddddddddddddd',
+    'Articulacióndddddddddddddddd',
+  ]
 
   return (
     <>
@@ -11,7 +16,7 @@ export function TestType1() {
         {/* <p className={styles.flashcard__subtitle }>Так держать!</p> */}
       </div>
 
-      <OptionButtons data={testData}/>
+      <OptionButtons data={testData} />
     </>
   )
 }

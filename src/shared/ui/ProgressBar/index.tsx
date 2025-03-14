@@ -1,6 +1,6 @@
-import styles from "./index.module.css"
+import styles from './index.module.css'
 
-interface ProgressBarProps{
+interface ProgressBarProps {
   current: string | number
   total: string | number
   percent: string | number
@@ -15,7 +15,7 @@ export function ProgressBar({ current, total, percent }: ProgressBarProps) {
           <span>{total}</span>
         </div>
         <div className={styles.progressBar__track}>
-          <div className={`absolute h-[3px] bg-primary`} style={{ width: `${percent}%`}}></div>
+          <div className={`absolute h-[3px] bg-primary`} style={{ width: `${percent}%` }}></div>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
-import { ButtonLearning } from "@/shared/ui/buttons/ButtonLearning";
-import { TestTextField } from "@/shared/ui/TestTextField";
+import { ButtonLearning } from '@/shared/ui/buttons/ButtonLearning'
+import { TestTextField } from '@/shared/ui/TestTextField'
 
 export function TestType2() {
   return (

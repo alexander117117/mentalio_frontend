@@ -1,4 +1,3 @@
-
 /* Content */
 .content {
   width: 640px;
@@ -14,7 +13,7 @@
 .contentTitle {
   font-size: 46px;
   font-weight: 700;
-  font-family: 'Unbounded', sans-serif;
+  font-family: Unbounded, sans-serif;
   text-align: center;
   margin-bottom: 10px;
 }
@@ -33,9 +32,8 @@
 
 @media (max-width: 767.98px) {
   .contentProgressBar {
-    margin-bottom: 10px;
     width: 90%;
-    margin: 0 auto;
+    margin: 0 0 10px auto;
   }
 }
 
@@ -87,13 +85,13 @@
 }
 
 .cardFaceFront {
-  background: #F7F7F7;
+  background: #f7f7f7;
   color: #000;
   padding: 20px;
 }
 
 .cardFaceBack {
-  background: #DDDDDD63;
+  background: #dddddd63;
   transform: rotateY(180deg);
   color: #000;
   display: inline-flex;
@@ -142,11 +140,10 @@
 .cardFaceFrontWithoutImg {
   padding-top: 245px;
   color: #000;
-  background: #DDDDDD63;
+  background: #dddddd63;
 }
 
 /* Swiper Custom */
-
 
 .swiperButtonNext::after,
 .swiperButtonPrev::after {
@@ -156,4 +153,3 @@
   border-radius: 50%;
   padding: 16px;
 }
-
