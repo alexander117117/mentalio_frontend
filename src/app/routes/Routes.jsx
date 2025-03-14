@@ -4,6 +4,7 @@ import { Login, Register, PasswordReset } from '@/processe/Auth'
 import { LayoutMain, HomePage, SettingPage, MyFoldersPage, CatalogPage, FolderTopicPage, LearningPage, TestResultPage, TestPage } from '@/processe/Main'
 import { Error404Page } from '@/pages/Error404Page'
 import { SummaryPage } from '@/pages/SummaryPage'
+import { CardModePage } from '@/pages/CardModePage'
 const AppRoutes = () => {
   return (
     <Router>
@@ -37,6 +38,7 @@ const AppRoutes = () => {
         </Route>
         
         <Route path="summary" element={<SummaryPage />} />
+        <Route path="card-mode" element={<CardModePage />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </Router>

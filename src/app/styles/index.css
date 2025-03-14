@@ -38,3 +38,33 @@ body {
 }
 
 /* End Scrollbar */
+
+/* custom swiper */
+.swiper-slide {
+  display: flex !important;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+.custom-prev, .custom-next{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 69px;
+  height: 69px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+@media (max-width: 991.98px) {
+  .custom-prev, .custom-next{
+    width: 30px;
+    height: 30px;
+  }
+}

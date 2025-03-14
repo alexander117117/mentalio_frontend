@@ -95,3 +95,34 @@
 
 
 /* End Flashcard */
+
+/* Button Back */
+.buttonBack {
+  width: 80px;
+  height: 80px;
+  padding: 16px;
+  background: #DDDDDD;
+  border: none;
+  border-radius: 20px;
+  position: absolute;
+  left: 25px;
+  top: 54px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .buttonBackImg {
+  width: 100%;
+} */
+
+@media (max-width: 1024px) {
+  .buttonBack {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    left: -20px;
+    top: 20px;
+  }
+}

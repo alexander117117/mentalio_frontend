@@ -21,6 +21,7 @@ import edit_icon from './assets/edit_icon.svg'
 import favorite_word_icon from './assets/favorite_word_icon.svg'
 import favorite_word_mark_icon from './assets/favorite_word_mark_icon.svg'
 import flag_icon from "./assets/flag.svg"
+import voice from "./assets/voice.svg"
 export {
   sider1,
   sider2,
@@ -44,5 +45,6 @@ export {
   edit_icon,
   favorite_word_icon,
   favorite_word_mark_icon,
-  flag_icon
+  flag_icon,
+  voice
 }
