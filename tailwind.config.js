@@ -25,6 +25,7 @@ export default {
         directoryFolder: '#001E02',
         userFolder: '#BDFF9DE5',
         colorHover: '#0F460A',
+        borderDark: '#272727',
         popup: '#171717',
         translate: '#111111',
         card_learning: '#F2FAF1',
