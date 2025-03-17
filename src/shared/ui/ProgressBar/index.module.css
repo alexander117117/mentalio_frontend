@@ -1,9 +1,7 @@
-/* Block: Progress Bar */
 .progressBar {
   width: 100%;
 }
 
-/* Element: Labels */
 .progressBar__labels {
   display: flex;
   justify-content: space-between;
@@ -12,7 +10,6 @@
   font-weight: 300;
 }
 
-/* Element: Track */
 .progressBar__track {
   width: 100%;
   height: 0.4375rem; /* 7px / 16 = 0.4375rem */

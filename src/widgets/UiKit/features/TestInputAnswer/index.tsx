@@ -1,6 +1,6 @@
 import { FaArrowRight } from 'react-icons/fa6'
 
-export function TestType3() {
+export function TestInputAnswer() {
   return (
     <>
       <div className="flex items-center justify-center pt-[141px]">

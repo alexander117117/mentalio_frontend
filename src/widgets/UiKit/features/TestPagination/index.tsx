@@ -18,11 +18,11 @@ export function TestPagination() {
             renderItem={(item) => (
               <PaginationItem
                 sx={{
-                  width: 40, // Kích thước hình vuông
-                  height: 40, // Kích thước hình vuông
-                  borderRadius: '10px', // Border-radius
+                  width: 40,
+                  height: 40,
+                  borderRadius: '10px',
                   '&.Mui-selected': {
-                    backgroundColor: '#DEF3DD', // Background khi active
+                    backgroundColor: '#DEF3DD',
                   },
                 }}
                 {...item}

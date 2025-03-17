@@ -1,9 +1,10 @@
+import { formSettingLearning } from "@/shared/lib/classNames";
 import { ButtonControlFolder } from "@/shared/ui/buttons/ButtonControlFolder";
 import { InputChecked } from "@/shared/ui/inputs/InputChecked";
 
 export function FormSettingCardMode() {
   return (
-    <form className="flex flex-col gap-5 w-auto md:w-[473px]">
+    <form className={formSettingLearning}>
       <InputChecked title={"Бесконечный режим"} nameInput="checkAnswerTrueFalse"/>
       <InputChecked title={"Перемешать карточки"} nameInput="checkAnswerTrueFalse"/>
       <InputChecked title={"Изучать избранное"} nameInput="checkAnswerTrueFalse"/>

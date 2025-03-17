@@ -1,12 +1,24 @@
 import { OptionButtons } from '@/features/OptionButtons'
 import styles from '@/shared/lib/classNames/index.module.css'
 
-export function TestType1() {
+export function TestChooseAnswer() {
   const testData = [
-    'Articulacióndddddddddddddddd',
-    'Articulacióndddddddddddddddd',
-    'Articulacióndddddddddddddddd',
-    'Articulacióndddddddddddddddd',
+    {
+      title: 'Articulacióndddddddddddddddd',
+      isCorrect: true
+    },
+    {
+      title: 'Articulacióndddddddddddddddd2',
+      isCorrect: false
+    },
+    {
+      title: 'Articulacióndddddddddddddddd3',
+      isCorrect: false
+    },
+    {
+      title: 'Articulacióndddddddddddddddd4',
+      isCorrect: false
+    },
   ]
 
   return (
