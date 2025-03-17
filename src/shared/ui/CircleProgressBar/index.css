@@ -1,13 +1,13 @@
 /* styles.css */
 @keyframes progress {
   from {
-    stroke-dashoffset: 282.7; /* Bắt đầu từ 0% (ẩn toàn bộ) */
+    stroke-dashoffset: 282.7;
   }
   to {
-    stroke-dashoffset: var(--target-offset); /* Kết thúc ở giá trị đích */
+    stroke-dashoffset: var(--target-offset);
   }
 }
 
 .animate-progress {
-  animation: progress 2s ease-out forwards; /* Áp dụng animation */
+  animation: progress 2s ease-out forwards;
 }

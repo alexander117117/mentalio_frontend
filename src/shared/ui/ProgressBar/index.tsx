@@ -25,13 +25,11 @@ export function ProgressBar({ current, total, percent }: ProgressBarProps) {
         .attr('height', 3) 
         .style('position', 'absolute'); 
 
-      // Draw the track (nền của progress bar)
       svg.append('rect')
         .attr('width', width)
         .attr('height', 3)
         .attr('fill', '#d9d9d9'); 
 
-      // Draw the progress
       svg.append('rect')
         .attr('width', 0)
         .attr('height', 3)
