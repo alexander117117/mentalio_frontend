@@ -15,7 +15,7 @@ export interface PaginationParams {
   limit?: number
 }
 export interface PaginatedResponse {
-  countTotalCards?: number
+  countFolders?: number
   items: FolderItem[]
   status: string
 }

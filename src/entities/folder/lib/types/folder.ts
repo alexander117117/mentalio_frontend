@@ -1,10 +1,17 @@
 import { Id } from '@/shared/types/types'
 
+export interface translatedWordItem {
+  id: Id
+  translatedWord: string
+}
+
 export interface WordsItem {
   id: Id
   sourceWord: string
-  translatedWord: string
-  translatedImg?: string
+  translated_words: translatedWordItem[]
+  translatedImg: string
+  chosen: boolean
+  isEdit?: boolean | null
 }
 
 export interface TopicsItem {
@@ -34,3 +41,5 @@ export interface CategoriesItem {
   id: Id
   categoryName: string
 }
+
+export type apiTranslatedWords = Pick<translatedWordItem, 'translatedWord'>[]

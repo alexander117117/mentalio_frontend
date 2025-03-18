@@ -8,7 +8,7 @@ export {
 } from './catalog/catalogThunks'
 
 export { default as userFilesSlice } from './userFiles/userFilesSlice'
-export { clearError } from './userFiles/userFilesSlice'
+export { clearError as clearErrorFiles } from './userFiles/userFilesSlice'
 export {
   getUserFiles,
   createUserFile,
@@ -17,8 +17,5 @@ export {
   getFileTopics,
   addTopicToFile,
   deleteTopicFromFile,
-  getTopicCards,
-  addCardToTopic,
-  deleteCardFromTopic,
   addPublicFile,
 } from './userFiles/userFilesThunks'
