@@ -1,1 +1,0 @@
-export { handleOnSubmit } from './handleOnSubmit'
