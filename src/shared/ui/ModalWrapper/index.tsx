@@ -22,7 +22,7 @@ import React from 'react'
  * @param {React.ReactNode} props.children - Контент, который будет отображён внутри модального окна.
  *
  * @example
- * // Пример использования компонента ModalWrapper
+ * Пример использования компонента ModalWrapper
  *
  * const App = () => {
  *   const [isModalOpen, setIsModalOpen] = useState(false);
