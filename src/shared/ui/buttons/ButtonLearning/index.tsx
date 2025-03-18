@@ -1,4 +1,6 @@
 import { useRef } from 'react'
+import { colors } from '@/shared/constants/color'
+import gsap from 'gsap'
 
 interface ButtonLearningProps {
   children: React.ReactNode
@@ -7,17 +9,17 @@ interface ButtonLearningProps {
 
 export function ButtonLearning({ children, isCorrect }: ButtonLearningProps) {
   const buttonRef = useRef<HTMLButtonElement>(null)
+
   const handleClick = () => {
     if (buttonRef.current) {
-      if(isCorrect){
-        buttonRef.current.style.background = '#24AC18'
-      }
-      else{
-        buttonRef.current.style.background = '#FC3230'
-      }
-      buttonRef.current.style.color = '#fff'
+      gsap.to(buttonRef.current, {
+        duration: 0.2,
+        backgroundColor: isCorrect ? colors.correct : colors.incorrect,
+        color: '#fff',
+      })
     }
   }
+
   return (
     <button
       ref={buttonRef}
@@ -28,5 +30,3 @@ export function ButtonLearning({ children, isCorrect }: ButtonLearningProps) {
     </button>
   )
 }
-
-

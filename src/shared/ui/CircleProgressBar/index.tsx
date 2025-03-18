@@ -48,8 +48,8 @@ export function CircleProgressBar({ percent }: CircleProgressBarProps) {
           strokeDasharray="282.7"
           strokeDashoffset="282.7"
           transform="rotate(-90 50 50)"
-          className="animate-progress" 
-          style={{ '--target-offset': strokeDashoffset }} 
+          className="animate-progress"
+          style={{ '--target-offset': strokeDashoffset }}
         />
       </svg>
     </div>

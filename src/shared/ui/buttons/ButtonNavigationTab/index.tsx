@@ -4,11 +4,20 @@ import { SettingTest } from '@/features/SettingTest'
 import { useState } from 'react'
 
 interface ButtonNavigationTabProps {
-  link?: string | undefined
+  typeModal?: string
   children: React.ReactNode
 }
-export function ButtonNavigationTab({ link, children }: ButtonNavigationTabProps) {
+
+const typeModalComponentMap: Record<string, React.ComponentType<any>> = {
+  'test': SettingTest,
+  'memorization': SettingMemorization,
+  'card-mode': SettingCardMode,
+}
+
+export function ButtonNavigationTab({ typeModal, children }: ButtonNavigationTabProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const ModalComponent = typeModal ? typeModalComponentMap[typeModal] : null
+
   return (
     <>
       <button
@@ -17,24 +26,7 @@ export function ButtonNavigationTab({ link, children }: ButtonNavigationTabProps
       >
         {children}
       </button>
-      {
-        link === "/test" ?
-        <SettingTest 
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-        :
-        link === "/learning" ?
-        <SettingMemorization 
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-        : 
-        <SettingCardMode 
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-      }
+      {ModalComponent && <ModalComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
     </>
   )
 }

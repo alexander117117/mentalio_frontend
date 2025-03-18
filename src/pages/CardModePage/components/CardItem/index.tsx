@@ -13,11 +13,7 @@ export function CardItem() {
         <div className={`${styles.cardFace} ${styles.cardFaceFront}`}>
           <span className={`${styles.cardFaceFrontTitle} `}>Articulación</span>
 
-          <img
-            src={test}
-            alt=""
-            className={styles.cardFaceFrontImg}
-          ></img>
+          <img src={test} alt="" className={styles.cardFaceFrontImg}></img>
 
           <div className="flex justify-center">
             <img src={voice} alt="" className={styles.cardFaceFrontVoice} onClick={(e) => e.stopPropagation()} />

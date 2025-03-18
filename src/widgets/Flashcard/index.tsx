@@ -1,8 +1,6 @@
 import { ProgressBar } from '@/shared/ui/ProgressBar'
 import styles from '@/shared/lib/classNames/index.module.css'
-import { TestChooseAnswer } from '../UiKit/features/TestChooseAnswer'
-import { TestTrueFalse } from '../UiKit/features/TestTrueFalse'
-import { TestInputAnswer } from '../UiKit/features/TestInputAnswer'
+import { TestChooseAnswer } from '../../entities/test/ui/interactiveWindows/TestChooseAnswer'
 interface FlashcardProps {
   isTest?: boolean
 }

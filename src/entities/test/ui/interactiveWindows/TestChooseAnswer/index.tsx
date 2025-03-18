@@ -5,19 +5,19 @@ export function TestChooseAnswer() {
   const testData = [
     {
       title: 'Articulacióndddddddddddddddd',
-      isCorrect: true
+      isCorrect: true,
     },
     {
       title: 'Articulacióndddddddddddddddd2',
-      isCorrect: false
+      isCorrect: false,
     },
     {
       title: 'Articulacióndddddddddddddddd3',
-      isCorrect: false
+      isCorrect: false,
     },
     {
       title: 'Articulacióndddddddddddddddd4',
-      isCorrect: false
+      isCorrect: false,
     },
   ]
 
