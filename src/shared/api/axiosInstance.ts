@@ -57,7 +57,7 @@ axiosInstance.interceptors.response.use(
       if (status === 401) {
         Cookies.remove('token')
         if (window.location.pathname !== '/auth/login') {
-          // window.location.href = '/auth/login'
+          window.location.href = '/auth/login'
         }
       }
     } else if (error.request) {
