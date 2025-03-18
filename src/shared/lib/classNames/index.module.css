@@ -59,7 +59,6 @@
   }
 }
 
-/* Flashcard */
 .flashcard {
   padding: 1.25rem;
   padding-bottom: 2.5rem;
@@ -92,9 +91,6 @@
   font-size: 0.75rem; /* 12px */
 }
 
-/* End Flashcard */
-
-/* Button Back */
 .buttonBack {
   width: 80px;
   height: 80px;

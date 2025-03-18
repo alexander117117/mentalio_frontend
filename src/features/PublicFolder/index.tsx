@@ -21,7 +21,7 @@ export function InfoPublicFolder({ isModalOpen, setIsModalOpen, dataFolder }: In
     }
   }
   return (
-    <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
+    <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <div className="text-white pb-28 md:pb-16 relative">
         <h2 className={style.InfoPublicFolder_title}>{dataFolder.folderName}</h2>
 

@@ -9,8 +9,8 @@ interface ButtonNavigationTabProps {
 }
 
 const typeModalComponentMap: Record<string, React.ComponentType<any>> = {
-  'test': SettingTest,
-  'memorization': SettingMemorization,
+  test: SettingTest,
+  memorization: SettingMemorization,
   'card-mode': SettingCardMode,
 }
 

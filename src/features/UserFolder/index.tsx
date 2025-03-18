@@ -19,7 +19,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
   const goToTopic = useTopicNavigation()
 
   return (
-    <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} isDark={true}>
+    <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <div className="text-white pb-44 md:pb-16 relative">
         <h2 className={style.InfoUserFolder_title}>{dataFolder.folderName}</h2>
 

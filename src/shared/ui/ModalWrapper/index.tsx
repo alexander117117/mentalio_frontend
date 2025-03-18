@@ -42,17 +42,16 @@ import React from 'react'
 interface ModalWrapperProps {
   isOpen: boolean
   onClose: () => void
-  isDark?: boolean
   children: React.ReactNode
 }
 
-export const ModalWrapper = ({ isOpen, onClose, isDark = false, children }: ModalWrapperProps) => {
+export const ModalWrapper = ({ isOpen, onClose, children }: ModalWrapperProps) => {
   if (!isOpen) return null
 
   return (
     <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50`} onClick={onClose}>
       <div
-        className={`relative ${isDark ? 'bg-[#111]' : 'bg-white'} rounded-lg shadow-lg pt-6 p-3 sm:p-10 w-[95%] sm:w-auto md:max-w-[95%] max-h-[75vh] xs:max-w-[90%] xs:max-h-[75%] overflow-y-auto`}
+        className={`relative bg-[#111] rounded-lg shadow-lg pt-6 p-3 sm:p-10 w-[95%] sm:w-auto md:max-w-[95%] max-h-[75vh] xs:max-w-[90%] xs:max-h-[75%] overflow-y-auto`}
         onClick={(e) => e.stopPropagation()}
       >
         {children}
