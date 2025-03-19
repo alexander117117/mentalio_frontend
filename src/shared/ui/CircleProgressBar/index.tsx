@@ -55,5 +55,3 @@ export function CircleProgressBar({ percent }: CircleProgressBarProps) {
     </div>
   )
 }
-
-
