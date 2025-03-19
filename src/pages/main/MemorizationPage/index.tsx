@@ -1,6 +1,6 @@
 import { Flashcard } from '@/widgets/Flashcard'
 
-export function LearningPage() {
+export function MemorizationPage() {
   return (
     <>
       <div className="mt-[50px]">

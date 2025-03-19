@@ -8,7 +8,7 @@ import {
   MyFoldersPage,
   CatalogPage,
   FolderTopicPage,
-  LearningPage,
+  MemorizationPage,
   TestResultPage,
   TestPage,
 } from '@/processe/Main'
@@ -43,7 +43,7 @@ const AppRoutes = () => {
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="settings" element={<SettingPage />} />
           <Route path="folderTopic/:idFolder/:idTopic" element={<FolderTopicPage />} />
-          <Route path="learning" element={<LearningPage />} />
+          <Route path="memorization" element={<MemorizationPage />} />
           <Route path="test-result" element={<TestResultPage />} />
           <Route path="test" element={<TestPage />} />
         </Route>

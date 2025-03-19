@@ -41,7 +41,7 @@ body {
 
 /* custom swiper */
 .swiper-slide {
-  display: flex !important;
+  display: flex;
   justify-content: center;
   padding: 20px 0;
 }

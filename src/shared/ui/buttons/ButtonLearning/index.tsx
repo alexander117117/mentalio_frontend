@@ -14,7 +14,7 @@ export function ButtonLearning({ children, isCorrect }: ButtonLearningProps) {
     if (buttonRef.current) {
       gsap.to(buttonRef.current, {
         duration: 0.2,
-        backgroundColor: isCorrect ? colors.correct : colors.incorrect,
+        backgroundColor: isCorrect ? colors.correctAnswerTestButton : colors.incorrectAnswerTestButton,
         color: '#fff',
       })
     }

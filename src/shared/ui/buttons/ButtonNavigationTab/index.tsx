@@ -1,7 +1,8 @@
-import { SettingCardMode } from '@/features/SettingCardMode'
-import { SettingMemorization } from '@/features/SettingMemorization'
-import { SettingTest } from '@/features/SettingTest'
 import { useState } from 'react'
+import { FormSettingCardMode } from '@/features/FormSettingCardMode'
+import { FormSettingMemorization } from '@/features/FormSettingMemorization'
+import { FormSettingTest } from '@/features/FormSettingTest'
+import { SettingModal } from '../../SettingModal'
 
 interface ButtonNavigationTabProps {
   typeModal?: string
@@ -9,15 +10,15 @@ interface ButtonNavigationTabProps {
 }
 
 const typeModalComponentMap: Record<string, React.ComponentType<any>> = {
-  test: SettingTest,
-  memorization: SettingMemorization,
-  'card-mode': SettingCardMode,
+  test: FormSettingTest,
+  memorization: FormSettingMemorization,
+  'card-mode': FormSettingCardMode,
 }
 
 export function ButtonNavigationTab({ typeModal, children }: ButtonNavigationTabProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const ModalComponent = typeModal ? typeModalComponentMap[typeModal] : null
-
+  const title = typeModal === 'test' ? 'Настройте свой тест' : typeModal === 'card-mode' ? 'Настройте карточки' : 'Настройте заучивание'
   return (
     <>
       <button
@@ -26,7 +27,11 @@ export function ButtonNavigationTab({ typeModal, children }: ButtonNavigationTab
       >
         {children}
       </button>
-      {ModalComponent && <ModalComponent isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />}
+      {ModalComponent && 
+        <SettingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={title}>
+          <ModalComponent />
+        </SettingModal>
+      }
     </>
   )
 }
