@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FormSettingCardMode } from '@/features/FormSettingCardMode'
 import { FormSettingMemorization } from '@/features/FormSettingMemorization'
 import { FormSettingTest } from '@/features/FormSettingTest'
-import { SettingModal } from '../../SettingModal'
+import { SettingModal } from '@/shared/ui/SettingModal'
 
 interface ButtonNavigationTabProps {
   typeModal?: string

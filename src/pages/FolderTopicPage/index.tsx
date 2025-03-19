@@ -18,7 +18,6 @@ export function FolderTopicPage() {
     getTopicData({ dispatch, location, idFolder, idTopic })
   }, [idFolder, idTopic, location.state, dispatch])
 
-
   if (!dataTopic) {
     return <div>Нет данных о теме</div>
   }

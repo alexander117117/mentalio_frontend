@@ -21,6 +21,7 @@ export function CreateWordForm() {
   const { reset, handleSubmit, append, register, errors, setValue, remove, getValues, fields, watch } =
     useCreateWordForm()
 
+
   // Автоперевод, если пользователь ввел слово
   useEffect(() => {
     if (createdWord.sourceWord && sourceLanguage && targetLanguage) {
@@ -46,7 +47,7 @@ export function CreateWordForm() {
       setValue('translated_words', createdWord.translated_words)
       setValue('translatedImg', createdWord.translatedImg)
     }
-  }, [createdWord.isEdit, createdWord.sourceWord, createdWord.translated_words, setValue])
+  }, [createdWord.isEdit])
 
   return (
     <form
