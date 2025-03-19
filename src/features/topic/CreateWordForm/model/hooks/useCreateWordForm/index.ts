@@ -16,6 +16,7 @@ export function useCreateWordForm() {
     defaultValues: {
       typedWord: '',
       translated_words: [],
+      imageFile: undefined,
     },
   })
 

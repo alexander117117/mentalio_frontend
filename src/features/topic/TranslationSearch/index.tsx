@@ -13,6 +13,7 @@ import { AppDispatch } from '@/app/store/configureStore'
 
 import { CreateWords } from '../CreateWordForm/lib/types'
 import { validateSourceWord } from '../CreateWordForm/lib/validation'
+import { handleAddLang } from '@/entities/topic/lib/handles/addLang'
 
 interface TranslationSearchProps {
   register: UseFormRegister<CreateWords>
@@ -34,13 +35,12 @@ export function TranslationSearch({ errorForm, register }: TranslationSearchProp
     [],
   )
 
-  const handleAddLang = (lang: string) => {
-    dispatch(setSourceLanguage(lang))
-  }
-
   return (
     <Panel>
-      <LanguageSelector primaryLang="ru" onChangeLanguage={handleAddLang} />
+      <LanguageSelector
+        primaryLang="ru"
+        onChangeLanguage={(lang) => handleAddLang({ dispatch, lang, stateSave: setSourceLanguage })}
+      />
 
       <LabelTranslation>Введите слово:</LabelTranslation>
       <InputTranslateSearch

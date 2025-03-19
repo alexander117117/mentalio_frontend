@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import {
   UseFormRegister,
   FieldErrors,
@@ -5,6 +6,7 @@ import {
   UseFieldArrayAppend,
   UseFieldArrayRemove,
   UseFormGetValues,
+  WatchInternal,
 } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -14,17 +16,19 @@ import { LanguageSelector } from '@/features/topic/LanguageSelector'
 import { SimilarTerms } from '@/features/topic/Translation/ui/SimilarTerms'
 import { DetailsListApiTranslatedWords } from '@/features/topic/Translation/ui/DetailsListApiTranslatedWords'
 import { ButtonAddWordTranslate } from '@/features/topic/Translation/ui/ButtonAddWordTranslate'
-import { ButtonAddFile } from '@/shared/ui/buttons/ButtonAddFile'
+import { ButtonAddFile } from '@/features/topic/Translation/ui/ButtonAddFile'
 import { TextError } from '@/shared/ui/TextError'
 
-import { handleAddTranslate } from './lib/handles'
-import { clearCreatedWord, setTargetLanguage } from '@/entities/topic/model/store'
+import { handleAddTranslatedWord, handleCancelEdit, handleUpload } from './lib/handles'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 
 import style from './index.module.css'
-import { CreateWords, TranslatedWord } from '../CreateWordForm/lib/types'
-import { validateNewUserTranslatedWord } from '../CreateWordForm/lib/validation'
 import { InputTranslateSearch } from '@/entities/topic/ui/InputTranslateSearch'
+import { CreateWords, TranslatedWord } from '../CreateWordForm/lib/types'
+import { UploadProgress } from './ui/UploadProgress'
+import { validateNewUserTranslatedWord } from '../CreateWordForm/lib/validation'
+import { handleAddLang } from '@/entities/topic/lib/handles/addLang'
+import { setTargetLanguage } from '@/entities/topic/model/store'
 
 interface TranslationProps {
   serverErrorMessage: string
@@ -36,6 +40,7 @@ interface TranslationProps {
   append: UseFieldArrayAppend<CreateWords>
   remove: UseFieldArrayRemove
   getValues: UseFormGetValues<CreateWords>
+  watch: WatchInternal<CreateWords>
 }
 
 export function Translation({
@@ -48,32 +53,36 @@ export function Translation({
   append,
   remove,
   getValues,
+  watch,
 }: TranslationProps) {
   const dispatch = useDispatch<AppDispatch>()
   const { isEdit } = useSelector((state: RootState) => state.userTopic.createdWord)
 
-  const handleAddLang = (lang: string) => {
-    dispatch(setTargetLanguage(lang))
-  }
+  const [uploadProgress, setUploadProgress] = useState(0)
+  const [uploadedSize, setUploadedSize] = useState(0)
+  const [totalSize, setTotalSize] = useState(0)
+  const [uploadError, setUploadError] = useState<string | null>(null)
 
-  const handleCancelEdit = () => {
-    setValue('typedWord', '')
-    setValue('translated_words', [])
-    setValue('sourceWord', '')
-    dispatch(clearCreatedWord())
-  }
+  const imageFile = watch('imageFile')
 
-  const handleAddTranslatedWord = () => {
-    const typedValue = getValues('typedWord')
-    if (!typedValue) return
-    handleAddTranslate({ word: typedValue, dispatch, append })
-    setValue('typedWord', '')
-  }
+  useEffect(() => {
+    if (!imageFile || imageFile.length === 0) return
+    setUploadProgress(0)
+    setUploadedSize(0)
+    setTotalSize(0)
+    setUploadError(null)
+
+    const file = imageFile[0]
+    handleUpload(file)
+  }, [imageFile])
 
   return (
     <div className="mt-[10px]">
       <Panel>
-        <LanguageSelector primaryLang="en" onChangeLanguage={handleAddLang} />
+        <LanguageSelector
+          primaryLang="en"
+          onChangeLanguage={(lang) => handleAddLang({ dispatch, lang, stateSave: setTargetLanguage })}
+        />
 
         <LabelTranslation>Переводы:</LabelTranslation>
 
@@ -83,13 +92,12 @@ export function Translation({
               type="text"
               register={register('typedWord', validateNewUserTranslatedWord)}
               placeholder="Введите слово"
-              isSmall={true}
+              isSmall
             />
-
             <button
               type="button"
               className="h-[35px] sm:h-[24px] aspect-square border border-[#272727] rounded-[5px] text-primary text-2xl leading-[1rem] font-light"
-              onClick={handleAddTranslatedWord}
+              onClick={() => handleAddTranslatedWord({ setValue, getValues, append, dispatch })}
             >
               +
             </button>
@@ -107,7 +115,7 @@ export function Translation({
               <button
                 className="px-4 py-2 rounded-md bg-gray-500 text-white hover:bg-gray-600 transition-colors duration-200 text-sm"
                 type="button"
-                onClick={handleCancelEdit}
+                onClick={() => handleCancelEdit({ setValue, dispatch })}
               >
                 Отменить изменения
               </button>
@@ -115,7 +123,18 @@ export function Translation({
           ) : (
             <ButtonAddWordTranslate>Добавить</ButtonAddWordTranslate>
           )}
-          <ButtonAddFile />
+          <ButtonAddFile registerFile={register('imageFile')} />
+
+          {imageFile && imageFile.length > 0 && (
+            <UploadProgress
+              progress={uploadProgress}
+              uploaded={uploadedSize}
+              total={totalSize}
+              error={uploadError}
+              fileName={imageFile[0].name}
+              fileType={imageFile[0].type.split('/').pop() || ''}
+            />
+          )}
         </div>
 
         <TextError errorMessage={serverErrorMessage || errorStore} />

@@ -1,17 +1,8 @@
-import { AppDispatch } from '@/app/store/configureStore'
-import { setTranslatedWord } from '@/entities/topic/model/store'
-import { CreateWords } from '@/features/topic/CreateWordForm/lib/types'
-import { UseFieldArrayAppend } from 'react-hook-form'
-
-interface handleAddTranslateProps {
-  word: string
-  dispatch: AppDispatch
-  append: UseFieldArrayAppend<CreateWords>
-}
-export const handleAddTranslate = ({ word, dispatch, append }: handleAddTranslateProps) => {
-  append({
-    id: String(Date.now()),
-    translatedWord: word,
-  })
-  dispatch(setTranslatedWord(word))
-}
+export type { UploadProgressProps } from './uploadImg'
+export { handleUpload } from './uploadImg'
+export type { handleCancelEditProps } from './cancelEdit'
+export { handleCancelEdit } from './cancelEdit'
+export type { handleAddTranslatedWordProps } from './addTranslatedWord'
+export { handleAddTranslatedWord } from './addTranslatedWord'
+export type { handleAddTranslateProps } from './addTranslate'
+export { handleAddTranslate } from './addTranslate'
