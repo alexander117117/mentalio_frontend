@@ -69,8 +69,8 @@ const catalogSlice = createSlice({
         state.loading = false
         if (action.payload) {
           state.cards = [...action.payload.items]
-          if (action.payload.countTotalCards !== undefined) {
-            state.totalPage = Math.ceil(action.payload.countTotalCards / state.limit)
+          if (action.payload.countFolders !== undefined) {
+            state.totalPage = Math.ceil(action.payload.countFolders / state.limit)
           }
         }
       })

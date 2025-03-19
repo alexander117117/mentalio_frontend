@@ -9,9 +9,6 @@ import {
   getFileTopics,
   addTopicToFile,
   deleteTopicFromFile,
-  getTopicCards,
-  addCardToTopic,
-  deleteCardFromTopic,
   addPublicFile,
 } from './userFilesThunks.ts'
 
@@ -59,7 +56,7 @@ export const userFilesSlice = createSlice({
       .addCase(deleteUserFile.fulfilled, (state, action) => {
         state.loading = false
         if (state.filesUser) {
-          state.filesUser = state.filesUser.filter((item) => item.id !== action.payload)
+          state.filesUser = state.filesUser.filter((item) => item.id !== action.payload.toString())
         }
       })
       .addCase(deleteUserFile.rejected, handleRejected)
@@ -115,48 +112,6 @@ export const userFilesSlice = createSlice({
         }
       })
       .addCase(deleteTopicFromFile.rejected, handleRejected)
-
-      // Получение карточек темы
-      .addCase(getTopicCards.pending, handlePending)
-      .addCase(getTopicCards.fulfilled, (state, action) => {
-        state.loading = false
-        if (state.filesUser) {
-          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
-          const topic = file?.topics?.find((t) => t.id === action.meta.arg.topicId)
-          if (topic) {
-            topic.cards = action.payload
-          }
-        }
-      })
-      .addCase(getTopicCards.rejected, handleRejected)
-
-      // Добавление карточки в тему
-      .addCase(addCardToTopic.pending, handlePending)
-      .addCase(addCardToTopic.fulfilled, (state, action) => {
-        state.loading = false
-        if (state.filesUser) {
-          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
-          const topic = file?.topics?.find((t) => t.id === action.meta.arg.topicId)
-          if (topic) {
-            topic.cards = [...(topic.cards || []), action.payload]
-          }
-        }
-      })
-      .addCase(addCardToTopic.rejected, handleRejected)
-
-      // Удаление карточки из темы
-      .addCase(deleteCardFromTopic.pending, handlePending)
-      .addCase(deleteCardFromTopic.fulfilled, (state, action) => {
-        state.loading = false
-        if (state.filesUser) {
-          const file = state.filesUser.find((item) => item.id === action.meta.arg.fileId)
-          const topic = file?.topics?.find((t) => t.id === action.meta.arg.topicId)
-          if (topic && topic.cards) {
-            topic.cards = topic.cards.filter((card) => card.id !== action.payload)
-          }
-        }
-      })
-      .addCase(deleteCardFromTopic.rejected, handleRejected)
 
       // Добавить публичную папку к пользователю
       .addCase(addPublicFile.pending, handlePending)

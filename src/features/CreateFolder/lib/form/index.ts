@@ -1,7 +1,7 @@
 import { useForm, useFieldArray } from 'react-hook-form'
 import { CreateFolder } from '@/entities/folder/lib/types/form'
 
-export function useCreateFolderForm() {
+export function useCreateWordForm() {
   const {
     setValue,
     watch,
@@ -18,7 +18,7 @@ export function useCreateFolderForm() {
       categoryName: '',
       topics: [
         {
-          id: 1,
+          id: '1',
           topicName: '',
         },
       ],

@@ -1,0 +1,9 @@
+.word_card {
+  padding: 0.9375rem; /* 15px */
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.75rem; /* 12px */
+  border: 2px solid #e1e1e1;
+}

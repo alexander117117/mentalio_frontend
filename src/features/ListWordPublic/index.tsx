@@ -13,7 +13,7 @@ export function ListWordPublic({ cards }: ListWordPublicProps) {
             key={card.id}
           >
             <span>{card.sourceWord}</span>
-            <span className="opacity-50">{card.translatedWord}</span>
+            <span className="opacity-50">{card.translated_words[0].translatedWord}</span>
           </li>
         ))
       ) : (
