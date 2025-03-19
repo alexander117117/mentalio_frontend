@@ -73,9 +73,8 @@ export function Translation({
     setUploadError(null)
 
     const file = imageFile[0]
-    handleUpload(file)
-  }, [imageFile])
-
+    handleUpload({ file, setUploadProgress, setUploadedSize, setTotalSize, setUploadError, setValue })
+  }, [imageFile, setValue])
   return (
     <div className="mt-[10px]">
       <Panel>
