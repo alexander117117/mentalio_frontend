@@ -49,9 +49,11 @@ export function CircleProgressBar({ percent }: CircleProgressBarProps) {
           strokeDashoffset="282.7"
           transform="rotate(-90 50 50)"
           className="animate-progress"
-          style={{ '--target-offset': strokeDashoffset }}
+          style={{ '--target-offset': strokeDashoffset } as React.CSSProperties}
         />
       </svg>
     </div>
   )
 }
+
+

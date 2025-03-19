@@ -10,7 +10,7 @@ export function TestPercentPage() {
         <ButtonBack />
 
         <h1 className="text-3xl sm:text-5xl font-bold tracking-wider text-center font-unbounded whitespace-nowrap">
-          Вы набрали 80%
+          Вы набрали {percent}%
         </h1>
 
         <CircleProgressBar percent={percent} />

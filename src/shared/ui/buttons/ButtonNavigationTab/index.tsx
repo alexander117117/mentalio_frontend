@@ -18,7 +18,12 @@ const typeModalComponentMap: Record<string, React.ComponentType<any>> = {
 export function ButtonNavigationTab({ typeModal, children }: ButtonNavigationTabProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const ModalComponent = typeModal ? typeModalComponentMap[typeModal] : null
-  const title = typeModal === 'test' ? 'Настройте свой тест' : typeModal === 'card-mode' ? 'Настройте карточки' : 'Настройте заучивание'
+  const title =
+    typeModal === 'test'
+      ? 'Настройте свой тест'
+      : typeModal === 'card-mode'
+        ? 'Настройте карточки'
+        : 'Настройте заучивание'
   return (
     <>
       <button
@@ -27,11 +32,11 @@ export function ButtonNavigationTab({ typeModal, children }: ButtonNavigationTab
       >
         {children}
       </button>
-      {ModalComponent && 
+      {ModalComponent && (
         <SettingModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={title}>
           <ModalComponent />
         </SettingModal>
-      }
+      )}
     </>
   )
 }
