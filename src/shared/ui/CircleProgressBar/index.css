@@ -1,0 +1,12 @@
+@keyframes progress {
+  from {
+    stroke-dashoffset: 282.7;
+  }
+  to {
+    stroke-dashoffset: var(--target-offset);
+  }
+}
+
+.animate-progress {
+  animation: progress 2s ease-out forwards;
+}

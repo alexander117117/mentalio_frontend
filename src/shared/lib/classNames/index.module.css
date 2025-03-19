@@ -58,3 +58,71 @@
     font-size: 0.625rem;
   }
 }
+
+.flashcard {
+  padding: 1.25rem;
+  padding-bottom: 2.5rem;
+  background-color: #f2faf1;
+  border-radius: 1.25rem;
+  width: 100%;
+  max-width: 894px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flashcard__content {
+  text-align: center;
+  margin-top: 96px;
+}
+
+.flashcard__title {
+  font-size: 1.875rem; /* 30px */
+  line-height: 2.25rem; /* 36px */
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.flashcard__subtitle {
+  color: #7f7f7f;
+  font-size: 0.75rem; /* 12px */
+}
+
+.buttonBack {
+  width: 80px;
+  height: 80px;
+  padding: 16px;
+  background: #ddd;
+  border: none;
+  border-radius: 20px;
+  position: absolute;
+  left: 25px;
+  top: 54px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .buttonBackImg {
+  width: 100%;
+} */
+
+@media (max-width: 1024px) {
+  .buttonBack {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    left: -20px;
+    top: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .buttonBack {
+    left: 0;
+  }
+}
