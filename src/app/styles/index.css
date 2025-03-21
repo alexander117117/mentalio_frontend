@@ -19,7 +19,9 @@
 body {
   overflow-x: hidden;
 }
-
+details > summary {
+  list-style: none;
+}
 /* Scrollbar */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
@@ -43,7 +45,6 @@ body {
 .swiper-slide {
   display: flex;
   justify-content: center;
-  padding: 20px 0;
 }
 
 .swiper-button-next,

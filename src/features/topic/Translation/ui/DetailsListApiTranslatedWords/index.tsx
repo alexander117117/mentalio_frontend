@@ -5,6 +5,8 @@ import { apiTranslatedWords } from '@/entities/folder/lib/types'
 import { handleAddTranslate } from '../../lib/handles'
 import { UseFieldArrayAppend } from 'react-hook-form'
 import { CreateWords } from '@/features/topic/CreateWordForm/lib/types'
+import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
+import { TranslationWord } from '@/shared/ui/TranslationWord'
 
 interface DetailsListApiTranslatedWordsProps {
   append: UseFieldArrayAppend<CreateWords>
@@ -15,7 +17,7 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
   const { apiTranslatedWords } = useSelector((state: RootState) => state.userTopic)
 
   const [translations, setTranslations] = useState<apiTranslatedWords>([])
-
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     setTranslations(apiTranslatedWords)
   }, [apiTranslatedWords])
@@ -29,19 +31,18 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
   }
 
   return (
-    <details className="mt-2">
-      <summary className="cursor-pointer">Предложения Google Translate:</summary>
-      <ul className="pl-5 list-disc">
+    <details className="mt-2" open={isOpen} onToggle={() => setIsOpen(!isOpen)}>
+      <summary className="details-summary flex items-center opacity-50 mb-2 cursor-pointer">
+        <span className="text-sm">Google translate:</span>
+        {isOpen ? <MdKeyboardArrowDown /> : <MdKeyboardArrowRight />}
+      </summary>
+      <ul className="list-disc flex items-center gap-2">
         {translations.map((item, index) => (
-          <li key={index}>
-            <button
-              type="button"
-              onClick={() => handleAdd(item.translatedWord)}
-              className="underline text-blue-600 hover:text-blue-400 transition-colors"
-            >
-              {item.translatedWord}
-            </button>
-          </li>
+          <TranslationWord 
+            key={index}
+            word={item.translatedWord}
+            add={handleAdd}
+          />
         ))}
       </ul>
     </details>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ReactDOM from 'react-dom';
 /**
  * ModalWrapper - Компонент-обёртка для модального окна.
  *
@@ -48,7 +48,7 @@ interface ModalWrapperProps {
 export const ModalWrapper = ({ isOpen, onClose, children }: ModalWrapperProps) => {
   if (!isOpen) return null
 
-  return (
+  return ReactDOM.createPortal(
     <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50`} onClick={onClose}>
       <div
         className={`relative bg-[#111] rounded-lg shadow-lg pt-6 p-3 sm:p-10 w-[95%] sm:w-auto md:max-w-[95%] max-h-[75vh] xs:max-w-[90%] xs:max-h-[75%] overflow-y-auto`}
@@ -56,6 +56,7 @@ export const ModalWrapper = ({ isOpen, onClose, children }: ModalWrapperProps) =
       >
         {children}
       </div>
-    </div>
+    </div>,
+    document.getElementById('modal-root')!
   )
 }

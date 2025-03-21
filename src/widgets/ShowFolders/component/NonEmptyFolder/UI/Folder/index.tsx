@@ -15,7 +15,7 @@ export const Folder = ({ dataFolder }: FolderProps) => {
       >
         <img src={happy_folders} alt="" className="w-[85px] sm:w-[130px] h-[50px] sm:h-[80px] object-contain" />
         <div className="">
-          <h4 className="text-xs sm:text-xl font-medium font-unbounded">{dataFolder.folderName}</h4>
+          <h4 className="text-xs sm:text-xl font-medium font-unbounded line-clamp-1">{dataFolder.folderName}</h4>
           <div className="text-[6px] sm:text-[14px] font-medium text-[#939393]">От {dataFolder.dateCreated}</div>
         </div>
       </button>
