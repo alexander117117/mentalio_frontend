@@ -1,9 +1,10 @@
 import { happy_folders, sad_folders } from 'src/shared/assets/images'
 import { Link } from 'react-router'
-import { Folder } from './UI/Folder'
+// import { Folder } from './UI/Folder'
 import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 import { FoldersProps } from '@/widgets/ShowFolders/lib/types.ts'
-import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Swiper, SwiperSlide } from 'swiper/react';
+import { FolderSlider } from '@/widgets/FolderSlider'
 export const NonEmptyFolder = ({ files }: FoldersProps) => {
   return (
     <>
@@ -28,41 +29,7 @@ export const NonEmptyFolder = ({ files }: FoldersProps) => {
             </Link>
           </div>
 
-          <div
-            className="w-[320px] xs:w-[576px] sm:w-[730px] flex items-center gap-[20px]"
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Swiper
-              breakpoints={{
-                320: {
-                  slidesPerView: 3.2 ,
-                  spaceBetween: 10
-                },
-                576: {
-                  slidesPerView: 3.2 ,
-                  spaceBetween: 15
-                },
-                768: {
-                  slidesPerView: files?.length ? (files?.length < 2 ? 1 : files?.length < 3 ? 2 : 2.2) : 1,
-                  spaceBetween: 20
-                }
-              }}
-              slidesPerView={files?.length ? (files?.length < 2 ? 1 : files?.length < 3 ? 2 : 2.2) : 1}
-              spaceBetween={20}
-              className="mySwiper"
-            >
-              {files?.map((file) => 
-                <SwiperSlide key={file.id}>
-                  <Folder dataFolder={file} />
-                </SwiperSlide>
-              )}
-            </Swiper>
-            
-          </div>
-
+          <FolderSlider files={files} />
 
           <div className="block lg:hidden w-fit relative mt-[15px] mx-auto">
             <div className="w-[127px] sm:w-[200px] h-[77px] xs:h-[110px] truncate">
