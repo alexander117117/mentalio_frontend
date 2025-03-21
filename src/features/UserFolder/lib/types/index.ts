@@ -11,4 +11,5 @@ export interface HandeleAddTopicProps {
 export interface handleDeleteTopicProps {
   id: Id
   dispatch: AppDispatch
+  setIsModalOpen: (is: false) => void
 }

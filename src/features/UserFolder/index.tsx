@@ -38,7 +38,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
             Добавить тему
           </ButtonControlFolder>
           <ButtonControlFolder
-            onClick={() => handeleDelleteFolder({ id: dataFolder.id, dispatch })}
+            onClick={() => handeleDelleteFolder({ id: dataFolder.id, dispatch, setIsModalOpen })}
             color={'text-[#FF4040]'}
           >
             Удалить папку

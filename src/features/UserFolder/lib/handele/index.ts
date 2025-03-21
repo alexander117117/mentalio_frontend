@@ -10,6 +10,7 @@ export const handeleAddTopic = async ({ idFolder, goToTopic, dispatch }: Handele
   goToTopic(idFolder, res.topic)
 }
 
-export const handeleDelleteFolder = async ({ id, dispatch }: handleDeleteTopicProps) => {
+export const handeleDelleteFolder = async ({ id, dispatch, setIsModalOpen }: handleDeleteTopicProps) => {
   await dispatch(deleteUserFile(id))
+  setIsModalOpen(false)
 }
