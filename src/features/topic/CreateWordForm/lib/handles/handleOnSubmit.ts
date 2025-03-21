@@ -27,7 +27,7 @@ export const handleOnSubmit = async ({
       const cardData = {
         sourceWord: data.sourceWord,
         translated_words: data.translated_words,
-        translatedImg: data.translatedImg ?? '',
+        translatedImg: data.translatedImg || null,
         chosen: false,
       }
       res = await dispatch(CreateWord({ idTopic, cardData }))

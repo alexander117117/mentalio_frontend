@@ -9,7 +9,7 @@ export interface WordsItem {
   id: Id
   sourceWord: string
   translated_words: translatedWordItem[]
-  translatedImg: string
+  translatedImg: string | null
   imageFile?: FileList | null
   chosen: boolean
   isEdit?: boolean | null
