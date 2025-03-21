@@ -13,12 +13,7 @@ export function SimilarTerms({ fields, remove }: SimilarTermsProps) {
       <p className="text-xs text-zinc-500 mb-2">Похожие варианты:</p>
       <div className="flex gap-2 flex-wrap">
         {fields.map((field, index) => (
-          <TranslationWord 
-            key={field.id}
-            word={field.translatedWord}
-            remove={remove}
-            index={index}
-          />
+          <TranslationWord key={field.id} word={field.translatedWord} remove={remove} index={index} />
         ))}
       </div>
     </div>

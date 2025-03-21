@@ -56,7 +56,7 @@ export const userFilesSlice = createSlice({
       .addCase(deleteUserFile.fulfilled, (state, action) => {
         state.loading = false
         if (state.filesUser) {
-          state.filesUser = state.filesUser.filter(file => file.id !== action.meta.arg);
+          state.filesUser = state.filesUser.filter((file) => file.id !== action.meta.arg)
         }
       })
       .addCase(deleteUserFile.rejected, handleRejected)
