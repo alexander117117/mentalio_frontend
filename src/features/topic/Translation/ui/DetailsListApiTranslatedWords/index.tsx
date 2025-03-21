@@ -18,7 +18,7 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
 
   const [translations, setTranslations] = useState<apiTranslatedWords>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const detailsRef = useRef<HTMLDetailsElement>(null);
+  const detailsRef = useRef<HTMLDetailsElement>(null)
 
   useEffect(() => {
     setTranslations(apiTranslatedWords)
@@ -34,8 +34,8 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
   }
 
   return (
-    <details 
-      className="mt-2" 
+    <details
+      className="mt-2"
       ref={detailsRef}
       onToggle={() => {
         setIsOpen(detailsRef.current?.open || false)
