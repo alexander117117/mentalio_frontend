@@ -6,6 +6,7 @@ import authReducer from '@/entities/user/model/store/auth/authSlice'
 import userFilesSlice from '@/entities/folder/model/store/userFiles/userFilesSlice'
 import analyticsSlice from '@/app/store/features/analytics/analyticsSlice'
 import catalogSlice from '@/entities/folder/model/store/catalog/catalogSlice'
+import userTopicSlice from '@/entities/topic/model/store/userTopicSlice'
 
 interface AuthPersistConfig extends PersistConfig<ReturnType<typeof authReducer>> {
   whitelist: string[]
@@ -22,6 +23,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer)
 export const store = configureStore({
   reducer: {
     userFiles: userFilesSlice,
+    userTopic: userTopicSlice,
     auth: persistedReducer,
     analytics: analyticsSlice,
     catalog: catalogSlice,

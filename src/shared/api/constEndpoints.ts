@@ -41,8 +41,13 @@ export const API_ENDPOINTS = {
     cards: {
       list: (topicId: Id): string => `/v1/folders/topics/${topicId}/cards/`,
       create: (topicId: Id): string => `/v1/folders/topics/${topicId}/cards/`,
+      getDetails: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
+      update: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
+      delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
+      getIMG: '/v1/folders/topics/cards/get-img/',
     },
-    catalog: '/v1/folders/folders/catalog/',
+    delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
+    catalog: '/v1/folders/catalog/',
   },
   public: {
     files: {
@@ -63,5 +68,8 @@ export const API_ENDPOINTS = {
   stats: {
     folderCopyRanking: '/v1/folders/stats/folder-copy-ranking/',
     userStudiedCards: '/v1/folders/stats/user-studied-cards/',
+  },
+  translator: {
+    translate: '/v1/translator/translate/',
   },
 }

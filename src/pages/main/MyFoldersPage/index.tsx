@@ -3,7 +3,7 @@ import { ListUserFiles } from './component/ListUserFiles'
 
 import { ButtonAddFolderPlus } from '@/shared/ui/buttons/ButtonAddFolderPlus'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks.ts'
+import { getUserFiles } from '@/entities/folder/model/store/userFiles/userFilesThunks'
 import { AppDispatch, RootState } from '@/app/store/configureStore.ts'
 
 export const MyFoldersPage = () => {

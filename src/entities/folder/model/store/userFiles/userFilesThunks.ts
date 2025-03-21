@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { executeApiRTK } from '@/shared/api/apiHelpers'
-import { FolderItem, TopicsItem, WordsItem } from '@/entities/folder/lib/types'
+import { FolderItem, TopicsItem } from '@/entities/folder/lib/types'
 import { API_ENDPOINTS } from '@/shared/api/constEndpoints'
 import { Id } from '@/shared/types/types'
 
@@ -155,68 +155,6 @@ export const deleteTopicFromFile = createAsyncThunk<DeleteTopicPayload, DeleteTo
     return { idFolder, idTopic }
   },
 )
-
-/**
- * Получить карточки для темы в файле.
- * @param payload.topicId - Идентификатор темы.
- * @returns {Promise<WordsItem[]>} Список карточек темы.
- */
-export const getTopicCards = createAsyncThunk<
-  WordsItem[],
-  { fileId: string; topicId: string },
-  { rejectValue: string }
->('userFiles/getTopicCards', async ({ topicId }, { rejectWithValue }) => {
-  const response = await executeApiRTK<WordsItem[], void>({
-    method: 'GET',
-    url: API_ENDPOINTS.folders.cards.list(topicId),
-    rejectWithValue,
-    errorMessage: 'Ошибка при получении карточек темы',
-  })
-  return response.data
-})
-
-/**
- * Добавить карточку в тему.
- * @param payload.fileId - Идентификатор файла.
- * @param payload.topicId - Идентификатор темы.
- * @param payload.cardData - Данные карточки.
- * @returns {Promise<WordsItem>} Добавленная карточка.
- */
-export const addCardToTopic = createAsyncThunk<
-  WordsItem,
-  { fileId: string; topicId: string; cardData: Partial<WordsItem> },
-  { rejectValue: string }
->('userFiles/addCardToTopic', async ({ fileId, topicId, cardData }, { rejectWithValue }) => {
-  const response = await executeApiRTK<WordsItem, Partial<WordsItem>>({
-    method: 'POST',
-    url: `/userFiles/${fileId}/topics/${topicId}/cards`,
-    body: cardData,
-    rejectWithValue,
-    errorMessage: 'Ошибка при добавлении карточки',
-  })
-  return response.data
-})
-
-/**
- * Удалить карточку из темы.
- * @param payload.fileId - Идентификатор файла.
- * @param payload.topicId - Идентификатор темы.
- * @param payload.cardId - Идентификатор карточки.
- * @returns {Promise<string>} Идентификатор удаленной карточки.
- */
-export const deleteCardFromTopic = createAsyncThunk<
-  string,
-  { fileId: string; topicId: string; cardId: string },
-  { rejectValue: string }
->('userFiles/deleteCardFromTopic', async ({ fileId, topicId, cardId }, { rejectWithValue }) => {
-  await executeApiRTK<unknown, void>({
-    method: 'DELETE',
-    url: `/userFiles/${fileId}/topics/${topicId}/cards/${cardId}`,
-    rejectWithValue,
-    errorMessage: 'Ошибка при удалении карточки',
-  })
-  return cardId
-})
 
 export const addPublicFile = createAsyncThunk<FolderItem, { idFolder: Id }, { rejectValue: string }>(
   'userFiles/addPublicFile',

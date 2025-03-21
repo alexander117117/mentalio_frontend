@@ -1,5 +1,5 @@
-import { useCreateFolderForm } from '../../lib/form'
-import { handleOnSubmit } from '../../lib/handeles'
+import { useCreateWordForm } from '../../lib/form'
+import { handleOnSubmit } from '../../lib/handles'
 import { useEffect, useState } from 'react'
 import { FormFields } from '../FormFields'
 import { FormPanel } from '../FormPanel'
@@ -13,8 +13,8 @@ interface FormCreateFolderProps {
 export function FormCreateFolder({ setIsModalOpen }: FormCreateFolderProps) {
   const dispatch = useDispatch<AppDispatch>()
   const { error } = useSelector((state: RootState) => state.userFiles)
-  const [errorServerMessages, setErrorServerMessages] = useState('')
-  const { reset, handleSubmit, append, register, errors, setValue, watch, remove, fields } = useCreateFolderForm()
+  const [serverErrorMessage, setServerErrorMessage] = useState('')
+  const { reset, handleSubmit, append, register, errors, setValue, watch, remove, fields } = useCreateWordForm()
 
   useEffect(() => {
     dispatch(clearError())
@@ -23,12 +23,12 @@ export function FormCreateFolder({ setIsModalOpen }: FormCreateFolderProps) {
   return (
     <form
       onSubmit={handleSubmit((data) =>
-        handleOnSubmit({ data, setErrorServerMessages, reset, setIsModalOpen, dispatch }),
+        handleOnSubmit({ data, setServerErrorMessage, reset, setIsModalOpen, dispatch }),
       )}
       className="w-full sm:w-[490px] flex flex-col gap-[10px] p-3 sm:p-5 rounded-[15px] text-white"
     >
       <FormFields
-        errorServerMessages={errorServerMessages}
+        serverErrorMessage={serverErrorMessage}
         register={register}
         errors={errors}
         errorStore={error}

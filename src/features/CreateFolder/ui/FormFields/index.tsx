@@ -2,13 +2,13 @@ import { validateFolderName, validateCategory, validateTopicName } from '@/entit
 import { DescriptionFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/DescriptionFolder'
 import { InputAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/InputAddFolder'
 import { SelectAddFolder } from '@/shared/ui/buttons/ButtonAddFolderPlus/components/SelectAddFolder'
-import { ButtonDelete } from '../ButtonDelete'
+import { ButtonDelete } from '../../../../shared/ui/ButtonDelete'
 import { FieldErrors, UseFieldArrayRemove, UseFormRegister, UseFormSetValue, UseFormWatch } from 'react-hook-form'
 import { CreateFolder, CreateTopicForm } from '@/entities/folder/lib/types/form'
 import { TextError } from '@/shared/ui/TextError'
 
 interface FormFieldsProps {
-  errorServerMessages: string
+  serverErrorMessage: string
   fields: CreateTopicForm[]
   register: UseFormRegister<CreateFolder>
   errors: FieldErrors<CreateFolder>
@@ -18,7 +18,7 @@ interface FormFieldsProps {
   remove: UseFieldArrayRemove
 }
 export function FormFields({
-  errorServerMessages,
+  serverErrorMessage,
   register,
   errors,
   errorStore,
@@ -53,7 +53,7 @@ export function FormFields({
           name={`topics[${index}].topicName`}
           placeholder="Введите название темы..."
         >
-          {fields.length > 1 && <ButtonDelete idObject={index} handeleOnClick={() => remove(index)} />}
+          {fields.length > 1 && <ButtonDelete handeleOnClick={() => remove(index)} />}
         </InputAddFolder>
       ))}
 
@@ -63,7 +63,7 @@ export function FormFields({
         name="topicDescription"
         placeholder={`Описание папки...\nНапример: для изучения испанского языка (уровень A1)`}
       />
-      {errorServerMessages ? <TextError errorMessage={errorServerMessages} /> : <TextError errorMessage={errorStore} />}
+      {serverErrorMessage ? <TextError errorMessage={serverErrorMessage} /> : <TextError errorMessage={errorStore} />}
     </>
   )
 }
