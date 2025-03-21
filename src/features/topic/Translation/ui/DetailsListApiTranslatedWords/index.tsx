@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { apiTranslatedWords } from '@/entities/folder/lib/types'
 import { handleAddTranslate } from '../../lib/handles'
@@ -17,9 +17,12 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
   const { apiTranslatedWords } = useSelector((state: RootState) => state.userTopic)
 
   const [translations, setTranslations] = useState<apiTranslatedWords>([])
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const detailsRef = useRef<HTMLDetailsElement>(null);
+
   useEffect(() => {
     setTranslations(apiTranslatedWords)
+    setIsOpen(false)
   }, [apiTranslatedWords])
 
   const handleAdd = (word: string) => {
@@ -31,7 +34,13 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
   }
 
   return (
-    <details className="mt-2" open={isOpen} onToggle={() => setIsOpen(!isOpen)}>
+    <details 
+      className="mt-2" 
+      ref={detailsRef}
+      onToggle={() => {
+        setIsOpen(detailsRef.current?.open || false)
+      }}
+    >
       <summary className="details-summary flex items-center opacity-50 mb-2 cursor-pointer">
         <span className="text-sm">Google translate:</span>
         {isOpen ? <MdKeyboardArrowDown /> : <MdKeyboardArrowRight />}
