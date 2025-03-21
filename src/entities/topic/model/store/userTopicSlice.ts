@@ -10,11 +10,14 @@ import {
   translateWord,
 } from './userTopicThunks.ts'
 import { Leng, MapIdTopicSlice } from '@/entities/topic/lib/types'
+import { Id } from '@/shared/types/types.ts'
 
 interface userTopicState {
   mapId: MapIdTopicSlice
   dataTopic: Omit<TopicsItem, 'id'>
-  createdWord: Omit<WordsItem, 'id'>
+  createdWord: Omit<WordsItem, 'id'> & {
+    id?: Id | null
+  }
   apiTranslatedWords: apiTranslatedWords
   loading: boolean
   error: string | null
@@ -35,6 +38,7 @@ const initialState: userTopicState = {
     cards: [],
   },
   createdWord: {
+    id: null,
     sourceWord: '',
     translated_words: [],
     translatedImg: '',
@@ -61,6 +65,7 @@ export const userTopicSlice = createSlice({
     },
     clearCreatedWord(state) {
       state.createdWord = {
+        id: null,
         sourceWord: '',
         translated_words: [],
         translatedImg: '',

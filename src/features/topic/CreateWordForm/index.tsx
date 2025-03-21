@@ -45,6 +45,10 @@ export function CreateWordForm() {
       setValue('sourceWord', createdWord.sourceWord)
       setValue('translated_words', createdWord.translated_words)
       setValue('translatedImg', createdWord.translatedImg)
+      setValue('isEdit', createdWord.isEdit)
+      if (createdWord.id) {
+        setValue('id', createdWord.id)
+      }
     }
   }, [createdWord.isEdit])
 
