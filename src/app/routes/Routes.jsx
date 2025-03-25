@@ -41,7 +41,6 @@ const AppRoutes = () => {
           <Route index element={<HomePage />} />
           <Route path="my-folders" element={<MyFoldersPage />} />
           <Route path="catalog" element={<CatalogPage />} />
-          <Route path="settings" element={<SettingPage />} />
           <Route path="folderTopic/:idFolder/:idTopic" element={<FolderTopicPage />} />
           <Route path="memorization" element={<MemorizationPage />} />
           <Route path="test-result" element={<TestResultPage />} />
@@ -51,6 +50,7 @@ const AppRoutes = () => {
         <Route path="summary" element={<SummaryPage />} />
         <Route path="card-mode" element={<CardModePage />} />
         <Route path="test-percent" element={<TestPercentPage />} />
+        <Route path="settings" element={<SettingPage />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </Router>
