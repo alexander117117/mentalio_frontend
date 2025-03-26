@@ -1,11 +1,12 @@
-import { avatar_icon } from "@/shared/assets/images"
 import { FaChevronRight } from "react-icons/fa6";
 import { useState, useRef, useEffect } from "react";
 
 interface DropdownProps {
+  img: string
+  title: string
   children: React.ReactNode
 }
-export function Dropdown({ children }: DropdownProps) {
+export function Dropdown({ img, title, children }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -31,8 +32,8 @@ export function Dropdown({ children }: DropdownProps) {
     >
       <div className="flex items-center justify-between" onClick={handleToggle}>
         <div className="flex items-center gap-5">
-          <img src={avatar_icon} alt="" />
-          <span className="text-[18px] font-medium">Аватар</span>
+          <img src={img} alt="" />
+          <span className="text-[18px] font-medium">{title}</span>
         </div>
         <FaChevronRight className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`} />
       </div>
