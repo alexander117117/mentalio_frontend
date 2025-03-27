@@ -11,7 +11,7 @@ export function SiderSettingItem({ img, title, subtitle, link }: any) {
       }
     >
       <div className="flex items-center gap-[10px]">
-        <img src={img} alt="" />
+        <img src={img} alt=""/>
 
         <div className="flex flex-col">
           <span className="text-base">{title}</span>

@@ -1,4 +1,4 @@
-import { logo_circle, change_name_icon, avatar_icon } from "@/shared/assets/images"
+import { logo_circle, lock_icon, support_icon } from "@/shared/assets/images"
 
 
 interface MenuSettingItem {
@@ -15,12 +15,12 @@ export const MenuSettingData: MenuSettingItem[] = [
     link: '/settings/account'
   },
   {
-    img: change_name_icon,
+    img: lock_icon,
     title: 'Безопасность',
     link: '/settings/security'
   },
   {
-    img: avatar_icon,
+    img: support_icon,
     title: 'Поддержка',
     link: '/settings/support'
   }

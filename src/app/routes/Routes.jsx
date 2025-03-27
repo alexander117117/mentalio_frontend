@@ -14,7 +14,9 @@ import {
 import { 
   LayoutSetting, 
   SettingPage,
-  SettingAccountPage
+  SettingAccountPage,
+  SettingSecurityPage,
+  SettingAvatarPage
 } from '@/processe/Setting'
 import { Error404Page } from '@/pages/Error404Page'
 import { SummaryPage } from '@/pages/SummaryPage'
@@ -49,18 +51,20 @@ const AppRoutes = () => {
           <Route path="memorization" element={<MemorizationPage />} />
           <Route path="test-result" element={<TestResultPage />} />
           <Route path="test" element={<TestPage />} />
+          <Route path="settings" element={<SettingPage />} />
         </Route>
 
         <Route path="summary" element={<SummaryPage />} />
         <Route path="card-mode" element={<CardModePage />} />
         <Route path="test-percent" element={<TestPercentPage />} />
 
-        <Route 
-          path="settings" 
+        <Route
+          path="settings"
           element={<LayoutSetting />}
         >
-          <Route index element={<SettingPage />} />
           <Route path="account" element={<SettingAccountPage />} />
+          <Route path="security" element={<SettingSecurityPage />} />
+          <Route path="avatar" element={<SettingAvatarPage />} />
         </Route>
 
         <Route path="*" element={<Error404Page />} />

@@ -14,3 +14,7 @@ export const containerClass = classNames('flex', 'items-center', 'gap-3', style.
 export const buttonBack = classNames(style.buttonBack)
 
 export const formSettingLearning = classNames('flex', 'flex-col', 'gap-5', 'w-auto', 'md:w-[473px]')
+
+export const settingLayout = classNames('flex', 'flex-col', 'items-center', 'justify-center', 'gap-10')
+
+export const settingItemPage = classNames('w-[90%] md:w-[650px]', 'flex', 'flex-col', 'gap-5')
