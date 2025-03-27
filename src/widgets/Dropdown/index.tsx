@@ -1,15 +1,15 @@
 import { FaChevronRight } from "react-icons/fa6";
-import { useState, useRef, useEffect } from "react";
-
+import { useState, useRef } from "react";
+import { colors } from "@/shared/constants/color";
 interface DropdownProps {
   title: string
-  svgImg?: React.ReactNode;
-  children?: React.ReactNode;
+  svgImg?: React.ReactNode
+  isPrimaryDropdown?: boolean
+  children?: React.ReactNode
 }
-export function Dropdown({ title, svgImg, children }: DropdownProps) {
+export function Dropdown({ title, svgImg, isPrimaryDropdown = true, children }: DropdownProps) {
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [height, setHeight] = useState(0);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -17,18 +17,10 @@ export function Dropdown({ title, svgImg, children }: DropdownProps) {
     setIsOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    if (isOpen && contentRef.current) {
-      setHeight(contentRef.current.scrollHeight);
-    } else {
-      setHeight(0);
-    }
-  }, [isOpen]);
-
   return (
     <div 
-      className="h-fit py-[15px] pl-[10px] pr-5 bg-[#E7E7E7] rounded-[20px] cursor-pointer overflow-hidden transition-all duration-300 ease-in-out"
-      style={{ height: isOpen ? `${height + 110}px` : '80px' }}
+      className={`h-fit py-[15px] pl-[10px] pr-5 rounded-[20px] cursor-pointer overflow-hidden transition-all duration-300 ease-in-out ${isPrimaryDropdown ? `bg-[${colors.dropDownMainColor}] text-black` : `bg-[${colors.dropDownSecondaryColor}] text-white`}`}
+      style={{ maxHeight: isOpen ? `1000px` : `${isPrimaryDropdown ? '80px' : '55px'}` }}
       ref={dropdownRef}
     >
       <div className="flex items-center justify-between" onClick={handleToggle}>
