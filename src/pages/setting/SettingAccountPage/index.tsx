@@ -1,6 +1,6 @@
 import { test } from "@/shared/assets/images";
 import { Dropdown } from "@/widgets/Dropdown";
-import { change_name_icon } from "@/shared/assets/images"
+import { ReactComponent as ChangeNameIcon } from '@/shared/assets/images/assets/change_name_icon.svg?react'
 import { ButtonAvatar } from "@/shared/ui/buttons/ButtonAvatar";
 import { FormSetting } from "@/shared/ui/form/FormSetting";
 import { SettingPageLayout } from "@/shared/ui/SettingPageLayout";
@@ -14,7 +14,7 @@ export function SettingAccountPage() {
       <div className={settingItemPage}>
         <ButtonAvatar />
 
-        <Dropdown img={change_name_icon} title={'Имя'}>
+        <Dropdown title={'Имя'} svgImg={<ChangeNameIcon />}>
           <FormSetting type={"text"} value={"Лев"}/>
         </Dropdown>
       </div>

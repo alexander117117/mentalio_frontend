@@ -16,7 +16,8 @@ import {
   SettingPage,
   SettingAccountPage,
   SettingSecurityPage,
-  SettingAvatarPage
+  SettingAvatarPage,
+  SettingSupportPage
 } from '@/processe/Setting'
 import { Error404Page } from '@/pages/Error404Page'
 import { SummaryPage } from '@/pages/SummaryPage'
@@ -65,6 +66,7 @@ const AppRoutes = () => {
           <Route path="account" element={<SettingAccountPage />} />
           <Route path="security" element={<SettingSecurityPage />} />
           <Route path="avatar" element={<SettingAvatarPage />} />
+          <Route path="support" element={<SettingSupportPage />} />
         </Route>
 
         <Route path="*" element={<Error404Page />} />

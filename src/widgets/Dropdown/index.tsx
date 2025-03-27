@@ -2,11 +2,12 @@ import { FaChevronRight } from "react-icons/fa6";
 import { useState, useRef, useEffect } from "react";
 
 interface DropdownProps {
-  img: string
   title: string
-  children: React.ReactNode
+  svgImg?: React.ReactNode;
+  children?: React.ReactNode;
 }
-export function Dropdown({ img, title, children }: DropdownProps) {
+export function Dropdown({ title, svgImg, children }: DropdownProps) {
+
   const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -32,7 +33,7 @@ export function Dropdown({ img, title, children }: DropdownProps) {
     >
       <div className="flex items-center justify-between" onClick={handleToggle}>
         <div className="flex items-center gap-5">
-          <img src={img} alt="" />
+          {svgImg && <div className="svg-icon-wrapper">{svgImg}</div>}
           <span className="text-[18px] font-medium">{title}</span>
         </div>
         <FaChevronRight className={`transition-transform duration-300 ${isOpen ? 'rotate-90' : 'rotate-0'}`} />
