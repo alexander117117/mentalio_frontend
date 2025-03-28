@@ -8,15 +8,15 @@ import { ReactComponent as Email } from '@/shared/assets/images/assets/email_ico
 import { ReactComponent as Community } from '@/shared/assets/images/assets/community_icon.svg?react'
 import { ReactComponent as Feedback } from '@/shared/assets/images/assets/feedback_icon.svg?react'
 import { LiaTelegramPlane } from "react-icons/lia";
-import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { AiOutlineYoutube } from "react-icons/ai";
 import { Link } from "react-router";
-
+import { FAQSection } from "./components/FAQSection";
+import { EmailBox } from "./components/EmailBox";
+import { SUPPORT_EMAIL } from "@/shared/constants/settingSupportData";
+import { SocialMediaLinks } from "./components/SocialMediaLinks";
 export function SettingSupportPage() {
   return (
     <div className={settingLayout}>
-      <SettingPageLayout img={support_icon} title={"Mentaliosupport@gmail.com"}/>
+      <SettingPageLayout img={support_icon} title={SUPPORT_EMAIL}/>
 
       <div className={settingItemPage}>
 
@@ -27,48 +27,19 @@ export function SettingSupportPage() {
         </Dropdown>
 
         <Dropdown title={'Часто задаваемые вопросы'} svgImg={<AskedQuestion />}>
-          <div className="flex flex-col gap-3">
-            <Dropdown title={'Зачем нужен Mentalio'} isPrimaryDropdown={false}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, architecto adipisci! Inventore magni voluptas blanditiis ratione atque quae quasi perspiciatis possimus modi ipsum. Sapiente odio quis eum voluptate dolor at.
-            </Dropdown>
-            <Dropdown title={'Наша миссия'} isPrimaryDropdown={false}>
-  
-            </Dropdown>
-            <Dropdown title={'Как пользоваться'} isPrimaryDropdown={false}>
-  
-            </Dropdown>
-            <Dropdown title={'Почему мы'} isPrimaryDropdown={false}>
-  
-            </Dropdown>
-          </div>
+          <FAQSection />
         </Dropdown>
 
         <Dropdown title={'Почта'} svgImg={<Email />}>
-          <p className="h-[50px] flex items-center px-5 bg-white rounded-[20px]">sashalox@yandex.ru</p>
+          <EmailBox email={SUPPORT_EMAIL}/>
         </Dropdown>
 
         <Dropdown title={'Комьюнити'} svgImg={<Community />}>
-          <div className="flex items-center gap-6">
-            <Link to="https://t.me/Chistiakova_Liza" target="_blank">
-              <FaInstagram className="text-[40px]"/>
-            </Link>
-            <Link to="https://t.me/Chistiakova_Liza" target="_blank">
-              <FaLinkedinIn className="text-[40px]"/>
-            </Link>
-            <Link to="https://t.me/Chistiakova_Liza" target="_blank">
-              <LiaTelegramPlane className="text-[40px]"/>
-            </Link>
-            <Link to="https://t.me/Chistiakova_Liza" target="_blank">
-              <FaXTwitter className="text-[40px]"/>
-            </Link>
-            <Link to="https://t.me/Chistiakova_Liza" target="_blank">
-              <AiOutlineYoutube className="text-[40px]"/>
-            </Link>
-          </div>
+          <SocialMediaLinks />
         </Dropdown>
 
         <Dropdown title={'Feedback'} svgImg={<Feedback />}>
-          <p className="h-[50px] flex items-center px-5 bg-white rounded-[20px]">sashalox@yandex.ru</p>
+          <EmailBox email={SUPPORT_EMAIL}/>
         </Dropdown>
       </div>
     </div>
