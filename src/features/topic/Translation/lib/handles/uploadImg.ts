@@ -1,4 +1,5 @@
 import { CreateWords } from '@/features/topic/CreateWordForm/lib/types'
+import { axiosInstance } from '@/shared/api'
 import { API_ENDPOINTS } from '@/shared/api/constEndpoints'
 import axios from 'axios'
 import { UseFormSetValue } from 'react-hook-form'
@@ -22,7 +23,7 @@ export const handleUpload = async ({
   try {
     const formData = new FormData()
     formData.append('file', file)
-    const response = await axios.post(API_ENDPOINTS.folders.cards.getIMG, formData, {
+    const response = await axiosInstance.post(API_ENDPOINTS.getIMG, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
       onUploadProgress: (event) => {
         if (event.total) {
@@ -39,12 +40,6 @@ export const handleUpload = async ({
     } else {
       setUploadError('Не удалось загрузить файл. Попробуйте позже')
     }
-
-    // For testing (mock):
-    setUploadedSize(23)
-    setTotalSize(3222)
-    const percent = Math.round((2 * 100) / 6)
-    setUploadProgress(percent)
   } catch (error) {
     console.error('Ошибка при загрузке файла', error)
     setUploadError('Не удалось загрузить файл. Попробуйте позже')

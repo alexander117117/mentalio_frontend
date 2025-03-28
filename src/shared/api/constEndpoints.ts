@@ -44,11 +44,11 @@ export const API_ENDPOINTS = {
       getDetails: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
       update: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
       delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
-      getIMG: '/v1/folders/topics/cards/get-img/',
     },
     delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
     catalog: '/v1/folders/catalog/',
   },
+  getIMG: '/v1/folders/topics/cards/get-img/',
   public: {
     files: {
       list: '/v1/folders/public/files/',

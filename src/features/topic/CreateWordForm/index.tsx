@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearError, translateWord } from '@/entities/topic/model/store'
+import { clearCreatedWord, clearError, translateWord } from '@/entities/topic/model/store'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useCreateWordForm } from './model/hooks/useCreateWordForm'
 import { handleOnSubmit } from './lib/handles'
@@ -42,12 +42,18 @@ export function CreateWordForm() {
   // Если пользователь редактирует карточку, подставляем данные в форму
   useEffect(() => {
     if (createdWord.isEdit) {
+      setServerErrorMessage('')
+      dispatch(clearCreatedWord())
+      reset()
       setValue('sourceWord', createdWord.sourceWord)
       setValue('translated_words', createdWord.translated_words)
       setValue('translatedImg', createdWord.translatedImg)
       setValue('isEdit', createdWord.isEdit)
       if (createdWord.id) {
         setValue('id', createdWord.id)
+      }
+      if (createdWord.translatedImg) {
+        setValue('translatedImg', createdWord.translatedImg)
       }
     }
   }, [createdWord.isEdit])
