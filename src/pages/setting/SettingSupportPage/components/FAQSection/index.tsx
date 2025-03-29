@@ -1,5 +1,5 @@
-import { FAQ_ITEMS } from "@/shared/constants/settingSupportData";
-import { Dropdown } from "@/widgets/Dropdown";
+import { FAQ_ITEMS } from '@/shared/constants/settingSupportData'
+import { Dropdown } from '@/widgets/Dropdown'
 
 export function FAQSection() {
   return (

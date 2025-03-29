@@ -1,7 +1,6 @@
 import { CreateWords } from '@/features/topic/CreateWordForm/lib/types'
 import { axiosInstance } from '@/shared/api'
 import { API_ENDPOINTS } from '@/shared/api/constEndpoints'
-import axios from 'axios'
 import { UseFormSetValue } from 'react-hook-form'
 
 export interface UploadProgressProps {

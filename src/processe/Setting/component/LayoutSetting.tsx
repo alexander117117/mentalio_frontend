@@ -1,6 +1,6 @@
-import { MiniNavbar } from "@/widgets/MiniNavbar";
-import { SiderSettingPage } from "@/widgets/SiderSettingPage";
-import { Outlet } from "react-router";
+import { MiniNavbar } from '@/widgets/MiniNavbar'
+import { SiderSettingPage } from '@/widgets/SiderSettingPage'
+import { Outlet } from 'react-router'
 
 export function LayoutSetting() {
   return (
@@ -13,7 +13,6 @@ export function LayoutSetting() {
         </div>
 
         <MiniNavbar />
-        
       </div>
     </main>
   )

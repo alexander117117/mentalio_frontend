@@ -1,4 +1,4 @@
-import { SiderSettingApp } from "./components/SiderSettingApp";
+import { SiderSettingApp } from './components/SiderSettingApp'
 
 export function SiderSettingPage() {
   return (

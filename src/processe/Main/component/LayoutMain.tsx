@@ -17,7 +17,7 @@ export function LayoutMain() {
   const location = useLocation()
 
   return (
-    <main className={(location.pathname === '/settings' ? 'bg-[#E7E7E7]' : '')}>
+    <main className={location.pathname === '/settings' ? 'bg-[#E7E7E7]' : ''}>
       <div className={`flex items-start pr-0 sm:pr-[30px] pb-24 md:pb-0 relative `}>
         <Sider />
 

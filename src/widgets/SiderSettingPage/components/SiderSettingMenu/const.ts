@@ -1,5 +1,4 @@
-import { logo_circle, lock_icon, support_icon } from "@/shared/assets/images"
-
+import { logo_circle, lock_icon, support_icon } from '@/shared/assets/images'
 
 interface MenuSettingItem {
   img: string
@@ -12,16 +11,16 @@ export const MenuSettingData: MenuSettingItem[] = [
     img: logo_circle,
     title: 'Аккаунт',
     subtitle: 'Учетная запись Mentalio',
-    link: '/settings/account'
+    link: '/settings/account',
   },
   {
     img: lock_icon,
     title: 'Безопасность',
-    link: '/settings/security'
+    link: '/settings/security',
   },
   {
     img: support_icon,
     title: 'Поддержка',
-    link: '/settings/support'
-  }
+    link: '/settings/support',
+  },
 ]

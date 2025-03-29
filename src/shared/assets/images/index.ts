@@ -56,5 +56,5 @@ export {
   avatar_icon,
   change_name_icon,
   lock_icon,
-  support_icon
+  support_icon,
 }
