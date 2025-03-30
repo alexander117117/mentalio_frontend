@@ -1,6 +1,14 @@
 import { Link } from 'react-router'
 import { useLocation } from 'react-router-dom'
-export function SiderSettingItem({ img, title, subtitle, link }: any) {
+
+interface SiderSettingItemProps {
+  img: string
+  title: string
+  subtitle?: string
+  link: string
+}
+
+export function SiderSettingItem({ img, title, subtitle, link }: SiderSettingItemProps) {
   const location = useLocation()
   return (
     <Link
