@@ -1,4 +1,4 @@
-import { FaChevronRight } from "react-icons/fa6"
+import { FaChevronRight } from 'react-icons/fa6'
 import cn from 'classnames'
 
 interface DropdownHeaderProps {
@@ -14,11 +14,12 @@ export function DropdownHeader({ title, svgImg, isOpen, onToggle }: DropdownHead
         {svgImg && <div className="w-[30px] sm:w-[50px] h-[30px] sm:h-[50px] svg-icon">{svgImg}</div>}
         <span className="text-base sm:text-lg font-medium">{title}</span>
       </div>
-      <FaChevronRight className={
-        cn('transition-transform duration-250', { 
-        'rotate-90': isOpen, 
-        'rotate-0': !isOpen 
-      })} />
+      <FaChevronRight
+        className={cn('transition-transform duration-250', {
+          'rotate-90': isOpen,
+          'rotate-0': !isOpen,
+        })}
+      />
     </div>
   )
 }

@@ -15,25 +15,14 @@ export function Dropdown({ title, svgImg, isPrimaryDropdown = true, children }: 
   const handleToggle = () => {
     setIsOpen((prev) => !prev)
   }
-  
-  const dropdownClassName = getDropdownClassName({ isPrimaryDropdown, isOpen });
+
+  const dropdownClassName = getDropdownClassName({ isPrimaryDropdown, isOpen })
 
   return (
-    <div
-      className={dropdownClassName}
-      ref={dropdownRef}
-    >
-      <DropdownHeader 
-        title={title} 
-        svgImg={svgImg} 
-        isOpen={isOpen} 
-        onToggle={handleToggle} 
-      />
+    <div className={dropdownClassName} ref={dropdownRef}>
+      <DropdownHeader title={title} svgImg={svgImg} isOpen={isOpen} onToggle={handleToggle} />
 
-      <DropdownContent isOpen={isOpen}>
-        {children}
-      </DropdownContent>
+      <DropdownContent isOpen={isOpen}>{children}</DropdownContent>
     </div>
   )
 }
-

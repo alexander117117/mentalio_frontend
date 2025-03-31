@@ -66,4 +66,3 @@ export const SOCIAL_MEDIA: SocialMediaConfig[] = [
     name: 'YouTube',
   },
 ]
-

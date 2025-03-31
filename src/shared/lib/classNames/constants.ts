@@ -24,22 +24,22 @@ export const settingItemPage = classNames('w-[90%] md:w-[650px]', 'flex', 'flex-
 export const defaultIconSize = 'text-[30px] sm:text-[40px]'
 
 interface DropdownClassNameParams {
-  isPrimaryDropdown: boolean;
-  isOpen: boolean;
+  isPrimaryDropdown: boolean
+  isOpen: boolean
 }
 
 export function getDropdownClassName(params: DropdownClassNameParams): string {
-  const { isPrimaryDropdown, isOpen } = params;
-  
+  const { isPrimaryDropdown, isOpen } = params
+
   return cn(
     'h-fit py-[15px] pl-[10px] pr-5 rounded-[20px] cursor-pointer overflow-hidden',
     'transition-all duration-250 ease-linear',
     {
       [`bg-[${colors.dropDownMainColor}] text-black`]: isPrimaryDropdown,
-      [`bg-[${colors.dropDownSecondaryColor}] text-white`]: !isPrimaryDropdown
+      [`bg-[${colors.dropDownSecondaryColor}] text-white`]: !isPrimaryDropdown,
     },
     { 'max-h-[1000px]': isOpen },
     !isOpen && isPrimaryDropdown && 'max-h-[60px] md:max-h-[80px]',
-    !isOpen && !isPrimaryDropdown && 'max-h-[55px]'
-  );
+    !isOpen && !isPrimaryDropdown && 'max-h-[55px]',
+  )
 }
