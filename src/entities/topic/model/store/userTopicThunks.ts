@@ -30,6 +30,28 @@ export const getTopic = createAsyncThunk<GetTopicTopicResponse, GetTopicTopicPar
 )
 
 /**
+ * Обновить Topic
+ */
+interface updateTopicParams {
+  idFolder: Id
+  idTopic: Id
+  topicData: TopicsItem
+}
+export const updateTopic = createAsyncThunk<TopicsItem, updateTopicParams, { rejectValue: string }>(
+  'userTopic/updateTopic',
+  async ({ idFolder, idTopic, topicData }, { rejectWithValue }) => {
+    const response = await executeApiRTK<TopicsItem, void>({
+      method: 'PUT',
+      url: API_ENDPOINTS.folders.topics.update(idFolder, idTopic),
+      body: topicData,
+      rejectWithValue,
+      errorMessage: 'Ошибка при обновлении данных файла',
+    })
+    return response.data
+  },
+)
+
+/**
  * Полуение списка словю
  */
 interface ListWordsParams {
@@ -49,6 +71,7 @@ export const listWords = createAsyncThunk<ListWordsResponse, ListWordsParams, { 
   },
 )
 
+// Получить данные карточки
 export const getDetailsCard = createAsyncThunk<
   WordsItem,
   { idCard: Id } & Pick<MapIdTopicSlice, 'idTopic'>,

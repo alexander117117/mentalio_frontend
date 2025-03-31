@@ -6,12 +6,13 @@ import { useEffect } from 'react'
 import { CreateWordForm } from '@/features/topic/CreateWordForm'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useDispatch, useSelector } from 'react-redux'
-import { getTopicData } from './lib/helpers'
+import { getTopicData, handleTitleSave } from './lib/helpers'
+import { EditableTitle } from '@/shared/ui/EditableTitle'
 
 export function FolderTopicPage() {
   const location = useLocation()
   const dispatch = useDispatch<AppDispatch>()
-  const { idFolder, idTopic } = useParams<{ idFolder: Id; idTopic: Id }>()
+  const { idFolder = '', idTopic = '' } = useParams<{ idFolder: Id; idTopic: Id }>()
   const { dataTopic } = useSelector((state: RootState) => state.userTopic)
 
   useEffect(() => {
@@ -23,8 +24,13 @@ export function FolderTopicPage() {
   }
 
   return (
-    <div className="w-full">
-      <h1 className="text-center font-unbounded text-xl sm:text-5xl font-bold mb-5">{dataTopic.topicName}</h1>
+    <div className="w-full mx-auto">
+      <h1 className="text-center font-unbounded text-xl sm:text-5xl font-bold mb-5">
+        <EditableTitle
+          initialValue={dataTopic.topicName}
+          onSave={handleTitleSave({ idFolder, idTopic, dataTopic, dispatch })}
+        />
+      </h1>{' '}
       <CreateWordForm />
       <NavigationTabs />
       <WordList />

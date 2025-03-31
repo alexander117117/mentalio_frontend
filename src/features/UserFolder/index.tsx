@@ -8,6 +8,8 @@ import { handeleAddTopic, handeleDelleteFolder } from './lib/handele'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/store/configureStore'
 import { useTopicNavigation } from '@/shared/lib/helpers'
+import { EditableTitle } from '@/shared/ui/EditableTitle'
+import { handleTitleSave } from './lib/handele/titleSave'
 
 interface InfoUserFolderProps {
   isModalOpen: boolean
@@ -21,7 +23,10 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <div className="text-white pb-44 md:pb-16 relative">
-        <h2 className={style.InfoUserFolder_title}>{dataFolder.folderName}</h2>
+        <h2 className={style.InfoUserFolder_title}>
+          {' '}
+          <EditableTitle initialValue={dataFolder.folderName} onSave={handleTitleSave({ dataFolder, dispatch })} />
+        </h2>
 
         <div className={groupClass}>
           {dataFolder?.topics && dataFolder.topics.length > 0 ? (

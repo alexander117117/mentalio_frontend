@@ -8,13 +8,14 @@ import {
   updateCardInTopic,
   deleteCardFromTopic,
   translateWord,
+  updateTopic,
 } from './userTopicThunks.ts'
 import { Leng, MapIdTopicSlice } from '@/entities/topic/lib/types'
 import { Id } from '@/shared/types/types.ts'
 
 interface userTopicState {
   mapId: MapIdTopicSlice
-  dataTopic: Omit<TopicsItem, 'id'>
+  dataTopic: TopicsItem
   createdWord: Omit<WordsItem, 'id'> & {
     id?: Id | null
   }
@@ -31,6 +32,7 @@ const initialState: userTopicState = {
     idTopic: '',
   },
   dataTopic: {
+    id: '',
     topicName: '',
     description: '',
     dateCreated: '',
@@ -110,6 +112,14 @@ export const userTopicSlice = createSlice({
         state.dataTopic = action.payload.dataTopic
       })
       .addCase(getTopic.rejected, handleRejected)
+
+      // Обновить Topic
+      .addCase(updateTopic.pending, handlePending)
+      .addCase(updateTopic.fulfilled, (state, action) => {
+        state.loading = false
+        state.dataTopic = action.payload
+      })
+      .addCase(updateTopic.rejected, handleRejected)
 
       // Получение списка слов
       .addCase(listWords.pending, handlePending)
