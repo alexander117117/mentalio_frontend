@@ -67,4 +67,3 @@ export const SOCIAL_MEDIA: SocialMediaConfig[] = [
   },
 ]
 
-export const DEFAULT_ICON_SIZE = 'text-[30px] sm:text-[40px]'

@@ -1,6 +1,6 @@
 import { logo_circle, lock_icon, support_icon } from '@/shared/assets/images'
 
-interface MenuSettingItem {
+export interface MenuSettingItem {
   img: string
   title: string
   subtitle?: string
