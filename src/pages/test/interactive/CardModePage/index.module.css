@@ -54,7 +54,6 @@
 .scene {
   width: 414px;
   height: 538px;
-  perspective: 600px;
 }
 
 .card {
@@ -72,6 +71,10 @@
 
 .cardFace {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   color: white;

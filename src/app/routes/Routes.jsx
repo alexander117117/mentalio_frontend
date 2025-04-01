@@ -13,14 +13,12 @@ import {
   TestPage,
 } from '@/processe/Main'
 import { Error404Page } from '@/pages/Error404Page'
-import { SummaryPage } from '@/pages/SummaryPage'
-import { CardModePage } from '@/pages/CardModePage'
-import { TestPercentPage } from '@/pages/TestPercentPage'
+import { CardModePage } from '@/pages/test/interactive/CardModePage'
+import { TestPercentPage } from '@/pages/test/result/TestPercentPage'
 const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        {/* Маршруты аутентификации */}
         <Route path="auth">
           <Route index element={<Login />} />
           <Route path="*" element={<Login />} />
@@ -43,12 +41,12 @@ const AppRoutes = () => {
           <Route path="catalog" element={<CatalogPage />} />
           <Route path="settings" element={<SettingPage />} />
           <Route path="folderTopic/:idFolder/:idTopic" element={<FolderTopicPage />} />
+
           <Route path="memorization" element={<MemorizationPage />} />
           <Route path="test-result" element={<TestResultPage />} />
           <Route path="test" element={<TestPage />} />
         </Route>
 
-        <Route path="summary" element={<SummaryPage />} />
         <Route path="card-mode" element={<CardModePage />} />
         <Route path="test-percent" element={<TestPercentPage />} />
         <Route path="*" element={<Error404Page />} />
