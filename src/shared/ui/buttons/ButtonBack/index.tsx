@@ -1,11 +1,13 @@
-import { buttonBack } from '@/shared/lib/classNames'
 import { GoArrowLeft } from 'react-icons/go'
-import { Link } from 'react-router'
+import { useNavigate } from 'react-router-dom'
+import { buttonBack } from '@/shared/lib/classNames'
 
 export function ButtonBack() {
+  const navigate = useNavigate()
+
   return (
-    <Link to="/" className={buttonBack}>
+    <button onClick={() => navigate(-1)} className={buttonBack}>
       <GoArrowLeft size={40} />
-    </Link>
+    </button>
   )
 }
