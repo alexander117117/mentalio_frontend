@@ -20,7 +20,7 @@ export const MiniNavbar = () => {
   const [quantityTopicInput, setQuantityTopicInput] = useState<number>(1) //количество инпутов для название темы
   return (
     <>
-      <nav className="md:hidden flex items-center justify-between w-[315px] h-[58px] fixed bottom-10 left-1/2 transform -translate-x-1/2 rounded-[30px] bg-white shadow-[0px_0px_7px_0px_rgba(0,0,0,0.25)] px-3">
+      <nav className="md:hidden flex items-center justify-between w-[315px] h-[58px] fixed bottom-10 left-1/2 transform -translate-x-1/2 rounded-[30px] bg-white shadow-[0px_0px_7px_0px_rgba(0,0,0,0.25)] px-3 z-50">
         <Link to="/" className="w-[30px] h-[30px] flex items-center justify-center">
           <img src={location.pathname === '/' ? home_icon_active : home_icon} alt="Главная страница" className="" />
         </Link>

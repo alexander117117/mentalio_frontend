@@ -8,10 +8,11 @@ import { FaAngleRight, FaAngleLeft } from 'react-icons/fa6'
 import { CardModeProgressBar } from './components/CardModeProgressBar'
 import { CardItem } from './components/CardItem'
 import { ButtonBack } from '@/shared/ui/buttons/ButtonBack'
+import { MiniNavbar } from '@/widgets/MiniNavbar'
 export function CardModePage() {
   const tempData: number[] = [1, 2, 3]
   return (
-    <div className="container mx-auto flex justify-center pt-[90px] pb-10 relative">
+    <div className="container mx-auto flex justify-center pt-[90px] pb-28 relative">
       <ButtonBack />
 
       <div className={styles.content}>
@@ -44,6 +45,8 @@ export function CardModePage() {
           </div>
         </div>
       </div>
+
+      <MiniNavbar />
     </div>
   )
 }
