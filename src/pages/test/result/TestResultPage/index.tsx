@@ -1,4 +1,4 @@
-import { TestAnalytic } from '@/widgets/TestAnalytic'
+import { TestAnalytic } from '@/widgets/test/TestAnalytic'
 import styles from './index.module.css'
 export function TestResultPage() {
   return (

@@ -56,7 +56,7 @@ export function CardModePage() {
           <button className="custom-prev" onClick={() => handleSwiperPrev({ swiperRef })}>
             <FaAngleLeft className="text-xs sm:text-base" />
           </button>
-          {(isReachEnd || words.length === 1) ? (
+          {isReachEnd || words.length === 1 ? (
             <button
               type="button"
               onClick={() => handleFinish({ setIsShowSummary })}
