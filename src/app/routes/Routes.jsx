@@ -13,8 +13,7 @@ import {
   TestPage,
 } from '@/processe/Main'
 import { Error404Page } from '@/pages/Error404Page'
-import { CardModePage } from '@/pages/test/interactive/CardModePage'
-import { TestPercentPage } from '@/pages/test/result/TestPercentPage'
+import { TestInteractiveProcesse } from '@/processe/TestInteractiveProcesse'
 const AppRoutes = () => {
   return (
     <Router>
@@ -46,9 +45,7 @@ const AppRoutes = () => {
           <Route path="test-result" element={<TestResultPage />} />
           <Route path="test" element={<TestPage />} />
         </Route>
-
-        <Route path="card-mode" element={<CardModePage />} />
-        <Route path="test-percent" element={<TestPercentPage />} />
+        <Route path="/test-interactive/:idTopic/:modes" element={<TestInteractiveProcesse />} />
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </Router>
