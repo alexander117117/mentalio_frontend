@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { selectCurrentIndex, selectPreparedWords } from '@/entities/cardMode/store/selectors'
+import { selectCurrentIndex, selectPreparedWords } from '@/entities/testInteractive/store/selectors'
 import styles from '../../index.module.css'
 export function CardModeProgressBar() {
   const currentIndex = useSelector(selectCurrentIndex)

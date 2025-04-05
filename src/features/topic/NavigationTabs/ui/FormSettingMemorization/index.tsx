@@ -32,7 +32,7 @@ export function FormSettingMemorization() {
       num_questions: quantityQuestionsMaxLength || cards.length,
       isFavoritesOnly: checkFavorites,
     }
-    
+
     const words = [...cards]
 
     navigate(`/test-interactive/${id}/memorization`, {

@@ -72,4 +72,8 @@ export const API_ENDPOINTS = {
   translator: {
     translate: '/v1/translator/translate/',
   },
+  interactive: {
+    getDataMemorization: (idTopic: Id): string => `/v1/tests/${idTopic}/memorize/`,
+    getDataTest: (idTopic: Id): string => `/v1/tests/${idTopic}/test/`,
+  },
 }

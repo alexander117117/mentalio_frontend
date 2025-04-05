@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from '@/app/store/configureStore'
 import { shuffleArray } from '@/shared/lib/shuffleArray'
+import { WordsItem } from '@/entities/folder/lib/types'
 
 export const selectCardMode = (state: RootState) => state.testInteractive
 export const selectWord = (state: RootState) => state.testInteractive.words
@@ -11,7 +12,7 @@ export const selectCurrentIndex = (state: RootState) => state.testInteractive.cu
 export const selectPreparedWords = createSelector(
   [selectIsFavoritesOnly, selectIsShuffle, selectWord],
   (isFavoritesOnly, isShuffle, selectWord) => {
-    let card = [...selectWord]
+    let card = [...selectWord] as WordsItem[]
     if (isFavoritesOnly) {
       card = card.filter((w) => w.chosen)
     }

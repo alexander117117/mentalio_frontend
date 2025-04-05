@@ -1,11 +1,17 @@
 import { WordsItem } from '@/entities/folder/lib/types'
 import { PayloadAction } from '@reduxjs/toolkit'
-import { TestInteractiveState } from '../types/types'
+import { ModesInteractive, SettingInteractive, TestInteractiveState, WordsInteractive } from '../types/types'
 
 export const testInteractiveReducer = {
-  setDataTestInteractive(state: TestInteractiveState, action: PayloadAction<TestInteractiveState>) {
-    console.log("setDataTestInteractive", action);
-
+  setDataTestInteractive(
+    state: TestInteractiveState,
+    action: PayloadAction<{
+      words: WordsInteractive
+      modes: ModesInteractive
+      setting: SettingInteractive
+      topicName: string
+    }>,
+  ) {
     state.words = action.payload.words
     state.modes = action.payload.modes
     state.setting = action.payload.setting
@@ -44,12 +50,6 @@ export const testInteractiveReducer = {
     state.words = action.payload
     state.currentIndex = 0
   },
-  toggleFavorite(state: TestInteractiveState, action: PayloadAction<{ id: string }>) {
-    const idx = state.words.findIndex((item) => item.id === action.payload.id)
-    if (idx !== -1) {
-      state.words[idx].chosen = !state.words[idx].chosen
-    }
-  },
   setIndex(state: TestInteractiveState, action: PayloadAction<number>) {
     state.currentIndex = action.payload
   },
@@ -68,5 +68,5 @@ export const testInteractiveReducer = {
     state.setting = null
     state.loading = false
     state.error = null
-  }
+  },
 }
