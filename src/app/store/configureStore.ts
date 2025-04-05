@@ -6,7 +6,7 @@ import userFilesSlice from '@/entities/folder/model/store/userFiles/userFilesSli
 import analyticsSlice from '@/app/store/features/analytics/analyticsSlice'
 import catalogSlice from '@/entities/folder/model/store/catalog/catalogSlice'
 import userTopicSlice from '@/entities/topic/model/store/userTopicSlice'
-import cardModeSlice from '@/entities/cardMode/store/slice'
+import { testInteractive } from '@/entities/testInteractive/store/slice'
 
 const rootReducer = combineReducers({
   userFiles: userFilesSlice,
@@ -14,14 +14,14 @@ const rootReducer = combineReducers({
   auth: authReducer,
   analytics: analyticsSlice,
   catalog: catalogSlice,
-  cardMode: cardModeSlice,
+  testInteractive: testInteractive,
 })
 type RootReducerState = ReturnType<typeof rootReducer>
 
 const persistConfig: PersistConfig<RootReducerState> = {
   key: 'root',
   storage,
-  whitelist: ['auth', 'cardMode', 'userFiles', 'userTopic'],
+  whitelist: ['auth', 'testInteractive', 'userFiles', 'userTopic'],
 }
 
 const persistedReducer = persistReducer<RootReducerState>(persistConfig, rootReducer)
