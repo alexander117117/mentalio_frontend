@@ -18,10 +18,8 @@ export function ProgressBar() {
     const width = progressBarRef.current.clientWidth
     const scale = d3.scaleLinear().domain([0, 100]).range([0, width])
 
-    // Пытаемся найти svg, если оно уже есть
     let svg = d3.select(progressBarRef.current).select<SVGSVGElement>('svg')
 
-    // Если svg нет, создаём один раз
     if (svg.empty()) {
       svg = d3
         .select(progressBarRef.current)
@@ -40,7 +38,7 @@ export function ProgressBar() {
   return (
     <div className={styles.progressBar}>
       <div className={styles.progressBar__labels}>
-        <span>{currentIndex}</span>
+        <span>{currentIndex + 1}</span>
         <span>{total}</span>
       </div>
       <div ref={progressBarRef} className={styles.progressBar__track} />
