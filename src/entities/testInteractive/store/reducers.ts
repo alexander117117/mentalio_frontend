@@ -1,5 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { ModesInteractive, SettingInteractive, TestInteractiveState, WordsInteractive } from '../types/types'
+import { ModesInteractive, SettingInteractive, TestInteractiveState, WordsInteractive } from '../types'
 import { Id } from '@/shared/types'
 
 export const testInteractiveReducer = {
@@ -12,6 +12,13 @@ export const testInteractiveReducer = {
       topicName: string
     }>,
   ) {
+    console.log('setDataTestInteractive', {
+      words: action.payload.words,
+      modes: action.payload.modes,
+      setting: action.payload.setting,
+      topicName: action.payload.topicName,
+    })
+
     state.words = action.payload.words
     state.modes = action.payload.modes
     state.setting = action.payload.setting
@@ -20,8 +27,8 @@ export const testInteractiveReducer = {
   setCurrentIndex(state: TestInteractiveState, action: PayloadAction<number>) {
     state.currentIndex = action.payload
   },
-  setOptionsIsChoice(state: TestInteractiveState, action: PayloadAction<{ idQuestions: Id }>) {
-    const { idQuestions } = action.payload
+  setOptionsIsChoice(state: TestInteractiveState, action: PayloadAction<Id>) {
+    const idQuestions = action.payload
     state.words = state.words.map((item) => {
       if (item.id === idQuestions) {
         return { ...item, isChoice: true }

@@ -1,16 +1,17 @@
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { ButtonBack } from '@/shared/ui/buttons/ButtonBack'
 import { useDispatch, useSelector } from 'react-redux'
-import { SummaryPage } from '../../pages/test/interactive/CardModePage/ui/SummaryPage'
-import { TestPercentPage } from '../../pages/test/result/TestPercentPage'
-import { ModesInteractive } from '@/entities/testInteractive/types/types'
+import { SummaryPage } from '../../features/testInteractive/ui/interactive/CardModePage/ui/SummaryPage'
+import { TestPercentPage } from '../../features/testInteractive/ui/result/TestPercentPage'
+import { ModesInteractive } from '@/entities/testInteractive/types'
 import { Id } from '@/shared/types'
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useLocation, useParams } from 'react-router'
 import { getDataTestInteractive } from './hooks/getDataTestInteractive'
-import { CardModePage } from '@/pages/test/interactive/CardModePage'
+import { CardModePage } from '@/features/testInteractive/ui/interactive/CardModePage'
 import { MemorizationPage, TestPage } from '../Main'
 import { resetStateInteractive } from '@/entities/testInteractive/store/slice'
+import { computeTestResults } from '@/entities/testAnalytics/testAnalyticsSlice'
 
 type UseParamsTestInteractive = { modes: ModesInteractive; idTopic: Id }
 
@@ -19,12 +20,17 @@ export function TestInteractiveProcesse() {
   const dispatch = useDispatch<AppDispatch>()
   const { idTopic = '', modes = '' } = useParams<UseParamsTestInteractive>()
   const { words, loading, isShowSummary } = useSelector((state: RootState) => state.testInteractive)
+  const { answers } = useSelector((state: RootState) => state.testAnalyticsSlice)
 
-  useEffect(() => {
+  console.log(answers)
+  console.log(words)
+
+  useLayoutEffect(() => {
+    dispatch(computeTestResults())
     dispatch(resetStateInteractive())
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getDataTestInteractive({ dispatch, location, idTopic, modes })
   }, [idTopic, location.state, dispatch])
 
@@ -37,7 +43,7 @@ export function TestInteractiveProcesse() {
         <h1 className="text-center text-xl">Нет карточек для отображения</h1>
       </div>
     )
-  } else if (words?.length > 0 && isShowSummary) {
+  } else if (words?.length > 0 && isShowSummary && answers.length >= words.length) {
     switch (modes) {
       case 'card-mode':
         return <SummaryPage />

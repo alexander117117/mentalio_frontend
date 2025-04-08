@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { TestInteractiveState } from '../types/types'
+import { TestInteractiveState } from '../types'
 import { testInteractiveReducer } from './reducers'
 import { handlePending, handleRejected } from '@/shared/lib/helpers'
 import { getDataMemorizationThunks, getDataTestThunks } from './thunks'

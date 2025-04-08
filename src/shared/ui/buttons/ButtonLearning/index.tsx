@@ -34,6 +34,7 @@ export function ButtonLearning({ children, isCorrect, onClick }: ButtonLearningP
     <button
       ref={buttonRef}
       onClick={onClick}
+      disabled={isCorrect !== null}
       className="w-auto py-[1.125rem] sm:py-[0.8125rem] px-[0.625rem] bg-[#DEF3DD] rounded-[20px] hover:bg-[#c3dbc1]
                  overflow-hidden text-ellipsis whitespace-nowrap transition-colors"
     >

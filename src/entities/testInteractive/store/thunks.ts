@@ -5,7 +5,7 @@ import {
   QuestionsTest,
   SettingInteractiveMemorization,
   SettingInteractiveTest,
-} from '../types/types'
+} from '../types'
 import { API_ENDPOINTS } from '@/shared/api/constEndpoints'
 import { executeApiRTK } from '@/shared/api'
 import { overkillModes } from '../halper/overkillModes'

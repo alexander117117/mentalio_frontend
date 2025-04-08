@@ -7,6 +7,7 @@ import analyticsSlice from '@/app/store/features/analytics/analyticsSlice'
 import catalogSlice from '@/entities/folder/model/store/catalog/catalogSlice'
 import userTopicSlice from '@/entities/topic/model/store/userTopicSlice'
 import { testInteractive } from '@/entities/testInteractive/store/slice'
+import { testAnalyticsReducer } from '@/entities/testAnalytics/testAnalyticsSlice'
 
 const rootReducer = combineReducers({
   userFiles: userFilesSlice,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   analytics: analyticsSlice,
   catalog: catalogSlice,
   testInteractive: testInteractive,
+  testAnalyticsSlice: testAnalyticsReducer,
 })
 type RootReducerState = ReturnType<typeof rootReducer>
 

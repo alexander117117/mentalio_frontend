@@ -1,29 +1,33 @@
 import { useState } from 'react'
-import { QuestionsTest } from '@/entities/testInteractive/types/types'
-import { Id } from '@/shared/types'
+import { QuestionsTest } from '@/entities/testInteractive/types'
 import { FaArrowRight } from 'react-icons/fa6'
+import { handleSelectAnswerProps } from '@/entities/testInteractive/types/handleSelectAnswerProps'
 
 interface TestInputAnswerProps {
-  question: QuestionsTest
-  onSelectAnswer: (isCorrect: boolean | null, questionId: Id) => void
+  question: Omit<QuestionsTest, 'correctAnswer'> & {
+    correctAnswer: string
+  }
+  onSelectAnswer: (props: handleSelectAnswerProps) => void
 }
 
 export function TestInputAnswer({ question, onSelectAnswer }: TestInputAnswerProps) {
   const [userAnswer, setUserAnswer] = useState('')
 
   if (!question) return null
-  console.log('TestInputAnswer', {
-    question,
-  })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserAnswer(e.target.value)
   }
 
   const handleSubmit = () => {
-    const isCorrect = userAnswer.trim().toLowerCase() === (question.correctAnswer?.trim().toLowerCase() || '')
+    const isCorrect = userAnswer.trim().toLowerCase() === question.correctAnswer.trim().toLowerCase()
 
-    onSelectAnswer(isCorrect, question.id)
+    onSelectAnswer({
+      isCorrect,
+      question,
+      userChoice: userAnswer,
+      correctAnswer: question.correctAnswer,
+    })
   }
 
   return (
@@ -43,8 +47,7 @@ export function TestInputAnswer({ question, onSelectAnswer }: TestInputAnswerPro
         <button
           onClick={handleSubmit}
           className="bg-primaryOpacity height-full w-[74px] sm:w-[131px]
-                     flex items-center justify-center rounded-[10px]
-                     text-white"
+            flex items-center justify-center rounded-[10px] text-white"
         >
           <FaArrowRight />
         </button>

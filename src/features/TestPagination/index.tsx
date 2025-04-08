@@ -9,7 +9,6 @@ interface TestPaginationProps {
   onChange: (event: React.ChangeEvent<unknown>, page: number) => void
 }
 
-
 export function TestPagination({ count, page, onChange }: TestPaginationProps) {
   return (
     <div className="flex justify-center items-center">

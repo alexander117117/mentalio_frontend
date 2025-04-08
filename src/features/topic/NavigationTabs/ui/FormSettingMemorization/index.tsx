@@ -18,6 +18,7 @@ export function FormSettingMemorization() {
   const navigate = useNavigate()
 
   const { topicName, cards, id } = useSelector((state: RootState) => state.userTopic.dataTopic)
+
   const { register, handleSubmit } = useForm<IFormValues>({
     defaultValues: {
       quantityQuestionsMaxLength: null,

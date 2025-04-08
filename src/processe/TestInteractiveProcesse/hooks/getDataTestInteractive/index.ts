@@ -1,7 +1,8 @@
 import { AppDispatch } from '@/app/store/configureStore'
+import { initTestAnalytics } from '@/entities/testAnalytics/testAnalyticsSlice'
 import { setDataTestInteractive } from '@/entities/testInteractive/store/slice'
 import { getDataMemorizationThunks, getDataTestThunks } from '@/entities/testInteractive/store/thunks'
-import { ModesInteractive, SettingInteractive, WordsInteractive } from '@/entities/testInteractive/types/types'
+import { ModesInteractive, SettingInteractive, WordsInteractive } from '@/entities/testInteractive/types'
 import { Id } from '@/shared/types'
 import { Location } from 'react-router'
 
@@ -19,6 +20,7 @@ interface getDataTestInteractiveParams {
 }
 export async function getDataTestInteractive({ dispatch, location, idTopic, modes }: getDataTestInteractiveParams) {
   const { words, setting, topicName } = location.state as InteractiveLocationState
+  let wordsCount = words.length
   switch (modes) {
     case 'card-mode':
       {
@@ -44,6 +46,7 @@ export async function getDataTestInteractive({ dispatch, location, idTopic, mode
               topicName,
             }),
           )
+          wordsCount = respons.length
         } catch (err) {
           console.error('Error', err)
         }
@@ -61,10 +64,12 @@ export async function getDataTestInteractive({ dispatch, location, idTopic, mode
               topicName,
             }),
           )
+          wordsCount = respons.length
         } catch (err) {
           console.error('Error', err)
         }
       }
       break
   }
+  dispatch(initTestAnalytics({ questionsCount: wordsCount }))
 }

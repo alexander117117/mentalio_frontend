@@ -1,4 +1,4 @@
-import { SettingInteractiveTest } from '../types/types'
+import { SettingInteractiveTest } from '../types'
 
 export function overkillModes(setting: SettingInteractiveTest) {
   const result: string[] = []

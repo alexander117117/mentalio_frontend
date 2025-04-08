@@ -4,6 +4,7 @@ import { Swiper as SwiperClass } from 'swiper'
 import { setIndex } from '@/entities/testInteractive/store/slice'
 import { selectPreparedWords } from '@/entities/testInteractive/store/selectors'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
+import { addLengthAnswer } from '@/entities/testAnalytics/testAnalyticsSlice'
 
 export function useCardModeSlider() {
   const dispatch = useDispatch<AppDispatch>()
@@ -24,6 +25,7 @@ export function useCardModeSlider() {
       dispatch(setIndex(realIndex))
       const reachedEnd = !setting?.isInfinite && realIndex === words.length - 1
       setIsReachEnd(reachedEnd)
+      dispatch(addLengthAnswer(realIndex + 1))
     },
     [dispatch, setting?.isInfinite, words.length],
   )
