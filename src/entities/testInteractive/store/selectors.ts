@@ -12,7 +12,7 @@ export const selectCurrentIndex = (state: RootState) => state.testInteractive.cu
 export const selectPreparedWords = createSelector(
   [selectIsFavoritesOnly, selectIsShuffle, selectWord],
   (isFavoritesOnly, isShuffle, selectWord) => {
-    let card = [...selectWord] as WordsItem[]
+    let card = [...selectWord] as unknown as WordsItem[]
     if (isFavoritesOnly) {
       card = card.filter((w) => w.chosen)
     }

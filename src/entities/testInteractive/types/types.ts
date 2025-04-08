@@ -1,4 +1,3 @@
-import { WordsItem } from '@/entities/folder/lib/types'
 import { Id } from '@/shared/types'
 
 export type ModesInteractive = 'card-mode' | 'memorization' | 'test' | ''
@@ -19,7 +18,7 @@ export type SettingInteractiveTest = {
   isAnswerWritten: boolean
 }
 
-export type WordsInteractive = QuestionsTest[] | QuestionsMultipleChoice[] | WordsItem[] | []
+export type WordsInteractive = QuestionsTest[] | QuestionsMultipleChoice[] | []
 export interface TestInteractiveState {
   words: WordsInteractive
   modes: ModesInteractive
@@ -35,17 +34,19 @@ export interface QuestionsTest {
   id: Id
   type: 'true_false' | 'multiple_choice' | 'written'
   sourceWord: string
-  options: {
-    text: string
-    isCorrect: boolean
-  }[]
-}
-export interface QuestionsMultipleChoice {
-  id: Id
-  sourceWord: string
   options?: {
     text: string
     isCorrect: boolean
   }[]
   correctAnswer?: string
+  isChoice?: boolean | null
+}
+export interface QuestionsMultipleChoice {
+  id: Id
+  sourceWord: string
+  options: {
+    text: string
+    isCorrect: boolean
+  }[]
+  isChoice?: boolean | null
 }

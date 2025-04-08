@@ -1,6 +1,6 @@
-import { WordsItem } from '@/entities/folder/lib/types'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { ModesInteractive, SettingInteractive, TestInteractiveState, WordsInteractive } from '../types/types'
+import { Id } from '@/shared/types'
 
 export const testInteractiveReducer = {
   setDataTestInteractive(
@@ -19,6 +19,15 @@ export const testInteractiveReducer = {
   },
   setCurrentIndex(state: TestInteractiveState, action: PayloadAction<number>) {
     state.currentIndex = action.payload
+  },
+  setOptionsIsChoice(state: TestInteractiveState, action: PayloadAction<{ idQuestions: Id }>) {
+    const { idQuestions } = action.payload
+    state.words = state.words.map((item) => {
+      if (item.id === idQuestions) {
+        return { ...item, isChoice: true }
+      }
+      return item
+    }) as WordsInteractive
   },
   setisShowSummary(state: TestInteractiveState, action: PayloadAction<boolean>) {
     state.isShowSummary = action.payload
@@ -46,7 +55,7 @@ export const testInteractiveReducer = {
       state.setting.isFavoritesOnly = action.payload.isFavoritesOnly
     }
   },
-  setWords(state: TestInteractiveState, action: PayloadAction<WordsItem[]>) {
+  setWords(state: TestInteractiveState, action: PayloadAction<WordsInteractive>) {
     state.words = action.payload
     state.currentIndex = 0
   },
