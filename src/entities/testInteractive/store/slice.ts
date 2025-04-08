@@ -49,5 +49,6 @@ export const {
   setErrorInteractive,
   setLoadingInteractive,
   setOptionsIsChoice,
+  repeatTestInteractive
 } = testInteractiveSlice.actions
 export const testInteractive = testInteractiveSlice.reducer

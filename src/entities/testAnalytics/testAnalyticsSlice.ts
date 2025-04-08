@@ -105,10 +105,19 @@ export const testAnalyticsSlice = createSlice({
     addLengthAnswer(state, action: PayloadAction<number>) {
       state.answers.length = action.payload
     },
+
+    /**
+     * Повтор аналитики
+     */
+    repeatAnalyticsInteractive(state) {
+      state.answers = []
+      state.correctCount = 0
+      state.percent = 0
+    }
   },
 })
 
-export const { initTestAnalytics, storeAnswer, computeTestResults, resetTestAnalytics, addLengthAnswer } = testAnalyticsSlice.actions
+export const { initTestAnalytics, storeAnswer, computeTestResults, resetTestAnalytics, addLengthAnswer, repeatAnalyticsInteractive } = testAnalyticsSlice.actions
 
 export const selectTestAnalytics = (state: RootState) => state.testAnalyticsSlice
 

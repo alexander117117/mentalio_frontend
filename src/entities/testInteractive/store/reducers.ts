@@ -78,4 +78,13 @@ export const testInteractiveReducer = {
     state.loading = false
     state.error = null
   },
+  repeatTestInteractive(state: TestInteractiveState) {
+    state.words = state.words.map((item) => {
+      return { ...item, isChoice: null }
+    }) as WordsInteractive
+    state.currentIndex = 0
+    state.isShowSummary = false
+    state.loading = false
+    state.error = null
+  }
 }

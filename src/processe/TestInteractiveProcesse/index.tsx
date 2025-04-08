@@ -2,7 +2,7 @@ import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { ButtonBack } from '@/shared/ui/buttons/ButtonBack'
 import { useDispatch, useSelector } from 'react-redux'
 import { SummaryPage } from '../../features/testInteractive/ui/interactive/CardModePage/ui/SummaryPage'
-import { TestPercentPage } from '../../features/testInteractive/ui/result/TestPercentPage'
+import { TestPercentPage } from '../../features/testInteractive/ui/result/ResponseTest/ui/TestPercentPage'
 import { ModesInteractive } from '@/entities/testInteractive/types'
 import { Id } from '@/shared/types'
 import { useLayoutEffect } from 'react'
@@ -11,7 +11,8 @@ import { getDataTestInteractive } from './hooks/getDataTestInteractive'
 import { CardModePage } from '@/features/testInteractive/ui/interactive/CardModePage'
 import { MemorizationPage, TestPage } from '../Main'
 import { resetStateInteractive } from '@/entities/testInteractive/store/slice'
-import { computeTestResults } from '@/entities/testAnalytics/testAnalyticsSlice'
+import { computeTestResults, resetTestAnalytics } from '@/entities/testAnalytics/testAnalyticsSlice'
+import { ResponseTest } from '@/features/testInteractive/ui/result/ResponseTest'
 
 type UseParamsTestInteractive = { modes: ModesInteractive; idTopic: Id }
 
@@ -23,7 +24,7 @@ export function TestInteractiveProcesse() {
   const { answers } = useSelector((state: RootState) => state.testAnalyticsSlice)
 
   useLayoutEffect(() => {
-    dispatch(computeTestResults())
+    dispatch(resetTestAnalytics())
     dispatch(resetStateInteractive())
   }, [])
 
@@ -46,7 +47,8 @@ export function TestInteractiveProcesse() {
         return <SummaryPage />
       case 'memorization':
       case 'test':
-        return <TestPercentPage />
+        dispatch(computeTestResults())
+        return <ResponseTest />
     }
   } else if (words?.length > 0) {
     return (
