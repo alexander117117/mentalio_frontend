@@ -1,7 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './ProtectedRoute.jsx'
 import { Login, Register, PasswordReset } from '@/processe/Auth'
-import { LayoutMain, HomePage, SettingPage, MyFoldersPage, CatalogPage, FolderTopicPage } from '@/processe/Main'
+import { LayoutMain, HomePage, MyFoldersPage, CatalogPage, FolderTopicPage } from '@/processe/Main'
+
+import {
+  LayoutSetting,
+  SettingPage,
+  SettingAccountPage,
+  SettingSecurityPage,
+  SettingAvatarPage,
+  SettingSupportPage,
+} from '@/processe/Setting'
 import { Error404Page } from '@/pages/Error404Page'
 import { TestInteractiveProcesse } from '@/processe/TestInteractiveProcesse'
 const AppRoutes = () => {
@@ -28,14 +37,22 @@ const AppRoutes = () => {
           <Route index element={<HomePage />} />
           <Route path="my-folders" element={<MyFoldersPage />} />
           <Route path="catalog" element={<CatalogPage />} />
-          <Route path="settings" element={<SettingPage />} />
           <Route path="folderTopic/:idFolder/:idTopic" element={<FolderTopicPage />} />
+          <Route path="settings" element={<SettingPage />} />
         </Route>
+
         <Route path="/test-interactive/:idTopic/:modes" element={<TestInteractiveProcesse />} />
+
+
+        <Route path="settings" element={<LayoutSetting />}>
+          <Route path="account" element={<SettingAccountPage />} />
+          <Route path="security" element={<SettingSecurityPage />} />
+          <Route path="avatar" element={<SettingAvatarPage />} />
+          <Route path="support" element={<SettingSupportPage />} />
+        </Route>
         <Route path="*" element={<Error404Page />} />
       </Routes>
     </Router>
   )
 }
-
 export default AppRoutes

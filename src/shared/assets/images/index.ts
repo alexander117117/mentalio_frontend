@@ -22,6 +22,11 @@ import favorite_word_icon from './assets/favorite_word_icon.svg'
 import favorite_word_mark_icon from './assets/favorite_word_mark_icon.svg'
 import flag_icon from './assets/flag.svg'
 import voice from './assets/voice.svg'
+import logo_circle from './assets/logo_circle.svg'
+import avatar_icon from './assets/avatar_icon.svg'
+import change_name_icon from './assets/change_name_icon.svg'
+import lock_icon from './assets/lock_icon.svg'
+import support_icon from './assets/support_icon.svg'
 export {
   sider1,
   sider2,
@@ -47,4 +52,9 @@ export {
   favorite_word_mark_icon,
   flag_icon,
   voice,
+  logo_circle,
+  avatar_icon,
+  change_name_icon,
+  lock_icon,
+  support_icon,
 }
