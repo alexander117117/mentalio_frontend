@@ -19,15 +19,11 @@ export function ResponseTest() {
   function renderingLevel() {
     switch (responseRenderingLevel) {
       case 0:
-        return <TestPercentPage handleTryAgain={handleTryAgain} setResponseRenderingLevel={setResponseRenderingLevel}/>
+        return <TestPercentPage handleTryAgain={handleTryAgain} setResponseRenderingLevel={setResponseRenderingLevel} />
       case 1:
         return <TestResultPage handleTryAgain={handleTryAgain} />
     }
   }
 
-  return (
-    <>
-      {renderingLevel()}
-    </>
-  )
+  return <>{renderingLevel()}</>
 }

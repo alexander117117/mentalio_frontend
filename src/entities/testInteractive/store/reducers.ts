@@ -86,5 +86,5 @@ export const testInteractiveReducer = {
     state.isShowSummary = false
     state.loading = false
     state.error = null
-  }
+  },
 }

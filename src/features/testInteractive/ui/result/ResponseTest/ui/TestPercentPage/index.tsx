@@ -7,7 +7,7 @@ interface TestPercentPageProps {
   handleTryAgain: () => void
   setResponseRenderingLevel: (e: number) => void
 }
-export function TestPercentPage({setResponseRenderingLevel, handleTryAgain}: TestPercentPageProps) {
+export function TestPercentPage({ setResponseRenderingLevel, handleTryAgain }: TestPercentPageProps) {
   const { percent } = useSelector(selectTestAnalytics)
   const handleResponseRenderingLevel = () => {
     setResponseRenderingLevel(1)
