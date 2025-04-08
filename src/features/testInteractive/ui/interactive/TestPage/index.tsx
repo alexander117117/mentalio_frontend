@@ -14,7 +14,6 @@ export function TestPage() {
 
   const { words, currentIndex, current, total, handleSelectAnswer } = useTestInteractive()
 
-  // Пагинация — переход по клику на конкретный вопрос
   const handlePageChange = useCallback(
     (_: React.ChangeEvent<unknown>, page: number) => {
       dispatch(setIndex(page - 1))
