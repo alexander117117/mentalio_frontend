@@ -25,8 +25,7 @@ export function Login() {
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       try {
         const resultAction = await dispatch(loginUserThunk(values)).unwrap()
-        console.log('resultAction', resultAction)
-
+        
         if (resultAction.user.role.role_name === 'user') {
           navigate('/')
         } else if (resultAction.user.role.role_name === 'admin') {

@@ -12,13 +12,6 @@ export const testInteractiveReducer = {
       topicName: string
     }>,
   ) {
-    console.log('setDataTestInteractive', {
-      words: action.payload.words,
-      modes: action.payload.modes,
-      setting: action.payload.setting,
-      topicName: action.payload.topicName,
-    })
-
     state.words = action.payload.words
     state.modes = action.payload.modes
     state.setting = action.payload.setting
