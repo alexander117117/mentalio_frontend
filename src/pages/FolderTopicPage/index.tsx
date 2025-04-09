@@ -8,12 +8,20 @@ import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useDispatch, useSelector } from 'react-redux'
 import { getTopicData, handleTitleSave } from './lib/helpers'
 import { EditableTitle } from '@/shared/ui/EditableTitle'
+import { clearCreatedWord } from '@/entities/topic/model/store'
 
 export function FolderTopicPage() {
   const location = useLocation()
   const dispatch = useDispatch<AppDispatch>()
   const { idFolder = '', idTopic = '' } = useParams<{ idFolder: Id; idTopic: Id }>()
   const { dataTopic } = useSelector((state: RootState) => state.userTopic)
+
+  useEffect(() => {
+    dispatch(clearCreatedWord())
+    return () => {
+      dispatch(clearCreatedWord())
+    }
+  }, [dispatch])
 
   useEffect(() => {
     getTopicData({ dispatch, location, idFolder, idTopic })

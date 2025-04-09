@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCreatedWord, clearError, translateWord } from '@/entities/topic/model/store'
+import { clearError, translateWord } from '@/entities/topic/model/store'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useCreateWordForm } from './model/hooks/useCreateWordForm'
 import { handleOnSubmit } from './lib/handles'
@@ -43,10 +43,16 @@ export function CreateWordForm() {
   useEffect(() => {
     if (createdWord.isEdit) {
       setServerErrorMessage('')
-      dispatch(clearCreatedWord())
       reset()
       setValue('sourceWord', createdWord.sourceWord)
-      setValue('translated_words', createdWord.translated_words)
+      if (createdWord.translated_words && createdWord.translated_words.length > 0) {
+        createdWord.translated_words.forEach((word) => {
+          append({
+            translatedWord: word.translatedWord,
+            id: word.id || String(Math.random()),
+          })
+        })
+      }
       setValue('translatedImg', createdWord.translatedImg)
       setValue('isEdit', createdWord.isEdit)
       if (createdWord.id) {
