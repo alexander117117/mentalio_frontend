@@ -1,0 +1,145 @@
+.content {
+  width: 640px;
+  position: relative;
+}
+
+@media (max-width: 767.98px) {
+  .content {
+    width: 100%;
+  }
+}
+
+.contentTitle {
+  font-size: 46px;
+  font-weight: 700;
+  font-family: Unbounded, sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767.98px) {
+  .contentTitle {
+    font-size: 32px;
+  }
+}
+
+.contentProgressBar {
+  width: 100%;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 767.98px) {
+  .contentProgressBar {
+    width: 90%;
+    margin: 0 0 10px auto;
+  }
+}
+
+.contentProgressBarTop {
+  background: #000;
+  height: 1px;
+}
+
+.contentProgressBarBottom {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  background: #000;
+  height: 4px;
+  border-radius: 12px;
+}
+
+/* Flip Card */
+.scene {
+  width: 414px;
+  height: 538px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.cardIsFlipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  backface-visibility: hidden;
+  border-radius: 24px;
+}
+
+.cardFaceFront {
+  background: #f7f7f7;
+  color: #000;
+  padding: 20px;
+}
+
+.cardFaceBack {
+  background: #dddddd63;
+  transform: rotateY(180deg);
+  color: #000;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardFaceFrontTitle {
+  font-size: 40px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+@media (max-width: 767.98px) {
+  .cardFaceFrontTitle {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+}
+
+.cardFaceFrontTitleNoImg {
+  margin-bottom: 189px;
+}
+
+.cardFaceFrontImg {
+  width: 100%;
+  height: 354px;
+  object-fit: cover;
+  margin-bottom: 40px;
+  border-radius: 20px;
+}
+
+@media (max-width: 767.98px) {
+  .cardFaceFrontImg {
+    height: 350px;
+    margin-bottom: 20px;
+  }
+}
+
+.cardFaceFrontVoice {
+  width: 36px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.cardFaceFrontWithoutImg {
+  padding-top: 245px;
+  color: #000;
+  background: #dddddd63;
+}

@@ -69,7 +69,6 @@ export const loginUserThunk = createAsyncThunk<
     body: credentials,
     rejectWithValue,
   })
-  console.log('loginUserThunk', response)
 
   // Сохраняем токен в cookies на 7 дней
   if (response.data.token) {
