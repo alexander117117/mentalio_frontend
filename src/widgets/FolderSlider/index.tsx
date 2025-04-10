@@ -5,7 +5,7 @@ import { Folder } from '../ShowFolders/component/NonEmptyFolder/UI/Folder'
 export function FolderSlider({ files }: FoldersProps) {
   return (
     <div
-      className="w-[320px] xs:w-[576px] sm:w-[730px] flex items-center gap-[20px]"
+      className="w-[80vw] xs:w-[576px] sm:w-[730px] flex items-center gap-[20px]"
       style={{
         display: 'flex',
         justifyContent: 'center',
@@ -14,11 +14,11 @@ export function FolderSlider({ files }: FoldersProps) {
       <Swiper
         breakpoints={{
           320: {
-            slidesPerView: 3.2,
-            spaceBetween: 10,
+            slidesPerView: files?.length ? (files?.length < 2 ? 1 : files?.length < 3 ? 2 : 3.3) : 1,
+            spaceBetween: 6,
           },
           576: {
-            slidesPerView: 3.2,
+            slidesPerView: files?.length ? (files?.length < 2 ? 1 : files?.length < 3 ? 2 : 3.3) : 1,
             spaceBetween: 15,
           },
           768: {

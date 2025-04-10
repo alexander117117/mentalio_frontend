@@ -14,10 +14,10 @@ export function TestPercentPage({ setResponseRenderingLevel, handleTryAgain }: T
   }
   return (
     <>
+      <ButtonBack />
       <div className="flex flex-col items-center justify-center gap-6 p-8 h-screen relative container mx-auto sm:px-0 px-2">
-        <ButtonBack />
 
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-wider text-center font-unbounded whitespace-nowrap">
+        <h1 className="text-3xl sm:text-5xl font-bold tracking-wider text-center font-unbounded whitespace-nowrap mt-7">
           Вы набрали {percent}%
         </h1>
 
