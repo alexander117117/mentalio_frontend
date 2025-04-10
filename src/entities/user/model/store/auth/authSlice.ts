@@ -7,11 +7,14 @@ import {
   requestReset,
   verificationCode_resetPassword,
   resetPasswordThunk,
+  getProfileThunk,
+  updateUserThunk,
 } from './authThunks.ts'
 import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
+import { User } from '@/entities/user/lib/types.ts'
 
 interface AuthState {
-  user: any | null
+  user: User | null
   token: string | null
   isAuthenticated: boolean
   loading: boolean
@@ -92,6 +95,22 @@ const authSlice = createSlice({
         state.loading = false
       })
       .addCase(resetPasswordThunk.rejected, handleRejected)
+
+      // Получение профиля
+      .addCase(getProfileThunk.pending, handlePending)
+      .addCase(getProfileThunk.fulfilled, (state, action) => {
+        state.loading = false
+        state.user = action.payload
+      })
+      .addCase(getProfileThunk.rejected, handleRejected)
+
+      // обновление пользовательских данных
+      .addCase(updateUserThunk.pending, handlePending)
+      .addCase(updateUserThunk.fulfilled, (state, action) => {
+        state.loading = false
+        state.user = action.payload
+      })
+      .addCase(updateUserThunk.rejected, handleRejected)
   },
 })
 

@@ -63,10 +63,4 @@ export const menuData: MenuItem[] = [
     link: '/settings',
     image: sider11,
   },
-  {
-    title: 'Искать по тегам',
-    subtitle: '',
-    link: '/search-by-tags',
-    image: sider12,
-  },
 ]
