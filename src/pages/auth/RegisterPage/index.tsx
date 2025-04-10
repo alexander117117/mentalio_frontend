@@ -8,6 +8,7 @@ import { clearError } from '@/entities/user/model/store/auth/authSlice.ts'
 import { fetchQuestions } from '@/app/store/features/analytics/analyticsThunks.ts'
 import { toggleQuestionAnswer } from '@/app/store/features/analytics/analyticsSlice.ts'
 import { LogoCenter } from '../UI/LogoCenter'
+import { avatarItem } from '@/shared/constants/avatarItem.ts'
 
 interface AuthState {
   isLoading: boolean
@@ -65,11 +66,7 @@ export function Register() {
     dispatch(toggleQuestionAnswer(id))
   }
 
-  const [avatarsNew, setAvatarsNew] = useState<AvatarItem[]>([
-    { id: 1, avatar: 'аватар1', chosen: false },
-    { id: 2, avatar: 'аватар2', chosen: false },
-    { id: 3, avatar: 'аватар3', chosen: false },
-  ])
+  const [avatarsNew, setAvatarsNew] = useState<AvatarItem[]>(avatarItem)
 
   const { avatars, handleAvatarSelect } = useMemo(() => useAvatarSelection(avatarsNew, setAvatarsNew), [avatarsNew])
 
