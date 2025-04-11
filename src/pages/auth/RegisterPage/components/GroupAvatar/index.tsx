@@ -22,8 +22,7 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
               style={{ border: item.chosen ? '2px solid green' : 'none' }}
             >
               <img
-                src={test}
-                // src={item.avatar}
+                src={'/images/' + item.avatar + '.png'}
                 alt={'avatar ' + item.id}
                 className="w-full h-full object-cover"
               />
