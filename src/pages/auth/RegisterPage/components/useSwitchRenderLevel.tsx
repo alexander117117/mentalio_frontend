@@ -2,7 +2,6 @@ import React, { useMemo } from 'react'
 import InputAuthCommon from '../../UI/InputAuthCommon'
 import GroupAvatar from './GroupAvatar'
 import GroupFound from './GroupFound'
-import GroupTutorial from './GroupTutorial'
 import RegisterSuccess from './RegisterSuccess'
 import CheckboxAuthCommon from '../../UI/CheckboxAuthCommon'
 
@@ -85,8 +84,6 @@ export function useSwitchRenderLevel({
       case 3:
         return <GroupFound questions={questions} handleQuestionAnswer={handleQuestionAnswer} isError={isError} />
       case 4:
-        return <GroupTutorial />
-      case 5:
         return <RegisterSuccess />
       default:
         return null

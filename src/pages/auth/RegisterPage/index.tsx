@@ -54,10 +54,14 @@ export function Register() {
   useEffect(() => {
     dispatch(
       fetchQuestions([
-        { id: 1, question: 'вопрос1', answer: false },
-        { id: 2, question: 'вопрос2', answer: false },
-        { id: 3, question: 'вопрос3', answer: false },
-        { id: 4, question: 'вопрос4', answer: false },
+        { id: 1, question: 'Поисковые системы', answer: false },
+        { id: 2, question: 'Посоветовал друг', answer: false },
+        { id: 3, question: 'Посоветовал преподователь', answer: false },
+        { id: 4, question: 'Instagram', answer: false },
+        { id: 5, question: 'Youtube', answer: false },
+        { id: 6, question: 'Telegram', answer: false },
+        { id: 7, question: 'Статьи', answer: false },
+        { id: 8, question: 'Реклама', answer: false },
       ]),
     )
   }, [dispatch])
@@ -102,7 +106,7 @@ export function Register() {
             <LogoCenter />
             <div className="w-full 2xl:w-[1580px] mx-auto">{renderLevel}</div>
           </div>
-          {level !== 5 && (
+          {level !== 4 && (
             <div className="w-[95%] xs:w-[490px] mx-auto mt-[0.875rem] sm:mt-[1.25rem]">
               <ButtonAuthCommon type="submit" disabled={isLoading} onClick={() => handleNext(level, setLevel)}>
                 Продолжить
