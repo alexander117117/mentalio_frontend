@@ -1,5 +1,8 @@
 .testResultPage {
   margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (min-width: 1280px) {

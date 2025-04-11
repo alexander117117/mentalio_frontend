@@ -51,21 +51,23 @@ export function TestInteractiveProcesse() {
     }
   } else if (words?.length > 0) {
     return (
-      <div className="container mx-auto flex justify-center pt-[90px] pb-10 relative">
+      <>
         <ButtonBack />
-        {(() => {
-          switch (modes) {
-            case 'card-mode':
-              return <CardModePage />
-            case 'memorization':
-              return <MemorizationPage />
-            case 'test':
-              return <TestPage />
-            default:
-              return <div>Неизвестный режим</div>
-          }
-        })()}
-      </div>
+        <div className="container mx-auto flex justify-center pt-[90px] pb-10 relative">
+          {(() => {
+            switch (modes) {
+              case 'card-mode':
+                return <CardModePage />
+              case 'memorization':
+                return <MemorizationPage />
+              case 'test':
+                return <TestPage />
+              default:
+                return <div>Неизвестный режим</div>
+            }
+          })()}
+        </div>
+      </>
     )
   }
 }
