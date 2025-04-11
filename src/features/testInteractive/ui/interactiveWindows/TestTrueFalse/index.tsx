@@ -36,13 +36,17 @@ export function TestTrueFalse({ question, onSelectAnswer }: TestTrueFalseProps) 
       {question.options && (
         <div className="grid grid-cols-2 gap-[10px] sm:gap-5 mt-12 sm:mt-[109px]">
           <ButtonLearning
-            onClick={() => handleSelectOption(question.options?.[0]?.isCorrect ?? null, question.options?.[0]?.text || '')}
+            onClick={() =>
+              handleSelectOption(question.options?.[0]?.isCorrect ?? null, question.options?.[0]?.text || '')
+            }
             isCorrect={question.isChoice ? question.options?.[0]?.isCorrect : null}
           >
             {question.options?.[0]?.text || ''}
           </ButtonLearning>
           <ButtonLearning
-            onClick={() => handleSelectOption(question.options?.[1]?.isCorrect ?? null, question.options?.[1]?.text || '')}
+            onClick={() =>
+              handleSelectOption(question.options?.[1]?.isCorrect ?? null, question.options?.[1]?.text || '')
+            }
             isCorrect={question.isChoice ? question.options?.[1]?.isCorrect : null}
           >
             {question.options?.[1]?.text || ''}
