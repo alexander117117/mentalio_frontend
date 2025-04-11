@@ -17,7 +17,8 @@ export const API_ENDPOINTS = {
     updateProfile: '/v1/auth/user',
   },
   analytics: {
-    questions: '/auth/register/analytics/questions',
+    questions: '/v1/auth/register/questions',
+    analytics: '/v1/auth/register/analytics',
   },
   folders: {
     categories: {

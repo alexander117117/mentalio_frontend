@@ -2,7 +2,7 @@ import { useLocation, useParams } from 'react-router-dom'
 import { NavigationTabs } from '@/features/topic/NavigationTabs'
 import { WordList } from '@/widgets/topic/WordList'
 import { Id } from '@/shared/types'
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { CreateWordForm } from '@/features/topic/CreateWordForm'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useDispatch, useSelector } from 'react-redux'
@@ -15,16 +15,17 @@ export function FolderTopicPage() {
   const dispatch = useDispatch<AppDispatch>()
   const { idFolder = '', idTopic = '' } = useParams<{ idFolder: Id; idTopic: Id }>()
   const { dataTopic } = useSelector((state: RootState) => state.userTopic)
+  const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch(clearCreatedWord())
     return () => {
       dispatch(clearCreatedWord())
     }
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
-    getTopicData({ dispatch, location, idFolder, idTopic })
+    getTopicData({ dispatch, location, idFolder, idTopic, setLoading })
   }, [idFolder, idTopic, location.state, dispatch])
 
   if (!dataTopic) {
@@ -41,7 +42,7 @@ export function FolderTopicPage() {
       </h1>{' '}
       <CreateWordForm />
       <NavigationTabs />
-      <WordList />
+      {loading ? <div>Loading...</div> : <WordList />}
     </div>
   )
 }
