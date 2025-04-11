@@ -1,7 +1,4 @@
-import React from 'react'
-import { test } from 'src/shared/assets/images'
 import PropTypes from 'prop-types'
-import SliderAvatarOnPhone from '../../../UI/SliderAvatarOnPhone'
 
 interface GroupAvatarProps {
   avatar: any[]
@@ -29,7 +26,6 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
             </div>
           ))}
         </div>
-        
       </div>
       {isError && (
         <div className="Error__text">

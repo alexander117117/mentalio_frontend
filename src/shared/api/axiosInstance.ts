@@ -51,7 +51,6 @@ axiosInstance.interceptors.response.use(
     return response
   },
   (error) => {
-    console.log('Error server:', error)
     if (error.response) {
       const { status } = error.response
       if (status === 401) {
