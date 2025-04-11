@@ -29,9 +29,7 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
             </div>
           ))}
         </div>
-
-        {/* Mobile */}
-        {window.innerWidth < 576 && <SliderAvatarOnPhone avatar={avatar} handleAvatarSelect={handleAvatarSelect} />}
+        
       </div>
       {isError && (
         <div className="Error__text">
