@@ -2,6 +2,7 @@ import Logo from '@/shared/ui/logos/LogoCatalog'
 import InputText from '@/shared/ui/inputs/InputTextCatalog'
 import { setQuery } from '@/entities/folder/model/store/catalog/catalogSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router'
 
 export const Search = () => {
   const dispatch = useDispatch()
@@ -10,7 +11,7 @@ export const Search = () => {
   return (
     <div className="flex items-center justify-between">
       <div className="w-[87%] sm:w-[90%] flex items-center gap-2">
-        <button className="block sm:hidden py-2 px-3 text-xs font-medium bg-[#EEEEEE] rounded-full">Назад</button>
+        <Link to={'/'} className="flex items-center justify-center sm:hidden h-[26px] px-3 text-[9px] font-medium bg-[#EEEEEE] rounded-full">Назад</Link>
 
         <InputText
           placeholder="Поиск..."
@@ -21,7 +22,7 @@ export const Search = () => {
         />
       </div>
 
-      <div className="w-6 sm:w-10 aspect-square rounded-full overflow-hidden">
+      <div className="w-[26px] sm:w-10 aspect-square rounded-full overflow-hidden">
         <Logo />
       </div>
     </div>

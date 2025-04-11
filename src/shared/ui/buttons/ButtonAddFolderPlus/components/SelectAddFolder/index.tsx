@@ -5,7 +5,7 @@ import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import { TextError } from '@/shared/ui/TextError/index.tsx'
 import { RootState } from '@/app/store/configureStore'
 import { useSelector } from 'react-redux'
-
+import "./SelectAddFolder.css"
 interface SelectAddFolderProps {
   register: UseFormRegisterReturn
   setValue: UseFormSetValue<any>
@@ -40,7 +40,7 @@ export const SelectAddFolder = ({ register, setValue, watchCategory, error }: Se
       <div
         onClick={toggleAccordion}
         className={cn(
-          'w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[24px] text-base cursor-pointer selectCategory',
+          'w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[24px] text-[10px] sm:text-base cursor-pointer selectCategory',
           {
             'text-[#6f7379]': chosenTopic === 'Выберите категорию',
             'text-[#f5f1f1] font-semibold': chosenTopic !== 'Выберите категорию',

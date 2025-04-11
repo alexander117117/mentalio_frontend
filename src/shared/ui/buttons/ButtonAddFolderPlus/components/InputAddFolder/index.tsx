@@ -30,7 +30,7 @@ export const InputAddFolder = ({
       <div className="relative">
         <input
           type={type}
-          className="w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[24px] text-base"
+          className="w-full bg-[#171717] outline-none rounded-[10px] px-3 py-[24px] text-[10px] sm:text-base"
           name={name}
           placeholder={placeholder}
           {...register}
