@@ -33,7 +33,8 @@ export default {
         wrongAnswer: '#FFC0C080',
         rightAnswer: '#D9EDD3',
         bgYellow: '#E59C26',
-        bgRed: '#CD2F2F'
+        bgRed: '#CD2F2F',
+        logout: '#FF5A5A'
       },
     },
   },

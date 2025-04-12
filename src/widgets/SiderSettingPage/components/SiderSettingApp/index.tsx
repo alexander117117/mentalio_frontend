@@ -1,6 +1,7 @@
 import { RiArrowLeftSLine } from 'react-icons/ri'
 import { SiderSettingMenu } from '../SiderSettingMenu'
 import { Link } from 'react-router'
+import { ButtonLogout } from '@/shared/ui/buttons/ButtonLogout'
 
 export function SiderSettingApp() {
   return (
@@ -13,6 +14,10 @@ export function SiderSettingApp() {
 
         <div className="mt-[63px]">
           <SiderSettingMenu />
+        </div>
+
+        <div className="absolute bottom-10 w-[210px]">
+          <ButtonLogout />
         </div>
       </aside>
     </nav>

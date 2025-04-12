@@ -12,7 +12,7 @@ export function SelectItem({ item, isSelected, onSelect }: SelectItemProps) {
   return (
     <label
       onClick={handleClick}
-      className="w-full text-left px-2 md:px-4 py-3 bg-[#2a2a2a] hover:bg-[#333333] text-white rounded-lg flex justify-between items-center group transition-colors m-0 mt-[10px] cursor-pointer"
+      className="w-full text-left px-2 md:px-4 py-3 bg-[#2a2a2a] hover:bg-[#333333] text-white rounded-lg flex justify-between items-center transition-colors m-0 mt-[10px] cursor-pointer"
     >
       <span className="text-[10px] md:text-base line-clamp-1">{item}</span>
       <input

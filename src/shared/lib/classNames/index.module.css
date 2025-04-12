@@ -42,6 +42,7 @@
 
 @media (max-width: 768px) {
   .InfoFolder_group {
+    width: 100%;
     font-size: 1.5rem;
     line-height: 1.5rem;
   }
