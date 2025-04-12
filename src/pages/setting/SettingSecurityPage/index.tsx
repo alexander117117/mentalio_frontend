@@ -8,6 +8,7 @@ import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useDispatch, useSelector } from 'react-redux'
 import { User } from '@/entities/user/lib/types'
 import { updateUserThunk } from '@/entities/user/model/store/auth/authThunks'
+import { ButtonLogout } from '@/shared/ui/buttons/ButtonLogout'
 
 export function SettingSecurityPage() {
   const dispatch = useDispatch<AppDispatch>()
@@ -32,6 +33,10 @@ export function SettingSecurityPage() {
         <Dropdown title="Email" svgImg={<ChangeNameIcon />}>
           <FormSetting type="email" initialValue={email} onSubmit={handleSubmit} />
         </Dropdown>
+      </div>
+
+      <div className="w-[90%] md:w-[650px] sm:mt-10">
+        <ButtonLogout isGrey={true}>Удалить мой аккаунт</ButtonLogout>
       </div>
     </div>
   )

@@ -17,7 +17,7 @@ export function SiderSettingApp() {
         </div>
 
         <div className="absolute bottom-10 w-[210px]">
-          <ButtonLogout />
+          <ButtonLogout>Выход из аккаунта</ButtonLogout>
         </div>
       </aside>
     </nav>

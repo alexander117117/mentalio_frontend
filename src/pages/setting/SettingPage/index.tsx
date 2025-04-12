@@ -12,7 +12,7 @@ export const SettingPage = () => {
 
 
       <div className="sm:mt-10 w-[80%] sm:w-[30%] absolute top-[70%]">
-        <ButtonLogout />
+        <ButtonLogout>Выход из аккаунта</ButtonLogout>
       </div>
     </div>
   )
