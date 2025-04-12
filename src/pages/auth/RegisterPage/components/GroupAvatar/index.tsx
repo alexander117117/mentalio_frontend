@@ -28,7 +28,7 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
           ))}
         </div>
       </div>
-      <SliderAvatarOnPhone avatar={avatar} handleAvatarSelect={handleAvatarSelect}/>
+      <SliderAvatarOnPhone avatar={avatar} handleAvatarSelect={handleAvatarSelect} />
       {isError && (
         <div className="Error__text">
           <p

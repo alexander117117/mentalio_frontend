@@ -11,7 +11,7 @@ import { setSelectedAvatar } from '@/features/chosenAvatar/chosenAvatarSlice'
 import SliderAvatarOnPhone from '@/pages/auth/UI/SliderAvatarOnPhone'
 export function SettingAvatarPage() {
   const userAvatar = useSelector((state: RootState) => state.auth.user?.avatar)
-  
+
   const [avatars, setAvatars] = useState<AvatarItem[]>(() => {
     return avatarItem.map((item) => ({
       ...item,

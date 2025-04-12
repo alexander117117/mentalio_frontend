@@ -10,7 +10,6 @@ export const SettingPage = () => {
         <SiderSettingMenu />
       </div>
 
-
       <div className="sm:mt-10 w-[80%] sm:w-[30%] absolute top-[70%]">
         <ButtonLogout>Выход из аккаунта</ButtonLogout>
       </div>

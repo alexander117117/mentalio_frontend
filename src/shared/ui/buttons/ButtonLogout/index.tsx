@@ -6,16 +6,14 @@ interface ButtonLogoutProps {
   children: React.ReactNode
 }
 
-
 export function ButtonLogout({ isGrey = false, children }: ButtonLogoutProps) {
   return (
-    <button className={
-      cn('w-full h-[60px] rounded-[10px] text-logout',
-      {
+    <button
+      className={cn('w-full h-[60px] rounded-[10px] text-logout', {
         [`bg-[${colors.buttonLogoutGrey}]`]: isGrey,
-        [`bg-white`]: !isGrey
-      }
-      )}>
+        [`bg-white`]: !isGrey,
+      })}
+    >
       {children}
     </button>
   )

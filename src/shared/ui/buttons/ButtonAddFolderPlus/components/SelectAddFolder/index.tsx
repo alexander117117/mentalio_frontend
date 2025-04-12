@@ -5,7 +5,7 @@ import { UseFormRegisterReturn, UseFormSetValue } from 'react-hook-form'
 import { TextError } from '@/shared/ui/TextError/index.tsx'
 import { RootState } from '@/app/store/configureStore'
 import { useSelector } from 'react-redux'
-import "./SelectAddFolder.css"
+import './SelectAddFolder.css'
 interface SelectAddFolderProps {
   register: UseFormRegisterReturn
   setValue: UseFormSetValue<any>

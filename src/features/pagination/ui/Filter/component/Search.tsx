@@ -11,7 +11,12 @@ export const Search = () => {
   return (
     <div className="flex items-center justify-between">
       <div className="w-[87%] sm:w-[90%] flex items-center gap-2">
-        <Link to={'/'} className="flex items-center justify-center sm:hidden h-[26px] px-3 text-[9px] font-medium bg-[#EEEEEE] rounded-full">Назад</Link>
+        <Link
+          to={'/'}
+          className="flex items-center justify-center sm:hidden h-[26px] px-3 text-[9px] font-medium bg-[#EEEEEE] rounded-full"
+        >
+          Назад
+        </Link>
 
         <InputText
           placeholder="Поиск..."
