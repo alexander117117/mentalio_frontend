@@ -23,7 +23,9 @@ export const handleUpload = async ({
     const formData = new FormData()
     formData.append('file', file)
     const response = await axiosInstance.post(API_ENDPOINTS.getIMG, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
       onUploadProgress: (event) => {
         if (event.total) {
           setTotalSize(event.total)
