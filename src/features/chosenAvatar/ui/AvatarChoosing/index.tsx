@@ -35,9 +35,9 @@ export function AvatarChoosing() {
       {avatars.map((item, index) => (
         <div
           key={index}
-          className="w-full sm:w-[220px] lg:w-[300px] h-[25rem] sm:h-[350px] lg:h-[400px] rounded-[20px] truncate cursor-pointer"
+          className="w-full sm:w-[220px] lg:w-[300px] h-auto sm:h-[220px] lg:h-[300px] rounded-full truncate cursor-pointer"
           onClick={() => handleAvatarSelect(item.id)}
-          style={{ border: item.chosen ? '2px solid green' : 'none' }}
+          style={{ border: item.chosen ? '3px solid green' : 'none' }}
         >
           <img
             src={'/images/' + item.avatar + '.png'}

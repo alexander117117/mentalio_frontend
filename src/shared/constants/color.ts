@@ -3,6 +3,5 @@ export const colors = {
   incorrectAnswerTestButton: '#FC3230',
   dropDownMainColor: '#E7E7E7',
   dropDownSecondaryColor: '#001E02',
-  buttonLogoutWhite: '#FFF',
   buttonLogoutGrey: '#E7E7E7'
 }
