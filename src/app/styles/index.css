@@ -48,8 +48,8 @@ details > summary {
 /* End Scrollbar */
 
 /* custom swiper */
-.swiper-slide {
-  display: flex !important;
+.swiper-slide.swiper-slide-active {
+  display: flex;
   justify-content: center;
 }
 
