@@ -1,7 +1,4 @@
-import React from 'react'
-import { test } from 'src/shared/assets/images'
 import PropTypes from 'prop-types'
-import SliderAvatarOnPhone from '../../../UI/SliderAvatarOnPhone'
 
 interface GroupAvatarProps {
   avatar: any[]
@@ -22,17 +19,13 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
               style={{ border: item.chosen ? '2px solid green' : 'none' }}
             >
               <img
-                src={test}
-                // src={item.avatar}
+                src={'/images/' + item.avatar + '.png'}
                 alt={'avatar ' + item.id}
                 className="w-full h-full object-cover"
               />
             </div>
           ))}
         </div>
-
-        {/* Mobile */}
-        {window.innerWidth < 576 && <SliderAvatarOnPhone avatar={avatar} handleAvatarSelect={handleAvatarSelect} />}
       </div>
       {isError && (
         <div className="Error__text">

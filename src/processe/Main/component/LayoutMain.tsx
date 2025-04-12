@@ -12,7 +12,7 @@ export function LayoutMain() {
   useEffect(() => {
     dispatch(getAllCategoriesThunk())
     dispatch(getUserFiles())
-  }, [])
+  }, [dispatch])
 
   const location = useLocation()
 

@@ -4,19 +4,33 @@ import { Dropdown } from '@/widgets/Dropdown'
 import { FormSetting } from '@/shared/ui/form/FormSetting'
 import { settingLayout, settingItemPage } from '@/shared/lib/classNames'
 import { ReactComponent as ChangeNameIcon } from '@/shared/assets/images/assets/change_name_icon.svg?react'
+import { AppDispatch, RootState } from '@/app/store/configureStore'
+import { useDispatch, useSelector } from 'react-redux'
+import { User } from '@/entities/user/lib/types'
+import { updateUserThunk } from '@/entities/user/model/store/auth/authThunks'
 
 export function SettingSecurityPage() {
+  const dispatch = useDispatch<AppDispatch>()
+  const { email } = useSelector((state: RootState) => state.auth.user) as User
+  const user = useSelector((state: RootState) => state.auth.user)
+
+  function handleSubmit(e: string) {
+    if (!user) return
+    dispatch(
+      updateUserThunk({
+        ...user,
+        email: e,
+      }),
+    )
+  }
+
   return (
     <div className={settingLayout}>
-      <SettingPageLayout img={lock_icon} title={'latavin@yandex.ru'} />
+      <SettingPageLayout img={lock_icon} title={email} />
 
       <div className={settingItemPage}>
-        <Dropdown title={'Email'} svgImg={<ChangeNameIcon />}>
-          <FormSetting type={'email'} value={'latavin@yandex.ru'} />
-        </Dropdown>
-
-        <Dropdown title={'Пароль'} svgImg={<ChangeNameIcon />}>
-          <FormSetting type={'password'} value={'dddd'} />
+        <Dropdown title="Email" svgImg={<ChangeNameIcon />}>
+          <FormSetting type="email" initialValue={email} onSubmit={handleSubmit} />
         </Dropdown>
       </div>
     </div>

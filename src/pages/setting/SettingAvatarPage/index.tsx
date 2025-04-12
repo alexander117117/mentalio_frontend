@@ -1,7 +1,7 @@
 import { TitleSetting } from '@/shared/ui/titles/TitleSetting'
 import { settingLayout } from '@/shared/lib/classNames'
 import { ButtonSelectAvatar } from '@/shared/ui/buttons/ButtonSelectAvatar'
-import { AvatarChoosing } from '@/shared/ui/AvatarChoosing'
+import { AvatarChoosing } from '@/features/chosenAvatar/ui/AvatarChoosing'
 
 export function SettingAvatarPage() {
   return (

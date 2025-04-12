@@ -125,7 +125,7 @@ export function useFormik_Register({
             setErrors({ password: 'Произошла ошибка. Попробуйте снова' })
           }
         } catch (error) {
-          console.log('error', error)
+          console.error('Error register: ', error)
           setErrors({ password: 'Произошла ошибка. Попробуйте снова' })
         }
       }

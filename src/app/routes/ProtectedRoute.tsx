@@ -1,26 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { getProfileThunk } from '@/entities/user/model/store/auth/authThunks'
+import { AppDispatch, RootState } from '../store/configureStore'
 
-const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, user } = useSelector((state) => state.auth)
+export function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth)
 
   // Перенаправление на страницу входа в систему при отсутствии аутентификации
   if (!isAuthenticated) {
     return <Navigate to="/auth/login" replace />
-  } else {
-    if (user?.role === 'admin') {
-      return <Navigate to="/admin" replace />
-    }
   }
+
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    dispatch(getProfileThunk())
+  }, [dispatch])
 
   return children // Выдавайте детей, если они прошли аутентификацию и авторизацию
 }
-
 ProtectedRoute.propTypes = {
   children: PropTypes.node.isRequired,
   adminRoute: PropTypes.bool,
 }
-
-export default ProtectedRoute

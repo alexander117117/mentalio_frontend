@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { sider1, sider2, sider3 } from 'src/shared/assets/images'
 
 import { SiderMenuItem } from '../SiderMenuItem/index.tsx'
@@ -30,7 +29,7 @@ export const SiderMenu = () => {
       <SiderMenuCategory category={'Результаты'} image={sider2} />
 
       <div className="flex flex-col gap-[10px] mb-[23px]">
-        {menuData.slice(5, 7).map((item: any, index: number) => (
+        {menuData.slice(5, 6).map((item: any, index: number) => (
           <SiderMenuItem
             key={index}
             title={item.title}

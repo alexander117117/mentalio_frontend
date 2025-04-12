@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import ProtectedRoute from './ProtectedRoute.jsx'
 import { Login, Register, PasswordReset } from '@/processe/Auth'
 import { LayoutMain, HomePage, MyFoldersPage, CatalogPage, FolderTopicPage } from '@/processe/Main'
 
@@ -13,7 +12,8 @@ import {
 } from '@/processe/Setting'
 import { Error404Page } from '@/pages/Error404Page'
 import { TestInteractiveProcesse } from '@/processe/TestInteractiveProcesse'
-const AppRoutes = () => {
+import { ProtectedRoute } from './ProtectedRoute'
+export function AppRoutes() {
   return (
     <Router>
       <Routes>
@@ -54,4 +54,3 @@ const AppRoutes = () => {
     </Router>
   )
 }
-export default AppRoutes

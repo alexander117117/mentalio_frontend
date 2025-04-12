@@ -188,3 +188,30 @@ export const resetPasswordThunk: any = createAsyncThunk<
   })
   return res.data
 })
+
+export const getProfileThunk = createAsyncThunk<User, void, { rejectValue: string }>(
+  'auth/getProfile',
+  async (_, { rejectWithValue }) => {
+    const response = await executeApiRTK<User>({
+      method: 'GET',
+      url: API_ENDPOINTS.auth.getProfile,
+      rejectWithValue,
+      errorMessage: 'Ошибка при загрузке данных',
+    })
+    return response.data
+  },
+)
+
+export const updateUserThunk = createAsyncThunk<User, User, { rejectValue: string }>(
+  'auth/updateUser',
+  async (userData, { rejectWithValue }) => {
+    const response = await executeApiRTK<User>({
+      method: 'PUT',
+      url: API_ENDPOINTS.auth.updateProfile,
+      body: userData,
+      rejectWithValue,
+      errorMessage: 'Ошибка при обновлении данных',
+    })
+    return response.data
+  },
+)

@@ -9,17 +9,11 @@ interface GetTopicDataParams {
   location: Location
   idFolder: Id | undefined
   idTopic: Id | undefined
+  setLoading: (loading: boolean) => void
 }
-export async function getTopicData({ dispatch, location, idFolder, idTopic }: GetTopicDataParams) {
-  if (location.state?.dataTopic) {
-    const topicFromLocation = location.state.dataTopic as TopicsItem
-    dispatch(
-      setTopicData({
-        dataTopic: topicFromLocation,
-        idFolder,
-      }),
-    )
-  } else if (idFolder && idTopic) {
+export async function getTopicData({ dispatch, location, idFolder, idTopic, setLoading }: GetTopicDataParams) {
+  setLoading(true)
+  if (idFolder && idTopic) {
     try {
       const response = await dispatch(getTopic({ idFolder, idTopic })).unwrap()
       dispatch(
@@ -31,5 +25,14 @@ export async function getTopicData({ dispatch, location, idFolder, idTopic }: Ge
     } catch (err) {
       console.error('Error while fetching topic', err)
     }
+  } else if (location.state?.dataTopic) {
+    const topicFromLocation = location.state.dataTopic as TopicsItem
+    dispatch(
+      setTopicData({
+        dataTopic: topicFromLocation,
+        idFolder,
+      }),
+    )
   }
+  setLoading(false)
 }

@@ -1,13 +1,12 @@
 import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import AppRoutes from './routes/Routes.jsx'
 import { store, persistor } from '@/app/store/configureStore.js'
 import './styles/index.css'
 import './styles/normalaiz.css'
+import { AppRoutes } from './routes/Routes.tsx'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 /* включаем мок-запросы для тестирования api из файла AppTest/mocks/browser.js */
 async function enableMocking() {
   /*
