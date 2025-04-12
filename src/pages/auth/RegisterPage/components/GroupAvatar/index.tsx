@@ -1,7 +1,5 @@
-import React from 'react'
-import { test } from 'src/shared/assets/images'
+import SliderAvatarOnPhone from '@/pages/auth/UI/SliderAvatarOnPhone'
 import PropTypes from 'prop-types'
-import SliderAvatarOnPhone from '../../../UI/SliderAvatarOnPhone'
 
 interface GroupAvatarProps {
   avatar: any[]
@@ -13,27 +11,24 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
     <>
       <div className="w-[95%] mx-auto 2xl:mx-0 2xl:w-full mt-[2.5rem]">
         <div className="text-[2rem] sm:text-[48px] font-[600] mb-[40px]">Выберите своего аватара</div>
-        <div className="flex items-center flex-nowrap gap-[0.625rem] md:gap-[40px]">
+        <div className="hidden sm:flex items-center flex-nowrap gap-[0.625rem] md:gap-[40px]">
           {avatar.map((item, index) => (
             <div
-              className="w-full sm:w-[500px] h-[25rem] sm:h-[600px] rounded-[20px] truncate cursor-pointer"
+              className="w-full md:w[250px] lg:w-[430px] aspect-square rounded-full truncate cursor-pointer"
               key={index}
               onClick={() => handleAvatarSelect(item.id)}
               style={{ border: item.chosen ? '2px solid green' : 'none' }}
             >
               <img
-                src={test}
-                // src={item.avatar}
+                src={'/images/' + item.avatar + '.png'}
                 alt={'avatar ' + item.id}
                 className="w-full h-full object-cover"
               />
             </div>
           ))}
         </div>
-
-        {/* Mobile */}
-        {window.innerWidth < 576 && <SliderAvatarOnPhone avatar={avatar} handleAvatarSelect={handleAvatarSelect} />}
       </div>
+      <SliderAvatarOnPhone avatar={avatar} handleAvatarSelect={handleAvatarSelect} />
       {isError && (
         <div className="Error__text">
           <p

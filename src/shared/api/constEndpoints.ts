@@ -13,9 +13,12 @@ export const API_ENDPOINTS = {
     passwordResetVerification: '/v1/auth/password-reset/verification',
     register: '/v1/auth/register',
     user: '/v1/auth/user',
+    getProfile: '/v1/auth/user',
+    updateProfile: '/v1/auth/user',
   },
   analytics: {
-    questions: '/auth/register/analytics/questions',
+    questions: '/v1/auth/register/questions',
+    analytics: '/v1/auth/register/analytics',
   },
   folders: {
     categories: {

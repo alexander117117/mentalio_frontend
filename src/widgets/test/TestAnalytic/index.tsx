@@ -6,13 +6,6 @@ interface TestAnalyticProps {
 }
 
 export function TestAnalytic({ wrong = false, questionText, correctAnswer, userAnswer }: TestAnalyticProps) {
-  console.log('TestAnalytic', {
-    wrong,
-    questionText,
-    correctAnswer,
-    userAnswer,
-  })
-
   return (
     <div className={`w-full py-[10px] px-[10px] sm:px-5 ${wrong ? 'bg-wrongAnswer' : 'bg-rightAnswer'} rounded-[10px]`}>
       <span className="text-[22px]">{questionText}</span>

@@ -7,8 +7,6 @@ interface GroupFoundProps {
   isError: boolean
 }
 const GroupFound = ({ questions, handleQuestionAnswer, isError }: GroupFoundProps) => {
-  console.log('questions', questions)
-
   return (
     <>
       <div className="w-[95%] mx-auto mt-[60px]">

@@ -45,6 +45,7 @@ export interface QuestionsTest {
   }[]
   correctAnswer?: string
   isChoice?: boolean | null
+  translatedWord?: string
 }
 
 export interface QuestionsMultipleChoice {

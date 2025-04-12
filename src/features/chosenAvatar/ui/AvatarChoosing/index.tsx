@@ -1,15 +1,11 @@
-import { TitleSetting } from '@/shared/ui/titles/TitleSetting'
-import { settingLayout } from '@/shared/lib/classNames'
-import { ButtonSelectAvatar } from '@/shared/ui/buttons/ButtonSelectAvatar'
-import { AvatarChoosing } from '@/features/chosenAvatar/ui/AvatarChoosing'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '@/app/store/configureStore'
-import { useState } from 'react'
 import { avatarItem } from '@/shared/constants/avatarItem'
-import { AvatarItem } from '@/pages/auth/RegisterPage/hooks/useManageSelection'
 import { setSelectedAvatar } from '@/features/chosenAvatar/chosenAvatarSlice'
-import SliderAvatarOnPhone from '@/pages/auth/UI/SliderAvatarOnPhone'
-export function SettingAvatarPage() {
+import { AvatarItem } from '@/pages/auth/RegisterPage/hooks/useManageSelection'
+
+export function AvatarChoosing() {
   const userAvatar = useSelector((state: RootState) => state.auth.user?.avatar)
 
   const [avatars, setAvatars] = useState<AvatarItem[]>(() => {
@@ -33,17 +29,23 @@ export function SettingAvatarPage() {
       dispatch(setSelectedAvatar(chosen.avatar))
     }
   }
+
   return (
-    <div className={settingLayout}>
-      <TitleSetting>Аватар</TitleSetting>
-
-      <AvatarChoosing />
-
-      <div className="w-full block xs:hidden">
-        <SliderAvatarOnPhone avatar={avatars} handleAvatarSelect={handleAvatarSelect} />
-      </div>
-
-      <ButtonSelectAvatar />
+    <div className="hidden xs:flex items-center gap-5">
+      {avatars.map((item, index) => (
+        <div
+          key={index}
+          className="w-full sm:w-[220px] lg:w-[300px] h-auto sm:h-[220px] lg:h-[300px] rounded-full truncate cursor-pointer"
+          onClick={() => handleAvatarSelect(item.id)}
+          style={{ border: item.chosen ? '3px solid green' : 'none' }}
+        >
+          <img
+            src={'/images/' + item.avatar + '.png'}
+            alt={'avatar ' + item.id}
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ))}
     </div>
   )
 }

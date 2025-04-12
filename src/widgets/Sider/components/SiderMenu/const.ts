@@ -1,4 +1,4 @@
-import { sider4, sider5, sider6, sider7, sider8, sider9, sider10, sider11, sider12 } from 'src/shared/assets/images'
+import { sider4, sider5, sider6, sider7, sider8, sider9, sider10, sider11 } from 'src/shared/assets/images'
 
 interface MenuItem {
   title: string
@@ -62,11 +62,5 @@ export const menuData: MenuItem[] = [
     subtitle: '',
     link: '/settings',
     image: sider11,
-  },
-  {
-    title: 'Искать по тегам',
-    subtitle: '',
-    link: '/search-by-tags',
-    image: sider12,
   },
 ]

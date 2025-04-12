@@ -11,7 +11,7 @@ export function DropdownHeader({ title, svgImg, isOpen, onToggle }: DropdownHead
   return (
     <div className="flex items-center justify-between" onClick={onToggle}>
       <div className="flex items-center gap-5">
-        {svgImg && <div className="w-[30px] sm:w-[50px] h-[30px] sm:h-[50px] svg-icon">{svgImg}</div>}
+        {svgImg && <div className="w-[30px] md:w-[50px] h-[30px] md:h-[50px] svg-icon">{svgImg}</div>}
         <span className="text-base sm:text-lg font-medium">{title}</span>
       </div>
       <FaChevronRight

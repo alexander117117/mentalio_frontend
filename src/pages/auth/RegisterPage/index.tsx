@@ -8,6 +8,7 @@ import { clearError } from '@/entities/user/model/store/auth/authSlice.ts'
 import { fetchQuestions } from '@/app/store/features/analytics/analyticsThunks.ts'
 import { toggleQuestionAnswer } from '@/app/store/features/analytics/analyticsSlice.ts'
 import { LogoCenter } from '../UI/LogoCenter'
+import { avatarItem } from '@/shared/constants/avatarItem.ts'
 
 interface AuthState {
   isLoading: boolean
@@ -53,10 +54,14 @@ export function Register() {
   useEffect(() => {
     dispatch(
       fetchQuestions([
-        { id: 1, question: 'вопрос1', answer: false },
-        { id: 2, question: 'вопрос2', answer: false },
-        { id: 3, question: 'вопрос3', answer: false },
-        { id: 4, question: 'вопрос4', answer: false },
+        { id: 1, question: 'Поисковые системы', answer: false },
+        { id: 2, question: 'Посоветовал друг', answer: false },
+        { id: 3, question: 'Посоветовал преподователь', answer: false },
+        { id: 4, question: 'Instagram', answer: false },
+        { id: 5, question: 'Youtube', answer: false },
+        { id: 6, question: 'Telegram', answer: false },
+        { id: 7, question: 'Статьи', answer: false },
+        { id: 8, question: 'Реклама', answer: false },
       ]),
     )
   }, [dispatch])
@@ -65,11 +70,7 @@ export function Register() {
     dispatch(toggleQuestionAnswer(id))
   }
 
-  const [avatarsNew, setAvatarsNew] = useState<AvatarItem[]>([
-    { id: 1, avatar: 'аватар1', chosen: false },
-    { id: 2, avatar: 'аватар2', chosen: false },
-    { id: 3, avatar: 'аватар3', chosen: false },
-  ])
+  const [avatarsNew, setAvatarsNew] = useState<AvatarItem[]>(avatarItem)
 
   const { avatars, handleAvatarSelect } = useMemo(() => useAvatarSelection(avatarsNew, setAvatarsNew), [avatarsNew])
 
@@ -105,7 +106,7 @@ export function Register() {
             <LogoCenter />
             <div className="w-full 2xl:w-[1580px] mx-auto">{renderLevel}</div>
           </div>
-          {level !== 5 && (
+          {level !== 4 && (
             <div className="w-[95%] xs:w-[490px] mx-auto mt-[0.875rem] sm:mt-[1.25rem]">
               <ButtonAuthCommon type="submit" disabled={isLoading} onClick={() => handleNext(level, setLevel)}>
                 Продолжить
