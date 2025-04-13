@@ -6,3 +6,8 @@ export interface handleSelectAnswerProps {
   userChoice: string
   correctAnswer: string
 }
+
+export interface handleSelectAnswerMemorizationProps {
+  isCorrect: boolean
+  question: QuestionsTest | QuestionsMultipleChoice
+}

@@ -1,5 +1,11 @@
 import { PayloadAction } from '@reduxjs/toolkit'
-import { ModesInteractive, SettingInteractive, TestInteractiveState, WordsInteractive } from '../types'
+import {
+  ModesInteractive,
+  QuestionsMultipleChoice,
+  SettingInteractive,
+  TestInteractiveState,
+  WordsInteractive,
+} from '../types'
 import { Id } from '@/shared/types'
 
 export const testInteractiveReducer = {
@@ -20,11 +26,14 @@ export const testInteractiveReducer = {
   setCurrentIndex(state: TestInteractiveState, action: PayloadAction<number>) {
     state.currentIndex = action.payload
   },
-  setOptionsIsChoice(state: TestInteractiveState, action: PayloadAction<Id>) {
-    const idQuestions = action.payload
+
+  setOptionsIsChoice(state: TestInteractiveState, action: PayloadAction<{ id: Id; isChoice: boolean | null }>) {
+    const idQuestions = action.payload.id
+    const isChoice = action.payload.isChoice
+
     state.words = state.words.map((item) => {
       if (item.id === idQuestions) {
-        return { ...item, isChoice: true }
+        return { ...item, isChoice: isChoice }
       }
       return item
     }) as WordsInteractive
@@ -86,5 +95,14 @@ export const testInteractiveReducer = {
     state.isShowSummary = false
     state.loading = false
     state.error = null
+  },
+  // Положить слово в конец массива и удалить там где он был раньше
+  putWordToEnd(state: TestInteractiveState, action: PayloadAction<Id>) {
+    const id = action.payload
+    const index = state.words.findIndex((item) => item.id === id)
+    if (index !== -1) {
+      const word = state.words.splice(index, 1)[0] as QuestionsMultipleChoice
+      state.words.push(word as never)
+    }
   },
 }

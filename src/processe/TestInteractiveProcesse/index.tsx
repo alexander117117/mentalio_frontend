@@ -43,8 +43,8 @@ export function TestInteractiveProcesse() {
   } else if (words?.length > 0 && isShowSummary && answers.length >= words.length) {
     switch (modes) {
       case 'card-mode':
-        return <SummaryPage />
       case 'memorization':
+        return <SummaryPage />
       case 'test':
         dispatch(computeTestResults())
         return <ResponseTest />
