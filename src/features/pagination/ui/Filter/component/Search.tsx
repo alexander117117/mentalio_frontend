@@ -13,7 +13,7 @@ export const Search = () => {
       <div className="w-[87%] sm:w-[90%] flex items-center gap-2">
         <Link
           to={'/'}
-          className="flex items-center justify-center sm:hidden h-[26px] px-3 text-[9px] font-medium bg-[#EEEEEE] rounded-full"
+          className="flex items-center justify-center sm:hidden h-[30px] px-3 text-[9px] font-medium bg-[#EEEEEE] rounded-full"
         >
           Назад
         </Link>
@@ -27,7 +27,7 @@ export const Search = () => {
         />
       </div>
 
-      <div className="w-[26px] sm:w-10 aspect-square rounded-full overflow-hidden">
+      <div className="w-[30px] sm:w-10 aspect-square rounded-full overflow-hidden">
         <Logo />
       </div>
     </div>

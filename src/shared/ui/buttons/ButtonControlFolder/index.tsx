@@ -21,7 +21,7 @@ export function ButtonControlFolder({
   return (
     <button
       type={type}
-      className={`${isSmall ? 'w-auto h-9' : 'w-full md:w-auto h-10'} border border-[#272727] rounded-[10px] ${customPadding} ${color} text-xs md:text-base whitespace-nowrap`}
+      className={`${isSmall ? 'md:w-[200px] h-9' : 'w-[90%] sm:w-[48%] h-[60px] sm:h-10'} bg-popup border border-[#272727] rounded-[10px] ${customPadding} ${color} text-base whitespace-nowrap`}
       onClick={onClick}
       disabled={disabled}
     >

@@ -25,7 +25,7 @@ export function FormCreateFolder({ setIsModalOpen }: FormCreateFolderProps) {
       onSubmit={handleSubmit((data) =>
         handleOnSubmit({ data, setServerErrorMessage, reset, setIsModalOpen, dispatch }),
       )}
-      className="w-full sm:w-[490px] flex flex-col gap-[10px] p-3 sm:p-5 rounded-[15px] text-white"
+      className="w-full sm:w-[490px] flex flex-col gap-[10px] p-3 sm:p-[5px_5px_0px_5px] rounded-[15px] text-white"
     >
       <FormFields
         serverErrorMessage={serverErrorMessage}
@@ -37,7 +37,7 @@ export function FormCreateFolder({ setIsModalOpen }: FormCreateFolderProps) {
         remove={remove}
         fields={fields}
       />
-      <div className="flex md:flex-row flex-col gap-4 md:gap-0 items-center justify-evenly">
+      <div className="flex md:flex-row flex-col gap-4 md:gap-0 items-center justify-evenly mt-7 sm:mt-[72px]">
         <FormPanel fields={fields} append={append} />
       </div>
     </form>

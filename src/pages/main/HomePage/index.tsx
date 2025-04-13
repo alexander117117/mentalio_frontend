@@ -16,7 +16,7 @@ export const HomePage = () => {
       <div className="w-full sm:w-[98%] 2xl:w-[1440px] mt-[50px] md:mt-[90px]">
         <h1 className="text-2xl lg:text-[56px] 2xl:text-[64px] font-bold">Каталог папок</h1>
 
-        <div className="w-full sm:w-[95%] 2xl:w-[99%] flex justify-between items-center">
+        <div className="w-full 2xl:w-[99%] flex justify-between items-center mt-5">
           <span className="text-xs sm:text-xl font-normal text-[#636363]">Подобрано для Вас</span>
           <Link
             to={'/catalog'}

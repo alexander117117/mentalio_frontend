@@ -53,7 +53,7 @@ export function TestInteractiveProcesse() {
     return (
       <>
         <ButtonBack />
-        <div className="container mx-auto flex justify-center pt-[90px] pb-10 relative">
+        <div className="container mx-auto flex justify-center pt-[90px] pb-10">
           {(() => {
             switch (modes) {
               case 'card-mode':

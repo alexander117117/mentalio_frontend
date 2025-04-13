@@ -24,7 +24,7 @@ export function ButtonSelectAvatar() {
       onClick={handleClick}
     >
       <span>Выбрать</span>
-      <div className="bg-[#DEF3DD] h-[30px] sm:w-[50px] aspect-square inline-flex items-center justify-center rounded-[10px]">
+      <div className="bg-[#DEF3DD] h-[30px] sm:h-[50px] aspect-square inline-flex items-center justify-center rounded-[10px]">
         <FaPlus />
       </div>
     </button>
