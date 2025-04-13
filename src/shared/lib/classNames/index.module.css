@@ -4,6 +4,7 @@
   border-radius: 0.625rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #171717;
 }
 
@@ -21,12 +22,12 @@
 }
 
 .info_folder__word p {
-  width: 150px;
+  width: 125px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .info_folder_result {
@@ -61,8 +62,7 @@
 }
 
 .flashcard {
-  padding: 1.25rem;
-  padding-bottom: 2.5rem;
+  padding: 2.5rem;
   background-color: #f2faf1;
   border-radius: 1.25rem;
   width: 90vw;
@@ -93,8 +93,8 @@
 }
 
 .buttonBack {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   padding: 16px;
   background: #ddd;
   border: none;

@@ -5,12 +5,6 @@
   align-items: center;
 }
 
-@media (min-width: 1280px) {
-  .testResultPage {
-    margin-left: 148px;
-  }
-}
-
 .testResultPage__title {
   font-size: 1.5rem; /* 24px */
   line-height: 2rem;
