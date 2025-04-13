@@ -5,20 +5,21 @@ export const API_ENDPOINTS = {
     baseUrl: import.meta.env.VITE_API_URL || 'https://api.example.com',
   },
   auth: {
-    changePassword: '/v1/auth/change-password',
-    checkLogin: '/v1/auth/check-login',
-    login: '/v1/auth/login',
-    passwordResetConfirm: '/v1/auth/password-reset/confirm',
-    passwordResetRequest: '/v1/auth/password-reset/request',
-    passwordResetVerification: '/v1/auth/password-reset/verification',
-    register: '/v1/auth/register',
-    user: '/v1/auth/user',
-    getProfile: '/v1/auth/user',
-    updateProfile: '/v1/auth/user',
+    changePassword: '/v1/auth/change-password/',
+    checkLogin: '/v1/auth/check-login/',
+    login: '/v1/auth/login/',
+    passwordResetConfirm: '/v1/auth/reset-password/confirm/',
+    passwordResetRequest: '/v1/auth/reset-password/',
+    passwordResetVerification: '/v1/auth/reset-password/verify/',
+    register: '/v1/auth/register/',
+    user: '/v1/auth/profile/',
+    getProfile: '/v1/auth/profile/',
+    updateProfile: '/v1/auth/profile/',
+    deleteUser: '/v1/auth/profile/',
   },
   analytics: {
-    questions: '/v1/auth/register/questions',
-    analytics: '/v1/auth/register/analytics',
+    questions: '/v1/auth/register/questions/',
+    analytics: '/v1/auth/register/analytics/',
   },
   folders: {
     categories: {
@@ -51,7 +52,7 @@ export const API_ENDPOINTS = {
     delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
     catalog: '/v1/folders/catalog/',
   },
-  getIMG: '/v1/folders/topics/cards/get-img/',
+  getIMG: '/v1/folders/upload-image/',
   public: {
     files: {
       list: '/v1/folders/public/files/',
