@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { RootState } from '@/app/store/configureStore'
-import { setIndex, setisShowSummary, setOptionsIsChoice } from '@/entities/testInteractive/store/slice'
-import { storeAnswer } from '@/entities/testAnalytics/testAnalyticsSlice'
-import { handleSelectAnswerProps } from '@/entities/testInteractive/types/handleSelectAnswerProps'
+import { putWordToEnd, setIndex, setisShowSummary, setOptionsIsChoice } from '@/entities/testInteractive/store/slice'
+import { handleSelectAnswerMemorizationProps } from '@/entities/testInteractive/types/handleSelectAnswerProps'
 import { QuestionsTest } from '@/entities/testInteractive/types'
+import { addLengthAnswer } from '@/entities/testAnalytics/testAnalyticsSlice'
 
-export function useTestInteractive() {
+export function useMemorizationInteractive() {
   const dispatch = useDispatch()
 
   const { words, currentIndex } = useSelector((state: RootState) => state.testInteractive, shallowEqual) as {
@@ -18,26 +18,27 @@ export function useTestInteractive() {
   const current = currentIndex + 1
 
   const handleSelectAnswer = useCallback(
-    ({ isCorrect, question, userChoice, correctAnswer }: handleSelectAnswerProps) => {
+    ({ isCorrect, question }: handleSelectAnswerMemorizationProps) => {
       // Помечаем, что пользователь выбрал вариант ответа
       dispatch(setOptionsIsChoice({ id: question.id, isChoice: true }))
-
-      // Сохраняем ответ
-      dispatch(
-        storeAnswer({
-          questionId: question.id,
-          questionText: question.sourceWord,
-          correctAnswer,
-          userAnswer: userChoice,
-          isCorrect,
-        }),
-      )
 
       // Если это последний вопрос — показываем результат
       if (current === total) {
         dispatch(setisShowSummary(true))
       } else {
-        dispatch(setIndex(currentIndex + 1))
+        if (isCorrect) {
+          dispatch(setOptionsIsChoice({ id: question.id, isChoice: true }))
+          setTimeout(() => {
+            dispatch(addLengthAnswer(current + 1))
+            dispatch(setIndex(currentIndex + 1))
+          }, 1500)
+        } else {
+          dispatch(setOptionsIsChoice({ id: question.id, isChoice: true }))
+          setTimeout(() => {
+            dispatch(setOptionsIsChoice({ id: question.id, isChoice: null }))
+            dispatch(putWordToEnd(question.id))
+          }, 1500)
+        }
       }
     },
     [current, total, currentIndex, dispatch],
