@@ -47,8 +47,7 @@ export function TestResultPage({ handleTryAgain }: TestResultPageProps) {
             <Link
               to={'/'}
               className={`py-4 sm:py-5 bg-[#DEF3DD] w-full sm:w-[300px] rounded-[15px] text-sm sm:text-xl text-center
-              ${percent > 59 ? 'bg-positiveResult' : percent >= 25 ? 'bg-neutralResult' : 'bg-negativeResult'}`
-              }
+              ${percent > 59 ? 'bg-positiveResult' : percent >= 25 ? 'bg-neutralResult' : 'bg-negativeResult'}`}
             >
               Вернуться в меню
             </Link>
