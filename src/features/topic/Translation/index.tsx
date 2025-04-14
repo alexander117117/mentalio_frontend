@@ -29,6 +29,8 @@ import { UploadProgress } from './ui/UploadProgress'
 import { validateNewUserTranslatedWord } from '../CreateWordForm/lib/validation'
 import { handleAddLang } from '@/entities/topic/lib/handles/addLang'
 import { setTargetLanguage } from '@/entities/topic/model/store'
+import { ButtonDelete } from '@/shared/ui/ButtonDelete'
+import { deleteIMGThunk } from '@/entities/topic/model/store/userTopicThunks'
 
 interface TranslationProps {
   serverErrorMessage: string
@@ -56,7 +58,8 @@ export function Translation({
   watch,
 }: TranslationProps) {
   const dispatch = useDispatch<AppDispatch>()
-  const { isEdit } = useSelector((state: RootState) => state.userTopic.createdWord)
+  const { isEdit, id } = useSelector((state: RootState) => state.userTopic.createdWord)
+  const { idTopic } = useSelector((state: RootState) => state.userTopic.mapId)
 
   const [uploadProgress, setUploadProgress] = useState(0)
   const [uploadedSize, setUploadedSize] = useState(0)
@@ -64,7 +67,7 @@ export function Translation({
   const [uploadError, setUploadError] = useState<string | null>(null)
 
   const imageFile = watch('imageFile')
-
+  const translatedImg = watch('translatedImg')
   useEffect(() => {
     if (!imageFile || imageFile.length === 0) return
     setUploadProgress(0)
@@ -83,6 +86,18 @@ export function Translation({
     })
   }, [imageFile, setValue])
 
+  const handeleDeleteImage = () => {
+    setValue('imageFile', null)
+    setValue('translatedImg', '')
+    if (id) {
+      dispatch(
+        deleteIMGThunk({
+          topicId: idTopic,
+          cardId: id,
+        }),
+      )
+    }
+  }
   return (
     <div className="mt-[10px]">
       <Panel>
@@ -93,26 +108,42 @@ export function Translation({
 
         <LabelTranslation>Переводы:</LabelTranslation>
 
-        <div className={style.translation_group}>
-          <div className="flex gap-2">
-            <InputTranslateSearch
-              type="text"
-              register={register('typedWord', validateNewUserTranslatedWord)}
-              placeholder="Введите слово"
-              isSmall
-            />
-            <button
-              type="button"
-              className="h-[35px] sm:h-[24px] aspect-square border border-[#272727] rounded-[5px] text-primary text-2xl leading-[1rem] font-light"
-              onClick={() => handleAddTranslatedWord({ setValue, getValues, append, dispatch })}
-            >
-              +
-            </button>
-          </div>
+        <div className="flex flex-col sm:flex-row gap-6">
+          <div className="flex-1">
+            <div className={style.translation_group}>
+              <div className="flex gap-2">
+                <InputTranslateSearch
+                  type="text"
+                  register={register('typedWord', validateNewUserTranslatedWord)}
+                  placeholder="Введите слово"
+                  isSmall
+                />
+                <button
+                  type="button"
+                  className="h-[35px] sm:h-[24px] aspect-square border border-[#272727] rounded-[5px] text-primary text-2xl leading-[1rem] font-light"
+                  onClick={() => handleAddTranslatedWord({ setValue, getValues, append, dispatch })}
+                >
+                  +
+                </button>
+              </div>
 
-          <SimilarTerms remove={remove} fields={fields} />
-          <TextError errorMessage={errors.translated_words?.root?.message} />
-          <DetailsListApiTranslatedWords append={append} />
+              <SimilarTerms remove={remove} fields={fields} />
+              <TextError errorMessage={errors.translated_words?.root?.message} />
+              <DetailsListApiTranslatedWords append={append} />
+            </div>
+          </div>
+          {translatedImg && (
+            <div className="flex-1 flex justify-center items-center">
+              <div className="relative">
+                <ButtonDelete classNameSWG="size-[1.3em]" handeleOnClick={handeleDeleteImage} />
+                <img
+                  src={translatedImg}
+                  alt="Переведённое изображение"
+                  className="max-w-full h-auto rounded shadow-lg"
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="flex items-center gap-3 mt-3 sm:mt-5">
@@ -130,17 +161,20 @@ export function Translation({
           ) : (
             <ButtonAddWordTranslate>Добавить</ButtonAddWordTranslate>
           )}
-          <ButtonAddFile registerFile={register('imageFile')} />
-
-          {imageFile && imageFile.length > 0 && (
-            <UploadProgress
-              progress={uploadProgress}
-              uploaded={uploadedSize}
-              total={totalSize}
-              error={uploadError}
-              fileName={imageFile[0].name}
-              fileType={imageFile[0].type.split('/').pop() || ''}
-            />
+          {!translatedImg && (
+            <>
+              <ButtonAddFile registerFile={register('imageFile')} />
+              {imageFile && imageFile.length > 0 && (
+                <UploadProgress
+                  progress={uploadProgress}
+                  uploaded={uploadedSize}
+                  total={totalSize}
+                  error={uploadError}
+                  fileName={imageFile[0].name}
+                  fileType={imageFile[0].type.split('/').pop() || ''}
+                />
+              )}
+            </>
           )}
         </div>
 

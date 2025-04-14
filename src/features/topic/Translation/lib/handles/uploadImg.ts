@@ -21,8 +21,8 @@ export const handleUpload = async ({
 }: UploadProgressProps) => {
   try {
     const formData = new FormData()
-    formData.append('file', file)
-    const response = await axiosInstance.post(API_ENDPOINTS.getIMG, formData, {
+    formData.append('image', file)
+    const response = await axiosInstance.post(API_ENDPOINTS.folders.cards.img.add, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -35,8 +35,8 @@ export const handleUpload = async ({
         }
       },
     })
-    if (response.data?.url) {
-      setValue('translatedImg', response.data.url)
+    if (response.data?.image_url) {
+      setValue('translatedImg', response.data.image_url)
       setUploadError(null)
     } else {
       setUploadError('Не удалось загрузить файл. Попробуйте позже')

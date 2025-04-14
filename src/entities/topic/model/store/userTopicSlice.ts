@@ -9,6 +9,7 @@ import {
   deleteCardFromTopic,
   translateWord,
   updateTopic,
+  deleteIMGThunk,
 } from './userTopicThunks.ts'
 import { Leng, MapIdTopicSlice } from '@/entities/topic/lib/types'
 import { Id } from '@/shared/types/types.ts'
@@ -162,6 +163,14 @@ export const userTopicSlice = createSlice({
         state.apiTranslatedWords = action.payload.translatedWords
       })
       .addCase(translateWord.rejected, handleRejected)
+
+      // Удаление изображения
+      .addCase(deleteIMGThunk.pending, handlePending)
+      .addCase(deleteIMGThunk.fulfilled, (state) => {
+        state.loading = false
+        state.createdWord.translatedImg = ''
+      })
+      .addCase(deleteIMGThunk.rejected, handleRejected)
   },
 })
 export const {
