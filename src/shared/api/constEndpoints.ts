@@ -48,11 +48,16 @@ export const API_ENDPOINTS = {
       getDetails: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
       update: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
       delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
+      img: {
+        get: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/image/`,
+        update: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/image/`,
+        delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/image/`,
+        add: '/v1/folders/upload-image/',
+      },
     },
     delete: (topicId: Id, cardId: Id): string => `/v1/folders/topics/${topicId}/cards/${cardId}/`,
     catalog: '/v1/folders/catalog/',
   },
-  getIMG: '/v1/folders/upload-image/',
   public: {
     files: {
       list: '/v1/folders/public/files/',
