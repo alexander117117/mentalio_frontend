@@ -215,3 +215,16 @@ export const updateUserThunk = createAsyncThunk<User, User, { rejectValue: strin
     return response.data
   },
 )
+
+export const deleteUserThunk = createAsyncThunk<User, void, { rejectValue: string }>(
+  'auth/deleteUserThunk',
+  async (_, { rejectWithValue }) => {
+    const response = await executeApiRTK<User>({
+      method: 'DELETE',
+      url: API_ENDPOINTS.auth.deleteUser,
+      rejectWithValue,
+      errorMessage: 'Ошибка при удалении пользователя',
+    })
+    return response.data
+  },
+)

@@ -2,8 +2,13 @@ import { RiArrowLeftSLine } from 'react-icons/ri'
 import { SiderSettingMenu } from '../SiderSettingMenu'
 import { Link } from 'react-router'
 import { ButtonLogout } from '@/shared/ui/buttons/ButtonLogout'
+import { AppDispatch } from '@/app/store/configureStore'
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '@/entities/user/model/store/auth/authSlice'
 
 export function SiderSettingApp() {
+  const dispatch = useDispatch<AppDispatch>()
+
   return (
     <nav>
       <aside className={`w-[250px] xl:w-[285px] h-[100vh] bg-[#F6F6F6] pt-[33px] pl-[25px] pr-[15px] fixed z-[10]`}>
@@ -17,7 +22,13 @@ export function SiderSettingApp() {
         </div>
 
         <div className="absolute bottom-10 w-[210px]">
-          <ButtonLogout>Выход из аккаунта</ButtonLogout>
+          <ButtonLogout
+            onClick={() => {
+              dispatch(logoutUser())
+            }}
+          >
+            Выход из аккаунта
+          </ButtonLogout>
         </div>
       </aside>
     </nav>

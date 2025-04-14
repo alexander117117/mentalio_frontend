@@ -17,7 +17,7 @@ export function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     dispatch(getProfileThunk())
-  }, [dispatch])
+  }, [])
 
   return children // Выдавайте детей, если они прошли аутентификацию и авторизацию
 }
