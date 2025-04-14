@@ -9,6 +9,7 @@ import {
   resetPasswordThunk,
   getProfileThunk,
   updateUserThunk,
+  deleteUserThunk,
 } from './authThunks.ts'
 import { handlePending, handleRejected } from '@/shared/lib/helpers/StoreHandlers.ts'
 import { User } from '@/entities/user/lib/types.ts'
@@ -36,11 +37,12 @@ const authSlice = createSlice({
     clearError(state) {
       state.error = null
     },
-    logout(state) {
+    logoutUser(state) {
       state.user = null
       state.token = null
       state.isAuthenticated = false
       Cookies.remove('token')
+      window.location.reload()
     },
   },
   extraReducers: (builder) => {
@@ -111,8 +113,20 @@ const authSlice = createSlice({
         state.user = action.payload
       })
       .addCase(updateUserThunk.rejected, handleRejected)
+
+      // Удаление пользователя
+      .addCase(deleteUserThunk.pending, handlePending)
+      .addCase(deleteUserThunk.fulfilled, (state) => {
+        state.loading = false
+        state.user = null
+        state.token = null
+        state.isAuthenticated = false
+        Cookies.remove('token')
+        window.location.reload()
+      })
+      .addCase(deleteUserThunk.rejected, handleRejected)
   },
 })
 
-export const { logout, clearError } = authSlice.actions
+export const { logoutUser, clearError } = authSlice.actions
 export default authSlice.reducer

@@ -43,7 +43,14 @@ export function AppRoutes() {
 
         <Route path="/test-interactive/:idTopic/:modes" element={<TestInteractiveProcesse />} />
 
-        <Route path="settings" element={<LayoutSetting />}>
+        <Route
+          path="settings"
+          element={
+            <ProtectedRoute>
+              <LayoutSetting />
+            </ProtectedRoute>
+          }
+        >
           <Route path="account" element={<SettingAccountPage />} />
           <Route path="security" element={<SettingSecurityPage />} />
           <Route path="avatar" element={<SettingAvatarPage />} />

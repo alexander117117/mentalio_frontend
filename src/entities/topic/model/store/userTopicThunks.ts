@@ -173,3 +173,19 @@ export const translateWord = createAsyncThunk<translateWordResponse, translateWo
     return response.data
   },
 )
+
+interface deleteIMGThunkParams {
+  topicId: Id
+  cardId: Id
+}
+export const deleteIMGThunk = createAsyncThunk<unknown, deleteIMGThunkParams, { rejectValue: string }>(
+  'userTopic/deleteIMGThunk',
+  async ({ topicId, cardId }, { rejectWithValue }) => {
+    await executeApiRTK<unknown, void>({
+      method: 'DELETE',
+      url: API_ENDPOINTS.folders.cards.img.delete(topicId, cardId),
+      rejectWithValue,
+      errorMessage: 'Ошибка при удалении картинки',
+    })
+  },
+)
