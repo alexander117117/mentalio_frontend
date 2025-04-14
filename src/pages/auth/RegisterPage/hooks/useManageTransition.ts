@@ -12,8 +12,8 @@ type RegistrationLevel = number
  * @param setLevel - Функция для обновления уровня.
  */
 export function handleNext(level: RegistrationLevel, setLevel: (value: RegistrationLevel) => void) {
-  // Увеличивает уровень до максимума 5.
-  if (level >= 5) {
+  // Увеличивает уровень
+  if (level >= 4) {
     setLevel(level + 1)
   }
 }
@@ -36,6 +36,7 @@ interface UseFormikRegisterParams {
   password: string
   login: string
   setlogin: (value: string) => void
+  navigator: (path: string) => void
 }
 
 /**
@@ -52,6 +53,7 @@ export function useFormik_Register({
   password,
   login,
   setlogin,
+  navigator,
 }: UseFormikRegisterParams) {
   // Настройка Formik с динамической схемой валидации на основе текущего уровня.
 
@@ -75,15 +77,16 @@ export function useFormik_Register({
           try {
             const data = await dispatch(checkLoginThunk(values.emailOrPhone)).unwrap()
             if (data.status === 'success') {
+              if (data.isLogin) {
+                setErrors({ emailOrPhone: 'Login занят' })
+              } else {
               setlogin(values.emailOrPhone)
               setLevel(1) // Переход на ввод пароля
-            } else {
-              setErrors({ emailOrPhone: 'Login занят' })
+              }
             }
           } catch (error) {
-            console.error('Error login: ', error)
-
-            setErrors({ emailOrPhone: 'Произошла ошибка при проверке логина' })
+            console.log('Error login: ', error)
+            setErrors({ emailOrPhone: 'Login занят' })
           }
         } else {
           setErrors({ agreeToTerms: 'Необходимо согласиться с условиями' })
@@ -106,30 +109,33 @@ export function useFormik_Register({
         } else {
           setIsError(false)
           setLevel(4) // Переход к завершению регистрации
-        }
-      } else if (level === 4) {
-        // Завершение регистрации: отправка данных на сервер
-        try {
-          const data = await dispatch(
-            registerUserThunk({
-              login,
-              password,
-              avatar: filterAvatar(avatars),
-              questions,
-            }),
-          ).unwrap()
+          // Завершение регистрации: отправка данных на сервер
+          try {
+            const data = await dispatch(
+              registerUserThunk({
+                login,
+                password,
+                avatar: filterAvatar(avatars),
+                questions: filterQuestions(questions),
+              }),
+            ).unwrap()
 
-          if (data.token) {
-            setLevel(5) // Успешная регистрация
-          } else {
-            setErrors({ password: 'Произошла ошибка. Попробуйте снова' })
+            if (data.token) {
+              window.setTimeout(() => {
+                navigator('/')
+              }, 2500)
+            } else {
+              setErrors({ emailOrPhone: 'Произошла ошибка. Попробуйте снова' })
+              setLevel(0)
+            }
+          } catch (error) {
+            console.error('Error register: ', error)
+            setErrors({ emailOrPhone: 'Произошла ошибка. Попробуйте снова' })
+            setLevel(0)
           }
-        } catch (error) {
-          console.error('Error register: ', error)
-          setErrors({ password: 'Произошла ошибка. Попробуйте снова' })
         }
+        setSubmitting(false)
       }
-      setSubmitting(false)
     },
   })
 }
@@ -143,4 +149,14 @@ function filterAvatar(avatars: AvatarItem[]): string {
     }
   })
   return result
+}
+
+function filterQuestions(q: QuestionItem[]): string[] {
+  const result = new Set<string>()
+  q.forEach((item) => {
+    if (item.answer) {
+      result.add(item.question)
+    }
+  })
+  return Array.from(result)
 }

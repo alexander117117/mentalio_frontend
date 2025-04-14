@@ -7,7 +7,7 @@ import { ReactComponent as ChangeNameIcon } from '@/shared/assets/images/assets/
 import { AppDispatch, RootState } from '@/app/store/configureStore'
 import { useDispatch, useSelector } from 'react-redux'
 import { User } from '@/entities/user/lib/types'
-import { updateUserThunk } from '@/entities/user/model/store/auth/authThunks'
+import { deleteUserThunk, updateUserThunk } from '@/entities/user/model/store/auth/authThunks'
 import { ButtonLogout } from '@/shared/ui/buttons/ButtonLogout'
 
 export function SettingSecurityPage() {
@@ -36,7 +36,14 @@ export function SettingSecurityPage() {
       </div>
 
       <div className="w-[90%] md:w-[650px] sm:mt-10">
-        <ButtonLogout isGrey={true}>Удалить мой аккаунт</ButtonLogout>
+        <ButtonLogout
+          isGrey={true}
+          onClick={() => {
+            dispatch(deleteUserThunk())
+          }}
+        >
+          Удалить аккаунта
+        </ButtonLogout>
       </div>
     </div>
   )

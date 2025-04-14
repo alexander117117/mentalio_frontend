@@ -15,10 +15,8 @@ interface InfoUserFolderProps {
 export function InfoPublicFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUserFolderProps) {
   const dispatch = useDispatch<AppDispatch>()
   const handelAddFolder = async () => {
-    const response = await dispatch(addPublicFile({ idFolder: dataFolder.id }))
-    if (response.meta.requestStatus === 'fulfilled') {
-      setIsModalOpen(false)
-    }
+    setIsModalOpen(false)
+    await dispatch(addPublicFile({ idFolder: dataFolder.id }))
   }
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

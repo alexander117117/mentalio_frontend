@@ -5,14 +5,16 @@ import { MiniNavbar } from 'src/widgets/MiniNavbar'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '@/app/store/configureStore.ts'
 import { getAllCategoriesThunk, getUserFiles } from '@/entities/folder/model/store'
+import { getProfileThunk } from '@/entities/user/model/store/auth/authThunks'
 
 export function LayoutMain() {
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
+    dispatch(getProfileThunk())
     dispatch(getAllCategoriesThunk())
     dispatch(getUserFiles())
-  }, [dispatch])
+  }, [])
 
   const location = useLocation()
 

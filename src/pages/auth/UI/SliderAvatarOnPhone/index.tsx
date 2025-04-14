@@ -15,7 +15,7 @@ const SliderAvatarOnPhone = ({ avatar, handleAvatarSelect }: SliderAvatarOnPhone
             <SwiperSlide key={index}>
               <img
                 src={'/images/' + item.avatar + '.png'}
-                alt=""
+                alt={item.avatar}
                 className="w-auto aspect-square object-cover rounded-full"
                 onClick={() => handleAvatarSelect(item.id)}
                 style={{ border: item.chosen ? '2px solid green' : 'none' }}

@@ -15,6 +15,7 @@ interface DetailsListApiTranslatedWordsProps {
 export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslatedWordsProps) {
   const dispatch = useDispatch<AppDispatch>()
   const { apiTranslatedWords } = useSelector((state: RootState) => state.userTopic)
+  const { sourceWord } = useSelector((state: RootState) => state.userTopic.createdWord)
 
   const [translations, setTranslations] = useState<apiTranslatedWords>([])
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -29,7 +30,7 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
     handleAddTranslate({ word, dispatch, append })
   }
 
-  if (!translations.length) {
+  if (!translations.length && !sourceWord) {
     return null
   }
 
@@ -46,9 +47,11 @@ export function DetailsListApiTranslatedWords({ append }: DetailsListApiTranslat
         {isOpen ? <MdKeyboardArrowDown /> : <MdKeyboardArrowRight />}
       </summary>
       <ul className="list-disc flex items-center gap-2">
-        {translations.map((item, index) => (
-          <TranslationWord key={index} word={item.translatedWord} add={handleAdd} />
-        ))}
+        {translations.length > 0 ? (
+          translations.map((item, index) => <TranslationWord key={index} word={item.translatedWord} add={handleAdd} />)
+        ) : (
+          <p>перевод не найден</p>
+        )}
       </ul>
     </details>
   )

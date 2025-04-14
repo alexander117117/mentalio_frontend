@@ -21,7 +21,7 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
             >
               <img
                 src={'/images/' + item.avatar + '.png'}
-                alt={'avatar ' + item.id}
+                alt={item.avatar}
                 className="w-full h-full object-cover"
               />
             </div>
