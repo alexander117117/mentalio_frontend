@@ -22,7 +22,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
 
   return (
     <ModalWrapper isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <div className="text-white pb-44 md:pb-16 relative">
+      <div className="text-white">
         <h2 className={style.InfoUserFolder_title}>
           {' '}
           <EditableTitle initialValue={dataFolder.folderName} onSave={handleTitleSave({ dataFolder, dispatch })} />
@@ -38,7 +38,7 @@ export function UserFolder({ isModalOpen, setIsModalOpen, dataFolder }: InfoUser
           )}
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 flex items-center justify-evenly md:flex-row flex-col gap-4 md:gap-0">
+        <div className="flex items-center justify-between md:flex-row flex-col gap-4 md:gap-0 mt-8 sm:mt-[72px] pb-5 sm:pb-0">
           <ButtonControlFolder onClick={() => handeleAddTopic({ idFolder: dataFolder.id, goToTopic, dispatch })}>
             Добавить тему
           </ButtonControlFolder>

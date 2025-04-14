@@ -11,7 +11,7 @@ export const folderClass = classNames(style.info_folder, 'relative', 'xxs:flex-r
 
 export const resultClass = classNames(style.info_folder_result)
 
-export const containerClass = classNames('flex', 'items-center', 'gap-3', style.info_folder__word)
+export const containerClass = classNames('flex', 'items-center', 'gap-2', style.info_folder__word)
 
 export const buttonBack = classNames(style.buttonBack)
 

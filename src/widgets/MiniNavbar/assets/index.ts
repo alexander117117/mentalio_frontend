@@ -1,11 +1,11 @@
-import catalog_icon from './assets/catalog_icon.png'
-import catalog_icon_active from './assets/catalog_icon_active.png'
-import folder_icon from './assets/folder_icon.png'
-import folder_icon_active from './assets/folder_icon_active.png'
-import home_icon from './assets/home_icon.png'
-import home_icon_active from './assets/home_icon_active.png'
-import setting_icon from './assets/setting_icon.png'
-import setting_icon_active from './assets/setting_icon_active.png'
+import catalog_icon from './assets/catalog_icon.svg'
+import catalog_icon_active from './assets/catalog_icon_active.svg'
+import folder_icon from './assets/folder_icon.svg'
+import folder_icon_active from './assets/folder_icon_active.svg'
+import home_icon from './assets/home_icon.svg'
+import home_icon_active from './assets/home_icon_active.svg'
+import setting_icon from './assets/setting_icon.svg'
+import setting_icon_active from './assets/setting_icon_active.svg'
 
 export {
   catalog_icon,

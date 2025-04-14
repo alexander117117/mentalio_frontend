@@ -31,7 +31,8 @@ export function TestPercentPage({ setResponseRenderingLevel, handleTryAgain }: T
           </button>
           <button
             onClick={handleResponseRenderingLevel}
-            className="py-4 sm:py-5 bg-[#DEF3DD] w-[300px] rounded-[15px] text-sm sm:text-xl text-center"
+            className={`py-4 sm:py-5 bg-[#DEF3DD] w-[300px] rounded-[15px] text-sm sm:text-xl text-center
+            ${percent > 59 ? 'bg-positiveResult' : percent >= 25 ? 'bg-neutralResult' : 'bg-negativeResult'}`}
           >
             Посмотреть ответы
           </button>

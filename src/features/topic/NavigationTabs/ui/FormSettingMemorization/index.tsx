@@ -78,8 +78,8 @@ export function FormSettingMemorization() {
 
       <InputChecked title="Изучать избранное" register={register('checkFavorites')} />
 
-      <div className="flex justify-center">
-        <ButtonControlFolder type="submit" color="text-primary" customPadding="px-5 md:px-11" isSmall>
+      <div className="flex justify-center mt-8 sm:mt-[100px]">
+        <ButtonControlFolder type="submit" color="text-primary" customPadding="px-5 md:px-11">
           Начать
         </ButtonControlFolder>
       </div>

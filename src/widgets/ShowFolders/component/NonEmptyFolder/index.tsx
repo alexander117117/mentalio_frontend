@@ -23,7 +23,7 @@ export const NonEmptyFolder = ({ files }: FoldersProps) => {
             <h3 className="text-base sm:text-[32px] font-bold">Мои папки</h3>
             <Link
               to="/my-folders"
-              className="inline-block py-0 sm:py-[12px] px-0 sm:px-[18px] sm:bg-[#001E02] rounded-[10px] text-[10px] sm:text-base text-[#6B6868] sm:text-[#fff]"
+              className="inline-block py-0 sm:py-[12px] px-0 sm:px-[18px] sm:bg-[#001E02] rounded-[10px] text-[10px] sm:text-[12px] text-[#6B6868] sm:text-[#fff]"
             >
               Смотреть все
             </Link>

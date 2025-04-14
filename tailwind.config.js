@@ -34,6 +34,9 @@ export default {
         rightAnswer: '#D9EDD3',
         bgYellow: '#E59C26',
         bgRed: '#CD2F2F',
+        positiveResult: '#BFE3B8',
+        neutralResult: '#E3DE3A80',
+        negativeResult: '#FF3D3D80',
         logout: '#FF5A5A'
       },
     },

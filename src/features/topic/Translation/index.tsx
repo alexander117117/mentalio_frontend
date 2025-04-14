@@ -120,7 +120,7 @@ export function Translation({
                 />
                 <button
                   type="button"
-                  className="h-[35px] sm:h-[24px] aspect-square border border-[#272727] rounded-[5px] text-primary text-2xl leading-[1rem] font-light"
+                  className="h-[35px] sm:h-[24px] aspect-square border border-[#272727] rounded-[5px] text-primary text-2xl leading-[1rem] font-light flex items-center justify-center"
                   onClick={() => handleAddTranslatedWord({ setValue, getValues, append, dispatch })}
                 >
                   +
