@@ -33,7 +33,7 @@ export function useAvatarSelection(avatars: AvatarItem[], setAvatars: Dispatch<S
 export interface QuestionItem {
   id: number
   answer: boolean
-  // Дополнительные поля: question?: string, etc.
+  question: string
 }
 
 /**

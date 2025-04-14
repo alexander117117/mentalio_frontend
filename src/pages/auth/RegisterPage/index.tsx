@@ -9,6 +9,7 @@ import { fetchQuestions } from '@/app/store/features/analytics/analyticsThunks.t
 import { toggleQuestionAnswer } from '@/app/store/features/analytics/analyticsSlice.ts'
 import { LogoCenter } from '../UI/LogoCenter'
 import { avatarItem } from '@/shared/constants/avatarItem.ts'
+import { useNavigate } from 'react-router'
 
 interface AuthState {
   isLoading: boolean
@@ -41,6 +42,7 @@ interface AvatarItem {
 export function Register() {
   const [level, setLevel] = useState<number>(0)
   const dispatch = useDispatch()
+  const navigator = useNavigate()
   const [password, setPassword] = useState<string>('')
   const [login, setlogin] = useState<string>('')
   const { isLoading, error } = useSelector<RootState, AuthState>((state) => state.auth)
@@ -86,6 +88,7 @@ export function Register() {
     password,
     login,
     setlogin,
+    navigator,
   })
 
   const renderLevel = useSwitchRenderLevel({
