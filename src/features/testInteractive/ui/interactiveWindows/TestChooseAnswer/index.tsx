@@ -2,7 +2,7 @@ import { QuestionsMultipleChoice, QuestionsTest } from '@/entities/testInteracti
 import { ButtonLearning } from '@/shared/ui/buttons/ButtonLearning'
 import { handleSelectAnswerProps } from '@/entities/testInteractive/types/handleSelectAnswerProps'
 import styles from '@/shared/lib/classNames/index.module.css'
-
+import { test } from '@/shared/assets/images'
 interface TestChooseAnswerProps {
   question: QuestionsTest | QuestionsMultipleChoice
   onSelectAnswer: (props: handleSelectAnswerProps) => void
@@ -52,6 +52,9 @@ export const TestChooseAnswer = ({ question, onSelectAnswer }: TestChooseAnswerP
   return (
     <div className={styles.flashcard__content}>
       <h1 className={styles.flashcard__title}>{question.sourceWord}</h1>
+      <div className="w-full flex justify-center mt-5 mb-[-60px] sm:mb-[-100px]">
+        <img src={test} alt="" className='w-[349px] h-[358px] object-cover rounded-[20px]'/>
+      </div>
       {renderOptions()}
     </div>
   )

@@ -76,6 +76,16 @@
   margin-top: 96px;
 }
 
+@media (max-width: 576px){
+  .flashcard{
+    padding: 1.5rem;
+  }
+
+  .flashcard__content {
+    margin-top: 0;
+  }
+}
+
 .flashcard__title {
   font-size: 1.875rem; /* 30px */
   line-height: 2.25rem; /* 36px */
