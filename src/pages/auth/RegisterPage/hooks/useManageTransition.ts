@@ -77,15 +77,16 @@ export function useFormik_Register({
           try {
             const data = await dispatch(checkLoginThunk(values.emailOrPhone)).unwrap()
             if (data.status === 'success') {
+              if (data.isLogin) {
+                setErrors({ emailOrPhone: 'Login занят' })
+              } else {
               setlogin(values.emailOrPhone)
               setLevel(1) // Переход на ввод пароля
-            } else {
-              setErrors({ emailOrPhone: 'Login занят' })
+              }
             }
           } catch (error) {
-            console.error('Error login: ', error)
-
-            setErrors({ emailOrPhone: 'Произошла ошибка при проверке логина' })
+            console.log('Error login: ', error)
+            setErrors({ emailOrPhone: 'Login занят' })
           }
         } else {
           setErrors({ agreeToTerms: 'Необходимо согласиться с условиями' })
