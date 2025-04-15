@@ -80,8 +80,8 @@ export function useFormik_Register({
               if (data.isLogin) {
                 setErrors({ emailOrPhone: 'Login занят' })
               } else {
-              setlogin(values.emailOrPhone)
-              setLevel(1) // Переход на ввод пароля
+                setlogin(values.emailOrPhone)
+                setLevel(1) // Переход на ввод пароля
               }
             }
           } catch (error) {

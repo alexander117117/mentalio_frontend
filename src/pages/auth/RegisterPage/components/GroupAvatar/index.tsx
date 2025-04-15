@@ -19,11 +19,7 @@ const GroupAvatar = ({ avatar, handleAvatarSelect, isError }: GroupAvatarProps) 
               onClick={() => handleAvatarSelect(item.id)}
               style={{ border: item.chosen ? '2px solid green' : 'none' }}
             >
-              <img
-                src={'/images/' + item.avatar + '.png'}
-                alt={item.avatar}
-                className="w-full h-full object-cover"
-              />
+              <img src={'/images/' + item.avatar + '.png'} alt={item.avatar} className="w-full h-full object-cover" />
             </div>
           ))}
         </div>
