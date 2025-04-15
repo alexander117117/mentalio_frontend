@@ -58,7 +58,7 @@ export function Register() {
       fetchQuestions([
         { id: 1, question: 'Поисковые системы', answer: false },
         { id: 2, question: 'Посоветовал друг', answer: false },
-        { id: 3, question: 'Посоветовал преподователь', answer: false },
+        { id: 3, question: 'Посоветовал преподаватель', answer: false },
         { id: 4, question: 'Instagram', answer: false },
         { id: 5, question: 'Youtube', answer: false },
         { id: 6, question: 'Telegram', answer: false },
