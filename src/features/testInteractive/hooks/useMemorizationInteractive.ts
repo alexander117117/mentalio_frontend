@@ -1,7 +1,12 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { RootState } from '@/app/store/configureStore'
-import { putWordToEnd, setIndex, setisShowSummary, setOptionsIsChoice } from '@/entities/testInteractive/store/slice'
+import {
+  putWordToEnd,
+  setIndex,
+  setisShowSummary,
+  setSelectedOptionIndex,
+} from '@/entities/testInteractive/store/slice'
 import { handleSelectAnswerMemorizationProps } from '@/entities/testInteractive/types/handleSelectAnswerProps'
 import { QuestionsTest } from '@/entities/testInteractive/types'
 import { addLengthAnswer } from '@/entities/testAnalytics/testAnalyticsSlice'
@@ -19,23 +24,20 @@ export function useMemorizationInteractive() {
 
   const handleSelectAnswer = useCallback(
     ({ isCorrect, question }: handleSelectAnswerMemorizationProps) => {
-      // Помечаем, что пользователь выбрал вариант ответа
-      dispatch(setOptionsIsChoice({ id: question.id, isChoice: true }))
-
-      // Если это последний вопрос — показываем результат
       if (current === total) {
-        dispatch(setisShowSummary(true))
+        setTimeout(() => {
+          dispatch(setisShowSummary(true))
+        }, 1500)
       } else {
         if (isCorrect) {
-          dispatch(setOptionsIsChoice({ id: question.id, isChoice: true }))
           setTimeout(() => {
             dispatch(addLengthAnswer(current + 1))
+            dispatch(setSelectedOptionIndex({ id: question.id, selectedIndex: null }))
             dispatch(setIndex(currentIndex + 1))
           }, 1500)
         } else {
-          dispatch(setOptionsIsChoice({ id: question.id, isChoice: true }))
           setTimeout(() => {
-            dispatch(setOptionsIsChoice({ id: question.id, isChoice: null }))
+            dispatch(setSelectedOptionIndex({ id: question.id, selectedIndex: null }))
             dispatch(putWordToEnd(question.id))
           }, 1500)
         }

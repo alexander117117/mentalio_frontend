@@ -51,5 +51,6 @@ export const {
   setOptionsIsChoice,
   repeatTestInteractive,
   putWordToEnd,
+  setSelectedOptionIndex,
 } = testInteractiveSlice.actions
 export const testInteractive = testInteractiveSlice.reducer

@@ -55,5 +55,6 @@ export interface QuestionsMultipleChoice {
     text: string
     isCorrect: boolean
   }[]
-  isChoice?: boolean | null
+  isChoice?: boolean
+  selectedOptionIndex?: number | null
 }
