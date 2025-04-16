@@ -76,8 +76,8 @@
   margin-top: 96px;
 }
 
-@media (max-width: 576px){
-  .flashcard{
+@media (max-width: 576px) {
+  .flashcard {
     padding: 1.5rem;
   }
 
