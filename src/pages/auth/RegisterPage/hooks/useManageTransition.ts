@@ -86,7 +86,7 @@ export function useFormik_Register({
             }
           } catch (error) {
             console.log('Error login: ', error)
-            setErrors({ emailOrPhone: 'Login занят' })
+            setErrors({ emailOrPhone: 'Ошибка сервера' })
           }
         } else {
           setErrors({ agreeToTerms: 'Необходимо согласиться с условиями' })
