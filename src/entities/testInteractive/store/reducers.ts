@@ -105,4 +105,21 @@ export const testInteractiveReducer = {
       state.words.push(word as never)
     }
   },
+  setSelectedOptionIndex(
+    state: TestInteractiveState,
+    action: PayloadAction<{
+      id: string
+      selectedIndex: number | null
+    }>,
+  ) {
+    const { id, selectedIndex } = action.payload
+
+    const questionIndex = state.words.findIndex((q) => q.id === id)
+    if (questionIndex === -1) return
+
+    const question = state.words[questionIndex] as QuestionsMultipleChoice
+    question.selectedOptionIndex = selectedIndex
+
+    question.isChoice = true
+  },
 }
