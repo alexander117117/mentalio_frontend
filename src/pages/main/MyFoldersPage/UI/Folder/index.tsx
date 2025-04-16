@@ -1,4 +1,4 @@
-import happy_folder from './assets/happy_folders.png'
+import happy_folder_rounded from './assets/happy_folder_rounded.png'
 import { UserFolder } from '@/features/UserFolder'
 import { FolderItem } from '@/entities/folder/lib/types'
 import { useState } from 'react'
@@ -13,8 +13,8 @@ export const Folder = ({ dataFolder }: UserFolder) => {
     <>
       <div className="w-auto h-[184px] sm:h-[207px] md:h-[160px] lg:h-[209px] xl:h-[220px] 2xl:h-[269px] bg-userFolder rounded-[28px] truncate relative">
         <div className="w-full h-full flex flex-col md:flex-row items-center justify-center md:justify-normal gap-[10px] md:gap-5 2xl:gap-[40px] px-5">
-          <div className="flex-shrink-0 w-[102px] sm:w-[170px] 2xl:w-[300px] h-[67px] sm:h-[107px] 2xl:h-[188px] truncate">
-            <img src={happy_folder} alt="folder" className="w-full h-full object-cover" />
+          <div className="flex-shrink-0 w-[102px] sm:w-[170px] 2xl:w-[300px] h-auto sm:h-[107px] 2xl:h-[188px] truncate">
+            <img src={happy_folder_rounded} alt="folder" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col gap-0 sm:gap-[10px] text-center md:text-left min-w-0 md:flex-1 w-full md:w-auto">
             <h3 className="text-sm sm:text-[20px] lg:text-[34px] font-medium font-unbounded leading-[15px] sm:leading-[25px] lg:leading-[42px] overflow-hidden text-ellipsis whitespace-nowrap">
