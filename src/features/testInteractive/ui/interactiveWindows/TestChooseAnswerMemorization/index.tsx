@@ -89,9 +89,7 @@ export const TestChooseAnswerMemorization = ({ question, onSelectAnswer }: TestC
   return (
     <div className={styles.flashcard__content}>
       <h1 className={styles.flashcard__title}>{question.sourceWord}</h1>
-      <div className="mt-24 sm:mt-[126px] grid grid-cols-2 gap-x-[10px] sm:gap-x-5 gap-y-[10px]">
-        {renderOptions}
-      </div>
+      <div className="mt-24 sm:mt-[126px] grid grid-cols-2 gap-x-[10px] sm:gap-x-5 gap-y-[10px]">{renderOptions}</div>
     </div>
   )
 }
