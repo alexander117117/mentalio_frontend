@@ -8,7 +8,7 @@ import { API_ENDPOINTS } from './constEndpoints'
 
 export const axiosInstance = axios.create({
   baseURL: API_ENDPOINTS.common.baseUrl, // Базовый URL для всех запросов
-  timeout: 10000, // Тайм-аут запросов
+  timeout: 17000, // Тайм-аут запросов
   headers: {
     'Content-Type': 'application/json',
   },
