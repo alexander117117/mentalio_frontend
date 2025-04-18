@@ -84,5 +84,6 @@ export const API_ENDPOINTS = {
   interactive: {
     getDataMemorization: (idTopic: Id): string => `/v1/tests/${idTopic}/memorize/`,
     getDataTest: (idTopic: Id): string => `/v1/tests/${idTopic}/test/`,
+    saveResultTest: (idTopic: Id): string => `/v1/tests/${idTopic}/results/`,
   },
 }

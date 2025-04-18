@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Id } from '@/shared/types'
 import { RootState } from '@/app/store/configureStore'
+import { handlePending, handleRejected } from '@/shared/lib/helpers'
+import { saveResultTestThunks } from './thunks'
 
 export interface TestAnswer {
   questionId: Id
@@ -12,16 +14,22 @@ export interface TestAnswer {
 
 interface TestAnalyticsState {
   answers: TestAnswer[]
+  isResultPosted: boolean;
   totalQuestions: number
   correctCount: number
   percent: number
+  loading: boolean
+  error: string | null
 }
 
 const initialState: TestAnalyticsState = {
   answers: [],
+  isResultPosted: false,
   totalQuestions: 0,
   correctCount: 0,
   percent: 0,
+  loading: false,
+  error: null,
 }
 
 export const testAnalyticsSlice = createSlice({
@@ -114,6 +122,15 @@ export const testAnalyticsSlice = createSlice({
       state.correctCount = 0
       state.percent = 0
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(saveResultTestThunks.pending, handlePending)
+      .addCase(saveResultTestThunks.fulfilled, (state) => {
+        state.loading = false
+        state.isResultPosted = true;
+      })
+      .addCase(saveResultTestThunks.rejected, handleRejected)
   },
 })
 
