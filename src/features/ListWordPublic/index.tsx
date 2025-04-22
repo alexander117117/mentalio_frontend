@@ -14,7 +14,7 @@ export function ListWordPublic({ cards }: ListWordPublicProps) {
           >
             <span className="w-1/2 truncate">{card.sourceWord}</span>
             {card.translated_words[0] && (
-              <span className="opacity-50 w-1/2 text-right truncate">{card.translated_words[0].translatedWord}</span>
+              <span className="opacity-50 w-1/2 text-right truncate">{card.translated_words[0]?.translatedWord}</span>
             )}
           </li>
         ))

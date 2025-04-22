@@ -14,7 +14,7 @@ export interface TestAnswer {
 
 interface TestAnalyticsState {
   answers: TestAnswer[]
-  isResultPosted: boolean;
+  isResultPosted: boolean
   totalQuestions: number
   correctCount: number
   percent: number
@@ -128,7 +128,7 @@ export const testAnalyticsSlice = createSlice({
       .addCase(saveResultTestThunks.pending, handlePending)
       .addCase(saveResultTestThunks.fulfilled, (state) => {
         state.loading = false
-        state.isResultPosted = true;
+        state.isResultPosted = true
       })
       .addCase(saveResultTestThunks.rejected, handleRejected)
   },

@@ -21,7 +21,7 @@ export function CardItem({ cardData }: CardItemProps) {
         </div>
 
         <span className={`${styles.cardFace} ${styles.cardFaceBack}`}>
-          {cardData?.translated_words && cardData.translated_words[0].translatedWord}
+          {cardData?.translated_words && cardData.translated_words[0]?.translatedWord}
         </span>
       </div>
     </div>
