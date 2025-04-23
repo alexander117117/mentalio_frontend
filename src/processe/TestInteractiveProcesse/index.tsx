@@ -21,7 +21,7 @@ export function TestInteractiveProcesse() {
   const dispatch = useDispatch<AppDispatch>()
   const { idTopic = '', modes = '' } = useParams<UseParamsTestInteractive>()
   const { words, loading, isShowSummary } = useSelector((state: RootState) => state.testInteractive)
-  const { answers, isResultPosted } = useSelector((state: RootState) => state.testAnalyticsSlice)
+  const { answers, isResultPosted, totalQuestions } = useSelector((state: RootState) => state.testAnalyticsSlice)
 
   useEffect(() => {
     dispatch(resetTestAnalytics())
@@ -33,7 +33,7 @@ export function TestInteractiveProcesse() {
   }, [idTopic, location.state, dispatch])
 
   useEffect(() => {
-    if (modes === 'test' && isShowSummary && answers.length === words.length && !isResultPosted) {
+    if (modes === 'test' && isShowSummary && answers.length === totalQuestions && !isResultPosted) {
       dispatch(computeTestResults())
       dispatch(saveResultTestThunks({ idTopic, answers }))
     }

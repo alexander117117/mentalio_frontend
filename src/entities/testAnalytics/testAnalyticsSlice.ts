@@ -105,6 +105,7 @@ export const testAnalyticsSlice = createSlice({
       state.totalQuestions = 0
       state.correctCount = 0
       state.percent = 0
+      state.isResultPosted = false
     },
 
     /**
@@ -121,6 +122,7 @@ export const testAnalyticsSlice = createSlice({
       state.answers = []
       state.correctCount = 0
       state.percent = 0
+      state.isResultPosted = false
     },
   },
   extraReducers: (builder) => {

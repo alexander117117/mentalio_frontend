@@ -64,6 +64,7 @@ export async function getDataTestInteractive({ dispatch, location, idTopic, mode
               topicName,
             }),
           )
+          dispatch(initTestAnalytics({ questionsCount: respons.length }))
           wordsCount = respons.length
         } catch (err) {
           console.error('Error', err)

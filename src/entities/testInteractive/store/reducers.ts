@@ -2,11 +2,13 @@ import { PayloadAction } from '@reduxjs/toolkit'
 import {
   ModesInteractive,
   QuestionsMultipleChoice,
+  QuestionsTest,
   SettingInteractive,
   TestInteractiveState,
   WordsInteractive,
 } from '../types'
 import { Id } from '@/shared/types'
+import { shuffleArray } from '@/shared/lib/shuffleArray'
 
 export const testInteractiveReducer = {
   setDataTestInteractive(
@@ -88,9 +90,19 @@ export const testInteractiveReducer = {
     state.error = null
   },
   repeatTestInteractive(state: TestInteractiveState) {
-    state.words = state.words.map((item) => {
-      return { ...item, isChoice: null }
-    }) as WordsInteractive
+    state.words = state.words.map((q) => {
+      const question = q as QuestionsTest & QuestionsMultipleChoice
+      return {
+        ...question,
+        isChoice: false,
+        selectedOptionIndex: null,
+      }
+    })
+
+    if (state.setting?.isShuffle) {
+      state.words = shuffleArray(state.words)
+    }
+
     state.currentIndex = 0
     state.isShowSummary = false
     state.loading = false

@@ -14,7 +14,6 @@ export function useMemorizationInteractive() {
 
   const total = words.length
 
-
   const handleSelectAnswer = useCallback(
     ({ isCorrect, question }: handleSelectAnswerMemorizationProps) => {
       /* отмечаем выбор */
@@ -29,7 +28,7 @@ export function useMemorizationInteractive() {
         } else {
           setTimeout(() => {
             dispatch(putWordToEnd(question.id))
-            dispatch(setIndex(total - 1))          // показываем новую последнюю
+            dispatch(setIndex(total - 1)) // показываем новую последнюю
           }, 1200)
         }
         return
@@ -44,7 +43,7 @@ export function useMemorizationInteractive() {
         setTimeout(() => dispatch(putWordToEnd(question.id)), 1200)
       }
     },
-    [dispatch, currentIndex, total]
+    [dispatch, currentIndex, total],
   )
 
   return { words, currentIndex, total, handleSelectAnswer }
