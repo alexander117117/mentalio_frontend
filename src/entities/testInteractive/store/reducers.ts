@@ -97,14 +97,16 @@ export const testInteractiveReducer = {
     state.error = null
   },
   // Положить слово в конец массива и удалить там где он был раньше
-  putWordToEnd(state: TestInteractiveState, action: PayloadAction<Id>) {
-    const id = action.payload
-    const index = state.words.findIndex((item) => item.id === id)
-    if (index !== -1) {
-      const word = state.words.splice(index, 1)[0] as QuestionsMultipleChoice
-      state.words.push(word as never)
-    }
+  putWordToEnd(state: any, action: PayloadAction<Id>) {
+    const idx = state.words.findIndex((w) => w.id === action.payload)
+    if (idx === -1) return
+
+    const [word] = state.words.splice(idx, 1) as [QuestionsMultipleChoice]
+    word.isChoice = null
+    word.selectedOptionIndex = null
+    state.words.push(word as never)
   },
+
   setSelectedOptionIndex(
     state: TestInteractiveState,
     action: PayloadAction<{

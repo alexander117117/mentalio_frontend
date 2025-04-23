@@ -23,10 +23,10 @@ export function TestInteractiveProcesse() {
   const { words, loading, isShowSummary } = useSelector((state: RootState) => state.testInteractive)
   const { answers, isResultPosted } = useSelector((state: RootState) => state.testAnalyticsSlice)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch(resetTestAnalytics())
     dispatch(resetStateInteractive())
-  }, [dispatch])
+  }, [])
 
   useLayoutEffect(() => {
     getDataTestInteractive({ dispatch, location, idTopic, modes })
